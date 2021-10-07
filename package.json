@@ -11,10 +11,16 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.22.0",
     "framer-motion": "^4.1.17",
+    "html-to-image": "^1.8.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-files": "^2.4.9",
     "react-icons": "^4.3.1",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "react-vis": "^1.11.7",
+    "victory": "^36.0.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
