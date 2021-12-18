@@ -25,3 +25,22 @@ module.exports.monthly_count_data = (data) => {
 //   }
 //   return arr.slice(0, 6);
 // };
+module.exports.word_cloud_data = (data) => {
+  var arr = [];
+
+  var min = 999999999,
+    max = 0;
+  arr.push(
+    data.map(({ freq }) => {
+      if (freq > max) max = freq;
+      if (freq < min) min = freq;
+      return freq;
+    })
+  );
+  var a = data.map(({ word, freq }) => {
+    return { word, weight: (freq - min) / (max - min) };
+  });
+
+  console.log("a", a);
+  return a;
+};
