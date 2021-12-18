@@ -8,6 +8,8 @@ import {
   Center,
   Spinner,
   Text,
+  Flex,
+  Spacer,
 } from "@chakra-ui/react";
 import TagCloud from "react-tag-cloud";
 import {
@@ -94,6 +96,11 @@ const Dashboard = ({ drawData }) => {
             rounded="md"
           >
             Word count
+            <Flex>
+              {drawData.members[0]}
+              <Spacer />
+              {drawData.members[1]}
+            </Flex>
             <VictoryStack
               animate={{
                 duration: 2000,
@@ -130,15 +137,7 @@ const Dashboard = ({ drawData }) => {
               />
             </VictoryStack>
           </GridItem>
-          <GridItem
-            colSpan={[3, 1]}
-            boxShadow="2xl"
-            bg="white"
-            p="6"
-            rounded="md"
-          >
-            The most used emoji is offcourse
-          </GridItem>
+
           <GridItem
             colSpan={[3, 1]}
             boxShadow="2xl"
@@ -156,7 +155,7 @@ const Dashboard = ({ drawData }) => {
                 height: "100%",
               }}
             >
-              {drawData.top_10_emojis.map(({ emoji }, i) => {
+              {drawData.top_10_emojis.slice(0, 6).map(({ emoji }, i) => {
                 return (
                   <div
                     style={{
@@ -170,35 +169,10 @@ const Dashboard = ({ drawData }) => {
               })}
             </TagCloud>
           </GridItem>
-
-          <GridItem
-            colSpan={[3, 1]}
-            boxShadow="2xl"
-            bg="white"
-            p="6"
-            rounded="md"
-          >
-            <VictoryScatter
-              dataComponent={<CatPoint />}
-              y={[4, 5, 4, 9, 10, 1, 3]}
-              samples={5}
-            />
-          </GridItem>
         </Grid>
       </Box>
     </Box>
   );
 };
 
-class CatPoint extends React.Component {
-  render() {
-    const { x, y, datum } = this.props; // VictoryScatter supplies x, y and datum
-    const cat = datum.y >= 4 ? "😻" : "😹";
-    return (
-      <text x={x} y={y} fontSize={30}>
-        {cat}
-      </text>
-    );
-  }
-}
 export default Dashboard;
