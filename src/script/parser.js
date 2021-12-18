@@ -15,13 +15,13 @@ module.exports.monthly_count_data = (data) => {
   ];
 };
 
-module.exports.emoji_data = (data) => {
-  var arr = [];
-  for (var i in Object.keys(data)) {
-    arr.push({
-      emoji: Object.keys(data)[i],
-      count: data[Object.keys(data)[i]],
-    });
-  }
-  return arr.slice(0, 6);
-};
+// module.exports.emoji_data = (data) => {
+//   var arr = [];
+//   for (var i in Object.keys(data)) {
+//     arr.push({
+//       emoji: Object.keys(data)[i],
+//       count: data[Object.keys(data)[i]],
+//     });
+//   }
+//   return arr.slice(0, 6);
+// };
