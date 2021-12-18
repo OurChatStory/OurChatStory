@@ -24,6 +24,7 @@ import {
 } from "victory";
 import CountUp from "react-countup";
 // const drawData = require("../data/sample-chat");
+var normalize = require("normalize-number");
 
 const parser = require("../script/parser");
 
@@ -87,7 +88,39 @@ const Dashboard = ({ drawData }) => {
               />
             </VictoryChart>
           </GridItem>
-
+          <GridItem
+            colSpan={[3, 3]}
+            boxShadow="2xl"
+            bg="white"
+            p="6"
+            rounded="md"
+            height="500"
+          >
+            The most used words are
+            <TagCloud
+              style={{
+                fontFamily: "sans-serif",
+                fontSize: 30,
+                padding: 10,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              {parser
+                .word_cloud_data(drawData.word_cloud_words)
+                .map(({ word, weight }) => {
+                  return (
+                    <div
+                      style={{
+                        fontSize: weight * 200,
+                      }}
+                    >
+                      {word}
+                    </div>
+                  );
+                })}
+            </TagCloud>
+          </GridItem>
           <GridItem
             colSpan={[3, 2]}
             boxShadow="2xl"
