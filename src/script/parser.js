@@ -1,9 +1,3 @@
-module.exports.monthly_count_data = (data) => {
-  return data.map(({ month, count }) => {
-    return { x: month, y: count };
-  });
-};
-
 module.exports.hourly_count_data = (data) => {
   const n = 8; //offset hr from 12:00
   var arr = data.map(({ hour, count }) => {
@@ -12,6 +6,12 @@ module.exports.hourly_count_data = (data) => {
   arr.push(...arr.slice(0, n));
   console.log(arr.slice(n));
   return arr.slice(n);
+};
+
+module.exports.monthly_count_data = (data) => {
+  return data.map(({ month, count }) => {
+    return { x: month, y: count };
+  });
 };
 
 module.exports.active_time = (data) => {
