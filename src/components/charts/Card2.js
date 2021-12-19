@@ -35,7 +35,7 @@ const Card2 = ({ drawData }) => {
         You talked the most in the month of
       </Text>
       <Text color="#F5F5F5" fontSize="6xl">
-        {parser.months[drawData.most_active_month.month]}👻
+        {drawData.most_active_month.month}👻
       </Text>
 
       <VictoryLine
