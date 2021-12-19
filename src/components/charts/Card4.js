@@ -30,8 +30,8 @@ var normalize = require("normalize-number");
 
 const Card4 = ({ drawData }) => {
   return (
-    <Box bg="white" p="6" width="100vw">
-      Word count
+    <Box bg="white" p="6" width="100vw" h="100vh">
+      <Heading>Word count</Heading>
       <Flex>
         {drawData.no_of_messages_per_member[0].member}
         <Spacer />
@@ -42,7 +42,7 @@ const Card4 = ({ drawData }) => {
           duration: 2000,
           onLoad: { duration: 1000 },
         }}
-        colorScale={["tomato", "orange"]}
+        colorScale={["#30475E", "#F5F5F5"]}
         style={{
           data: { stroke: "black", strokeWidth: 3 },
         }}
@@ -57,6 +57,7 @@ const Card4 = ({ drawData }) => {
           ]}
           horizontal
         />
+
         <VictoryBar
           barWidth={20}
           data={[

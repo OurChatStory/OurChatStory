@@ -15,8 +15,8 @@ import TagCloud from "react-tag-cloud";
 
 const Card3 = ({ drawData }) => {
   return (
-    <Box bg="white" p="6" height="100vh" w="100vw">
-      The most used words are
+    <Box p="6" height="100vh" w="100vw" color="#F5F5F5">
+      <Heading>The most used words are</Heading>
       <TagCloud
         style={{
           fontFamily: "sans-serif",

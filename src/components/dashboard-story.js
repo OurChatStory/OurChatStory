@@ -8,6 +8,8 @@ import Card2 from "./charts/Card2";
 import Card3 from "./charts/Card3";
 import Card4 from "./charts/Card4";
 import Card5 from "./charts/Card5";
+import Card6 from "./charts/Card6";
+import ThankYou from "./charts/ThankCard";
 
 const Dashboard = ({ drawData }) => {
   const stories = [
@@ -18,6 +20,9 @@ const Dashboard = ({ drawData }) => {
       content: (props) => <Card2 drawData={drawData} />,
     },
     {
+      content: (props) => <Card6 drawData={drawData} />,
+    },
+    {
       content: (props) => <Card3 drawData={drawData} />,
     },
     {
@@ -26,14 +31,18 @@ const Dashboard = ({ drawData }) => {
     {
       content: (props) => <Card5 drawData={drawData} />,
     },
+    {
+      content: (props) => <ThankYou drawData={drawData} />,
+    },
   ];
   return (
     <Box>
       <Stories
         stories={stories}
-        defaultInterval={5000}
+        defaultInterval={8000}
         width="100vw"
         height="100vh"
+        preventDefault={false}
       />
     </Box>
   );

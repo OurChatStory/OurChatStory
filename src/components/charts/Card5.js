@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Grid,
@@ -12,26 +12,11 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 import TagCloud from "react-tag-cloud";
-import TinderCard from "react-tinder-card";
-
-import {
-  VictoryBar,
-  VictoryPie,
-  VictoryChart,
-  VictoryTheme,
-  VictoryLine,
-  VictoryHistogram,
-  VictoryScatter,
-  VictoryStack,
-} from "victory";
-import CountUp from "react-countup";
-// const drawData = require("../data/sample-chat");
-var normalize = require("normalize-number");
 
 const Card5 = ({ drawData }) => {
   return (
     <Box bg="white" p="6" height="100vh" w="100vw">
-      The most used emojis are
+      <Heading>The most used emojis are</Heading>
       <TagCloud
         style={{
           fontFamily: "sans-serif",

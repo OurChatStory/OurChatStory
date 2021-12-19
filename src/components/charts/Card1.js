@@ -27,9 +27,9 @@ import CountUp from "react-countup";
 
 const Card1 = ({ drawData }) => {
   return (
-    <Box bg="white" p="6" w="100vw">
-      Total no of chats <br />
-      <Heading>
+    <Box bg="#F05454" p="6" w="100vw" h="100vh">
+      <Text fontSize="5xl">Total no of chats</Text>
+      <Text fontSize="6xl" color="#F5F5F5">
         <CountUp
           end={
             drawData.word_count_per_member[0].count +
@@ -37,9 +37,12 @@ const Card1 = ({ drawData }) => {
           }
           duration={2}
         />
-      </Heading>
+      </Text>
       <br />
-      Almost always its {drawData.who_texts_first} who texts first
+      <Text fontSize="5xl">
+        Its almost always <Text as="mark">{drawData.who_texts_first}</Text> who
+        texts first
+      </Text>
     </Box>
   );
 };

@@ -7,6 +7,7 @@ import Card2 from "./charts/Card2";
 import Card3 from "./charts/Card3";
 import Card4 from "./charts/Card4";
 import Card5 from "./charts/Card5";
+import Card6 from "./charts/Card6";
 
 const Dashboard = ({ drawData }) => {
   return (
@@ -21,7 +22,9 @@ const Dashboard = ({ drawData }) => {
         <TinderCard>
           <Card2 drawData={drawData} />
         </TinderCard>
-
+        <TinderCard>
+          <Card6 drawData={drawData} />
+        </TinderCard>
         <TinderCard>
           <Card3 drawData={drawData} />
         </TinderCard>
