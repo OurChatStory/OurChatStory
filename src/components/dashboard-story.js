@@ -10,9 +10,13 @@ import Card4 from "./charts/Card4";
 import Card5 from "./charts/Card5";
 import Card6 from "./charts/Card6";
 import ThankYou from "./charts/ThankCard";
+import Welcome from "./charts/Welcome";
 
 const Dashboard = ({ drawData }) => {
   const stories = [
+    {
+      content: (props) => <Welcome drawData={drawData} />,
+    },
     {
       content: (props) => <Card1 drawData={drawData} />,
     },

@@ -33,7 +33,10 @@ const Card6 = ({ drawData }) => {
         The time of the day you talk the most is
       </Text>
       <Text color="#F5F5F5" fontSize="6xl">
-        {drawData.most_active_hour.hour}
+        {parser.active_time(drawData.most_active_hour.hour)}
+      </Text>
+      <Text color="#F5F5F5" fontSize="4xl">
+        {parser.active_time_type(drawData.most_active_hour.hour)}
       </Text>
       <VictoryChart theme={VictoryTheme.material}>
         <VictoryAxis />

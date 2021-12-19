@@ -15,7 +15,7 @@ import TagCloud from "react-tag-cloud";
 
 const Card5 = ({ drawData }) => {
   return (
-    <Box bg="white" p="6" height="100vh" w="100vw">
+    <Box bg="#F5F5F5" p="6" height="100vh" w="100vw">
       <Heading>The most used emojis are</Heading>
       <TagCloud
         style={{
