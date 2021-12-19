@@ -12,23 +12,6 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 import TagCloud from "react-tag-cloud";
-import TinderCard from "react-tinder-card";
-
-import {
-  VictoryBar,
-  VictoryPie,
-  VictoryChart,
-  VictoryTheme,
-  VictoryLine,
-  VictoryHistogram,
-  VictoryScatter,
-  VictoryStack,
-} from "victory";
-import CountUp from "react-countup";
-// const drawData = require("../data/sample-chat");
-var normalize = require("normalize-number");
-
-const parser = require("../../script/parser");
 
 const Card3 = ({ drawData }) => {
   return (
