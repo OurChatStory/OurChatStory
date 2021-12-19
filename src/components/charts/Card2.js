@@ -32,7 +32,7 @@ const parser = require("../../script/parser");
 
 const Card2 = ({ drawData }) => {
   return (
-    <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
+    <Box bg="white" p="6">
       You talked the most in the month of {drawData.most_active_month.month}
       <VictoryChart domainPadding={20}>
         <VictoryBar

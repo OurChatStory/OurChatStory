@@ -30,7 +30,7 @@ var normalize = require("normalize-number");
 
 const Card4 = ({ drawData }) => {
   return (
-    <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
+    <Box bg="white" p="6" width="100vw">
       Word count
       <Flex>
         {drawData.no_of_messages_per_member[0].member}

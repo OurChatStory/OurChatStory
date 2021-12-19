@@ -27,7 +27,7 @@ import CountUp from "react-countup";
 
 const Card1 = ({ drawData }) => {
   return (
-    <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
+    <Box bg="white" p="6" w="100vw">
       Total no of chats <br />
       <Heading>
         <CountUp

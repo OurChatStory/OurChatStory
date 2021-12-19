@@ -28,12 +28,12 @@ const Dashboard = ({ drawData }) => {
     },
   ];
   return (
-    <Box p="2rem">
+    <Box>
       <Stories
         stories={stories}
-        defaultInterval={3000}
-        width={500}
-        height={900}
+        defaultInterval={5000}
+        width="100vw"
+        height="100vh"
       />
     </Box>
   );

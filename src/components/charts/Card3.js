@@ -15,7 +15,7 @@ import TagCloud from "react-tag-cloud";
 
 const Card3 = ({ drawData }) => {
   return (
-    <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md" height="500">
+    <Box bg="white" p="6" height="100vh" w="100vw">
       The most used words are
       <TagCloud
         style={{
