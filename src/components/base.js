@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Heading, Box, Text, Stack } from "@chakra-ui/react";
-import Dashboard from "./dashboard-swipe";
+import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
 const Base = () => {
   const [showRes, setShowRes] = useState(false);
