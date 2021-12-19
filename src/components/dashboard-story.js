@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Heading, Box } from "@chakra-ui/react";
-import TinderCard from "react-tinder-card";
+
 import Stories from "react-insta-stories";
 
 import Card1 from "./charts/Card1";

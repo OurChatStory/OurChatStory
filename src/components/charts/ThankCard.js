@@ -12,20 +12,6 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 
-import {
-  VictoryBar,
-  VictoryPie,
-  VictoryChart,
-  VictoryTheme,
-  VictoryLine,
-  VictoryHistogram,
-  VictoryScatter,
-  VictoryStack,
-  VictoryAxis,
-} from "victory";
-
-const parser = require("../../script/parser");
-
 const Card6 = ({ drawData }) => {
   return (
     <Box bg="#30475E" p="6" w="100vw" h="100vh">

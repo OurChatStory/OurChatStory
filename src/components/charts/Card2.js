@@ -25,9 +25,6 @@ import {
   VictoryStack,
   VictoryAxis,
 } from "victory";
-import CountUp from "react-countup";
-// const drawData = require("../data/sample-chat");
-var normalize = require("normalize-number");
 
 const parser = require("../../script/parser");
 
