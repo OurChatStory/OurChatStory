@@ -1,18 +1,21 @@
 module.exports.monthly_count_data = (data) => {
-  return [
-    { x: "Jan", y: data.Jan },
-    { x: "Feb", y: data.Feb },
-    { x: "Mar", y: data.Mar },
-    { x: "Apr", y: data.Apr },
-    { x: "May", y: data.May },
-    { x: "Jun", y: data.Jun },
-    { x: "Jul", y: data.Jul },
-    { x: "Aug", y: data.Aug },
-    { x: "Sep", y: data.Sep },
-    { x: "Oct", y: data.Oct },
-    { x: "Nov", y: data.Nov },
-    { x: "Dec", y: data.Dec },
-  ];
+  return data.map(({ month, count }) => {
+    return { x: month, y: count };
+  });
+  // return [
+  //   { x: "Jan", y: data.Jan },
+  //   { x: "Feb", y: data.Feb },
+  //   { x: "Mar", y: data.Mar },
+  //   { x: "Apr", y: data.Apr },
+  //   { x: "May", y: data.May },
+  //   { x: "Jun", y: data.Jun },
+  //   { x: "Jul", y: data.Jul },
+  //   { x: "Aug", y: data.Aug },
+  //   { x: "Sep", y: data.Sep },
+  //   { x: "Oct", y: data.Oct },
+  //   { x: "Nov", y: data.Nov },
+  //   { x: "Dec", y: data.Dec },
+  // ];
 };
 
 // module.exports.emoji_data = (data) => {
