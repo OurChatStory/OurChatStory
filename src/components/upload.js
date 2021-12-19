@@ -3,7 +3,7 @@ import { Button, Box, Center, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-import Dashboard from "./dashboard";
+import Dashboard from "./dashboard-swipe";
 const Upload = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);

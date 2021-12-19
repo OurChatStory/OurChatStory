@@ -38,34 +38,18 @@ const Dashboard = ({ drawData }) => {
         Chat between {drawData.members[0]} & {drawData.members[1]}
       </Heading>
       <Box m={["1rem", "3rem"]}>
-        <Grid
-          h="800px"
-          templateRows="repeat(3, 1fr)"
-          templateColumns="repeat(3, 1fr)"
-          gap={5}
-        >
-          <GridItem
-            colSpan={[3, 1]}
-            boxShadow="2xl"
-            bg="white"
-            p="6"
-            rounded="md"
-          >
+        <TinderCard>
+          <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
             Total no of chats <br />
             <Heading>
               <CountUp end={drawData.total_no_of_chats} duration={2} />
             </Heading>
             <br />
             Almost always its {drawData.who_texts_first} who texts first
-          </GridItem>
-
-          <GridItem
-            colSpan={[3, 2]}
-            boxShadow="2xl"
-            bg="white"
-            p="6"
-            rounded="md"
-          >
+          </Box>
+        </TinderCard>
+        <TinderCard>
+          <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
             You talked the most in the month of {drawData.most_active_month}
             <VictoryChart domainPadding={20}>
               <VictoryBar
@@ -89,15 +73,11 @@ const Dashboard = ({ drawData }) => {
                 data={parser.monthly_count_data(drawData.monthly_chats_count)}
               />
             </VictoryChart>
-          </GridItem>
-          <GridItem
-            colSpan={[3, 3]}
-            boxShadow="2xl"
-            bg="white"
-            p="6"
-            rounded="md"
-            height="500"
-          >
+          </Box>{" "}
+        </TinderCard>
+
+        <TinderCard>
+          <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
             The most used words are
             <TagCloud
               style={{
@@ -122,14 +102,11 @@ const Dashboard = ({ drawData }) => {
                   );
                 })}
             </TagCloud>
-          </GridItem>
-          <GridItem
-            colSpan={[3, 2]}
-            boxShadow="2xl"
-            bg="white"
-            p="6"
-            rounded="md"
-          >
+          </Box>{" "}
+        </TinderCard>
+
+        <TinderCard>
+          <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
             Word count
             <Flex>
               {drawData.members[0]}
@@ -171,15 +148,11 @@ const Dashboard = ({ drawData }) => {
                 horizontal
               />
             </VictoryStack>
-          </GridItem>
+          </Box>{" "}
+        </TinderCard>
 
-          <GridItem
-            colSpan={[3, 1]}
-            boxShadow="2xl"
-            bg="white"
-            p="6"
-            rounded="md"
-          >
+        <TinderCard>
+          <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
             The most used emojis are
             <TagCloud
               style={{
@@ -203,18 +176,8 @@ const Dashboard = ({ drawData }) => {
                 );
               })}
             </TagCloud>
-          </GridItem>
-          <GridItem
-            colSpan={[3, 1]}
-            boxShadow="2xl"
-            bg="white"
-            p="6"
-            rounded="md"
-          >
-            ChakraProvider
-            <TinderCard>Hello, World!</TinderCard>
-          </GridItem>
-        </Grid>
+          </Box>
+        </TinderCard>
       </Box>
     </Box>
   );
