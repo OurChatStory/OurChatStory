@@ -30,10 +30,10 @@ var normalize = require("normalize-number");
 
 const parser = require("../../script/parser");
 
-const Card1 = ({ drawData }) => {
+const Card2 = ({ drawData }) => {
   return (
     <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
-      You talked the most in the month of {drawData.most_active_month}
+      You talked the most in the month of {drawData.most_active_month.month}
       <VictoryChart domainPadding={20}>
         <VictoryBar
           barRatio={1}
@@ -41,7 +41,9 @@ const Card1 = ({ drawData }) => {
           style={{
             data: {
               fill: ({ datum }) =>
-                datum.x === drawData.most_active_month ? "#00ff00" : "#00ffaa",
+                datum.x === drawData.most_active_month.month
+                  ? "#00ff00"
+                  : "#00ffaa",
               fillOpacity: 0.7,
               strokeWidth: 3,
             },
@@ -57,4 +59,4 @@ const Card1 = ({ drawData }) => {
   );
 };
 
-export default Card1;
+export default Card2;

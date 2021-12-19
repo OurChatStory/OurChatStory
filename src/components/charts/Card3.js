@@ -30,9 +30,9 @@ var normalize = require("normalize-number");
 
 const parser = require("../../script/parser");
 
-const Card1 = ({ drawData }) => {
+const Card3 = ({ drawData }) => {
   return (
-    <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
+    <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md" height="500">
       The most used words are
       <TagCloud
         style={{
@@ -43,22 +43,20 @@ const Card1 = ({ drawData }) => {
           height: "100%",
         }}
       >
-        {parser
-          .word_cloud_data(drawData.word_cloud_words)
-          .map(({ word, weight }) => {
-            return (
-              <div
-                style={{
-                  fontSize: weight * 200,
-                }}
-              >
-                {word}
-              </div>
-            );
-          })}
+        {drawData.word_cloud_words.map(({ word, weight }) => {
+          return (
+            <div
+              style={{
+                fontSize: weight * 200,
+              }}
+            >
+              {word}
+            </div>
+          );
+        })}
       </TagCloud>
     </Box>
   );
 };
 
-export default Card1;
+export default Card3;

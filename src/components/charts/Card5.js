@@ -28,9 +28,9 @@ import CountUp from "react-countup";
 // const drawData = require("../data/sample-chat");
 var normalize = require("normalize-number");
 
-const Card1 = ({ drawData }) => {
+const Card5 = ({ drawData }) => {
   return (
-    <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
+    <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md" height="500">
       The most used emojis are
       <TagCloud
         style={{
@@ -58,4 +58,4 @@ const Card1 = ({ drawData }) => {
   );
 };
 
-export default Card1;
+export default Card5;

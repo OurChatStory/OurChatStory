@@ -28,14 +28,14 @@ import CountUp from "react-countup";
 // const drawData = require("../data/sample-chat");
 var normalize = require("normalize-number");
 
-const Card1 = ({ drawData }) => {
+const Card4 = ({ drawData }) => {
   return (
     <Box boxShadow="2xl" bg="white" p="6" mb="10" rounded="md">
       Word count
       <Flex>
-        {drawData.members[0]}
+        {drawData.no_of_messages_per_member[0].member}
         <Spacer />
-        {drawData.members[1]}
+        {drawData.no_of_messages_per_member[1].member}
       </Flex>
       <VictoryStack
         animate={{
@@ -52,9 +52,7 @@ const Card1 = ({ drawData }) => {
           data={[
             {
               x: "a",
-              y: drawData.word_count_per_member[
-                Object.keys(drawData.word_count_per_member)[0]
-              ],
+              y: drawData.no_of_messages_per_member[0].count,
             },
           ]}
           horizontal
@@ -64,9 +62,7 @@ const Card1 = ({ drawData }) => {
           data={[
             {
               x: "a",
-              y: drawData.word_count_per_member[
-                Object.keys(drawData.word_count_per_member)[1]
-              ],
+              y: drawData.no_of_messages_per_member[1].count,
             },
           ]}
           horizontal
@@ -76,4 +72,4 @@ const Card1 = ({ drawData }) => {
   );
 };
 
-export default Card1;
+export default Card4;
