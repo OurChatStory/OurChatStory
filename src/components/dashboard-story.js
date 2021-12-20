@@ -9,6 +9,7 @@ import Card3 from "./charts/Card3";
 import Card4 from "./charts/Card4";
 import Card5 from "./charts/Card5";
 import Card6 from "./charts/Card6";
+import Card7 from "./charts/Card7";
 import ThankYou from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
 
@@ -20,11 +21,15 @@ const Dashboard = ({ drawData }) => {
     {
       content: (props) => <Card1 drawData={drawData} />,
     },
+
     {
       content: (props) => <Card2 drawData={drawData} />,
     },
     {
       content: (props) => <Card6 drawData={drawData} />,
+    },
+    {
+      content: (props) => <Card7 drawData={drawData} />,
     },
     {
       content: (props) => <Card3 drawData={drawData} />,
