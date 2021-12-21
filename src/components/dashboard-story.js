@@ -30,10 +30,16 @@ const Dashboard = ({ drawData }) => {
       .toPng(ref.current, { cacheBust: true })
       .then((dataUrl) => {
         console.log("z");
+        const file = new File([dataUrl], "share.png", { type: dataUrl.type });
         const link = document.createElement("a");
         link.download = "my-image-name.png";
         link.href = dataUrl;
-        link.click();
+        //link.click();
+        navigator.share({
+          title: "Stats",
+          text: "tata",
+          files: [file],
+        });
       })
       .catch((err) => {
         console.log(err);
