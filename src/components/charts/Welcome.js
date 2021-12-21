@@ -26,11 +26,25 @@ import {
 
 const Card6 = ({ drawData }) => {
   return (
-    <Box bg="#30475E" p="6" w="100vw" h="100vh">
-      <Text color="#F5F5F5" fontSize="4xl">
-        This year was eventful
+    <Box
+      backgroundImage="url('https://i.pinimg.com/originals/36/d9/0d/36d90d294c8fb879ae47888e321a1166.jpg')"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="140%"
+      p="3"
+      w="100vw"
+      h="100vh"
+    >
+      <br />
+      <br />
+      <br />
+      <Text color="Black" fontSize="4xl" align="center">
+        This year was eventful!
       </Text>
-      <Text color="#F5F5F5" fontSize="4xl">
+      <br />
+      <br />
+      <br />
+      <Text color="black" fontSize="3xl" align="center">
         Many friendships were broken and more were formed{" "}
       </Text>
     </Box>

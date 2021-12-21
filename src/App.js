@@ -4,21 +4,24 @@ import Base from "./components/base";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import React from "react";
+import { extendTheme } from "@chakra-ui/react";
 
-export const APIDataContext = React.createContext();
-
+const theme = extendTheme({
+  fonts: {
+    heading: "Open Sans",
+    body: "Sora",
+  },
+});
 function App() {
   return (
-    <APIDataContext.Provider value="Reed">
-      <ChakraProvider>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" component={Base} exact />
-          </Switch>
-        </BrowserRouter>
-        {/* <CallToActionWithAnnotation /> */}
-      </ChakraProvider>
-    </APIDataContext.Provider>
+    <ChakraProvider theme={theme}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Base} exact />
+        </Switch>
+      </BrowserRouter>
+      {/* <CallToActionWithAnnotation /> */}
+    </ChakraProvider>
   );
 }
 

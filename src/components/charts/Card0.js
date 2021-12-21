@@ -26,8 +26,13 @@ import {
 
 const Card6 = ({ drawData }) => {
   return (
-    <Box bg="#30475E" p="6" w="100vw" h="100vh">
-      <Text color="#F5F5F5" fontSize="4xl">
+    <Box
+      bgImage="url('https://wepik.com/storage/previews/1561375/abstract-simple-pink-background-art-instagram-story-r-508852958page3.jpg')"
+      p="3"
+      w="100vw"
+      h="100vh"
+    >
+      <Text color="black" fontSize="4xl" align="center">
         But that didn't stop {drawData.members[0]} and {drawData.members[1]}{" "}
         from sending each other messages!
       </Text>
