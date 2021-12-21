@@ -23,11 +23,11 @@ import {
   VictoryStack,
   VictoryAxis,
 } from "victory";
-
+import background from "../../static/bg2.png";
 const Card6 = ({ drawData }) => {
   return (
     <Box
-      bgImage="url('https://i.pinimg.com/736x/74/56/bc/7456bc695b12174af2adf013bb3973ae.jpg')"
+      bgImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"

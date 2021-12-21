@@ -11,7 +11,7 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/react";
-
+import background from "../../static/bg2.png";
 import {
   VictoryBar,
   VictoryPie,
@@ -27,7 +27,7 @@ import {
 const Card6 = ({ drawData }) => {
   return (
     <Box
-      backgroundImage="url('https://i.pinimg.com/originals/36/d9/0d/36d90d294c8fb879ae47888e321a1166.jpg')"
+      backgroundImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="140%"
@@ -38,13 +38,13 @@ const Card6 = ({ drawData }) => {
       <br />
       <br />
       <br />
-      <Text color="Black" fontSize="4xl" align="center">
+      <Text color="Black" fontSize="4xl" align="center" fontFamily="cursive">
         This year was eventful!
       </Text>
       <br />
       <br />
       <br />
-      <Text color="black" fontSize="3xl" align="center">
+      <Text color="black" fontSize="4xl" align="center" fontFamily="fantasy">
         Many friendships were broken and more were formed{" "}
       </Text>
     </Box>

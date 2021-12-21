@@ -35,9 +35,9 @@ const Upload = ({ setShowRes, setData }) => {
             zIndex: -1,
           }}
         >
-          Get chat insights from,
+          Get to know about your friendship from{" "}
         </Text>
-        <br />
+
         <Text as={"span"} color={"green.400"}>
           WhatsApp!
         </Text>
@@ -47,10 +47,11 @@ const Upload = ({ setShowRes, setData }) => {
           <Text fontSize={["2x1", "3xl"]}>How?</Text>
         </Heading>
         <Text fontSize={["1x1", "2xl"]}>
-          1. Export your WhatsApp chat as a txt file
+          1. Export your WhatsApp chat as a .txt file [email yourself and
+          download for android]
         </Text>
         <Text fontSize={["1x1", "2xl"]}>
-          2. Click on the upload button and upload the txt file
+          2. Click on the upload button and upload the .txt file
         </Text>
       </Stack>
       <Center m="3rem">

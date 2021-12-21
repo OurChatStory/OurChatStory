@@ -24,13 +24,22 @@ import {
 } from "victory";
 
 import CountUp from "react-countup";
-
+import background from "../../static/bg5.jpeg";
 const Card1 = ({ drawData }) => {
   return (
-    <Box bg="#F05454" p="6" w="100vw" h="100vh">
-      <Text fontSize="5xl">
-        Fun fact: Most of the time its{" "}
-        <Text as="mark"> {drawData.who_texts_first}</Text> who texts first 😤
+    <Box
+      bg="#F05454"
+      p="6"
+      w="100vw"
+      h="100vh"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="120%"
+      bgImage={background}
+    >
+      <Text fontSize="5xl" align="center">
+        Fun fact: Most of the time its <Text> {drawData.who_texts_first}</Text>{" "}
+        who texts first 😤
       </Text>
     </Box>
   );

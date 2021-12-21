@@ -11,6 +11,7 @@ import { VictoryBar, VictoryPie } from "victory";
 import { useLocation } from "react-router-dom";
 
 import * as htmlToImage from "html-to-image";
+
 const Result = () => {
   const saveAs = (blob, fileName) => {
     var elem = window.document.createElement("a");

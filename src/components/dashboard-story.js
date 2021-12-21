@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import { Heading, Box, Button } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
 import Stories from "react-insta-stories";
@@ -89,17 +89,15 @@ const Dashboard = ({ drawData }) => {
         stories={stories}
         defaultInterval={1000000}
         width="100vw"
-        height="100vh"
+        height="95vh"
         preventDefault={false}
       />
       <Button
         leftIcon={<HiShare />}
-        m="50"
-        colorScheme="pink"
-        borderRadius="50"
+        w="100%"
+        h="5vh"
         onClick={onButtonClick}
         position="fixed"
-        right="0"
         bottom="0"
       ></Button>
     </Box>

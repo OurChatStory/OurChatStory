@@ -24,48 +24,58 @@ import {
   VictoryScatter,
   VictoryStack,
 } from "victory";
-
+import background from "../../static/bg9.jpeg";
 const Card4 = ({ drawData }) => {
   return (
-    <Box bg="#F05454" p="6" width="100vw" h="100vh">
-      <Heading>Word count</Heading>
-      <Flex>
-        {drawData.no_of_messages_per_member[0].member}
-        <Spacer />
-        {drawData.no_of_messages_per_member[1].member}
-      </Flex>
-      <VictoryStack
-        animate={{
-          duration: 2000,
-          onLoad: { duration: 1000 },
-        }}
-        colorScale={["#30475E", "#F5F5F5"]}
-        style={{
-          data: { stroke: "black", strokeWidth: 3 },
-        }}
-      >
-        <VictoryBar
-          barWidth={20}
-          data={[
-            {
-              x: "a",
-              y: drawData.no_of_messages_per_member[0].count,
-            },
-          ]}
-          horizontal
-        />
+    <Box
+      bgImage={background}
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="120%"
+      p="6"
+      width="100vw"
+      h="100vh"
+    >
+      <Heading pt="3rem">Who texts more?</Heading>
+      <Box pt="3rem">
+        <Flex>
+          {drawData.no_of_messages_per_member[0].member}
+          <Spacer />
+          {drawData.no_of_messages_per_member[1].member}
+        </Flex>
+        <VictoryStack
+          animate={{
+            duration: 2000,
+            onLoad: { duration: 1000 },
+          }}
+          colorScale={["brown", "#F5F5F5"]}
+          style={{
+            data: { stroke: "black", strokeWidth: 3 },
+          }}
+        >
+          <VictoryBar
+            barWidth={20}
+            data={[
+              {
+                x: "a",
+                y: drawData.no_of_messages_per_member[0].count,
+              },
+            ]}
+            horizontal
+          />
 
-        <VictoryBar
-          barWidth={20}
-          data={[
-            {
-              x: "a",
-              y: drawData.no_of_messages_per_member[1].count,
-            },
-          ]}
-          horizontal
-        />
-      </VictoryStack>
+          <VictoryBar
+            barWidth={20}
+            data={[
+              {
+                x: "a",
+                y: drawData.no_of_messages_per_member[1].count,
+              },
+            ]}
+            horizontal
+          />
+        </VictoryStack>
+      </Box>
     </Box>
   );
 };

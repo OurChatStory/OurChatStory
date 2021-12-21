@@ -38,17 +38,30 @@ const Card6 = ({ drawData }) => {
       w="100vw"
       h="100vh"
     >
-      <Text color="#000000" fontSize="4xl" align="center">
+      <Text
+        pt="4rem"
+        color="#000000"
+        fontSize="3xl"
+        align="center"
+        fontFamily="mono"
+      >
         There were some cold moments
       </Text>
-      <Text color="#000000" fontSize="3xl">
-        Like those between{" "}
+      <Text
+        pt="4rem"
+        color="#000000"
+        fontFamily="monospace"
+        fontSize="3xl"
+        align="center"
+      >
+        Like those between <br />
         {parser.format_time_gap(drawData.longest_gap.start_time)} and{" "}
         {parser.format_time_gap(drawData.longest_gap.end_time)}
       </Text>
-      <Text color="#000000" fontSize="3xl">
-        You didn't talked for {parser.time_gap(drawData.longest_gap)}{" "}
-        consecutive days🥺
+      <br />
+      <Text pt="3rem" color="#000000" fontSize="3xl" align="center">
+        You didn't talked for <br />
+        {parser.time_gap(drawData.longest_gap)} consecutive days🥺
       </Text>
     </Box>
   );

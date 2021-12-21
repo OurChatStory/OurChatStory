@@ -53,11 +53,12 @@ const Card1 = ({ drawData }) => {
       </Text>
       <Text fontSize="3xl" align="center">
         {" "}
-        messages to each other this year!🤯
+        messages to each other this year!!
       </Text>
       <br />
       <Text fontSize="4xl" align="center">
-        That puts you into top 1% of texters in the world
+        That puts you into top {parseFloat(100 + drawData.z_score).toFixed(2)}%
+        of texters in the world🤯
       </Text>
     </Box>
   );
