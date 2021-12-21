@@ -36,7 +36,7 @@ const Card6 = ({ drawData }) => {
       w="100vw"
       h="100vh"
     >
-      <Text color="black" fontSize="5xl" align="center">
+      <Text pt="5rem" color="black" fontSize="5xl" align="center">
         But that didn't stop
         <br /> <font color="brown">{drawData.members[0]} </font>&{" "}
         <font color="brown">{drawData.members[1]}</font> <br />

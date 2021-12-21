@@ -10,6 +10,7 @@ import {
   Text,
   Flex,
   Spacer,
+  Image,
 } from "@chakra-ui/react";
 import TagCloud from "react-tag-cloud";
 import ReactWordcloud from "react-wordcloud";
@@ -19,13 +20,15 @@ const Card3 = ({ drawData }) => {
     return { text: word, value: weight * 1000 };
   });
   return (
-    <Box p="6" height="100vh" w="100vw" bg="white">
-      <Heading pt="3rem">Here is your word cloud</Heading>
+    <Box p="3" height="100vh" w="100vw" bg="white">
+      <Heading pt="3rem" textAlign="center">
+        Here is your word cloud
+      </Heading>
 
       <Box h="100%" w="100%">
-        <ReactWordcloud
+        {/* <ReactWordcloud
           words={words}
-          maxWords={75}
+          maxWords={40}
           options={{
             deterministic: true,
             fontWeight: "bold",
@@ -33,6 +36,11 @@ const Card3 = ({ drawData }) => {
             fontSizes: [50, 100],
             transitionDuration: 0,
           }}
+        /> */}
+        <Image
+          pt="3rem"
+          src={"data:image/png;base64, " + drawData.word_cloud_base64}
+          alt="Word Cloud"
         />
       </Box>
     </Box>

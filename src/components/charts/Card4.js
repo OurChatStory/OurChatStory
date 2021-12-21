@@ -36,12 +36,19 @@ const Card4 = ({ drawData }) => {
       width="100vw"
       h="100vh"
     >
-      <Heading pt="3rem">Who texts more?</Heading>
+      <Heading pt="3rem" textAlign="center">
+        Who texts more?
+      </Heading>
       <Box pt="3rem">
         <Flex>
-          {drawData.no_of_messages_per_member[0].member}
+          <Text fontSize="5xl">
+            {drawData.no_of_messages_per_member[0].member}
+          </Text>
           <Spacer />
-          {drawData.no_of_messages_per_member[1].member}
+          <Text fontSize="5xl">
+            {" "}
+            {drawData.no_of_messages_per_member[1].member}
+          </Text>
         </Flex>
         <VictoryStack
           animate={{

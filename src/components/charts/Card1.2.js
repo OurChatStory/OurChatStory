@@ -37,7 +37,7 @@ const Card1 = ({ drawData }) => {
       backgroundSize="120%"
       bgImage={background}
     >
-      <Text fontSize="5xl" align="center">
+      <Text pt="5rem" fontSize="5xl" align="center">
         Fun fact: Most of the time its <Text> {drawData.who_texts_first}</Text>{" "}
         who texts first 😤
       </Text>

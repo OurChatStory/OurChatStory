@@ -13,11 +13,11 @@ const Base = () => {
     <Box
       p="1.5rem"
       w="100%"
-      h="100vh"
+      h="100%"
       bgImage={img}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
-      backgroundSize="120%"
+      backgroundSize="140%"
     >
       <Heading mb="2rem" fontFamily="fantasy" colorScheme="blue" size="3xl">
         WhatsApp Wrapped '21

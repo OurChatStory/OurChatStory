@@ -36,7 +36,7 @@ const Card1 = ({ drawData }) => {
       w="100vw"
       h="100vh"
     >
-      <Text align="center" fontSize="5xl">
+      <Text pt="4rem" align="center" fontSize="5xl">
         Infact Y'all sent a total of{" "}
       </Text>
       <Text fontSize="6xl" color="Brown" align="center">

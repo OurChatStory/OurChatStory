@@ -23,7 +23,7 @@ import {
   VictoryStack,
   VictoryAxis,
 } from "victory";
-import background from "../../static/bg9.png";
+import background from "../../static/bg10.png";
 const parser = require("../../script/parser");
 
 const Card6 = ({ drawData }) => {
@@ -32,24 +32,24 @@ const Card6 = ({ drawData }) => {
       bgImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
-      backgroundSize="140%"
+      backgroundSize="100%"
       p="3"
       pt="10"
       w="100vw"
       h="100vh"
     >
       <Text
-        pt="4rem"
-        color="#000000"
+        pt="10rem"
         fontSize="3xl"
         align="center"
         fontFamily="mono"
+        color="white"
       >
         There were some cold moments
       </Text>
       <Text
+        color="white"
         pt="4rem"
-        color="#000000"
         fontFamily="monospace"
         fontSize="3xl"
         align="center"
@@ -59,7 +59,7 @@ const Card6 = ({ drawData }) => {
         {parser.format_time_gap(drawData.longest_gap.end_time)}
       </Text>
       <br />
-      <Text pt="3rem" color="#000000" fontSize="3xl" align="center">
+      <Text color="white" pt="3rem" fontSize="3xl" align="center">
         You didn't talked for <br />
         {parser.time_gap(drawData.longest_gap)} consecutive days🥺
       </Text>
