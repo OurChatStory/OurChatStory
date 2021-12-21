@@ -24,7 +24,7 @@ import {
 } from "victory";
 
 import CountUp from "react-countup";
-import background from "../../static/bg5.jpeg";
+import background from "../../static/bg5.png";
 const Card1 = ({ drawData }) => {
   return (
     <Box

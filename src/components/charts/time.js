@@ -11,7 +11,7 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/react";
-import background from "../../static/bg7.jpeg";
+import background from "../../static/bg7.png";
 import {
   VictoryBar,
   VictoryPie,

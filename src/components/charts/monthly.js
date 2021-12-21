@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import TagCloud from "react-tag-cloud";
 import TinderCard from "react-tinder-card";
-import background from "../../static/bg6.jpeg";
+import background from "../../static/bg6.png";
 import {
   VictoryBar,
   VictoryPie,
@@ -70,7 +70,7 @@ const Card2 = ({ drawData }) => {
         <br />
         {drawData.month_correlation > 0.5
           ? "There is an increasing warmth in your relationship"
-          : drawData.month_correlation < 0.5
+          : drawData.month_correlation < -0.5
           ? "but there is a negative pattern here :/"
           : ""}{" "}
       </Text>

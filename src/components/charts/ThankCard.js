@@ -11,7 +11,7 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/react";
-import background from "../../static/bg8.jpeg";
+import background from "../../static/bg8.png";
 const Card6 = ({ drawData }) => {
   return (
     <Box

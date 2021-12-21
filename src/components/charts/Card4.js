@@ -24,7 +24,7 @@ import {
   VictoryScatter,
   VictoryStack,
 } from "victory";
-import background from "../../static/bg9.jpeg";
+import background from "../../static/bg9.png";
 const Card4 = ({ drawData }) => {
   return (
     <Box
