@@ -1,12 +1,10 @@
 import React, { useState, useCallback, useRef } from "react";
 import { Heading, Box, Button } from "@chakra-ui/react";
-import ReactDOM from "react-dom";
-
+import { HiShare } from "react-icons/hi";
 import Stories from "react-insta-stories";
 import Card8 from "./charts/monthly";
 import Card0 from "./charts/Card0";
 import Card1 from "./charts/Card1";
-
 import Card3 from "./charts/wordcloud";
 import Card4 from "./charts/Card4";
 import Card5 from "./charts/emoji";
@@ -36,11 +34,11 @@ const Dashboard = ({ drawData }) => {
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
           navigator
             .share({
-              title: "Stats",
-              text: "tata",
+              title: "WhatsAnalyed",
+              text: "Hey look at our chat statistics!!",
               files: [file],
             })
-            .then(() => alert("Share was successful."))
+            .then(() => console.log("Share was successful."))
             .catch((error) => alert(error));
         } else alert("no share support");
       })
@@ -91,12 +89,19 @@ const Dashboard = ({ drawData }) => {
         stories={stories}
         defaultInterval={1000000}
         width="100vw"
-        height="95vh"
+        height="100vh"
         preventDefault={false}
       />
-      <Button onClick={onButtonClick} width="100vw" height="5vh">
-        Share
-      </Button>
+      <Button
+        leftIcon={<HiShare />}
+        m="50"
+        colorScheme="pink"
+        borderRadius="50"
+        onClick={onButtonClick}
+        position="fixed"
+        right="0"
+        bottom="0"
+      ></Button>
     </Box>
   );
 };

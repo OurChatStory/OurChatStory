@@ -19,6 +19,7 @@
     "react-countup": "^6.1.0",
     "react-dom": "^17.0.2",
     "react-files": "^2.4.9",
+    "react-floating-button": "^1.1.1",
     "react-icons": "^4.3.1",
     "react-insta-stories": "^2.3.0",
     "react-router": "^5.2.1",
