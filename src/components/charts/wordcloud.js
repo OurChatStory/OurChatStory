@@ -20,8 +20,8 @@ const Card3 = ({ drawData }) => {
     return { text: word, value: weight * 1000 };
   });
   return (
-    <Box p="3" height="100vh" w="100vw" bg="white">
-      <Heading pt="3rem" textAlign="center">
+    <Box p="3" height="100vh" w="100vw" bg="black">
+      <Heading pt="3rem" textAlign="center" color="white">
         Here is your word cloud
       </Heading>
 
