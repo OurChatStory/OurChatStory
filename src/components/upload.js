@@ -7,6 +7,8 @@ import {
   Text,
   Stack,
   Heading,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import axios from "axios";
 
@@ -42,18 +44,47 @@ const Upload = ({ setShowRes, setData }) => {
           WhatsApp!
         </Text>
       </Heading>
-      <Stack spacing={3} m={["1rem", "2rem"]}>
-        <Heading>
-          <Text fontSize={["2x1", "3xl"]}>How?</Text>
-        </Heading>
-        <Text fontSize={["1x1", "2xl"]}>
-          1. Export your WhatsApp chat as a .txt file [email yourself and
-          download for android]
-        </Text>
-        <Text fontSize={["1x1", "2xl"]}>
-          2. Click on the upload button and upload the .txt file
-        </Text>
-      </Stack>
+      <Grid templateColumns="repeat(2, 1fr)" gap={2}>
+        <GridItem colSpan={1}>
+          <Stack spacing={3} m={["1rem", "2rem"]}>
+            <Heading>
+              <Text fontSize={["2x1", "3xl"]}>How?💁</Text>
+            </Heading>
+            <Text fontSize={["1x1", "2xl"]}>
+              1. Export your WhatsApp chat as a .txt file
+              <br />{" "}
+              <i>
+                Open chat> Three dot on top right> More> Export chat> Without
+                media> Email yourself via gmail{" "}
+              </i>
+            </Text>
+            <Text fontSize={["1x1", "2xl"]}>
+              2. Go to Gmail and download the attached .txt file from the mail
+              that you just sent yourself
+            </Text>
+            <Text fontSize={["1x1", "2xl"]}>
+              3. Click on the upload button and upload the .txt file
+            </Text>
+          </Stack>
+        </GridItem>
+        <GridItem colSpan={1}>
+          <Stack spacing={3} m={["1rem", "2rem"]}>
+            <Heading>
+              <Text fontSize={["2x1", "3xl"]}>Privacy?🥷</Text>
+            </Heading>
+            <ul>
+              <li>
+                The chats that you upload here are 100% secure and NO ONE can
+                see it
+              </li>
+              <li>We dont store your chat</li>
+              <li>We dont store any meta data of chat</li>
+              <li>Infact we dont have any database linked to this website</li>
+              <li>Our code is open source for your to see</li>
+            </ul>
+          </Stack>
+        </GridItem>
+      </Grid>
       <Center m="3rem">
         {isUploading ? (
           <Spinner />
