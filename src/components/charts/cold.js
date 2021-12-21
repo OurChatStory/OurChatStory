@@ -23,13 +23,13 @@ import {
   VictoryStack,
   VictoryAxis,
 } from "victory";
-
+import background from "../../static/bg9.png";
 const parser = require("../../script/parser");
 
 const Card6 = ({ drawData }) => {
   return (
     <Box
-      bgImage="url('https://i.pinimg.com/originals/72/f8/cd/72f8cd41bcb6f50d45497f16c7a03612.jpg')"
+      bgImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="140%"

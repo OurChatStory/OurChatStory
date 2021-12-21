@@ -22,13 +22,13 @@ import {
   VictoryScatter,
   VictoryStack,
 } from "victory";
-
+import background from "../../static/bg4.png";
 import CountUp from "react-countup";
 
 const Card1 = ({ drawData }) => {
   return (
     <Box
-      bgImage="url('https://wepik.com/storage/previews/1561374/abstract-simple-pink-background-art-instagram-story-r-508852958page2.jpg')"
+      bgImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="140%"
