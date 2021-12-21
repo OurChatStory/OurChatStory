@@ -20,30 +20,20 @@ const Card3 = ({ drawData }) => {
   });
   return (
     <Box p="6" height="100vh" w="100vw" bg="white">
-      <Heading>Here is your word cloud</Heading>
-      {/* <TagCloud
-        style={{
-          fontFamily: "sans-serif",
-          fontSize: 30,
-          padding: 10,
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        {drawData.word_cloud_words.map(({ word, weight }) => {
-          return (
-            <div
-              style={{
-                fontSize: weight * 200,
-              }}
-            >
-              {word}
-            </div>
-          );
-        })}
-      </TagCloud> */}
-      <Box>
-        <ReactWordcloud words={words} options={{ fontSizes: [50, 90] }} />
+      <Heading pt="3rem">Here is your word cloud</Heading>
+
+      <Box h="100%" w="100%">
+        <ReactWordcloud
+          words={words}
+          maxWords={75}
+          options={{
+            deterministic: true,
+            fontWeight: "bold",
+
+            fontSizes: [50, 100],
+            transitionDuration: 0,
+          }}
+        />
       </Box>
     </Box>
   );

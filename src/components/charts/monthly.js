@@ -49,7 +49,7 @@ const Card2 = ({ drawData }) => {
 
       <Box>
         <VictoryLine
-          height="200"
+          height={200}
           interpolation="natural"
           style={{
             data: {

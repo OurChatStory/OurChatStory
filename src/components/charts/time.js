@@ -46,7 +46,7 @@ const Card6 = ({ drawData }) => {
       </Text>
 
       <Box>
-        <VictoryChart height="150" theme={VictoryTheme.material}>
+        <VictoryChart height={150} theme={VictoryTheme.material}>
           <VictoryAxis />
           <VictoryLine
             interpolation="natural"

@@ -87,7 +87,7 @@ const Dashboard = ({ drawData }) => {
     <Box ref={ref}>
       <Stories
         stories={stories}
-        defaultInterval={1000000}
+        defaultInterval={10000}
         width="100vw"
         height="95vh"
         preventDefault={false}
