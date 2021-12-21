@@ -25,21 +25,24 @@ const Dashboard = ({ drawData }) => {
     if (ref.current === null) {
       return;
     }
-    console.log(ref.current);
     htmlToImage
-      .toPng(ref.current, { cacheBust: true })
+      .toBlob(ref.current, { cacheBust: true })
       .then((dataUrl) => {
-        console.log("z");
         const file = new File([dataUrl], "share.png", { type: dataUrl.type });
-        const link = document.createElement("a");
-        link.download = "my-image-name.png";
-        link.href = dataUrl;
-        //link.click();
-        navigator.share({
-          title: "Stats",
-          text: "tata",
-          files: [file],
-        });
+        // const link = document.createElement("a");
+        // link.download = "my-image-name.png";
+        // link.href = dataUrl;
+        // link.click();
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator
+            .share({
+              title: "Stats",
+              text: "tata",
+              files: [file],
+            })
+            .then(() => alert("Share was successful."))
+            .catch((error) => alert(error));
+        } else alert("no share support");
       })
       .catch((err) => {
         console.log(err);
@@ -83,7 +86,7 @@ const Dashboard = ({ drawData }) => {
     },
   ];
   return (
-    <div ref={ref}>
+    <Box ref={ref}>
       <Stories
         stories={stories}
         defaultInterval={1000000}
@@ -94,42 +97,8 @@ const Dashboard = ({ drawData }) => {
       <Button onClick={onButtonClick} width="100vw" height="5vh">
         Share
       </Button>
-    </div>
+    </Box>
   );
 };
-
-// const exportAsPicture = (drawData) => {
-//   var d = document.createElement("div");
-//   ReactDOM.render(<Welcome drawData={drawData} />, d);
-//   console.log(d);
-
-//   htmlToImage.toPng(d).then((dataUrl) => {
-//     console.log("s");
-//     saveAs(dataUrl, "my-node.png");
-//   });
-// };
-
-// const saveAs = (blob, fileName) => {
-//   var elem = window.document.createElement("a");
-//   elem.href = blob;
-//   elem.download = fileName;
-//   elem.style = "display:none;";
-//   (document.body || document.documentElement).appendChild(elem);
-//   if (typeof elem.click === "function") {
-//     elem.click();
-//   } else {
-//     elem.target = "_blank";
-//     elem.dispatchEvent(
-//       new MouseEvent("click", {
-//         view: window,
-//         bubbles: true,
-//         cancelable: true,
-//       })
-//     );
-//   }
-//   URL.revokeObjectURL(elem.href);
-//   elem.remove();
-//   console.log(blob, fileName);
-// };
 
 export default Dashboard;

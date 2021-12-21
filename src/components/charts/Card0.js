@@ -42,14 +42,6 @@ const Card6 = ({ drawData }) => {
         <font color="brown">{drawData.members[1]}</font> <br />
         from sending each other messages!
       </Text>
-      <Button
-        width="100%"
-        onClick={() => {
-          console.log("hhh");
-        }}
-      >
-        Click
-      </Button>
     </Box>
   );
 };

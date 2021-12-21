@@ -54,6 +54,7 @@ const Card2 = ({ drawData }) => {
         />
       </Box>
       <Text color="#F5F5F5" fontSize="3xl" align="center">
+        Corr coff:{drawData.month_correlation} <br />
         Infact y'all sent {drawData.most_active_month.count} on{" "}
         {parser.months[drawData.most_active_month.month]}
         <br />
