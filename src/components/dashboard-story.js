@@ -97,8 +97,6 @@ const Dashboard = ({ drawData }) => {
         w="100%"
         h="5vh"
         onClick={onButtonClick}
-        position="fixed"
-        bottom="0"
       ></Button>
     </Box>
   );
