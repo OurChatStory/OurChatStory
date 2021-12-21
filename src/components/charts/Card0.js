@@ -27,15 +27,29 @@ import {
 const Card6 = ({ drawData }) => {
   return (
     <Box
-      bgImage="url('https://wepik.com/storage/previews/1561375/abstract-simple-pink-background-art-instagram-story-r-508852958page3.jpg')"
+      bgImage="url('https://i.pinimg.com/736x/74/56/bc/7456bc695b12174af2adf013bb3973ae.jpg')"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="120%"
       p="3"
+      pt="10"
       w="100vw"
       h="100vh"
     >
-      <Text color="black" fontSize="4xl" align="center">
-        But that didn't stop {drawData.members[0]} and {drawData.members[1]}{" "}
+      <Text color="black" fontSize="5xl" align="center">
+        But that didn't stop
+        <br /> <font color="brown">{drawData.members[0]} </font>&{" "}
+        <font color="brown">{drawData.members[1]}</font> <br />
         from sending each other messages!
       </Text>
+      <Button
+        width="100%"
+        onClick={() => {
+          console.log("hhh");
+        }}
+      >
+        Click
+      </Button>
     </Box>
   );
 };

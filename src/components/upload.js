@@ -12,7 +12,6 @@ import axios from "axios";
 
 const Upload = ({ setShowRes, setData }) => {
   const [isUploading, setIsUploading] = useState(false);
-  const [isUploaded, setIsUploaded] = useState(false);
 
   return (
     <Box>
@@ -72,7 +71,6 @@ const Upload = ({ setShowRes, setData }) => {
                 })
                 .then((res) => {
                   setData(res.data);
-                  setIsUploaded(true);
                   setShowRes(true);
                 });
             }}

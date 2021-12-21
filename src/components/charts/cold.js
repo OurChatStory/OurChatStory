@@ -28,17 +28,27 @@ const parser = require("../../script/parser");
 
 const Card6 = ({ drawData }) => {
   return (
-    <Box bg="#30475E" p="6" w="100vw" h="100vh">
-      <Text color="#F5F5F5" fontSize="4xl">
+    <Box
+      bgImage="url('https://i.pinimg.com/originals/72/f8/cd/72f8cd41bcb6f50d45497f16c7a03612.jpg')"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="140%"
+      p="3"
+      pt="10"
+      w="100vw"
+      h="100vh"
+    >
+      <Text color="#000000" fontSize="4xl" align="center">
         There were some cold moments
       </Text>
-      <Text color="#F5F5F5" fontSize="6xl">
+      <Text color="#000000" fontSize="3xl">
         Like those between{" "}
         {parser.format_time_gap(drawData.longest_gap.start_time)} and{" "}
         {parser.format_time_gap(drawData.longest_gap.end_time)}
       </Text>
-      <Text color="#F5F5F5" fontSize="6xl">
-        You didn't talked for {parser.time_gap(drawData.longest_gap)} days🥺
+      <Text color="#000000" fontSize="3xl">
+        You didn't talked for {parser.time_gap(drawData.longest_gap)}{" "}
+        consecutive days🥺
       </Text>
     </Box>
   );

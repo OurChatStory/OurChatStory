@@ -12,7 +12,7 @@ const Base = () => {
     <Box p="2rem" w="100%" h="100%" bgGradient="linear(green.100, white)">
       <Heading>⏳Whats Wrapped</Heading>
 
-      <Box m={["0.5rem", "2rem"]} boxShadow="2xl" bg="white" p="6" rounded="md">
+      <Box m={["0.2rem", "1rem"]} boxShadow="2xl" bg="white" p="5" rounded="md">
         <Uploader setShowRes={setShowRes} setData={setData} />
       </Box>
     </Box>

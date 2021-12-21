@@ -29,6 +29,9 @@ const Card1 = ({ drawData }) => {
   return (
     <Box
       bgImage="url('https://wepik.com/storage/previews/1561374/abstract-simple-pink-background-art-instagram-story-r-508852958page2.jpg')"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="140%"
       p="6"
       w="100vw"
       h="100vh"
