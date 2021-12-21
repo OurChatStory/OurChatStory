@@ -38,21 +38,23 @@ const Card6 = ({ drawData }) => {
       <Text color="#F5F5F5" fontSize="4xl">
         {parser.active_time_type(drawData.most_active_hour.hour)}
       </Text>
-      <VictoryChart theme={VictoryTheme.material}>
-        <VictoryAxis />
-        <VictoryLine
-          interpolation="natural"
-          style={{
-            data: {
-              stroke: "#F05454",
-              strokeWidth: 4,
-              strokeLinecap: "round",
-            },
-          }}
-          animate={{ duration: 4000, onLoad: { duration: 4000 } }}
-          data={parser.hourly_count_data(drawData.hourly_count)}
-        />
-      </VictoryChart>
+      <Box>
+        <VictoryChart height="150" theme={VictoryTheme.material}>
+          <VictoryAxis />
+          <VictoryLine
+            interpolation="natural"
+            style={{
+              data: {
+                stroke: "#F05454",
+                strokeWidth: 4,
+                strokeLinecap: "round",
+              },
+            }}
+            animate={{ duration: 4000, onLoad: { duration: 4000 } }}
+            data={parser.hourly_count_data(drawData.hourly_count)}
+          />
+        </VictoryChart>
+      </Box>
     </Box>
   );
 };

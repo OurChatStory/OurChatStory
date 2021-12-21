@@ -12,12 +12,16 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 import TagCloud from "react-tag-cloud";
+import ReactWordcloud from "react-wordcloud";
 
 const Card3 = ({ drawData }) => {
+  let words = drawData.word_cloud_words.map(({ word, weight }) => {
+    return { text: word, value: weight * 1000 };
+  });
   return (
-    <Box p="6" height="100vh" w="100vw" color="#F5F5F5">
-      <Heading>The most used words are</Heading>
-      <TagCloud
+    <Box p="6" height="100vh" w="100vw" bg="white">
+      <Heading>Here is your word cloud</Heading>
+      {/* <TagCloud
         style={{
           fontFamily: "sans-serif",
           fontSize: 30,
@@ -37,7 +41,10 @@ const Card3 = ({ drawData }) => {
             </div>
           );
         })}
-      </TagCloud>
+      </TagCloud> */}
+      <Box>
+        <ReactWordcloud words={words} options={{ fontSizes: [50, 90] }} />
+      </Box>
     </Box>
   );
 };

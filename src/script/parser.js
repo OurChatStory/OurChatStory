@@ -18,20 +18,20 @@ module.exports.active_time_type = (data) => {
     ? "Looks like you both are night owl🦉"
     : "";
 };
-// module.exports.months = {
-//   Jan: "January",
-//   Feb: "February",
-//   Mar: "March",
-//   Apr: "April",
-//   May: "May",
-//   Jun: "June",
-//   Jul: "July",
-//   Aug: "August",
-//   Sep: "September",
-//   Oct: "October",
-//   Nov: "November",
-//   Dec: "December",
-// };
+module.exports.months = {
+  Jan: "January",
+  Feb: "February",
+  Mar: "March",
+  Apr: "April",
+  May: "May",
+  Jun: "June",
+  Jul: "July",
+  Aug: "August",
+  Sep: "September",
+  Oct: "October",
+  Nov: "November",
+  Dec: "December",
+};
 
 module.exports.monthly_count_data = (data) => {
   return data.map(({ month, count }) => {

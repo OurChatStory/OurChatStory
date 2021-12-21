@@ -28,10 +28,8 @@ const Card6 = ({ drawData }) => {
   return (
     <Box bg="#30475E" p="6" w="100vw" h="100vh">
       <Text color="#F5F5F5" fontSize="4xl">
-        This year was eventful
-      </Text>
-      <Text color="#F5F5F5" fontSize="4xl">
-        Many friendships were broken and more were formed{" "}
+        But that didn't stop {drawData.members[0]} and {drawData.members[1]}{" "}
+        from sending each other messages!
       </Text>
     </Box>
   );

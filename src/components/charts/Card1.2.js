@@ -28,23 +28,9 @@ import CountUp from "react-countup";
 const Card1 = ({ drawData }) => {
   return (
     <Box bg="#F05454" p="6" w="100vw" h="100vh">
-      <Text fontSize="5xl">Infact Y'all sent a total of </Text>
-      <Text fontSize="6xl" color="#F5F5F5">
-        <CountUp
-          end={
-            drawData.word_count_per_member[0].count +
-            drawData.word_count_per_member[1].count
-          }
-          onEnd={({ countUpRef }) => {
-            countUpRef = "a";
-          }}
-          duration={2}
-        />
-      </Text>
-      <Text fontSize="5xl"> messages to each other this year!🤯</Text>
-      <br />
       <Text fontSize="5xl">
-        That puts you into top 1% of texters in the world
+        Fun fact: Most of the time its{" "}
+        <Text as="mark"> {drawData.who_texts_first}</Text> who texts first 😤
       </Text>
     </Box>
   );
