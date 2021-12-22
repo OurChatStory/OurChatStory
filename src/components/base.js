@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Heading, Box, Text, Stack } from "@chakra-ui/react";
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
+import axios from "axios";
 import img from "../static/bg2.png";
 const Base = () => {
   const [showRes, setShowRes] = useState(false);
@@ -25,9 +26,21 @@ const Base = () => {
 
           var imageBlob = event.data.file;
           console.log(imageBlob);
-          alert(imageBlob);
+          const data = new FormData();
+          data.append("file", imageBlob);
+          console.log("add", data);
+          //alert(imageBlob);
           // Update the UI with the data that has been shared to it.
           //imageShare.src = URL.createObjectURL(imageBlob);
+          axios
+            .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
+              // receive two parameter endpoint url ,form data
+            })
+            .then((res) => {
+              console.log("res data", res.data);
+              setData(res.data);
+              setShowRes(true);
+            });
         })
       }
       <Heading mb="2rem" fontFamily="fantasy" colorScheme="blue" size="3xl">

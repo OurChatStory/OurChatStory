@@ -76,7 +76,8 @@ self.addEventListener("fetch", function (event) {
 
 onfetch = async (event) => {
   if (event.request.method !== "POST") return;
-  if (event.request.url.pathname("/pwaa") === false) return;
+  const url = new URL(event.request.url);
+  if (new URL(event.request.url).pathname !== "/pwaa") return;
 
   /* This is to fix the issue Jake found */
   event.respondWith(Response.redirect("/"));
@@ -84,6 +85,7 @@ onfetch = async (event) => {
   event.waitUntil(
     (async function () {
       const data = await event.request.formData();
+      console.log("fd", data);
       const client = await self.clients.get(
         event.resultingClientId || event.clientId
       );

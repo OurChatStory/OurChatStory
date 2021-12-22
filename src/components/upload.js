@@ -74,8 +74,10 @@ const Upload = ({ setShowRes, setData }) => {
             name="file"
             onChange={(event) => {
               const file = event.target.files[0];
+              console.log("zz", file);
               const data = new FormData();
               data.append("file", file);
+              console.log("dd", data);
               setIsUploading(true);
               axios
                 .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
