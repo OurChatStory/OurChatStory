@@ -42,8 +42,8 @@ const Card1 = ({ drawData }) => {
       <Text fontSize="6xl" color="Brown" align="center" fontWeight="medium">
         <CountUp
           end={
-            drawData.word_count_per_member[0].count +
-            drawData.word_count_per_member[1].count
+            drawData.no_of_messages_per_member[0].count +
+            drawData.no_of_messages_per_member[1].count
           }
           onEnd={({ countUpRef }) => {
             countUpRef = "a";
