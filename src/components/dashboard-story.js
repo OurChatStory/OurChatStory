@@ -99,7 +99,7 @@ const Dashboard = ({ drawData }) => {
           preventDefault={false}
         />
         <HStack w="100%" h="5vh"
-          position="absolute"
+          position="sticky"
           spacing="0.5rem"
           p="1rem"
           align="center"
@@ -123,6 +123,7 @@ const Dashboard = ({ drawData }) => {
         onClick={onButtonClick}
         position="sticky"
         bottom="0vh"
+        zIndex={10}
       ></Button>
     </Box>
   );
