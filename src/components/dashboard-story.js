@@ -123,7 +123,7 @@ const Dashboard = ({ drawData }) => {
         onClick={onButtonClick}
         position="sticky"
         bottom="0vh"
-        zIndex={10}
+        zIndex={10000}
       ></Button>
     </Box>
   );
