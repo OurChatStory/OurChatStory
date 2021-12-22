@@ -23,11 +23,7 @@
           "files": [
             {
               "name": "records",
-              "accept": ["text/plain", ".txt"]
-            },
-            {
-              "name": "graphs",
-              "accept": "image/svg+xml"
+              "accept": ["*/*"]
             }
           ]
         }
