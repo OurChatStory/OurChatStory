@@ -28,7 +28,6 @@ import background from "../../static/bg5.png";
 const Card1 = ({ drawData }) => {
   return (
     <Box
-      bg="#F05454"
       p="6"
       w="100vw"
       h="100vh"
