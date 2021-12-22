@@ -29,21 +29,21 @@ const Dashboard = ({ drawData }) => {
       .toBlob(ref.current, { cacheBust: true })
       .then((dataUrl) => {
         const file = new File([dataUrl], "share.png", { type: dataUrl.type });
-        setIsShared(false);
         // const link = document.createElement("a");
         // link.download = "my-image-name.png";
         // link.href = dataUrl;
         // link.click();
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
           navigator
-            .share({
-              title: "WhatsAnalyed",
-              text: "Look at our chat rewind!!",
-              files: [file],
-            })
-            .then(() => console.log("Share was successful."))
-            .catch((error) => alert(error));
+          .share({
+            title: "OurChatStory",
+            text: "Look at out #WhatsAppWrapped. I made it using OurChatStory.com!",
+            files: [file],
+          })
+          .then(() => console.log("Share was successful."))
+          .catch((error) => alert(error));
         } else alert("no share support");
+        setIsShared(false);
       })
       .catch((err) => {
         console.log(err);
@@ -101,7 +101,7 @@ const Dashboard = ({ drawData }) => {
       {isShared ? (
         <Box w="100%" h="5vh" bgColor="black">
           <Text p="0.5rem" align="center" color="white">
-            Made using whatsanalyzer.pages.dev
+            Made using OurChatStory.com
           </Text>
         </Box>
       ) : (

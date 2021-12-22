@@ -41,13 +41,12 @@ const Card2 = ({ drawData }) => {
       w="100vw"
       h="100vh"
     >
-      <Text color="#F5F5F5" fontSize="3xl" align="center">
-        Y'all talked with each other throughout the year. But the most in
+      <Text pt="1rem" color="#F5F5F5" fontSize="3xl" align="center">
+        Y'all talked the most in
       </Text>
       <Text color="#F5F5F5" fontSize="5xl" align="center">
         {parser.months[drawData.most_active_month.month]}
       </Text>
-
       <Box>
         <VictoryLine
           height={200}
@@ -63,17 +62,23 @@ const Card2 = ({ drawData }) => {
           data={parser.monthly_count_data(drawData.monthly_chats_count)}
         />
       </Box>
+      <Text color="#F5F5F5" fontSize="5xl" align="center" fontWeight="medium">
+        {drawData.most_active_month.count}
+      </Text>
       <Text color="#F5F5F5" fontSize="3xl" align="center">
-        Infact y'all sent {drawData.most_active_month.count} on{" "}
-        {parser.months[drawData.most_active_month.month]}
-        <br />
+        messages were sent!
+      </Text>
+      <br />
+      <Text color="#F5F5F5" fontSize="3xl" align="center">
         Now that's a lot of messages!!
+      </Text>
+      <Text pl="1rem" pr="1rem" color="#F5F5F5" fontSize="2xl" align="center">
         <br />
         {drawData.month_correlation > 0.5
-          ? "There is an increasing warmth in your relationship"
+          ? "There is an increasing warmth in your relationship :)"
           : drawData.month_correlation < -0.5
-          ? "but there is a negative pattern here :/"
-          : ""}{" "}
+            ? "but y'all have decreased talking now :/"
+            : ""}{" "}
       </Text>
     </Box>
   );

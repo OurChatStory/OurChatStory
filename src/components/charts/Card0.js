@@ -25,10 +25,17 @@ const Card6 = ({ drawData }) => {
       w="100vw"
       h="100vh"
     >
-      <Text pt="5rem" color="black" fontSize="5xl" align="center">
-        But that didn't stop
-        <br /> <font color="brown">{drawData.members[0]} </font>&{" "}
-        <font color="brown">{drawData.members[1]}</font> <br />
+      <Text pt="5rem" color="black" fontSize="4xl" align="center">
+        But that didn't stop</Text>
+      <br />
+      <Text color="brown" fontSize="4xl" align="center" fontWeight="medium">
+        {drawData.members[0]}
+      </Text>
+      <Text color="black" fontSize="4xl" align="center">&{" "}</Text>
+      <Text color="brown" fontSize="4xl" align="center" fontWeight="medium">
+        {drawData.members[1]}</Text>
+      <br />
+      <Text color="black" fontSize="4xl" align="center">
         from sending each other messages!
       </Text>
     </Box>

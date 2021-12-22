@@ -36,26 +36,16 @@ const Card4 = ({ drawData }) => {
       width="100vw"
       h="100vh"
     >
-      <Heading pt="3rem" textAlign="center">
+      <Text pt="3rem" fontSize="3xl" textAlign="center" fontWeight="medium">
         Who texts more?
-      </Heading>
-      <Box pt="3rem">
-        <Flex>
-          <Text fontSize="3xl">
-            {drawData.no_of_messages_per_member[0].member}
-            <br />
-            <br />
-            {drawData.no_of_messages_per_member[0].count}
-          </Text>
-          <Spacer />
-          <Text fontSize="3xl">
-            {" "}
-            {drawData.no_of_messages_per_member[1].member}
-            <br />
-            <br />
-            {drawData.no_of_messages_per_member[1].count}
-          </Text>
-        </Flex>
+      </Text>
+      <Text fontSize="4xl" textAlign="center" fontWeight="bold">
+
+        {drawData.no_of_messages_per_member[0].count > drawData.no_of_messages_per_member[1].count ?
+          drawData.no_of_messages_per_member[0].member :
+          drawData.no_of_messages_per_member[1].member}
+      </Text>
+      <Box pt="3rem" align="center">
         <VictoryStack
           animate={{
             duration: 2000,
@@ -88,6 +78,27 @@ const Card4 = ({ drawData }) => {
             horizontal
           />
         </VictoryStack>
+
+        <Flex>
+          <Text fontSize="2xl">
+            <b>
+              {drawData.no_of_messages_per_member[0].count}
+            </b>
+            <br />
+            <br />
+            {drawData.no_of_messages_per_member[0].member}
+          </Text>
+          <Spacer />
+          <Text fontSize="2xl">
+            <b>
+              {drawData.no_of_messages_per_member[1].count}
+            </b>
+            <br />
+            <br />
+            {drawData.no_of_messages_per_member[1].member}
+          </Text>
+        </Flex>
+
       </Box>
     </Box>
   );

@@ -23,7 +23,11 @@ const Card3 = ({ drawData }) => {
         Here is your word cloud
       </Heading>
 
-      <Box h="100%" w="100%">
+      <Box
+        h="100%"
+        w="100%"
+        align="center"
+      >
         {/* <ReactWordcloud
           words={words}
           maxWords={40}

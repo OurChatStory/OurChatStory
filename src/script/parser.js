@@ -15,7 +15,7 @@ module.exports.active_time_type = (data) => {
   return data < 9 && data > 4
     ? "Looks like you both are Early Birds 🌅"
     : data > 20
-    ? "Looks like you both are night owl🦉"
+    ? "Looks like you both are Night Owls 🦉"
     : "";
 };
 module.exports.months = {

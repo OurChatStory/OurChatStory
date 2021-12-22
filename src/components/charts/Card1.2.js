@@ -36,8 +36,14 @@ const Card1 = ({ drawData }) => {
       backgroundSize="120%"
       bgImage={background}
     >
-      <Text pt="5rem" fontSize="5xl" align="center">
-        Fun fact: Most of the time its <Text> {drawData.who_texts_first}</Text>{" "}
+      <Text pt="5rem" fontSize="5xl" align="center" fontWeight="bold" color="OldLace">
+        FUN FACT
+      </Text>
+      <Text pt="2rem" fontSize="4xl" align="center">
+        Most of the time it's</Text>
+      <Text mt="2rem" fontSize="4xl" align="center" fontWeight="medium" backgroundColor="OldLace"> {drawData.who_texts_first}</Text>
+      <Text pt="2rem" fontSize="4xl" align="center">
+        {" "}
         who texts first 😤
       </Text>
     </Box>

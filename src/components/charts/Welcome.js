@@ -27,13 +27,13 @@ const Card6 = ({ drawData }) => {
       <br />
       <br />
       <br />
-      <Text color="Black" fontSize="4xl" align="center" fontFamily="cursive">
+      <Text color="Black" fontSize="4xl" align="center" fontWeight="bold">
         This year was eventful!
       </Text>
       <br />
       <br />
       <br />
-      <Text color="black" fontSize="4xl" align="center" fontFamily="fantasy">
+      <Text color="black" fontSize="4xl" align="center">
         Many friendships were broken and more were formed{" "}
       </Text>
     </Box>

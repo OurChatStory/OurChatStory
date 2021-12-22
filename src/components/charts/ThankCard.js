@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { VStack, Text, Image } from "@chakra-ui/react";
 import background from "../../static/bg8.png";
+import logo from "../../static/logo2.png";
+
 const Card6 = ({ drawData }) => {
   return (
-    <Box
+    <VStack
       bg="#30475E"
-      p="6"
+      p="1rem"
       w="100vw"
       h="100vh"
+      align="center"
+      justify="center"
+      spacing="8rem"
       backgroundImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
@@ -15,8 +20,6 @@ const Card6 = ({ drawData }) => {
     >
       <Text
         color="#F5F5F5"
-        pt="7rem"
-        fontFamily="cursive"
         fontSize="4xl"
         align="center"
       >
@@ -26,14 +29,17 @@ const Card6 = ({ drawData }) => {
 
       <Text
         color="#F5F5F5"
-        pt="10rem"
-        fontFamily="cursive"
         fontSize="2xl"
         align="center"
       >
         Share with your friends
       </Text>
-    </Box>
+      <Image
+        boxSize='70px'
+        src={logo}
+        alt='OurChatStory'
+      />
+    </VStack>
   );
 };
 

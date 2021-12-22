@@ -25,17 +25,18 @@ const Card5 = ({ drawData }) => {
       w="100vw"
     >
       <Heading textAlign="center" pt="4rem">
-        Top used emojis :)
+        Most used emojis :)
       </Heading>
-      <Box h="100%" w="100%">
-        {drawData.top_10_emojis.slice(0, 6).map(({ emoji }, i) => {
+      <Box h="100%" w="100%" pt="2rem">
+        {drawData.top_10_emojis.slice(0, 5).map(({ emoji }, i) => {
           return (
             <Text
               align="center"
               style={{
                 margin: 6,
-                fontSize: i === 0 ? 150 : 50,
+                fontSize: (5 - i) * (20 + i),
               }}
+              lineHeight={1.3 + 0.1 * i}
             >
               {emoji}
             </Text>

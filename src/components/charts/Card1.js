@@ -37,9 +37,9 @@ const Card1 = ({ drawData }) => {
       h="100vh"
     >
       <Text pt="4rem" align="center" fontSize="5xl">
-        Infact Y'all sent a total of{" "}
+        Infact y'all sent a total of{" "}
       </Text>
-      <Text fontSize="6xl" color="Brown" align="center">
+      <Text fontSize="6xl" color="Brown" align="center" fontWeight="medium">
         <CountUp
           end={
             drawData.word_count_per_member[0].count +
@@ -57,7 +57,7 @@ const Card1 = ({ drawData }) => {
       </Text>
       <br />
       <Text fontSize="4xl" align="center">
-        That puts you into top {parseFloat(100 + drawData.z_score).toFixed(2)}%
+        That puts you into top <b>{parseFloat(drawData.top_percent * 100).toFixed(2)}% </b>
         of texters in the world🤯
       </Text>
     </Box>

@@ -30,7 +30,7 @@ const Card6 = ({ drawData }) => {
       <Text pt="4rem" color="#F5F5F5" fontSize="3xl" align="center">
         The time of the day you talk the most is
       </Text>
-      <Text color="#F5F5F5" fontSize="5xl" align="center">
+      <Text color="#F5F5F5" fontSize="5xl" align="center" fontWeight="medium">
         {parser.active_time(drawData.most_active_hour.hour)}
       </Text>
 
