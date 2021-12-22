@@ -23,7 +23,7 @@
           "files": [
             {
               "name": "records",
-              "accept": ["text/txt", ".txt"]
+              "accept": ["text/plain", ".txt"]
             },
             {
               "name": "graphs",
