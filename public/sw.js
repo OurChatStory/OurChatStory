@@ -56,24 +56,40 @@ self.addEventListener("fetch", function (event) {
     );
   }
 });
-self.addEventListener("fetch", (event) => {
-  const url = new URL(event.request.url);
-  // If this is an incoming POST request for the
-  // registered "action" URL, respond to it.
-  if (event.request.method === "POST" && url.pathname === "/pwaa") {
-    event.respondWith(
-      (async () => {
-        const formData = await event.request.formData();
-        alert(formData);
-        const link = formData.getAll("file") || "";
-        alert(link);
-        // const responseUrl = await saveBookmark(link);
-        return Response.redirect("/", 303);
-      })()
-    );
-  }
-});
+// self.addEventListener("fetch", (event) => {
+//   const url = new URL(event.request.url);
+//   // If this is an incoming POST request for the
+//   // registered "action" URL, respond to it.
+//   if (event.request.method === "POST" && url.pathname === "/pwaa") {
+//     event.respondWith(
+//       (async () => {
+//         const formData = await event.request.formData();
+//         alert(formData);
+//         const link = formData.getAll("file") || "";
+//         alert(link);
+//         // const responseUrl = await saveBookmark(link);
+//         return Response.redirect("/", 303);
+//       })()
+//     );
+//   }
+// });
 
+onfetch = async (event) => {
+    if (event.request.method !== 'POST') return;
+    if (event.request.url.pathname('/pwaa') === false) return;
+  
+    /* This is to fix the issue Jake found */
+    event.respondWith(Response.redirect('/'));
+    
+    event.waitUntil(async function () {
+      const data = await event.request.formData();
+      const client = await self.clients.get(event.resultingClientId || event.clientId);
+      // Get the data from the named element 'file'
+      const file = data.get('file');
+  
+      console.log('file', file);
+      client.postMessage({ file, action: 'load-image' });
+    }());
 //   onChange={(event) => {
 //     const file = event.target.files[0];
 //     const data = new FormData();

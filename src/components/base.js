@@ -19,6 +19,17 @@ const Base = () => {
       backgroundRepeat="no-repeat"
       backgroundSize="140%"
     >
+      {
+        (navigator.serviceWorker.onmessage = (event) => {
+          console.log(event);
+
+          var imageBlob = event.data.file;
+          console.log(imageBlob);
+          alert(imageBlob);
+          // Update the UI with the data that has been shared to it.
+          //imageShare.src = URL.createObjectURL(imageBlob);
+        })
+      }
       <Heading mb="2rem" fontFamily="fantasy" colorScheme="blue" size="3xl">
         WhatsApp Wrapped '21
       </Heading>
