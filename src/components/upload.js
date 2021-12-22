@@ -50,19 +50,23 @@ const Upload = ({ setShowRes, setData }) => {
           <Text fontSize={["2x1", "3xl"]}>How?💁</Text>
         </Heading>
         <Text fontSize={["1x1", "2xl"]}>
-          1. Export your WhatsApp chat as a .txt file
+          <strong>Android:</strong> Install the app from the prompt below. Then
+          go to your WhatsApp chat and export the chat(without media) to
+          OurStory app. <br />
+          <br />
+          <strong>iOS:</strong> Download the chat after exporting it via
+          WhatsApp and upload using the button below.
+          <br />
+          <br />
+          <strong> To export your WhatsApp chat as a .txt file</strong>
           <br />{" "}
           <i>
             Open chat> Three dot on top right> More> Export chat> Without media>
-            Email yourself via gmail{" "}
+            download directly if iOS or Email yourself and download via email
           </i>
         </Text>
         <Text fontSize={["1x1", "2xl"]}>
-          2. Go to Gmail and download the attached .txt file from the mail that
-          you just sent yourself
-        </Text>
-        <Text fontSize={["1x1", "2xl"]}>
-          3. Click on the upload button and upload the .txt file
+          Then click on the upload button and upload the .txt file
         </Text>
       </Stack>
       <Center m="3rem">

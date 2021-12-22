@@ -29,7 +29,6 @@ const parser = require("../../script/parser");
 const Card6 = ({ drawData }) => {
   return (
     <Box
-      bg="#30475E"
       p="6"
       w="100vw"
       h="100vh"
