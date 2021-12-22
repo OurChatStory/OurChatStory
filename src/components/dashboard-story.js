@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Heading, Box, Button, Text, Center } from "@chakra-ui/react";
+import { Heading, Box, Button, Text, Center, HStack, Image } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
 import Stories from "react-insta-stories";
 import Card8 from "./charts/monthly";
@@ -14,6 +14,8 @@ import Card9 from "./charts/Card1.2";
 
 import ThankYou from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
+
+import logo from "../static/logo2.png";
 
 import * as htmlToImage from "html-to-image";
 
@@ -35,15 +37,15 @@ const Dashboard = ({ drawData }) => {
         // link.click();
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
           navigator
-          .share({
-            title: "OurChatStory",
-            text: "Look at out #WhatsAppWrapped. I made it using OurChatStory.com!",
-            files: [file],
-          })
-          .then(() => console.log("Share was successful."))
-          .catch((error) => alert(error));
+            .share({
+              title: "OurChatStory",
+              text: "Look at out #WhatsAppWrapped. I made it using OurChatStory.co!",
+              files: [file],
+            })
+            .then(() => console.log("Share was successful."))
+            .catch((error) => alert(error));
+          setIsShared(false);
         } else alert("no share support");
-        setIsShared(false);
       })
       .catch((err) => {
         console.log(err);
@@ -96,22 +98,30 @@ const Dashboard = ({ drawData }) => {
           height="95vh"
           preventDefault={false}
         />
-      </Box>
-
-      {isShared ? (
-        <Box w="100%" h="5vh" bgColor="black">
-          <Text p="0.5rem" align="center" color="white">
-            Made using OurChatStory.com
+        <HStack w="100%" h="5vh"
+          position="fixed"
+          spacing="0.5rem"
+          p="1rem"
+          align="center"
+          bottom="5vh">
+          <Image
+            boxSize='3vh'
+            src={logo}
+            alt='OurChatStory'
+            style={{ imageRendering: "crisp-edges" }}
+          />
+          <Text align="center" color="white" fontSize="xs"
+            style={{ textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>
+            Made using OurChatStory.co
           </Text>
-        </Box>
-      ) : (
-        <Button
-          leftIcon={<HiShare />}
-          w="100%"
-          h="5vh"
-          onClick={onButtonClick}
-        ></Button>
-      )}
+        </HStack>
+      </Box>
+      <Button
+        leftIcon={<HiShare />}
+        w="100%"
+        h="5vh"
+        onClick={onButtonClick}
+      ></Button>
     </Box>
   );
 };

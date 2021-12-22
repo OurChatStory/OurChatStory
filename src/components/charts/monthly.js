@@ -41,7 +41,7 @@ const Card2 = ({ drawData }) => {
       w="100vw"
       h="100vh"
     >
-      <Text pt="1rem" color="#F5F5F5" fontSize="3xl" align="center">
+      <Text pt="0.5rem" color="#F5F5F5" fontSize="3xl" align="center">
         Y'all talked the most in
       </Text>
       <Text color="#F5F5F5" fontSize="5xl" align="center">
@@ -68,8 +68,7 @@ const Card2 = ({ drawData }) => {
       <Text color="#F5F5F5" fontSize="3xl" align="center">
         messages were sent!
       </Text>
-      <br />
-      <Text color="#F5F5F5" fontSize="3xl" align="center">
+      <Text pt="0.5rem" color="#F5F5F5" fontSize="3xl" align="center">
         Now that's a lot of messages!!
       </Text>
       <Text pl="1rem" pr="1rem" color="#F5F5F5" fontSize="2xl" align="center">

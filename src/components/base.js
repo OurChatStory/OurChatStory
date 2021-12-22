@@ -49,9 +49,10 @@ const Base = () => {
           boxSize='70px'
           src={logo}
           alt='OurChatStory'
+          style={{imageRendering: "crisp-edges"}}
         />
-        <Heading mb="2rem" colorScheme="blue" size="3xl" align="center">
-          WhatsApp Wrapped
+        <Heading mb="2rem" colorScheme="blue" align="center" fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}>
+          #WhatsAppWrapped
         </Heading>
       </Stack>
 

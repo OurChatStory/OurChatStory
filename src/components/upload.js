@@ -21,7 +21,7 @@ const Upload = ({ setShowRes, setData }) => {
         p="1rem"
         lineHeight={1.1}
         fontWeight={600}
-        fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+        fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
       >
         <Text
           as={"span"}
@@ -69,7 +69,7 @@ const Upload = ({ setShowRes, setData }) => {
           Then click on the upload button and upload the .txt file
         </Text>
       </Stack>
-      <Center m="3rem">
+      <Center ml="2rem" mr="2rem" mt="3rem" mb="3rem">
         {isUploading ? (
           <Spinner />
         ) : (
@@ -95,7 +95,7 @@ const Upload = ({ setShowRes, setData }) => {
           />
         )}
       </Center>
-      <Stack spacing={3} m={["1rem", "2rem"]}>
+      <Stack spacing={3} m={["1rem", "2rem"]} fontSize={["1x1", "2xl"]}>
         <Heading>
           <Text fontSize={["2x1", "3xl"]}>Privacy?🥷</Text>
         </Heading>
