@@ -110,7 +110,7 @@ const Dashboard = ({ drawData }) => {
             alt='OurChatStory'
             style={{ imageRendering: "crisp-edges" }}
           />
-          <Text align="center" color="white" fontSize="xs"
+          <Text p="0.25rem" align="center" color="white" fontSize="xs"
             style={{ textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>
             Made using OurChatStory.co
           </Text>

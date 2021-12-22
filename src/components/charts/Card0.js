@@ -14,7 +14,6 @@ const Card6 = ({ drawData }) => {
       backgroundRepeat="no-repeat"
       backgroundSize="120%"
       p="1rem"
-      pt="10"
       w="100vw"
       h="100vh"
     >
