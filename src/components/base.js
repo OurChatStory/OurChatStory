@@ -1,9 +1,10 @@
 import { React, useState } from "react";
-import { Heading, Box, Text, Stack, Spinner, Center } from "@chakra-ui/react";
+import { Heading, Box, Text, Stack, Spinner, Center, Image } from "@chakra-ui/react";
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
 import axios from "axios";
 import img from "../static/bg2.png";
+import logo from "../static/logo2.png";
 const Base = () => {
   const [showRes, setShowRes] = useState(false);
   const [data, setData] = useState({});
@@ -17,8 +18,8 @@ const Base = () => {
       w="100%"
       h="100%"
       bgImage={img}
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
+      backgroundPosition="top"
+      backgroundRepeat="repeat"
       backgroundSize="140%"
     >
       {
@@ -38,9 +39,21 @@ const Base = () => {
             });
         })
       }
-      <Heading mb="2rem" fontFamily="fantasy" colorScheme="blue" size="3xl">
-        WhatsApp Wrapped '21
-      </Heading>
+      <Stack
+        align="center"
+        direction={['column', 'row']}
+        paddingBottom="1rem"
+        spacing='24px'
+      >
+        <Image
+          boxSize='70px'
+          src={logo}
+          alt='OurChatStory'
+        />
+        <Heading mb="2rem" colorScheme="blue" size="3xl" align="center">
+          WhatsApp Wrapped
+        </Heading>
+      </Stack>
 
       <Box m={["0.2rem", "1rem"]} boxShadow="2xl" bg="white" p="5" rounded="md">
         {showLoader ? (
