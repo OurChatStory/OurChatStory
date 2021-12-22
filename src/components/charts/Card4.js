@@ -89,7 +89,7 @@ const Card4 = ({ drawData }) => {
             {drawData.no_of_messages_per_member[0].member}
           </Text>
           <Spacer />
-          <Text fontSize="2xl">
+          <Text fontSize="2xl" pr="0.5rem">
             <b>
               {drawData.no_of_messages_per_member[1].count}
             </b>

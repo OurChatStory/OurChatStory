@@ -39,7 +39,7 @@ const Dashboard = ({ drawData }) => {
           navigator
             .share({
               title: "OurChatStory",
-              text: "Look at out #WhatsAppWrapped. I made it using OurChatStory.co!",
+              text: "Look at our #WhatsAppWrapped. I made it using OurChatStory.co!",
               files: [file],
             })
             .then(() => console.log("Share was successful."))
@@ -99,7 +99,7 @@ const Dashboard = ({ drawData }) => {
           preventDefault={false}
         />
         <HStack w="100%" h="5vh"
-          position="fixed"
+          position="absolute"
           spacing="0.5rem"
           p="1rem"
           align="center"
@@ -121,6 +121,8 @@ const Dashboard = ({ drawData }) => {
         w="100%"
         h="5vh"
         onClick={onButtonClick}
+        position="sticky"
+        bottom="0vh"
       ></Button>
     </Box>
   );

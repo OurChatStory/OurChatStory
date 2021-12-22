@@ -61,7 +61,7 @@ const Upload = ({ setShowRes, setData }) => {
           <strong> To export your WhatsApp chat as a .txt file</strong>
           <br />{" "}
           <i>
-            Open chat> Three dot on top right> More> Export chat> Without media>
+            Open chat > Three dot on top right > More > Export chat > Without media >
             download directly if iOS or Email yourself and download via email
           </i>
         </Text>
