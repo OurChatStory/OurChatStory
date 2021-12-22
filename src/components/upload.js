@@ -44,28 +44,27 @@ const Upload = ({ setShowRes, setData }) => {
           WhatsApp!
         </Text>
       </Heading>
-      <Grid templateColumns="repeat(2, 1fr)" gap={2}>
-        <Stack spacing={3} m={["1rem", "2rem"]}>
-          <Heading>
-            <Text fontSize={["2x1", "3xl"]}>How?💁</Text>
-          </Heading>
-          <Text fontSize={["1x1", "2xl"]}>
-            1. Export your WhatsApp chat as a .txt file
-            <br />{" "}
-            <i>
-              Open chat> Three dot on top right> More> Export chat> Without
-              media> Email yourself via gmail{" "}
-            </i>
-          </Text>
-          <Text fontSize={["1x1", "2xl"]}>
-            2. Go to Gmail and download the attached .txt file from the mail
-            that you just sent yourself
-          </Text>
-          <Text fontSize={["1x1", "2xl"]}>
-            3. Click on the upload button and upload the .txt file
-          </Text>
-        </Stack>
-      </Grid>
+
+      <Stack spacing={3} m={["1rem", "2rem"]}>
+        <Heading>
+          <Text fontSize={["2x1", "3xl"]}>How?💁</Text>
+        </Heading>
+        <Text fontSize={["1x1", "2xl"]}>
+          1. Export your WhatsApp chat as a .txt file
+          <br />{" "}
+          <i>
+            Open chat> Three dot on top right> More> Export chat> Without media>
+            Email yourself via gmail{" "}
+          </i>
+        </Text>
+        <Text fontSize={["1x1", "2xl"]}>
+          2. Go to Gmail and download the attached .txt file from the mail that
+          you just sent yourself
+        </Text>
+        <Text fontSize={["1x1", "2xl"]}>
+          3. Click on the upload button and upload the .txt file
+        </Text>
+      </Stack>
       <Center m="3rem">
         {isUploading ? (
           <Spinner />
