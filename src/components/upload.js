@@ -6,6 +6,7 @@ import {
   Text,
   Stack,
   Heading,
+  Link,
 } from "@chakra-ui/react";
 import axios from "axios";
 
@@ -106,6 +107,19 @@ const Upload = ({ setShowRes, setData }) => {
           <li>Our code is open source for your to see</li>
         </ul>
       </Stack>
+      <Box p="1rem">
+        <Text
+          fontSize={["x1", "2xl"]}
+          align="center"
+        >
+          Made with ❤️ by</Text>
+        <Text
+          fontSize={["x1", "2xl"]}
+          align="center"
+        >
+          <Link textDecoration="underline" cursor="pointer"  href='https://twitter.com/anshulagx' target='_blank'>@anshulagx</Link> & <Link textDecoration="underline" href='https://twitter.com/iamyajat' target='_blank'>@iamyajat</Link>
+        </Text>
+      </Box>
     </Box>
   );
 };
