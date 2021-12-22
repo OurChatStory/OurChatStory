@@ -1,5 +1,5 @@
-import React, { useCallback, useRef } from "react";
-import { Heading, Box, Button } from "@chakra-ui/react";
+import React, { useCallback, useRef, useState } from "react";
+import { Heading, Box, Button, Text, Center } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
 import Stories from "react-insta-stories";
 import Card8 from "./charts/monthly";
@@ -18,15 +18,18 @@ import Welcome from "./charts/Welcome";
 import * as htmlToImage from "html-to-image";
 
 const Dashboard = ({ drawData }) => {
+  const [isShared, setIsShared] = useState(false);
   const ref = useRef();
   const onButtonClick = useCallback(() => {
     if (ref.current === null) {
       return;
     }
+    setIsShared(true);
     htmlToImage
       .toBlob(ref.current, { cacheBust: true })
       .then((dataUrl) => {
         const file = new File([dataUrl], "share.png", { type: dataUrl.type });
+        setIsShared(false);
         // const link = document.createElement("a");
         // link.download = "my-image-name.png";
         // link.href = dataUrl;
@@ -35,7 +38,7 @@ const Dashboard = ({ drawData }) => {
           navigator
             .share({
               title: "WhatsAnalyed",
-              text: "Hey look at our chat statistics!!",
+              text: "Look at our chat rewind!!",
               files: [file],
             })
             .then(() => console.log("Share was successful."))
@@ -84,20 +87,31 @@ const Dashboard = ({ drawData }) => {
     },
   ];
   return (
-    <Box ref={ref}>
-      <Stories
-        stories={stories}
-        defaultInterval={20000}
-        width="100vw"
-        height="95vh"
-        preventDefault={false}
-      />
-      <Button
-        leftIcon={<HiShare />}
-        w="100%"
-        h="5vh"
-        onClick={onButtonClick}
-      ></Button>
+    <Box>
+      <Box ref={ref}>
+        <Stories
+          stories={stories}
+          defaultInterval={20000}
+          width="100vw"
+          height="95vh"
+          preventDefault={false}
+        />
+      </Box>
+
+      {isShared ? (
+        <Box w="100%" h="5vh" bgColor="black">
+          <Text p="0.5rem" align="center" color="white">
+            Made using whatsanalyzer.pages.dev
+          </Text>
+        </Box>
+      ) : (
+        <Button
+          leftIcon={<HiShare />}
+          w="100%"
+          h="5vh"
+          onClick={onButtonClick}
+        ></Button>
+      )}
     </Box>
   );
 };

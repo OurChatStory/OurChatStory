@@ -12,17 +12,7 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 import background from "../../static/bg7.png";
-import {
-  VictoryBar,
-  VictoryPie,
-  VictoryChart,
-  VictoryTheme,
-  VictoryLine,
-  VictoryHistogram,
-  VictoryScatter,
-  VictoryStack,
-  VictoryAxis,
-} from "victory";
+import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from "victory";
 
 const parser = require("../../script/parser");
 

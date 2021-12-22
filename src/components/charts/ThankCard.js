@@ -1,16 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Grid,
-  GridItem,
-  Heading,
-  Box,
-  Center,
-  Spinner,
-  Text,
-  Flex,
-  Spacer,
-} from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import background from "../../static/bg8.png";
 const Card6 = ({ drawData }) => {
   return (

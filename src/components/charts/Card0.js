@@ -12,17 +12,6 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 
-import {
-  VictoryBar,
-  VictoryPie,
-  VictoryChart,
-  VictoryTheme,
-  VictoryLine,
-  VictoryHistogram,
-  VictoryScatter,
-  VictoryStack,
-  VictoryAxis,
-} from "victory";
 import background from "../../static/bg2.png";
 const Card6 = ({ drawData }) => {
   return (

@@ -41,13 +41,19 @@ const Card4 = ({ drawData }) => {
       </Heading>
       <Box pt="3rem">
         <Flex>
-          <Text fontSize="5xl">
+          <Text fontSize="3xl">
             {drawData.no_of_messages_per_member[0].member}
+            <br />
+            <br />
+            {drawData.no_of_messages_per_member[0].count}
           </Text>
           <Spacer />
-          <Text fontSize="5xl">
+          <Text fontSize="3xl">
             {" "}
             {drawData.no_of_messages_per_member[1].member}
+            <br />
+            <br />
+            {drawData.no_of_messages_per_member[1].count}
           </Text>
         </Flex>
         <VictoryStack

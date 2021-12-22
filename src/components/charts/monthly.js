@@ -32,6 +32,7 @@ const Card2 = ({ drawData }) => {
   return (
     <Box
       bgImage={background}
+      backgroundBlendMode="lighten"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"

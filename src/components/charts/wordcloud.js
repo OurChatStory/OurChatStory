@@ -12,13 +12,11 @@ import {
   Spacer,
   Image,
 } from "@chakra-ui/react";
-import TagCloud from "react-tag-cloud";
-import ReactWordcloud from "react-wordcloud";
 
 const Card3 = ({ drawData }) => {
-  let words = drawData.word_cloud_words.map(({ word, weight }) => {
-    return { text: word, value: weight * 1000 };
-  });
+  // let words = drawData.word_cloud_words.map(({ word, weight }) => {
+  //   return { text: word, value: weight * 1000 };
+  // });
   return (
     <Box p="3" height="100vh" w="100vw" bg="black">
       <Heading pt="3rem" textAlign="center" color="white">
