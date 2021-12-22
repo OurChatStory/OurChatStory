@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Heading, Box, Text, Stack } from "@chakra-ui/react";
+import { Heading, Box, Text, Stack, Spinner, Center } from "@chakra-ui/react";
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
 import axios from "axios";
@@ -7,6 +7,7 @@ import img from "../static/bg2.png";
 const Base = () => {
   const [showRes, setShowRes] = useState(false);
   const [data, setData] = useState({});
+  const [showLoader, setShowLoader] = useState(false);
 
   return showRes ? (
     <Dashboard drawData={data} />
@@ -22,16 +23,10 @@ const Base = () => {
     >
       {
         (navigator.serviceWorker.onmessage = (event) => {
-          console.log(event);
-
           var imageBlob = event.data.file;
-          console.log(imageBlob);
           const data = new FormData();
           data.append("file", imageBlob);
-          console.log("add", data);
-          //alert(imageBlob);
-          // Update the UI with the data that has been shared to it.
-          //imageShare.src = URL.createObjectURL(imageBlob);
+          setShowLoader(true);
           axios
             .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
               // receive two parameter endpoint url ,form data
@@ -48,7 +43,13 @@ const Base = () => {
       </Heading>
 
       <Box m={["0.2rem", "1rem"]} boxShadow="2xl" bg="white" p="5" rounded="md">
-        <Uploader setShowRes={setShowRes} setData={setData} />
+        {showLoader ? (
+          <Center>
+            <Spinner size="xl" />
+          </Center>
+        ) : (
+          <Uploader setShowRes={setShowRes} setData={setData} />
+        )}
       </Box>
     </Box>
   );
