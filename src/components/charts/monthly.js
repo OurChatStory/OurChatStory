@@ -1,47 +1,31 @@
-import React, { useState } from "react";
 import {
-  Button,
-  Grid,
-  GridItem,
-  Heading,
   Box,
-  Center,
-  Spinner,
   Text,
-  Flex,
-  Spacer,
+  VStack,
 } from "@chakra-ui/react";
-import TagCloud from "react-tag-cloud";
-import TinderCard from "react-tinder-card";
 import background from "../../static/bg6.png";
 import {
-  VictoryBar,
-  VictoryPie,
-  VictoryChart,
-  VictoryTheme,
   VictoryLine,
-  VictoryHistogram,
-  VictoryScatter,
-  VictoryStack,
-  VictoryAxis,
 } from "victory";
 
 const parser = require("../../script/parser");
 
 const Card2 = ({ drawData }) => {
   return (
-    <Box
+    <VStack
+      spacing="0.75rem"
+      align="center"
+      justify="center"
       bgImage={background}
       backgroundBlendMode="lighten"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"
-      p="3"
-      pt="3rem"
+      p="2rem"
       w="100vw"
       h="100vh"
     >
-      <Text pt="0.5rem" color="#F5F5F5" fontSize="3xl" align="center">
+      <Text color="#F5F5F5" fontSize="3xl" align="center">
         Y'all talked the most in
       </Text>
       <Text color="#F5F5F5" fontSize="5xl" align="center">
@@ -51,6 +35,7 @@ const Card2 = ({ drawData }) => {
         <VictoryLine
           height={200}
           interpolation="natural"
+          domain={{ y: [-750, drawData.most_active_month.count] }}
           style={{
             data: {
               stroke: "#FFF600",
@@ -68,18 +53,17 @@ const Card2 = ({ drawData }) => {
       <Text color="#F5F5F5" fontSize="3xl" align="center">
         messages were sent!
       </Text>
-      <Text pt="0.5rem" color="#F5F5F5" fontSize="3xl" align="center">
+      <Text pt="0.5rem" color="#F5F5F5" fontSize="2xl" align="center">
         Now that's a lot of messages!!
       </Text>
-      <Text pl="1rem" pr="1rem" color="#F5F5F5" fontSize="2xl" align="center">
-        <br />
+      <Text pl="1rem" pr="1rem" color="#F5F5F5" fontSize="xl" align="center">
         {drawData.month_correlation > 0.5
           ? "There is an increasing warmth in your relationship :)"
           : drawData.month_correlation < -0.5
             ? "but y'all have decreased talking now :/"
             : ""}{" "}
       </Text>
-    </Box>
+    </VStack>
   );
 };
 

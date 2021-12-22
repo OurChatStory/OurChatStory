@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import {
-  Button,
   Box,
   Center,
   Spinner,
   Text,
   Stack,
   Heading,
-  Grid,
-  GridItem,
 } from "@chakra-ui/react";
 import axios from "axios";
 

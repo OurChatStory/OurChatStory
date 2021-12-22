@@ -1,21 +1,15 @@
-import React, { useState } from "react";
 import {
-  Button,
-  Grid,
-  GridItem,
-  Heading,
-  Box,
-  Center,
-  Spinner,
   Text,
-  Flex,
-  Spacer,
+  VStack,
 } from "@chakra-ui/react";
 import background from "../../static/bg2.png";
 
 const Card6 = ({ drawData }) => {
   return (
-    <Box
+    <VStack
+      spacing="2rem"
+      align="center"
+      justify="center"
       backgroundImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
@@ -24,19 +18,13 @@ const Card6 = ({ drawData }) => {
       w="100vw"
       h="100vh"
     >
-      <br />
-      <br />
-      <br />
-      <Text color="Black" fontSize="4xl" align="center" fontWeight="bold">
+      <Text color="black" fontSize="4xl" align="center" fontWeight="bold">
         This year was eventful!
       </Text>
-      <br />
-      <br />
-      <br />
       <Text color="black" fontSize="4xl" align="center">
-        Many friendships were broken and more were formed{" "}
+        Many friendships were broken and more were formed
       </Text>
-    </Box>
+    </VStack>
   );
 };
 

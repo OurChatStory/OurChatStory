@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Heading, Box, Text, Stack, Spinner, Center, Image } from "@chakra-ui/react";
+import { Heading, Box, Stack, Spinner, Center, Image } from "@chakra-ui/react";
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
 import axios from "axios";

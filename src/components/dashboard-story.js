@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Heading, Box, Button, Text, Center, HStack, Image } from "@chakra-ui/react";
+import { Box, Button, Text, HStack, Image } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
 import Stories from "react-insta-stories";
 import Card8 from "./charts/monthly";

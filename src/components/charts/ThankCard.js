@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { VStack, Text, Image } from "@chakra-ui/react";
+import { VStack, Text, Image, Link, Box } from "@chakra-ui/react";
 import background from "../../static/bg8.png";
 import logo from "../../static/logo2.png";
 
@@ -12,7 +11,7 @@ const Card6 = ({ drawData }) => {
       h="100vh"
       align="center"
       justify="center"
-      spacing="8rem"
+      spacing="3rem"
       backgroundImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
@@ -20,11 +19,18 @@ const Card6 = ({ drawData }) => {
     >
       <Text
         color="#F5F5F5"
-        fontSize="4xl"
+        fontSize="3xl"
         align="center"
       >
         <strike>The End</strike> <br />
-        The New Beginning
+        A New Beginning
+      </Text>
+      <Text
+        color="#F5F5F5"
+        fontSize="4xl"
+        align="center"
+      >
+        Happy New Year!
       </Text>
 
       <Text
@@ -39,6 +45,21 @@ const Card6 = ({ drawData }) => {
         src={logo}
         alt='OurChatStory'
       />
+      <Box zIndex={10000} >
+        <Text
+          color="#F5F5F5"
+          fontSize="2xl"
+          align="center"
+        >
+          Made with ❤️ by</Text>
+        <Text
+          color="#F5F5F5"
+          fontSize="xl"
+          align="center"
+        >
+          <Link textDecoration="underline" cursor="pointer" zIndex={10000} href='https://twitter.com/anshulagx' target='_blank'>@anshulagx</Link> & <Link zIndex={10000} textDecoration="underline" href='https://twitter.com/iamyajat' target='_blank'>@iamyajat</Link>
+        </Text>
+      </Box>
     </VStack>
   );
 };

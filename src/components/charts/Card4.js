@@ -1,42 +1,33 @@
-import React, { useState } from "react";
 import {
-  Button,
-  Grid,
-  GridItem,
-  Heading,
   Box,
-  Center,
-  Spinner,
   Text,
   Flex,
   Spacer,
+  VStack,
 } from "@chakra-ui/react";
-import TagCloud from "react-tag-cloud";
-import TinderCard from "react-tinder-card";
 
 import {
   VictoryBar,
-  VictoryPie,
-  VictoryChart,
-  VictoryTheme,
-  VictoryLine,
-  VictoryHistogram,
-  VictoryScatter,
   VictoryStack,
 } from "victory";
+
 import background from "../../static/bg9.png";
+
 const Card4 = ({ drawData }) => {
   return (
-    <Box
+    <VStack
+      spacing="0.5rem"
+      align="center"
+      justify="top"
       bgImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"
-      p="6"
+      p="1rem"
       width="100vw"
       h="100vh"
     >
-      <Text pt="3rem" fontSize="3xl" textAlign="center" fontWeight="medium">
+      <Text mt="4rem" fontSize="3xl" textAlign="center" fontWeight="medium">
         Who texts more?
       </Text>
       <Text fontSize="4xl" textAlign="center" fontWeight="bold">
@@ -45,8 +36,9 @@ const Card4 = ({ drawData }) => {
           drawData.no_of_messages_per_member[0].member :
           drawData.no_of_messages_per_member[1].member}
       </Text>
-      <Box pt="3rem" align="center">
+      <Box align="center">
         <VictoryStack
+          height={50}
           animate={{
             duration: 2000,
             onLoad: { duration: 1000 },
@@ -100,7 +92,7 @@ const Card4 = ({ drawData }) => {
         </Flex>
 
       </Box>
-    </Box>
+    </VStack>
   );
 };
 

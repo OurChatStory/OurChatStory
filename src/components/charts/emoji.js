@@ -1,49 +1,44 @@
-import React from "react";
 import {
-  Button,
-  Grid,
-  GridItem,
   Heading,
   Box,
-  Center,
-  Spinner,
   Text,
-  Flex,
-  Spacer,
+  VStack,
 } from "@chakra-ui/react";
-import TagCloud from "react-tag-cloud";
 import bg from "../../static/bg3.png";
 const Card5 = ({ drawData }) => {
   return (
-    <Box
+    <VStack
+      spacing="1.5rem"
+      align="center"
+      justify="center"
       bgImage={bg}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"
-      p="6"
+      p="2rem"
       height="100vh"
       w="100vw"
     >
-      <Heading textAlign="center" pt="4rem">
+      <Heading textAlign="center">
         Most used emojis :)
       </Heading>
-      <Box h="100%" w="100%" pt="2rem">
+      <Box>
         {drawData.top_10_emojis.slice(0, 5).map(({ emoji }, i) => {
           return (
             <Text
               align="center"
               style={{
-                margin: 6,
+                margin: "0.5rem",
                 fontSize: (5 - i) * (20 + i),
               }}
-              lineHeight={1.3 + 0.1 * i}
+              lineHeight={i == 5 ? 0 : (1.2 + 0.1 * i)}
             >
               {emoji}
             </Text>
           );
         })}
       </Box>
-    </Box>
+    </VStack>
   );
 };
 
