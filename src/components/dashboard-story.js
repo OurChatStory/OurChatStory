@@ -99,7 +99,7 @@ const Dashboard = ({ drawData }) => {
           preventDefault={false}
         />
         <HStack w="100%" h="5vh"
-          position="sticky"
+          position="absolute"
           spacing="0.5rem"
           p="1rem"
           align="center"
