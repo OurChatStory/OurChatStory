@@ -21,5 +21,22 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "share_target": {
+    "action": "/cgi-bin/aggregate",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "name",
+      "text": "description",
+      "url": "link",
+      "files": [
+        {
+          "name": "records",
+          "accept": ["*/*"]
+        }
+      ]
+    }
+  }
+
 }
