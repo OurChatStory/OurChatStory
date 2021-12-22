@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Our Story",
+  "name": "Our Story",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,11 +19,11 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
+  "display":"browser",
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "share_target": {
-    "action": "/cgi-bin/aggregate",
+    "action": "/pwaa",
     "method": "POST",
     "enctype": "multipart/form-data",
     "params": {
@@ -32,7 +32,7 @@
       "url": "link",
       "files": [
         {
-          "name": "records",
+          "name": "file",
           "accept": ["*/*"]
         }
       ]

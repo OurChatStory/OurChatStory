@@ -56,17 +56,35 @@ self.addEventListener("fetch", function (event) {
     );
   }
 });
-// self.addEventListener('fetch', event => {
-//     const url = new URL(event.request.url);
-//     // If this is an incoming POST request for the
-//     // registered "action" URL, respond to it.
-//     if (event.request.method === 'POST' &&
-//         url.pathname === '/bookmark') {
-//       event.respondWith((async () => {
-//         const formData = await event.request.formData();
-//         const link = formData.get('link') || '';
-//         const responseUrl = await saveBookmark(link);
-//         return Response.redirect(responseUrl, 303);
-//       })());
-//     }
-//   });
+self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
+  // If this is an incoming POST request for the
+  // registered "action" URL, respond to it.
+  if (event.request.method === "POST" && url.pathname === "/pwaa") {
+    event.respondWith(
+      (async () => {
+        const formData = await event.request.formData();
+        alert(formData);
+        const link = formData.getAll("file") || "";
+        alert(link);
+        // const responseUrl = await saveBookmark(link);
+        return Response.redirect("/", 303);
+      })()
+    );
+  }
+});
+
+//   onChange={(event) => {
+//     const file = event.target.files[0];
+//     const data = new FormData();
+//     data.append("file", file);
+//     setIsUploading(true);
+//     axios
+//       .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
+//         // receive two parameter endpoint url ,form data
+//       })
+//       .then((res) => {
+//         setData(res.data);
+//         setShowRes(true);
+//       });
+//   }}
