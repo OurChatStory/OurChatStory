@@ -51,7 +51,7 @@ const Upload = ({ setShowRes, setData }) => {
           <strong>Android:</strong> Install the WebApp by clicking on the{" "}
           <u>three dots of chrome browser</u> and then clicking{" "}
           <u>Install app</u>. Then go to your WhatsApp chat and export the
-          chat(without media) to OurStory app. <br />
+          chat(without media) to OurChatStory app. <br />
           <br />
           <strong>iOS:</strong> Download the chat after exporting it via
           WhatsApp and upload using the button below.
