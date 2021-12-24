@@ -12,9 +12,9 @@ module.exports.active_time = (data) => {
 };
 
 module.exports.active_time_type = (data) => {
-  return data < 9 && data > 4
+  return data < 12 && data > 4
     ? "Looks like you both are Early Birds 🌅"
-    : data > 20
+    : data > 20 || (data > 0 && data < 4)
     ? "Looks like you both are Night Owls 🦉"
     : "";
 };
