@@ -32,11 +32,21 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>OurChatStory - #WhatsAppWrapped</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GG4ESYN0D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8GG4ESYN0D');
+  </script>
 </head>
 
 <body>
 
   <div id="root"></div>
+
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
@@ -54,6 +64,7 @@
       console.log('service worker is not supported');
     }
   </script>
+
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
