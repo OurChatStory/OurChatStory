@@ -79,7 +79,7 @@ const Base = () => {
         h="100%"
       >
         {showLoader ? (
-          <Box h="100%">
+          <Box h="80vh">
             <Center>
               <Spinner size="xl" />
             </Center>
