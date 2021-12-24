@@ -79,9 +79,11 @@ const Base = () => {
         h="100%"
       >
         {showLoader ? (
-          <Center>
-            <Spinner size="xl" />
-          </Center>
+          <Box h="100%">
+            <Center>
+              <Spinner size="xl" />
+            </Center>
+          </Box>
         ) : (
           <Uploader setShowRes={setShowRes} setData={setData} />
         )}

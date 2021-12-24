@@ -19,7 +19,7 @@ const Card4 = ({ drawData }) => {
       h="100vh"
     >
       <Heading mt="4rem" fontSize="3xl" textAlign="center" fontWeight="bold">
-        Top texters
+        Who was the Top Texter?
       </Heading>
       {/* <Text fontSize="4xl" textAlign="center" fontWeight="bold">
         {drawData.no_of_messages_per_member[0].count >
@@ -27,16 +27,17 @@ const Card4 = ({ drawData }) => {
           ? drawData.no_of_messages_per_member[0].member
           : drawData.no_of_messages_per_member[1].member}
       </Text> */}
-      <Box align="center" width="75%" height="75%">
+      <Box align="center" width="100%" height="75%">
         <VictoryPie
+          width="300"
           animate={{
-            duration: 2000,
+            duration: 3000,
           }}
           colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
           data={drawData.no_of_messages_per_member
             .slice(0, 8)
             .map(({ member, count }) => {
-              return { x: member, y: count };
+              return { x: member.split(" ")[0], y: count };
             })}
         />
         {/* <VictoryStack

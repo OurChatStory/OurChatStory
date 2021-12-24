@@ -45,9 +45,9 @@ const Dashboard = ({ drawData }) => {
               files: [file],
             })
             .then(() => console.log("Share was successful."))
-            .catch((error) => alert(error));
+            .catch((error) => console.log(error));
           setIsShared(false);
-        } else alert("no share support");
+        } else console.log("no share support");
       })
       .catch((err) => {
         console.log(err);
@@ -134,7 +134,7 @@ const Dashboard = ({ drawData }) => {
           stories={stories}
           defaultInterval={20000}
           width="100vw"
-          height="95vh"
+          height="100vh"
           preventDefault={false}
         />
         <HStack
@@ -166,15 +166,19 @@ const Dashboard = ({ drawData }) => {
           </Text>
         </HStack>
       </Box>
-      <Button
-        leftIcon={<HiShare />}
-        w="100%"
-        h="5vh"
-        onClick={onButtonClick}
-        position="sticky"
-        bottom="0vh"
-        zIndex={10000}
-      ></Button>
+      {navigator.canShare ? (
+        <Button
+          leftIcon={<HiShare />}
+          w="100%"
+          h="5vh"
+          onClick={onButtonClick}
+          position="sticky"
+          bottom="0vh"
+          zIndex={10000}
+        ></Button>
+      ) : (
+        ""
+      )}
     </Box>
   );
 };
