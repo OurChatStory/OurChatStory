@@ -17,27 +17,36 @@ const Card6 = ({ drawData }) => {
       pt="10"
       w="100vw"
       h="100vh"
-    >
-      <Text fontSize="3xl" align="center" color="white">
-        There were some cold moments
-      </Text>
-      <Box>
-        <Text color="white" pt="1rem" fontSize="3xl" align="center">
-          Between
-        </Text>
-        <Text color="white" fontSize="4xl" align="center" fontWeight="medium">
-          {parser.format_time_gap(drawData.longest_gap.start_time)} and{" "}
-          {parser.format_time_gap(drawData.longest_gap.end_time)}
-        </Text>
-      </Box>
-      <br />
-      <Text color="white" pt="1rem" fontSize="3xl" align="center">
-        Y'all didn't talk for{" "}
-        <Text color="white" fontSize="5xl" align="center" fontWeight="medium">
-          {parser.time_gap(drawData.longest_gap)}
-        </Text>
-        consecutive days 🥺
-      </Text>
+    > {
+        parser.time_gap(drawData.longest_gap) > 0 ? (<>
+          <Text fontSize="3xl" align="center" color="white">
+            There were some cold moments
+          </Text>
+          <Box>
+            <Text color="white" pt="1rem" fontSize="3xl" align="center">
+              Between
+            </Text>
+            <Text color="white" fontSize="4xl" align="center" fontWeight="medium">
+              {parser.format_time_gap(drawData.longest_gap.start_time)} and{" "}
+              {parser.format_time_gap(drawData.longest_gap.end_time)}
+            </Text>
+          </Box>
+          <br />
+          <Text color="white" pt="1rem" fontSize="3xl" align="center">
+            Y'all didn't talk for{" "}
+            <Text color="white" fontSize="5xl" align="center" fontWeight="medium">
+              {parser.time_gap(drawData.longest_gap)}
+            </Text>
+            {parser.time_gap(drawData.longest_gap) == 1 ? "whole day" : "consecutive days"} 🥺
+          </Text>
+        </>
+        ) : (
+          <Text fontSize="3xl" align="center" color="white">
+            Y'all talk everyday! WOW!!
+          </Text>
+        )
+      }
+
     </VStack>
   );
 };
