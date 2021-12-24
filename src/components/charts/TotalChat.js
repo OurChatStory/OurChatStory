@@ -1,11 +1,12 @@
-import {
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Text, VStack } from "@chakra-ui/react";
 import background from "../../static/bg4.png";
 import CountUp from "react-countup";
 
 const Card1 = ({ drawData }) => {
+  // var end = 0;
+  // const temp = drawData.monthly_chat_count.map(({ month, count }) => {
+  //   end += count;
+  // });
   return (
     <VStack
       spacing="1rem"
@@ -24,10 +25,7 @@ const Card1 = ({ drawData }) => {
       </Text>
       <Text fontSize="6xl" color="Brown" align="center" fontWeight="medium">
         <CountUp
-          end={
-            drawData.no_of_messages_per_member[0].count +
-            drawData.no_of_messages_per_member[1].count
-          }
+          end={drawData.total_no_of_chats}
           onEnd={({ countUpRef }) => {
             countUpRef = "a";
           }}
@@ -40,7 +38,8 @@ const Card1 = ({ drawData }) => {
       </Text>
       <br />
       <Text fontSize="4xl" align="center">
-        That puts you into top <b>{parseFloat(drawData.top_percent * 100).toFixed(2)}% </b>
+        That puts you into top{" "}
+        <b>{parseFloat(drawData.top_percent * 100).toFixed(2)}% </b>
         of texters in the world🤯
       </Text>
     </VStack>

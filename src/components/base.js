@@ -1,5 +1,14 @@
 import { React, useState } from "react";
-import { Heading, Box, Stack, Spinner, Center, Image } from "@chakra-ui/react";
+import {
+  Heading,
+  Box,
+  Stack,
+  Spinner,
+  Center,
+  Image,
+  Text,
+  Link,
+} from "@chakra-ui/react";
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
 import axios from "axios";
@@ -41,22 +50,34 @@ const Base = () => {
       }
       <Stack
         align="center"
-        direction={['column', 'row']}
+        direction={["column", "row"]}
         paddingBottom="1rem"
-        spacing='24px'
+        spacing="24px"
       >
         <Image
-          boxSize='70px'
+          boxSize="70px"
           src={logo}
-          alt='OurChatStory'
-          style={{imageRendering: "crisp-edges"}}
+          alt="OurChatStory"
+          style={{ imageRendering: "crisp-edges" }}
         />
-        <Heading mb="2rem" colorScheme="blue" align="center" fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}>
+        <Heading
+          mb="2rem"
+          colorScheme="blue"
+          align="center"
+          fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+        >
           #WhatsAppWrapped
         </Heading>
       </Stack>
 
-      <Box m={["0.2rem", "1rem"]} boxShadow="2xl" bg="white" p="5" rounded="md">
+      <Box
+        m={["0.2rem", "1rem"]}
+        boxShadow="2xl"
+        bg="white"
+        p="5"
+        rounded="md"
+        h="100%"
+      >
         {showLoader ? (
           <Center>
             <Spinner size="xl" />
@@ -64,6 +85,24 @@ const Base = () => {
         ) : (
           <Uploader setShowRes={setShowRes} setData={setData} />
         )}
+      </Box>
+      <Box p="1rem">
+        <Text fontSize={["x1", "2xl"]} align="center">
+          Made with ❤️ by
+        </Text>
+        <Text fontSize={["x1", "2xl"]} align="center">
+          <Link
+            cursor="pointer"
+            href="https://twitter.com/anshulagx"
+            target="_blank"
+          >
+            @anshulagx
+          </Link>{" "}
+          &{" "}
+          <Link href="https://twitter.com/iamyajat" target="_blank">
+            @iamyajat
+          </Link>
+        </Text>
       </Box>
     </Box>
   );

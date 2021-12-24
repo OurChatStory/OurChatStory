@@ -59,8 +59,9 @@ const Upload = ({ setShowRes, setData }) => {
           <strong> To export your WhatsApp chat as a .txt file</strong>
           <br />{" "}
           <i>
-            Open chat > Three dot on top right > More > Export chat > Without media >
-            download directly if iOS or Email yourself and download via email
+            Open chat > Three dot on top right > More > Export chat > Without
+            media > download directly if iOS or Email yourself and download via
+            email
           </i>
         </Text>
         <Text fontSize={["1x1", "2xl"]}>
@@ -93,7 +94,7 @@ const Upload = ({ setShowRes, setData }) => {
           />
         )}
       </Center>
-      <Stack spacing={3} m={["1rem", "2rem"]} fontSize={["1x1", "2xl"]}>
+      <Stack spacing={3} m={["2rem", "3rem"]} fontSize={["1x1", "2xl"]}>
         <Heading>
           <Text fontSize={["2x1", "3xl"]}>Privacy?🥷</Text>
         </Heading>
@@ -107,19 +108,6 @@ const Upload = ({ setShowRes, setData }) => {
           <li>Our code is open source for your to see</li>
         </ul>
       </Stack>
-      <Box p="1rem">
-        <Text
-          fontSize={["x1", "2xl"]}
-          align="center"
-        >
-          Made with ❤️ by</Text>
-        <Text
-          fontSize={["x1", "2xl"]}
-          align="center"
-        >
-          <Link textDecoration="underline" cursor="pointer"  href='https://twitter.com/anshulagx' target='_blank'>@anshulagx</Link> & <Link textDecoration="underline" href='https://twitter.com/iamyajat' target='_blank'>@iamyajat</Link>
-        </Text>
-      </Box>
     </Box>
   );
 };

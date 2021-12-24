@@ -1,15 +1,6 @@
-import {
-  Box,
-  Text,
-  Flex,
-  Spacer,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Text, Flex, Spacer, VStack, Heading } from "@chakra-ui/react";
 
-import {
-  VictoryBar,
-  VictoryStack,
-} from "victory";
+import { VictoryBar, VictoryStack, VictoryPie } from "victory";
 
 import background from "../../static/bg9.png";
 
@@ -27,17 +18,28 @@ const Card4 = ({ drawData }) => {
       width="100vw"
       h="100vh"
     >
-      <Text mt="4rem" fontSize="3xl" textAlign="center" fontWeight="medium">
-        Who texts more?
-      </Text>
-      <Text fontSize="4xl" textAlign="center" fontWeight="bold">
-
-        {drawData.no_of_messages_per_member[0].count > drawData.no_of_messages_per_member[1].count ?
-          drawData.no_of_messages_per_member[0].member :
-          drawData.no_of_messages_per_member[1].member}
-      </Text>
-      <Box align="center">
-        <VictoryStack
+      <Heading mt="4rem" fontSize="3xl" textAlign="center" fontWeight="bold">
+        Top texters
+      </Heading>
+      {/* <Text fontSize="4xl" textAlign="center" fontWeight="bold">
+        {drawData.no_of_messages_per_member[0].count >
+        drawData.no_of_messages_per_member[1].count
+          ? drawData.no_of_messages_per_member[0].member
+          : drawData.no_of_messages_per_member[1].member}
+      </Text> */}
+      <Box align="center" width="75%" height="75%">
+        <VictoryPie
+          animate={{
+            duration: 2000,
+          }}
+          colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
+          data={drawData.no_of_messages_per_member
+            .slice(0, 8)
+            .map(({ member, count }) => {
+              return { x: member, y: count };
+            })}
+        />
+        {/* <VictoryStack
           height={50}
           animate={{
             duration: 2000,
@@ -73,24 +75,19 @@ const Card4 = ({ drawData }) => {
 
         <Flex>
           <Text fontSize="2xl">
-            <b>
-              {drawData.no_of_messages_per_member[0].count}
-            </b>
+            <b>{drawData.no_of_messages_per_member[0].count}</b>
             <br />
             <br />
             {drawData.no_of_messages_per_member[0].member}
           </Text>
           <Spacer />
           <Text fontSize="2xl" pr="0.5rem">
-            <b>
-              {drawData.no_of_messages_per_member[1].count}
-            </b>
+            <b>{drawData.no_of_messages_per_member[1].count}</b>
             <br />
             <br />
             {drawData.no_of_messages_per_member[1].member}
           </Text>
-        </Flex>
-
+        </Flex> */}
       </Box>
     </VStack>
   );

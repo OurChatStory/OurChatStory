@@ -1,7 +1,4 @@
-import {
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Text, VStack } from "@chakra-ui/react";
 import background from "../../static/bg2.png";
 
 const Card6 = ({ drawData }) => {
@@ -22,7 +19,7 @@ const Card6 = ({ drawData }) => {
         This year was eventful!
       </Text>
       <Text color="black" fontSize="4xl" align="center">
-        Many friendships were broken and more were formed
+        We were locked inside our home, but together we made it to the end
       </Text>
     </VStack>
   );

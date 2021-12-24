@@ -1,11 +1,6 @@
-import {
-  Text,
-  VStack,
-  Box,
-} from "@chakra-ui/react";
+import { Text, VStack, Box } from "@chakra-ui/react";
 
-
-import background from "../../static/bg10.png";
+import background from "../../static/bg8.png";
 const parser = require("../../script/parser");
 
 const Card6 = ({ drawData }) => {
@@ -23,20 +18,11 @@ const Card6 = ({ drawData }) => {
       w="100vw"
       h="100vh"
     >
-      <Text
-        fontSize="3xl"
-        align="center"
-        color="white"
-      >
+      <Text fontSize="3xl" align="center" color="white">
         There were some cold moments
       </Text>
       <Box>
-        <Text
-          color="white"
-          pt="1rem"
-          fontSize="3xl"
-          align="center"
-        >
+        <Text color="white" pt="1rem" fontSize="3xl" align="center">
           Between
         </Text>
         <Text color="white" fontSize="4xl" align="center" fontWeight="medium">
@@ -46,7 +32,7 @@ const Card6 = ({ drawData }) => {
       </Box>
       <br />
       <Text color="white" pt="1rem" fontSize="3xl" align="center">
-        You didn't talk for {" "}
+        You didn't talk for{" "}
         <Text color="white" fontSize="5xl" align="center" fontWeight="medium">
           {parser.time_gap(drawData.longest_gap)}
         </Text>
