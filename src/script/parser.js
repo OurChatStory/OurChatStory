@@ -8,6 +8,10 @@
 // };
 
 module.exports.active_time = (data) => {
+  if (data == 0)
+    return "12 AM"
+  if (data == 12)
+    return "12 PM"
   return data < 12 ? data + " AM" : data - 12 + " PM";
 };
 
@@ -15,8 +19,8 @@ module.exports.active_time_type = (data) => {
   return data < 12 && data > 4
     ? "Looks like y'all are Early Birds 🌅"
     : data > 20 || (data > 0 && data < 4)
-    ? "Looks like y'all are Night Owls 🦉"
-    : "";
+      ? "Looks like y'all are Night Owls 🦉"
+      : "";
 };
 module.exports.months = {
   Jan: "January",
@@ -54,7 +58,7 @@ module.exports.time_gap = ({ start_time, end_time }) => {
 
   return Math.floor((b - a) / 86400000);
 };
-function timeConverter(UNIX_timestamp) {
+function timeConverter (UNIX_timestamp) {
   var a = new Date(UNIX_timestamp);
   var months = [
     "Jan",

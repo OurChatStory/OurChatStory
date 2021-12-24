@@ -42,7 +42,7 @@ const Card6 = ({ drawData }) => {
         </>
         ) : (
           <Text fontSize="3xl" align="center" color="white">
-            Y'all talk everyday! WOW!!
+            There was not a single day in 2021 when y'all didn't talk
           </Text>
         )
       }
