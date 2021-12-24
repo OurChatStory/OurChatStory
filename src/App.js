@@ -8,11 +8,12 @@ import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
   fonts: {
-    heading: "poppins",
-    body: "poppins",
+    heading: "Poppins",
+    body: "Poppins",
   },
 });
-function App() {
+
+function App () {
   return (
     <ChakraProvider theme={theme}>
       <BrowserRouter>
