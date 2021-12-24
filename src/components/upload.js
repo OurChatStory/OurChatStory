@@ -48,9 +48,10 @@ const Upload = ({ setShowRes, setData }) => {
           <Text fontSize={["2x1", "3xl"]}>How?💁</Text>
         </Heading>
         <Text fontSize={["1x1", "2xl"]}>
-          <strong>Android:</strong> Install the app from the prompt below. Then
-          go to your WhatsApp chat and export the chat(without media) to
-          OurStory app. <br />
+          <strong>Android:</strong> Install the WebApp by clicking on the{" "}
+          <u>three dots of chrome browser</u> and then clicking{" "}
+          <u>Install app</u>. Then go to your WhatsApp chat and export the
+          chat(without media) to OurStory app. <br />
           <br />
           <strong>iOS:</strong> Download the chat after exporting it via
           WhatsApp and upload using the button below.
