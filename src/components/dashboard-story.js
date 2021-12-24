@@ -134,7 +134,7 @@ const Dashboard = ({ drawData }) => {
           stories={stories}
           defaultInterval={20000}
           width="100vw"
-          height="100vh"
+          height="95vh"
           preventDefault={false}
         />
         <HStack
