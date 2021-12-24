@@ -153,7 +153,6 @@ const Dashboard = ({ drawData }) => {
             style={{ imageRendering: "crisp-edges" }}
           />
           <Text
-            p="0.25rem"
             align="center"
             color="white"
             fontSize="xs"
