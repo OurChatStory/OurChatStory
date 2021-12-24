@@ -1,12 +1,6 @@
-import {
-  Box,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Text, VStack } from "@chakra-ui/react";
 import background from "../../static/bg6.png";
-import {
-  VictoryLine,
-} from "victory";
+import { VictoryLine } from "victory";
 
 const parser = require("../../script/parser");
 
@@ -26,7 +20,7 @@ const Card2 = ({ drawData }) => {
       h="100vh"
     >
       <Text color="#F5F5F5" fontSize="3xl" align="center">
-        Y'all talked the most in
+        Most of your conversations happened in the month of
       </Text>
       <Text color="#F5F5F5" fontSize="5xl" align="center">
         {parser.months[drawData.most_active_month.month]}
@@ -60,8 +54,8 @@ const Card2 = ({ drawData }) => {
         {drawData.month_correlation > 0.5
           ? "There is an increasing warmth in your relationship :)"
           : drawData.month_correlation < -0.5
-            ? "but y'all have decreased talking now :/"
-            : ""}{" "}
+          ? "but y'all have decreased talking now :/"
+          : ""}{" "}
       </Text>
     </VStack>
   );

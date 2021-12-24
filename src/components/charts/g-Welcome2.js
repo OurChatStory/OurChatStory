@@ -15,7 +15,7 @@ const Card6 = ({ drawData }) => {
       h="100vh"
     >
       <Text color="black" fontSize="4xl" align="center">
-        But y'all didn't stopped texting each other
+        But y'all didn't stop texting each other
       </Text>
     </VStack>
   );
