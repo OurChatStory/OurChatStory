@@ -32,7 +32,7 @@ const Card6 = ({ drawData }) => {
       <Box>
         <VictoryLine
           height={200}
-          domain={{ y: [-50, drawData.most_active_hour.count] }}
+          domain={{ y: [-50, drawData.most_active_hour.count + 100] }}
           interpolation="natural"
           style={{
             data: {

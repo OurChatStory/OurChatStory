@@ -35,7 +35,7 @@ const Card2 = ({ drawData }) => {
         <VictoryLine
           height={200}
           interpolation="natural"
-          domain={{ y: [-750, drawData.most_active_month.count] }}
+          domain={{ y: [-750, drawData.most_active_month.count + 300] }}
           style={{
             data: {
               stroke: "#FFF600",
