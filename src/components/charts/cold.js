@@ -32,7 +32,7 @@ const Card6 = ({ drawData }) => {
       </Box>
       <br />
       <Text color="white" pt="1rem" fontSize="3xl" align="center">
-        You didn't talk for{" "}
+        Y'all didn't talk for{" "}
         <Text color="white" fontSize="5xl" align="center" fontWeight="medium">
           {parser.time_gap(drawData.longest_gap)}
         </Text>
