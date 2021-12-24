@@ -80,7 +80,8 @@ const Base = () => {
       >
         {showLoader ? (
           <Box h="80vh">
-            <Center>
+            <Center mt="2rem">
+              <Text>Brewing! Please wait...</Text>
               <Spinner size="xl" />
             </Center>
           </Box>
