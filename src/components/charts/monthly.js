@@ -7,7 +7,7 @@ const parser = require("../../script/parser");
 const Card2 = ({ drawData }) => {
   return (
     <VStack
-      spacing="0.75rem"
+      spacing="0.5rem"
       align="center"
       justify="center"
       bgImage={background}
@@ -19,10 +19,10 @@ const Card2 = ({ drawData }) => {
       w="100vw"
       h="100vh"
     >
-      <Text color="#F5F5F5" fontSize="3xl" align="center">
-        Most of your conversations happened in the month of
+      <Text color="#F5F5F5" fontSize="2xl" align="center">
+        Most of your conversations happened in
       </Text>
-      <Text color="#F5F5F5" fontSize="5xl" align="center">
+      <Text color="#F5F5F5" fontSize="5xl" align="center" fontWeight="medium">
         {parser.months[drawData.most_active_month.month]}
       </Text>
       <Box>
@@ -47,15 +47,15 @@ const Card2 = ({ drawData }) => {
       <Text color="#F5F5F5" fontSize="3xl" align="center">
         messages were sent!
       </Text>
-      <Text pt="0.5rem" color="#F5F5F5" fontSize="2xl" align="center">
+      {/* <Text pt="0.5rem" color="#F5F5F5" fontSize="2xl" align="center">
         Now that's a lot of messages!!
-      </Text>
-      <Text pl="1rem" pr="1rem" color="#F5F5F5" fontSize="xl" align="center">
+      </Text> */}
+      <Text p="1rem" color="#F5F5F5" fontSize="xl" align="center">
         {drawData.month_correlation > 0.5
           ? "There is an increasing warmth in your relationship :)"
           : drawData.month_correlation < -0.5
           ? "but y'all have decreased talking now :/"
-          : ""}{" "}
+          : "Now that's a lot of messages!!"}{" "}
       </Text>
     </VStack>
   );
