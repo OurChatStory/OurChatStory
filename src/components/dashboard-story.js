@@ -162,7 +162,6 @@ const Dashboard = ({ drawData, isDemo }) => {
           align="center"
           bottom="5vh"
         >
-          {isShared ? <Spinner color="red.500" /> : ""}
           <Image
             boxSize="3vh"
             src={logo}
@@ -199,7 +198,7 @@ const Dashboard = ({ drawData, isDemo }) => {
         </Button>
       ) : navigator.canShare ? (
         <Button
-          leftIcon={<HiShare />}
+          leftIcon={isShared ? <Spinner color="black" /> : <HiShare />}
           w="100%"
           h="5vh"
           onClick={onButtonClick}
