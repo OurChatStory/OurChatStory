@@ -16,10 +16,10 @@ const Card6 = ({ drawData }) => {
       h="100vh"
     >
       <Text color="black" fontSize="4xl" align="center" fontWeight="bold">
-        This year was eventful!
+        This year was eventful
       </Text>
-      <Text color="black" fontSize="4xl" align="center">
-        We were locked inside our home, but together we made it to the end
+      <Text color="black" fontSize="3xl" align="center">
+        We were locked inside our home, but together we made it to the end!
       </Text>
     </VStack>
   );
