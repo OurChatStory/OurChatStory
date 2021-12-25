@@ -18,7 +18,7 @@ const Base = () => {
   const [showRes, setShowRes] = useState(false);
   const [data, setData] = useState({});
   const [showLoader, setShowLoader] = useState(false);
-
+  axios.get("https://wa-chat-analyzer.herokuapp.com/"); //to wake up heroku dyno
   return showRes ? (
     <Dashboard drawData={data} />
   ) : (

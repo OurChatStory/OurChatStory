@@ -27,6 +27,7 @@ const Card6 = ({ drawData }) => {
         align="center"
         fontWeight="medium"
       >
+        {console.log("d", drawData)}
         {drawData.members[0]}
       </Text>
       <Text color="black" fontSize="4xl" align="center">

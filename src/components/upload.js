@@ -7,9 +7,12 @@ import {
   Stack,
   Heading,
   Link,
+  Button,
+  Input,
 } from "@chakra-ui/react";
 import axios from "axios";
 
+const sample_data = require("../data/sample-response");
 const Upload = ({ setShowRes, setData }) => {
   const [isUploading, setIsUploading] = useState(false);
 
@@ -71,28 +74,56 @@ const Upload = ({ setShowRes, setData }) => {
       </Stack>
       <Center ml="2rem" mr="2rem" mt="3rem" mb="3rem">
         {isUploading ? (
-          <Spinner />
+          <>
+            <Spinner />
+            <Text>
+              {" "}
+              Brewing your story. Usually takes less than a minute...
+            </Text>
+          </>
         ) : (
-          <input
-            type="file"
-            name="file"
-            onChange={(event) => {
-              const file = event.target.files[0];
-              console.log("zz", file);
-              const data = new FormData();
-              data.append("file", file);
-              console.log("dd", data);
-              setIsUploading(true);
-              axios
-                .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
-                  // receive two parameter endpoint url ,form data
-                })
-                .then((res) => {
-                  setData(res.data);
-                  setShowRes(true);
-                });
-            }}
-          />
+          <>
+            <label for="hid" className="button-56">
+              Upload to make
+            </label>
+
+            <input
+              id="hid"
+              type="file"
+              name="file"
+              title=""
+              hidden
+              className="custom-file-input"
+              size="100"
+              onChange={(event) => {
+                const file = event.target.files[0];
+                console.log("zz", file);
+                const data = new FormData();
+                data.append("file", file);
+                console.log("dd", data);
+                setIsUploading(true);
+                axios
+                  .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
+                    // receive two parameter endpoint url ,form data
+                  })
+                  .then((res) => {
+                    setData(res.data);
+                    setShowRes(true);
+                  });
+              }}
+            />
+            <button
+              onClick={() => {
+                console.log(sample_data);
+                setData(sample_data.sample);
+                setShowRes(true);
+              }}
+              className="button-56"
+              style={{ backgroundColor: "white" }}
+            >
+              Show me first
+            </button>
+          </>
         )}
       </Center>
       <Stack spacing={3} m={["2rem", "3rem"]} fontSize={["1x1", "2xl"]}>
