@@ -30,7 +30,7 @@ const Card4 = ({ drawData }) => {
           animate={{
             duration: 3000,
           }}
-          colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
+          colorScale={["tomato", "orange", "gold", "cyan", "navy", "pink", "green"]}
           data={drawData.no_of_messages_per_member
             .slice(0, 6)
             .map(({ member, count }) => {
