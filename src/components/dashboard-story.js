@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import { Box, Button, Text, HStack, Image, IconButton, Spinner } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
-import { GrClose } from "react-icons/gr";
+import { IoClose } from "react-icons/io5";
 import Stories from "react-insta-stories";
 
 import MonthlyGraph from "./charts/monthly";
@@ -140,8 +140,10 @@ const Dashboard = ({ drawData, isDemo }) => {
         />
         <IconButton
           aria-label='Close' icon={
-            <GrClose
-              opacity={0.5}
+            <IoClose
+              size='1.5em'
+              opacity={0.8}
+              color='#555555'
             />
           }
           variant="none"
