@@ -1,5 +1,5 @@
 import { Text, VStack } from "@chakra-ui/react";
-import background from "../../static/bg2.png";
+import background from "../../static/bg99.jpeg";
 
 const Card6 = ({ drawData }) => {
   return (
@@ -10,7 +10,7 @@ const Card6 = ({ drawData }) => {
       backgroundImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
-      backgroundSize="140%"
+      backgroundSize="110%"
       p="2rem"
       w="100vw"
       h="100vh"
