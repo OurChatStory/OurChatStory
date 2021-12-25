@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Box, Button, Text, HStack, Image } from "@chakra-ui/react";
+import { Box, Button, Text, HStack, Image, IconButton } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
+import { GrClose } from "react-icons/gr";
 import Stories from "react-insta-stories";
 
 import MonthlyGraph from "./charts/monthly";
@@ -137,6 +138,21 @@ const Dashboard = ({ drawData, isDemo }) => {
           height="95vh"
           preventDefault={false}
         />
+        <IconButton
+          aria-label='Close' icon={
+            <GrClose
+              opacity={0.5}
+            />
+          }
+          variant="none"
+          colorScheme="transparent"
+          onClick={() => {
+            window.location.reload(false);
+          }}
+          position="absolute"
+          top="2vh"
+          right="0vw"
+          zIndex={10000} />
         <HStack
           w="100%"
           h="5vh"
