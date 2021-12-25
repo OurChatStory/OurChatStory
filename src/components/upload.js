@@ -51,25 +51,38 @@ const Upload = ({ setShowRes, setData }) => {
           <Text fontSize={["2x1", "3xl"]}>How?💁</Text>
         </Heading>
         <Text fontSize={["1x1", "2xl"]}>
-          <strong>Android:</strong> Install the WebApp by clicking on the{" "}
-          <u>three dots of chrome browser</u> and then clicking{" "}
-          <u>Install app</u>. Then go to your WhatsApp chat and export the
-          chat(without media) to OurChatStory app. <br />
-          <br />
-          <strong>iOS:</strong> Download the chat after exporting it via
-          WhatsApp and upload using the button below.
-          <br />
-          <br />
-          <strong> To export your WhatsApp chat as a .txt file</strong>
-          <br />{" "}
-          <i>
-            Open chat > Three dot on top right > More > Export chat > Without
-            media > download directly if iOS or Email yourself and download via
-            email
-          </i>
-        </Text>
-        <Text fontSize={["1x1", "2xl"]}>
-          Then click on the upload button and upload the .txt file
+          {/android/i.test(
+            navigator.userAgent || navigator.vendor || window.opera
+          ) ? (
+            <>
+              <strong>Android</strong> users can install the WebApp and share
+              chat directly to the app.
+              <br />
+              <br />
+              <strong> To install the WebApp</strong>
+              <br />
+              <i>
+                click on the three dots of chrome browser > click Install app
+              </i>
+              <br />
+              <strong> Then</strong> <br />
+              <i>
+                Go to the whatsapp chat > Click Three dot on top right > More >
+                Export chat > Without media > share it to OurChatStory app
+              </i>
+              <br />
+              <br />
+              OR upload .txt below directly
+            </>
+          ) : (
+            <>
+              <i>
+                Go to the whatsapp chat > Click Three dot on top right > More >
+                Export chat > Without media > Email youself via gmail > download
+                the file from gmail > Upload here
+              </i>
+            </>
+          )}
         </Text>
       </Stack>
       <Center ml="2rem" mr="2rem" mt="3rem" mb="3rem">
@@ -128,16 +141,22 @@ const Upload = ({ setShowRes, setData }) => {
       </Center>
       <Stack spacing={3} m={["2rem", "3rem"]} fontSize={["1x1", "2xl"]}>
         <Heading>
-          <Text fontSize={["2x1", "3xl"]}>Privacy?🥷</Text>
+          <Text fontSize={["2x1", "3xl"]}>No, we cant see your chat?🥷</Text>
         </Heading>
         <ul>
           <li>
-            The chats that you upload here are 100% secure and NO ONE can see it
+            The chats that you upload here are 100% secure and{" "}
+            <strong>NO ONE can see</strong> it
           </li>
           <li>We dont store your chat</li>
-          <li>We dont store any meta data of chat</li>
-          <li>Infact we dont have any database linked to this website</li>
-          <li>Our code is open source for your to see</li>
+          <li>
+            <strong>NONE of your data is stored</strong> in ANY DATABASE
+          </li>
+          <li>
+            This project is is <strong>open source</strong>, which means you can
+            see how it works
+            <a href="https://github.com/anshulagx/OurChatStory-Web"> here</a>
+          </li>
         </ul>
       </Stack>
     </Box>
