@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Box, Button, Text, HStack, Image, IconButton } from "@chakra-ui/react";
+import { Box, Button, Text, HStack, Image, IconButton, Spinner } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
 import { GrClose } from "react-icons/gr";
 import Stories from "react-insta-stories";
@@ -162,6 +162,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           align="center"
           bottom="5vh"
         >
+          {isShared ? <Spinner color="red.500" /> : ""}
           <Image
             boxSize="3vh"
             src={logo}
