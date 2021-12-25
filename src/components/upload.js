@@ -9,6 +9,8 @@ import {
   Link,
   Button,
   Input,
+  SimpleGrid,
+  GridItem,
 } from "@chakra-ui/react";
 import axios from "axios";
 
@@ -85,7 +87,7 @@ const Upload = ({ setShowRes, setData }) => {
           )}
         </Text>
       </Stack>
-      <Center ml="2rem" mr="2rem" mt="3rem" mb="3rem">
+      <Center ml="2rem" mr="2rem" mt="2rem" mb="3rem">
         {isUploading ? (
           <>
             <Spinner />
@@ -95,36 +97,38 @@ const Upload = ({ setShowRes, setData }) => {
             </Text>
           </>
         ) : (
-          <>
-            <label for="hid" className="button-56">
-              Upload to make
-            </label>
+          <SimpleGrid columns={[1, null, 2]}>
+            <Box>
+              <label for="hid" className="button-56">
+                Upload to make
+              </label>
 
-            <input
-              id="hid"
-              type="file"
-              name="file"
-              title=""
-              hidden
-              className="custom-file-input"
-              size="100"
-              onChange={(event) => {
-                const file = event.target.files[0];
-                console.log("zz", file);
-                const data = new FormData();
-                data.append("file", file);
-                console.log("dd", data);
-                setIsUploading(true);
-                axios
-                  .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
-                    // receive two parameter endpoint url ,form data
-                  })
-                  .then((res) => {
-                    setData(res.data);
-                    setShowRes(true);
-                  });
-              }}
-            />
+              <input
+                id="hid"
+                type="file"
+                name="file"
+                title=""
+                hidden
+                className="custom-file-input"
+                size="100"
+                onChange={(event) => {
+                  const file = event.target.files[0];
+                  console.log("zz", file);
+                  const data = new FormData();
+                  data.append("file", file);
+                  console.log("dd", data);
+                  setIsUploading(true);
+                  axios
+                    .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
+                      // receive two parameter endpoint url ,form data
+                    })
+                    .then((res) => {
+                      setData(res.data);
+                      setShowRes(true);
+                    });
+                }}
+              />
+            </Box>
             <button
               onClick={() => {
                 console.log(sample_data);
@@ -136,7 +140,7 @@ const Upload = ({ setShowRes, setData }) => {
             >
               Show me first
             </button>
-          </>
+          </SimpleGrid>
         )}
       </Center>
       <Stack spacing={3} m={["2rem", "3rem"]} fontSize={["1x1", "2xl"]}>
