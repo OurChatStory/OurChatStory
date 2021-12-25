@@ -12,7 +12,7 @@ const Card6 = ({ drawData }) => {
       bgImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
-      backgroundSize="100%"
+      backgroundSize="120%"
       p="3rem"
       pt="10"
       w="100vw"
