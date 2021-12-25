@@ -51,7 +51,7 @@ const Upload = ({ setShowRes, setData }) => {
                 " who texts the most?",
                 " how your chat story look like?",
               ]}
-              loop={5}
+              loop={1}
               cursor
               cursorStyle=""
               typeSpeed={70}
@@ -153,7 +153,11 @@ const Upload = ({ setShowRes, setData }) => {
                           setShowRes(true);
                         }).catch((error) => {
                           setIsUploading(false);
-                          alert(error.response.data);
+                          try {
+                            alert(error.response.data);
+                          } catch (error) {
+                            alert("Connection failed. Try again!");
+                          }
                         });
                     }}
                   />
