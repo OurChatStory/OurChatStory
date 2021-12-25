@@ -64,7 +64,7 @@ const Base = () => {
           mb="2rem"
           colorScheme="blue"
           align="center"
-          fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+          fontSize={{ base: "3xl", sm: "5xl", lg: "6xl" }}
         >
           #WhatsAppWrapped
         </Heading>

@@ -10,6 +10,7 @@ import {
   Button,
   Input,
   SimpleGrid,
+  VStack,
   GridItem,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -25,8 +26,8 @@ const Upload = ({ setShowRes, setData }) => {
       <Heading
         p="1rem"
         lineHeight={1.1}
-        fontWeight={600}
-        fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
+        fontWeight={700}
+        fontSize={{ base: "3xl", sm: "4xl", lg: "4xl" }}
       >
         <Text
           as={"span"}
@@ -50,7 +51,7 @@ const Upload = ({ setShowRes, setData }) => {
                 " who texts the most?",
                 " how your chat story look like?",
               ]}
-              loop={1}
+              loop={5}
               cursor
               cursorStyle=""
               typeSpeed={70}
@@ -66,10 +67,10 @@ const Upload = ({ setShowRes, setData }) => {
       </Heading>
 
       <Stack spacing={1} m={["1rem", "1rem"]}>
-        <Heading>
-          <Text fontSize={["2x1", "3xl"]}>How?💁</Text>
+        <Heading fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }} fontWeight={600}>
+          How?💁
         </Heading>
-        <Text fontSize={["1x1", "2xl"]}>
+        <Text fontSize={["x1", "2xl"]}>
           {/android/i.test(
             navigator.userAgent || navigator.vendor || window.opera
           ) ? (
@@ -104,74 +105,102 @@ const Upload = ({ setShowRes, setData }) => {
           )}
         </Text>
         <Center ml="2rem" mr="2rem" mt="1rem" mb="2rem">
-          {isUploading ? (
-            <>
-              <Spinner />
-              <Text>
-                {" "}
-                Brewing your story. Usually takes less than a minute...
-              </Text>
-            </>
-          ) : (
-            <SimpleGrid columns={[1, null, 2]} spacing={[1, null, 10]}>
-              <Box>
-                <label for="hid" className="button-56">
-                  Upload to make
-                </label>
+          <VStack
+            mt="2rem"
+            mb="2rem"
+            spacing="0.5rem"
+            align="center"
+          >
+            {isUploading ? (
+              <>
+                <Spinner />
+                <Text textAlign="center">
+                  Brewing your story...<br />Usually takes less than a minute.
+                </Text>
+              </>
+            ) : (
+              <>
+                <Button
+                  // variant="outline"
+                  colorScheme="green"
+                  size="lg"
+                >
+                  <label for="hid" cursor="pointer">
+                    Make your wrap
+                  </label>
 
-                <input
-                  id="hid"
-                  type="file"
-                  name="file"
-                  title=""
-                  hidden
-                  className="custom-file-input"
-                  size="100"
-                  onChange={(event) => {
-                    const file = event.target.files[0];
-                    console.log("zz", file);
-                    const data = new FormData();
-                    data.append("file", file);
-                    console.log("dd", data);
-                    setIsUploading(true);
-                    axios
-                      .post(
-                        "https://wa-chat-analyzer.herokuapp.com/wrap",
-                        data,
-                        {
+                  <input
+                    id="hid"
+                    type="file"
+                    name="file"
+                    title=""
+                    hidden
+                    className="custom-file-input"
+                    size="100"
+                    onChange={(event) => {
+                      const file = event.target.files[0];
+                      console.log("zz", file);
+                      const data = new FormData();
+                      data.append("file", file);
+                      console.log("dd", data);
+                      setIsUploading(true);
+                      axios
+                        .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
                           // receive two parameter endpoint url ,form data
-                        }
-                      )
-                      .then((res) => {
-                        setData(res.data);
-                        setShowRes(true);
-                      });
+                        })
+                        .then((res) => {
+                          setData(res.data);
+                          setShowRes(true);
+                        }).catch((error) => {
+                          setIsUploading(false);
+                          alert(error);
+                        });
+                    }}
+                  />
+                </Button>
+                <Button
+                  variant="link"
+                  // size="sm"
+                  colorScheme="green"
+                  onClick={() => {
+                    console.log(sample_data);
+                    setData(sample_data.sample);
+                    setShowRes(true);
                   }}
-                />
-              </Box>
-              <button
-                onClick={() => {
-                  console.log(sample_data);
-                  setData(sample_data.sample);
-                  setShowRes(true);
-                }}
-                className="button-56"
-                style={{ backgroundColor: "white" }}
-              >
-                Show me first
-              </button>
-            </SimpleGrid>
-          )}
+                >
+                  See a demo
+                </Button>
+              </>
+            )}
+          </VStack>
         </Center>
         <Heading>
-          <Text fontSize={["1x1", "2xl"]}>Privacy?</Text>
+          <Text fontSize={["2x1", "3xl"]} fontWeight={600}>Privacy! 🔐</Text>
         </Heading>
-        <Text>
+        <Text fontSize={["1x1", "2xl"]}>
           NO ONE can see your chats as they are not stored in the database.{" "}
           <br />
           This project is is <strong>open source</strong>, which means you can
-          see how it works
-          <a href="https://github.com/anshulagx/OurChatStory-Web"> here</a>
+          see how it works!
+          <br />
+          <Button
+            href="https://github.com/anshulagx/OurChatStory-Web"
+            target="_blank"
+            size="xl"
+            variant="link"
+            colorScheme="green"
+          >
+            Frontend Repo
+          </Button> | {" "}
+          <Button
+            href="https://github.com/iamyajat/WhatsApp-Chat-Analyzer-API"
+            target="_blank"
+            size="xl"
+            variant="link"
+            colorScheme="green"
+          >
+            API Repo
+          </Button>
         </Text>
       </Stack>
     </Box>
