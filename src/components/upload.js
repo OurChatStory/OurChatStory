@@ -82,20 +82,21 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
               chat directly to the app.
               <br />
               <br />
-              <strong> To install the WebApp</strong>
+              <strong>To install the WebApp</strong>
               <br />
               <i>
-                click on the three dots of chrome browser > click Install app
+                Click on the three dots of chrome browser > click Install app
               </i>
               <br />
-              <strong> Then</strong> <br />
+              <br />
+              <strong>Then</strong> <br />
               <i>
                 Go to the whatsapp chat > Click Three dot on top right > More >
                 Export chat > Without media > share it to OurChatStory app
               </i>
               <br />
               <br />
-              OR upload .txt below directly
+              <b>OR </b> upload .txt below directly
             </>
           ) : (
             <>
@@ -193,8 +194,10 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
         <Text fontSize={["1x1", "2xl"]}>
           NO ONE can see your chats as they are not stored in the database.{" "}
           <br />
+          <br />
           This project is is <strong>open source</strong>, which means you can
           see how it works!
+          <br />
           <br />
           <Button
             href="https://github.com/anshulagx/OurChatStory-Web"
