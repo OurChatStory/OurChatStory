@@ -198,21 +198,27 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
           see how it works!
           <br />
           <Button
-            href="https://github.com/anshulagx/OurChatStory-Web"
-            target="_blank"
             size="xl"
             variant="link"
             colorScheme="green"
+            onClick={
+              () => {
+                window.open("https://github.com/anshulagx/OurChatStory-Web");
+              }
+            }
           >
             Frontend Repo
           </Button>{" "}
           |{" "}
           <Button
-            href="https://github.com/iamyajat/WhatsApp-Chat-Analyzer-API"
-            target="_blank"
             size="xl"
             variant="link"
             colorScheme="green"
+            onClick={
+              () => {
+                window.open("https://github.com/iamyajat/WhatsApp-Chat-Analyzer-API");
+              }
+            }
           >
             API Repo
           </Button>
