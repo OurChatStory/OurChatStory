@@ -18,7 +18,7 @@ import axios from "axios";
 import { Typewriter, useTypewriter, Cursor } from "react-simple-typewriter";
 
 const sample_data = require("../data/sample-response");
-const Upload = ({ setShowRes, setData }) => {
+const Upload = ({ setShowRes, setData, setIsDemo }) => {
   const [isUploading, setIsUploading] = useState(false);
 
   return (
@@ -67,7 +67,10 @@ const Upload = ({ setShowRes, setData }) => {
       </Heading>
 
       <Stack spacing={1} m={["1rem", "1rem"]}>
-        <Heading fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }} fontWeight={600}>
+        <Heading
+          fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
+          fontWeight={600}
+        >
           How?💁
         </Heading>
         <Text fontSize={["x1", "2xl"]}>
@@ -105,17 +108,14 @@ const Upload = ({ setShowRes, setData }) => {
           )}
         </Text>
         <Center ml="2rem" mr="2rem" mt="1rem" mb="2rem">
-          <VStack
-            mt="2rem"
-            mb="2rem"
-            spacing="0.5rem"
-            align="center"
-          >
+          <VStack mt="2rem" mb="2rem" spacing="0.5rem" align="center">
             {isUploading ? (
               <>
                 <Spinner />
                 <Text textAlign="center">
-                  Brewing your story...<br />Usually takes less than a minute.
+                  Brewing your story...
+                  <br />
+                  Usually takes less than a minute.
                 </Text>
               </>
             ) : (
@@ -145,13 +145,19 @@ const Upload = ({ setShowRes, setData }) => {
                       console.log("dd", data);
                       setIsUploading(true);
                       axios
-                        .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
-                          // receive two parameter endpoint url ,form data
-                        })
+                        .post(
+                          "https://wa-chat-analyzer.herokuapp.com/wrap",
+                          data,
+                          {
+                            // receive two parameter endpoint url ,form data
+                          }
+                        )
                         .then((res) => {
                           setData(res.data);
+                          setIsDemo(false);
                           setShowRes(true);
-                        }).catch((error) => {
+                        })
+                        .catch((error) => {
                           setIsUploading(false);
                           alert(error.response.data);
                         });
@@ -165,6 +171,7 @@ const Upload = ({ setShowRes, setData }) => {
                   onClick={() => {
                     console.log(sample_data);
                     setData(sample_data.sample);
+                    setIsDemo(true);
                     setShowRes(true);
                   }}
                 >
@@ -175,7 +182,9 @@ const Upload = ({ setShowRes, setData }) => {
           </VStack>
         </Center>
         <Heading>
-          <Text fontSize={["2x1", "3xl"]} fontWeight={600}>Privacy! 🔐</Text>
+          <Text fontSize={["2x1", "3xl"]} fontWeight={600}>
+            Privacy! 🔐
+          </Text>
         </Heading>
         <Text fontSize={["1x1", "2xl"]}>
           NO ONE can see your chats as they are not stored in the database.{" "}
@@ -191,7 +200,8 @@ const Upload = ({ setShowRes, setData }) => {
             colorScheme="green"
           >
             Frontend Repo
-          </Button> | {" "}
+          </Button>{" "}
+          |{" "}
           <Button
             href="https://github.com/iamyajat/WhatsApp-Chat-Analyzer-API"
             target="_blank"

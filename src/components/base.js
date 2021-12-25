@@ -18,9 +18,11 @@ const Base = () => {
   const [showRes, setShowRes] = useState(false);
   const [data, setData] = useState({});
   const [showLoader, setShowLoader] = useState(false);
+  const [isDemo, setIsDemo] = useState(false);
+
   axios.get("https://wa-chat-analyzer.herokuapp.com/"); //to wake up heroku dyno
   return showRes ? (
-    <Dashboard drawData={data} />
+    <Dashboard drawData={data} isDemo={isDemo} />
   ) : (
     <Box
       p="1.5rem"
@@ -29,7 +31,7 @@ const Base = () => {
       bgImage={img}
       backgroundPosition="top"
       backgroundRepeat="repeat"
-      backgroundSize="130%"
+      backgroundSize="100%"
     >
       {
         (navigator.serviceWorker.onmessage = (event) => {
@@ -64,7 +66,7 @@ const Base = () => {
           mb="2rem"
           colorScheme="blue"
           align="center"
-          fontSize={{ base: "3xl", sm: "5xl", lg: "6xl" }}
+          fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
         >
           #WhatsAppWrapped
         </Heading>
@@ -79,7 +81,11 @@ const Base = () => {
             </Center>
           </Box>
         ) : (
-          <Uploader setShowRes={setShowRes} setData={setData} />
+          <Uploader
+            setIsDemo={setIsDemo}
+            setShowRes={setShowRes}
+            setData={setData}
+          />
         )}
       </Box>
       <Box p="1rem">

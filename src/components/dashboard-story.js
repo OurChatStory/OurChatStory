@@ -21,7 +21,7 @@ import logo from "../static/logo2.png";
 
 import * as htmlToImage from "html-to-image";
 
-const Dashboard = ({ drawData }) => {
+const Dashboard = ({ drawData, isDemo }) => {
   const [isShared, setIsShared] = useState(false);
   const ref = useRef();
   const onButtonClick = useCallback(() => {
@@ -165,7 +165,22 @@ const Dashboard = ({ drawData }) => {
           </Text>
         </HStack>
       </Box>
-      {navigator.canShare ? (
+      {isDemo ? (
+        <Button
+          w="100%"
+          h="5vh"
+          onClick={() => {
+            window.location.reload(false);
+          }}
+          position="sticky"
+          bottom="0vh"
+          zIndex={10000}
+          colorScheme="whatsapp"
+          borderRadius={0}
+        >
+          Click here to make your own wrap
+        </Button>
+      ) : navigator.canShare ? (
         <Button
           leftIcon={<HiShare />}
           w="100%"
