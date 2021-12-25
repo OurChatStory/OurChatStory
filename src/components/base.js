@@ -29,7 +29,7 @@ const Base = () => {
       bgImage={img}
       backgroundPosition="top"
       backgroundRepeat="repeat"
-      backgroundSize="140%"
+      backgroundSize="130%"
     >
       {
         (navigator.serviceWorker.onmessage = (event) => {
@@ -51,8 +51,8 @@ const Base = () => {
       <Stack
         align="center"
         direction={["column", "row"]}
-        paddingBottom="1rem"
-        spacing="24px"
+        paddingBottom="0.5rem"
+        spacing="10px"
       >
         <Image
           boxSize="70px"
@@ -70,14 +70,7 @@ const Base = () => {
         </Heading>
       </Stack>
 
-      <Box
-        m={["0.2rem", "1rem"]}
-        boxShadow="2xl"
-        bg="white"
-        p="5"
-        rounded="md"
-        h="100%"
-      >
+      <Box m={["0.2rem", "1rem"]} boxShadow="2xl" bg="white" p="5" rounded="md">
         {showLoader ? (
           <Box h="80vh">
             <Center mt="2rem">
