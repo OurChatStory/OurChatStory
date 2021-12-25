@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Box, Button, Text, HStack, Image } from "@chakra-ui/react";
+import { Box, Button, Text, HStack, Image, Spinner } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
 import Stories from "react-insta-stories";
 
@@ -136,7 +136,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           width="100vw"
           height="95vh"
           preventDefault={false}
-        />
+        />{" "}
         <HStack
           w="100%"
           h="5vh"
@@ -146,6 +146,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           align="center"
           bottom="5vh"
         >
+          {isShared ? <Spinner color="red.500" /> : ""}
           <Image
             boxSize="3vh"
             src={logo}
