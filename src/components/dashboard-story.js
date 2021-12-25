@@ -200,14 +200,14 @@ const Dashboard = ({ drawData, isDemo }) => {
         </Button>
       ) : navigator.canShare ? (
         <Button
-          leftIcon={isShared ? <Spinner color="black" /> : <HiShare />}
+          rightIcon={isShared ? <Spinner color="black" /> : <HiShare />}
           w="100%"
           h="5vh"
           onClick={onButtonClick}
           position="sticky"
           bottom="0vh"
           zIndex={10000}
-        ></Button>
+        >Share Story</Button>
       ) : (
         ""
       )}
