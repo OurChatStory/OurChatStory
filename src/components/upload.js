@@ -192,12 +192,10 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
           </Text>
         </Heading>
         <Text fontSize={["1x1", "2xl"]}>
-          NO ONE can see your chats as they are not stored in the database.{" "}
-          <br />
+          NO ONE can see your chats as they are not stored in any database.{" "}
           <br />
           This project is is <strong>open source</strong>, which means you can
           see how it works!
-          <br />
           <br />
           <Button
             href="https://github.com/anshulagx/OurChatStory-Web"
