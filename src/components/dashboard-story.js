@@ -151,7 +151,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           }}
           position="absolute"
           top="2vh"
-          right="0vw"
+          right="1vw"
           zIndex={10000} />
         <HStack
           w="100%"
