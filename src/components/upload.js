@@ -153,7 +153,7 @@ const Upload = ({ setShowRes, setData }) => {
                           setShowRes(true);
                         }).catch((error) => {
                           setIsUploading(false);
-                          alert(error);
+                          alert(error.response.data);
                         });
                     }}
                   />
