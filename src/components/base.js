@@ -83,10 +83,10 @@ const Base = () => {
         })
       }
       <Stack
+        m="0.75rem 1rem 1rem 1rem"
         align="center"
         direction={["column", "row"]}
-        paddingBottom="0.5rem"
-        spacing="10px"
+        spacing="1.25rem"
       >
         <CImage
           boxSize="70px"
@@ -132,14 +132,17 @@ const Base = () => {
         </Text>
         <Text fontSize={["x1", "2xl"]} align="center">
           <Link
-            cursor="pointer"
+            textDecoration="underline"
             href="https://twitter.com/anshulagx"
             target="_blank"
           >
             @anshulagx
           </Link>{" "}
           &{" "}
-          <Link href="https://twitter.com/iamyajat" target="_blank">
+          <Link
+            textDecoration="underline"
+            href="https://twitter.com/iamyajat"
+            target="_blank">
             @iamyajat
           </Link>
         </Text>

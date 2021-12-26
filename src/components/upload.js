@@ -128,11 +128,13 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
                   // variant="outline"
                   colorScheme="green"
                   size="lg"
+                  onClick={() => {
+                    document.getElementById("hid").click();
+                  }}
                 >
-                  <label for="hid" cursor="pointer">
-                    Make your wrap
-                  </label>
-
+                  {/* <label for="hid" cursor="pointer">
+                  </label> */}
+                  Make your wrap
                   <input
                     id="hid"
                     type="file"
