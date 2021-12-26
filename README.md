@@ -6,7 +6,6 @@ OurChatStory is built on top of [WhatsApp-Chat-Analyzer-API](https://github.com/
 
 https://ourchatstory.co/
 
-## Screenshots
 
 ![Site Screenshot](https://github.com/anshulagx/OurChatStory-Web/blob/main/public/banner_sd.png)
 
