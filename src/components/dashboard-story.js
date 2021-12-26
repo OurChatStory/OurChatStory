@@ -77,10 +77,14 @@ const Dashboard = ({ drawData, isDemo }) => {
       content: (props) => <Card9 drawData={drawData} />,
     },
     {
-      content: (props) => <MonthlyGraph drawData={drawData} />,
+      content: (props) => (
+        <MonthlyGraph drawData={drawData} isShared={isShared} />
+      ),
     },
     {
-      content: (props) => <HourlyGraph drawData={drawData} />,
+      content: (props) => (
+        <HourlyGraph drawData={drawData} isShared={isShared} />
+      ),
     },
     {
       content: (props) => <NoTalk drawData={drawData} />,

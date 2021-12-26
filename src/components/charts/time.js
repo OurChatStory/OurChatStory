@@ -1,14 +1,10 @@
-import {
-  Box,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Text, VStack } from "@chakra-ui/react";
 import background from "../../static/bg7.png";
 import { VictoryLine } from "victory";
 
 const parser = require("../../script/parser");
 
-const Card6 = ({ drawData }) => {
+const Card6 = ({ drawData, isShared }) => {
   return (
     <VStack
       spacing="1rem"
@@ -41,7 +37,7 @@ const Card6 = ({ drawData }) => {
               strokeLinecap: "round",
             },
           }}
-          animate={{ duration: 4000, onLoad: { duration: 4000 } }}
+          animate={{ onLoad: { duration: isShared ? 0 : 4000 } }}
           data={parser.hourly_count_data(drawData.hourly_count)}
         />
       </Box>

@@ -4,7 +4,7 @@ import { VictoryLine } from "victory";
 
 const parser = require("../../script/parser");
 
-const Card2 = ({ drawData }) => {
+const Card2 = ({ drawData, isShared }) => {
   return (
     <VStack
       spacing="0.5rem"
@@ -37,7 +37,7 @@ const Card2 = ({ drawData }) => {
               strokeLinecap: "round",
             },
           }}
-          animate={{ duration: 4000, onLoad: { duration: 4000 } }}
+          animate={{ onLoad: { duration: isShared ? 0 : 4000 } }}
           data={parser.monthly_count_data(drawData.monthly_chats_count)}
         />
       </Box>
