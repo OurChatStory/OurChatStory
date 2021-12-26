@@ -85,7 +85,8 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
               <strong>To install the WebApp</strong>
               <br />
               <i>
-                Click on the three dots of chrome browser > click Install app
+                Click on the three dots of chrome browser > You will find the
+                "Install App" option
               </i>
               <br />
               <br />
@@ -201,11 +202,9 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
             size="xl"
             variant="link"
             colorScheme="green"
-            onClick={
-              () => {
-                window.open("https://github.com/anshulagx/OurChatStory-Web");
-              }
-            }
+            onClick={() => {
+              window.open("https://github.com/anshulagx/OurChatStory-Web");
+            }}
           >
             Frontend Repo
           </Button>{" "}
@@ -214,11 +213,11 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
             size="xl"
             variant="link"
             colorScheme="green"
-            onClick={
-              () => {
-                window.open("https://github.com/iamyajat/WhatsApp-Chat-Analyzer-API");
-              }
-            }
+            onClick={() => {
+              window.open(
+                "https://github.com/iamyajat/WhatsApp-Chat-Analyzer-API"
+              );
+            }}
           >
             API Repo
           </Button>

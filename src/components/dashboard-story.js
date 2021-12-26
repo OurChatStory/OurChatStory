@@ -1,5 +1,13 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Box, Button, Text, HStack, Image, IconButton, Spinner } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Text,
+  HStack,
+  Image,
+  IconButton,
+  Spinner,
+} from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import Stories from "react-insta-stories";
@@ -139,13 +147,8 @@ const Dashboard = ({ drawData, isDemo }) => {
           preventDefault={false}
         />
         <IconButton
-          aria-label='Close' icon={
-            <IoClose
-              size='1.5em'
-              opacity={0.8}
-              color='#555555'
-            />
-          }
+          aria-label="Close"
+          icon={<IoClose size="1.5em" opacity={0.8} color="#555555" />}
           variant="none"
           colorScheme="transparent"
           onClick={() => {
@@ -154,7 +157,8 @@ const Dashboard = ({ drawData, isDemo }) => {
           position="absolute"
           top="2vh"
           right="1vw"
-          zIndex={10000} />
+          zIndex={10000}
+        />
         <HStack
           w="100%"
           h="5vh"
@@ -207,7 +211,9 @@ const Dashboard = ({ drawData, isDemo }) => {
           position="sticky"
           bottom="0vh"
           zIndex={10000}
-        >Share Story</Button>
+        >
+          Share
+        </Button>
       ) : (
         ""
       )}
