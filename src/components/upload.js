@@ -104,7 +104,9 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
               <i>
                 Go to the whatsapp chat > Click Three dot on top right > More >
                 Export chat > Without media > Email youself via gmail > download
-                the file from gmail > Upload here
+                the file from gmail > Upload here <br />
+                <b>OR</b> Open this website on an <b>Android</b> device to share
+                directly via WhatsApp
               </i>
             </>
           )}
@@ -117,7 +119,7 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
                 <Text textAlign="center">
                   Brewing your story...
                   <br />
-                  Usually takes less than a minute.
+                  Usually takes less than 20 seconds.
                 </Text>
               </>
             ) : (

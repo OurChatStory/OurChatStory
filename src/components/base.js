@@ -76,7 +76,13 @@ const Base = () => {
         {showLoader ? (
           <Box h="80vh">
             <Center mt="2rem">
-              <Text>Brewing! Please wait...</Text>
+              <Text>
+                {" "}
+                Brewing your story...
+                <br />
+                Usually takes less than 20 seconds.
+                <br />
+              </Text>
               <Spinner size="xl" />
             </Center>
           </Box>
