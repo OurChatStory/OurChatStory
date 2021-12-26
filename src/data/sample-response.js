@@ -16,6 +16,18 @@ module.exports.sample = {
       member: "Radhika",
       count: 7204,
     },
+    {
+      member: "Jack",
+      count: 1024,
+    },
+    {
+      member: "Ron",
+      count: 2204,
+    },
+    {
+      member: "Summy",
+      count: 3204,
+    },
   ],
   most_active_month: {
     month: "Jan",
