@@ -10,11 +10,11 @@ module.exports.sample = {
   no_of_messages_per_member: [
     {
       member: "Mark",
-      count: 7632,
+      count: 4632,
     },
     {
       member: "Radhika",
-      count: 7204,
+      count: 3204,
     },
     {
       member: "Jack",
