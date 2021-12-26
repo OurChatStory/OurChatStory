@@ -1,4 +1,5 @@
-import { VStack, Text, Image, Link, Box } from "@chakra-ui/react";
+import { VStack, Text, Image, Link, Box, Center } from "@chakra-ui/react";
+import ScriptTag from "react-script-tag/lib/ScriptTag";
 import background from "../../static/bg8.png";
 import logo from "../../static/logo2.png";
 
@@ -11,7 +12,7 @@ const Card6 = ({ drawData }) => {
       h="100vh"
       align="center"
       justify="center"
-      spacing="3rem"
+      spacing="2rem"
       backgroundImage={background}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
@@ -24,14 +25,14 @@ const Card6 = ({ drawData }) => {
         A new year
         <br /> A new Story!
       </Text>
-      <br />
-      <br />
       <Text color="#F5F5F5" fontSize="2xl" align="center">
         Share with your friends
       </Text>
-      <Image boxSize="70px" src={logo} alt="OurChatStory" />
+      <Image h="80px" src={logo} alt="OurChatStory" pb="1rem" />
       <Box zIndex={10000}>
-        <Text color="#F5F5F5" fontSize="2xl" align="center">
+        <Center pb="1rem">
+          <form><ScriptTag src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Ic6eHfMIx84gMI" async> </ScriptTag> </form>
+        </Center>        <Text color="#F5F5F5" fontSize="2xl" align="center">
           Made with ❤️ by
         </Text>
         <Text color="#F5F5F5" fontSize="xl" align="center">

@@ -17,6 +17,8 @@ import axios from "axios";
 
 import { Typewriter, useTypewriter, Cursor } from "react-simple-typewriter";
 
+import ScriptTag from 'react-script-tag';
+
 const sample_data = require("../data/sample-response");
 const Upload = ({ setShowRes, setData, setIsDemo }) => {
   const [isUploading, setIsUploading] = useState(false);
@@ -226,6 +228,9 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
             API Repo
           </Button>
         </Text>
+        <Center pt="2rem">
+          <form><ScriptTag src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Ic6eHfMIx84gMI" async> </ScriptTag> </form>
+        </Center>
       </Stack>
     </Box>
   );
