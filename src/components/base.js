@@ -25,6 +25,7 @@ import img8 from "../static/bg8.png"; //
 import img9 from "../static/bg9.png"; //
 import img11 from "../static/bg11.png"; //
 import img99 from "../static/bg99.png";
+import ScriptTag from "react-script-tag/lib/ScriptTag";
 
 const Base = () => {
   useEffect(() => {
@@ -127,6 +128,9 @@ const Base = () => {
         )}
       </Box>
       <Box p="1rem">
+        <Center pb="1rem">
+          <form><ScriptTag src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Ic6eHfMIx84gMI" async> </ScriptTag> </form>
+        </Center>
         <Text fontSize={["x1", "2xl"]} align="center">
           Made with ❤️ by
         </Text>
