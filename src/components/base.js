@@ -1,11 +1,11 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import {
   Heading,
   Box,
   Stack,
   Spinner,
   Center,
-  Image,
+  Image as CImage,
   Text,
   Link,
 } from "@chakra-ui/react";
@@ -14,7 +14,25 @@ import Uploader from "./upload";
 import axios from "axios";
 import img from "../static/bg2.png";
 import logo from "../static/logo2.png";
+
+import img2 from "../static/bg2.png";
+import img3 from "../static/bg3.png";
+import img4 from "../static/bg4.png";
+import img5 from "../static/bg5.png";
+import img6 from "../static/bg6.png";
+import img7 from "../static/bg7.png";
+import img8 from "../static/bg8.png";
+
 const Base = () => {
+  useEffect(() => {
+    const imagesPreload = [img2, img3, img4, img5, img6, img7, img8];
+    imagesPreload.forEach((image) => {
+      const newImage = new Image();
+      newImage.src = image;
+      window[image] = newImage;
+    });
+  });
+
   const [showRes, setShowRes] = useState(false);
   const [data, setData] = useState({});
   const [showLoader, setShowLoader] = useState(false);
@@ -56,7 +74,7 @@ const Base = () => {
         paddingBottom="0.5rem"
         spacing="10px"
       >
-        <Image
+        <CImage
           boxSize="70px"
           src={logo}
           alt="OurChatStory"
