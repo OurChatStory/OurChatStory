@@ -15,17 +15,31 @@ import axios from "axios";
 import img from "../static/bg2.png";
 import logo from "../static/logo2.png";
 
-import img2 from "../static/bg2.png";
-import img3 from "../static/bg3.png";
-import img4 from "../static/bg4.png";
-import img5 from "../static/bg5.png";
-import img6 from "../static/bg6.png";
-import img7 from "../static/bg7.png";
-import img8 from "../static/bg8.png";
+import img2 from "../static/bg2.png"; //
+import img3 from "../static/bg3.png"; //
+import img4 from "../static/bg4.png"; //
+import img5 from "../static/bg5.png"; //
+import img6 from "../static/bg6.png"; //
+import img7 from "../static/bg7.png"; //
+import img8 from "../static/bg8.png"; //
+import img9 from "../static/bg9.png"; //
+import img11 from "../static/bg11.png"; //
+import img99 from "../static/bg99.png";
 
 const Base = () => {
   useEffect(() => {
-    const imagesPreload = [img2, img3, img4, img5, img6, img7, img8];
+    const imagesPreload = [
+      img2,
+      img3,
+      img4,
+      img5,
+      img6,
+      img7,
+      img8,
+      img9,
+      img11,
+      img99,
+    ];
     imagesPreload.forEach((image) => {
       const newImage = new Image();
       newImage.src = image;
