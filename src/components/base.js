@@ -73,13 +73,25 @@ const Base = () => {
           data.append("file", imageBlob);
           setShowLoader(true);
           axios
-            .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
-              // receive two parameter endpoint url ,form data
-            })
+            .post(
+              "https://wa-chat-analyzer.herokuapp.com/wrap",
+              data,
+              {
+                // receive two parameter endpoint url ,form data
+              }
+            )
             .then((res) => {
-              console.log("res data", res.data);
               setData(res.data);
+              setIsDemo(false);
               setShowRes(true);
+            })
+            .catch((error) => {
+              setIsUploading(false);
+              try {
+                alert(error.response.data);
+              } catch (error) {
+                alert("Connection failed. Try again!");
+              }
             });
         })
       }
