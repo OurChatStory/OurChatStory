@@ -112,7 +112,7 @@ const Base = () => {
           align="center"
           fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
         >
-          #WhatsAppWrapped
+          WhatsApp Wrapped
         </Heading>
       </Stack>
 
