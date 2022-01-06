@@ -71,7 +71,8 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
         </Heading>
         <Text fontSize={["x1", "2xl"]}>
           {/android/i.test(
-            navigator.userAgent || navigator.vendor || window.opera
+            // navigator.userAgent || navigator.vendor || window.opera
+            ""
           ) ? (
             <>
               <strong>Android</strong> users can install the WebApp and share

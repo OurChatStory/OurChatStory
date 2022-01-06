@@ -1,5 +1,5 @@
 import { Box, Text, VStack } from "@chakra-ui/react";
-import background from "../../static/bg7.png";
+
 import { VictoryLine } from "victory";
 
 const parser = require("../../script/parser");
@@ -13,7 +13,7 @@ const Card6 = ({ drawData, isShared }) => {
       p="2rem"
       w="100vw"
       h="100vh"
-      backgroundImage={background}
+      backgroundImage="/static/bg7.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="110%"

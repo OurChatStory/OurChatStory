@@ -1,5 +1,5 @@
 import { Text, VStack } from "@chakra-ui/react";
-import background from "../../static/bg4.png";
+
 import CountUp from "react-countup";
 
 const Card1 = ({ drawData }) => {
@@ -12,7 +12,7 @@ const Card1 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage={background}
+      bgImage="/static/bg4.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="140%"

@@ -1,7 +1,5 @@
 import { VStack, Text, Image, Link, Box, Center } from "@chakra-ui/react";
 import ScriptTag from "react-script-tag/lib/ScriptTag";
-import background from "../../static/bg8.png";
-import logo from "../../static/logo2.png";
 
 const Card6 = ({ drawData }) => {
   return (
@@ -13,7 +11,7 @@ const Card6 = ({ drawData }) => {
       align="center"
       justify="center"
       spacing="2rem"
-      backgroundImage={background}
+      backgroundImage="static/bg8.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"
@@ -28,11 +26,20 @@ const Card6 = ({ drawData }) => {
       <Text color="#F5F5F5" fontSize="2xl" align="center">
         Share with your friends
       </Text>
-      <Image h="80px" src={logo} alt="OurChatStory" pb="1rem" />
+      <Image h="80px" src="static/logo2.png" alt="OurChatStory" pb="1rem" />
       <Box zIndex={10000}>
         <Center pb="1rem">
-          <form><ScriptTag src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Ic6eHfMIx84gMI" async> </ScriptTag> </form>
-        </Center>        <Text color="#F5F5F5" fontSize="2xl" align="center">
+          <form>
+            <ScriptTag
+              src="https://checkout.razorpay.com/v1/payment-button.js"
+              data-payment_button_id="pl_Ic6eHfMIx84gMI"
+              async
+            >
+              {" "}
+            </ScriptTag>{" "}
+          </form>
+        </Center>{" "}
+        <Text color="#F5F5F5" fontSize="2xl" align="center">
           Made with ❤️ by
         </Text>
         <Text color="#F5F5F5" fontSize="xl" align="center">
