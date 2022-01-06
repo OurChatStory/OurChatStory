@@ -45,30 +45,28 @@ const Base = () => {
       window[image] = newImage;
     });
 
-    {
-      navigator.serviceWorker.onmessage = (event) => {
-        var imageBlob = event.data.file;
-        const data = new FormData();
-        data.append("file", imageBlob);
-        setShowLoader(true);
-        axios
-          .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
-            // receive two parameter endpoint url ,form data
-          })
-          .then((res) => {
-            setData(res.data);
-            setIsDemo(false);
-            setShowRes(true);
-          })
-          .catch((error) => {
-            try {
-              alert(error.response.data);
-            } catch (error) {
-              alert("Connection failed. Try again!");
-            }
-          });
-      };
-    }
+    navigator.serviceWorker.onmessage = (event) => {
+      var imageBlob = event.data.file;
+      const data = new FormData();
+      data.append("file", imageBlob);
+      setShowLoader(true);
+      axios
+        .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
+          // receive two parameter endpoint url ,form data
+        })
+        .then((res) => {
+          setData(res.data);
+          setIsDemo(false);
+          setShowRes(true);
+        })
+        .catch((error) => {
+          try {
+            alert(error.response.data);
+          } catch (error) {
+            alert("Connection failed. Try again!");
+          }
+        });
+    };
   });
 
   const [showRes, setShowRes] = useState(false);
