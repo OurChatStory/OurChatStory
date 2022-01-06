@@ -27,23 +27,23 @@ import ScriptTag from "react-script-tag/lib/ScriptTag";
 
 const Base = () => {
   useEffect(() => {
-    // const imagesPreload = [
-    //   img2,
-    //   img3,
-    //   img4,
-    //   img5,
-    //   img6,
-    //   img7,
-    //   img8,
-    //   img9,
-    //   img11,
-    //   img99,
-    // ];
-    // imagesPreload.forEach((image) => {
-    //   const newImage = new Image();
-    //   newImage.src = image;
-    //   window[image] = newImage;
-    // });
+    const imagesPreload = [
+      "static/bg2.png",
+      "static/bg3.png",
+      "static/bg4.png",
+      "static/bg5.png",
+      "static/bg6.png",
+      "static/bg7.png",
+      "static/bg8.png",
+      "static/bg9.png",
+      "static/bg11.png",
+      "static/bg99.png",
+    ];
+    imagesPreload.forEach((image) => {
+      const newImage = new Image();
+      newImage.src = image;
+      window[image] = newImage;
+    });
 
     {
       navigator.serviceWorker.onmessage = (event) => {
