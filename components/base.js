@@ -143,6 +143,7 @@ const Base = () => {
           <a
             href="https://www.producthunt.com/posts/whatsapp-wrapped-by-ourchatstory-co?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-whatsapp-wrapped-by-ourchatstory-co"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=324689&theme=light"

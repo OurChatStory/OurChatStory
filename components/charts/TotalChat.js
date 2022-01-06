@@ -21,7 +21,7 @@ const Card1 = ({ drawData }) => {
       h="100vh"
     >
       <Text align="center" fontSize="5xl">
-        Infact y'all sent a total of{" "}
+        Infact y&apos;all sent a total of{" "}
       </Text>
       <Text fontSize="6xl" color="Brown" align="center" fontWeight="medium">
         <CountUp

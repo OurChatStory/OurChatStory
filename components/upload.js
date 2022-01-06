@@ -82,15 +82,16 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
               <strong>To install the WebApp</strong>
               <br />
               <i>
-                Click on the three dots of chrome browser > You will find the
-                "Install App" option
+                Click on the three dots of chrome browser &gt; You will find the
+                &quot;Install App&quot; option
               </i>
               <br />
               <br />
               <strong>Then</strong> <br />
               <i>
-                Go to the whatsapp chat > Click Three dot on top right > More >
-                Export chat > Without media > share it to OurChatStory app
+                Go to the whatsapp chat &gt; Click Three dot on top right &gt;
+                More &gt; Export chat &gt; Without media &gt; share it to
+                OurChatStory app
               </i>
               <br />
               <br />
@@ -99,9 +100,9 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
           ) : (
             <>
               <i>
-                Go to the whatsapp chat > Click Three dot on top right > More >
-                Export chat > Without media > Email youself via gmail > download
-                the file from gmail > Upload here <br />
+                Go to the whatsapp chat &gt; Click Three dot on top right &gt;
+                More &gt; Export chat &gt; Without media &gt; Email youself via
+                gmail &gt; download the file from gmail &gt; Upload here <br />
                 <b>OR</b> Open this website on an <b>Android</b> device to share
                 directly via WhatsApp
               </i>

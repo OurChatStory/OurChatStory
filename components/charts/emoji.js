@@ -18,6 +18,7 @@ const Card5 = ({ drawData }) => {
         {drawData.top_10_emojis.slice(0, 5).map(({ emoji }, i) => {
           return (
             <Text
+              key={i}
               align="center"
               style={{
                 margin: "0.5rem",

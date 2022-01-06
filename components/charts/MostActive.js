@@ -24,7 +24,7 @@ const Card1 = ({ drawData }) => {
         FUN FACT
       </Text>
       <Text fontSize="4xl" align="center">
-        Most of the time it's
+        Most of the time it&apos;s
       </Text>
       <Text
         pl="1rem"

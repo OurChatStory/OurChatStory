@@ -34,7 +34,7 @@ const Card6 = ({ drawData }) => {
           </Box>
           <br />
           <Text pt="1rem" fontSize="3xl" align="center">
-            Y'all didn't talk for{" "}
+            Y&apos;all didn&apos;t talk for{" "}
             <Text fontSize="5xl" align="center" fontWeight="medium">
               {parser.time_gap(drawData.longest_gap)}
             </Text>
@@ -46,7 +46,7 @@ const Card6 = ({ drawData }) => {
         </>
       ) : (
         <Text fontSize="3xl" align="center">
-          There was not a single day in 2021 when y'all didn't talk
+          There was not a single day in 2021 when y&apos;all didn&apos;t talk
         </Text>
       )}
     </VStack>
