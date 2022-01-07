@@ -26,8 +26,6 @@ import Card9 from "./charts/MostActive";
 import ThankYou from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
 
-import logo from "../static/logo2.png";
-
 import * as htmlToImage from "html-to-image";
 
 const Dashboard = ({ drawData, isDemo }) => {
@@ -174,7 +172,7 @@ const Dashboard = ({ drawData, isDemo }) => {
         >
           <Image
             boxSize="3vh"
-            src={logo}
+            src="static/logo2.png"
             alt="OurChatStory"
             style={{ imageRendering: "crisp-edges" }}
           />

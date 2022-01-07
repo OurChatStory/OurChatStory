@@ -1,5 +1,5 @@
 import { Box, Text, VStack } from "@chakra-ui/react";
-import background from "../../static/bg7.png";
+
 import { VictoryLine } from "victory";
 
 const parser = require("../../script/parser");
@@ -13,13 +13,13 @@ const Card6 = ({ drawData, isShared }) => {
       p="2rem"
       w="100vw"
       h="100vh"
-      backgroundImage={background}
+      backgroundImage="/static/bg7.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="110%"
     >
       <Text color="#F5F5F5" fontSize="3xl" align="center">
-        The time of the day y'all talk the most is
+        The time of the day y&apos;all talk the most is
       </Text>
       <Text color="#F5F5F5" fontSize="5xl" align="center" fontWeight="medium">
         {parser.active_time(drawData.most_active_hour.hour)}

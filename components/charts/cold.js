@@ -1,6 +1,5 @@
 import { Text, VStack, Box } from "@chakra-ui/react";
 
-import background from "../../static/bg11.png";
 const parser = require("../../script/parser");
 
 const Card6 = ({ drawData }) => {
@@ -9,7 +8,7 @@ const Card6 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage={background}
+      bgImage="/static/bg11.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"
@@ -17,8 +16,10 @@ const Card6 = ({ drawData }) => {
       pt="10"
       w="100vw"
       h="100vh"
-    > {
-        parser.time_gap(drawData.longest_gap) > 0 ? (<>
+    >
+      {" "}
+      {parser.time_gap(drawData.longest_gap) > 0 ? (
+        <>
           <Text fontSize="3xl" align="center">
             There were some cold moments
           </Text>
@@ -33,20 +34,21 @@ const Card6 = ({ drawData }) => {
           </Box>
           <br />
           <Text pt="1rem" fontSize="3xl" align="center">
-            Y'all didn't talk for{" "}
+            Y&apos;all didn&apos;t talk for{" "}
             <Text fontSize="5xl" align="center" fontWeight="medium">
               {parser.time_gap(drawData.longest_gap)}
             </Text>
-            {parser.time_gap(drawData.longest_gap) == 1 ? "whole day" : "consecutive days"} 🥺
+            {parser.time_gap(drawData.longest_gap) == 1
+              ? "whole day"
+              : "consecutive days"}{" "}
+            🥺
           </Text>
         </>
-        ) : (
-          <Text fontSize="3xl" align="center">
-            There was not a single day in 2021 when y'all didn't talk
-          </Text>
-        )
-      }
-
+      ) : (
+        <Text fontSize="3xl" align="center">
+          There was not a single day in 2021 when y&apos;all didn&apos;t talk
+        </Text>
+      )}
     </VStack>
   );
 };

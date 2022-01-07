@@ -3,8 +3,6 @@ import React, { useState } from "react";
 
 import { VictoryBar, VictoryStack, VictoryPie } from "victory";
 
-import background from "../../static/bg9.png";
-
 const Card4 = ({ drawData }) => {
   const [piRadii, setPiRadii] = useState(0);
   return (
@@ -12,7 +10,7 @@ const Card4 = ({ drawData }) => {
       spacing="0.5rem"
       align="center"
       justify="top"
-      bgImage={background}
+      bgImage="/static/bg9.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"

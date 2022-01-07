@@ -1,13 +1,12 @@
 import { Text, VStack } from "@chakra-ui/react";
 
-import background from "../../static/bg2.png";
 const Card6 = ({ drawData }) => {
   return (
     <VStack
       align="center"
       justify="center"
       spacing="1rem"
-      bgImage={background}
+      bgImage="/static/bg2.png"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"
       p="1rem"

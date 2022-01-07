@@ -1,7 +1,13 @@
 {
-  "name": "whatsanalyser-fe",
-  "version": "0.1.0",
+  "name": "ourchatstory",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export"
+  },
   "dependencies": {
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11.7.1",
@@ -15,6 +21,7 @@
     "axios": "^0.22.0",
     "framer-motion": "^4.1.17",
     "html-to-image": "^1.9.0",
+    "next": "^12.0.7",
     "normalize-number": "^1.0.3",
     "react": "^17.0.2",
     "react-countup": "^6.1.0",
@@ -35,28 +42,8 @@
     "victory": "^36.2.0",
     "web-vitals": "^1.1.2"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "eslint": "8.6.0",
+    "eslint-config-next": "12.0.7"
   }
 }

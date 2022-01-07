@@ -12,40 +12,61 @@ import {
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
 import axios from "axios";
-import img from "../static/bg2.png";
-import logo from "../static/logo2.png";
 
-import img2 from "../static/bg2.png"; //
-import img3 from "../static/bg3.png"; //
-import img4 from "../static/bg4.png"; //
-import img5 from "../static/bg5.png"; //
-import img6 from "../static/bg6.png"; //
-import img7 from "../static/bg7.png"; //
-import img8 from "../static/bg8.png"; //
-import img9 from "../static/bg9.png"; //
-import img11 from "../static/bg11.png"; //
-import img99 from "../static/bg99.png";
+// import img2 from "../static/bg2.png"; //
+// import img3 from "../static/bg3.png"; //
+// import img4 from "../static/bg4.png"; //
+// import img5 from "../static/bg5.png"; //
+// import img6 from "../static/bg6.png"; //
+// import img7 from "../static/bg7.png"; //
+// import img8 from "../static/bg8.png"; //
+// import img9 from "../static/bg9.png"; //
+// import img11 from "../static/bg11.png"; //
+// import img99 from "../static/bg99.png";
 import ScriptTag from "react-script-tag/lib/ScriptTag";
 
 const Base = () => {
   useEffect(() => {
     const imagesPreload = [
-      img2,
-      img3,
-      img4,
-      img5,
-      img6,
-      img7,
-      img8,
-      img9,
-      img11,
-      img99,
+      "static/bg2.png",
+      "static/bg3.png",
+      "static/bg4.png",
+      "static/bg5.png",
+      "static/bg6.png",
+      "static/bg7.png",
+      "static/bg8.png",
+      "static/bg9.png",
+      "static/bg11.png",
+      "static/bg99.png",
     ];
     imagesPreload.forEach((image) => {
       const newImage = new Image();
       newImage.src = image;
       window[image] = newImage;
     });
+
+    navigator.serviceWorker.onmessage = (event) => {
+      var imageBlob = event.data.file;
+      const data = new FormData();
+      data.append("file", imageBlob);
+      setShowLoader(true);
+      axios
+        .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
+          // receive two parameter endpoint url ,form data
+        })
+        .then((res) => {
+          setData(res.data);
+          setIsDemo(false);
+          setShowRes(true);
+        })
+        .catch((error) => {
+          try {
+            alert(error.response.data);
+          } catch (error) {
+            alert("Connection failed. Try again!");
+          }
+        });
+    };
   });
 
   const [showRes, setShowRes] = useState(false);
@@ -61,39 +82,11 @@ const Base = () => {
       p="1.5rem"
       w="100%"
       h="100%"
-      bgImage={img}
+      bgImage="static/bg2.png"
       backgroundPosition="top"
       backgroundRepeat="repeat"
       backgroundSize="100%"
     >
-      {
-        (navigator.serviceWorker.onmessage = (event) => {
-          var imageBlob = event.data.file;
-          const data = new FormData();
-          data.append("file", imageBlob);
-          setShowLoader(true);
-          axios
-            .post(
-              "https://wa-chat-analyzer.herokuapp.com/wrap",
-              data,
-              {
-                // receive two parameter endpoint url ,form data
-              }
-            )
-            .then((res) => {
-              setData(res.data);
-              setIsDemo(false);
-              setShowRes(true);
-            })
-            .catch((error) => {
-              try {
-                alert(error.response.data);
-              } catch (error) {
-                alert("Connection failed. Try again!");
-              }
-            });
-        })
-      }
       <Stack
         m="0.75rem 1rem 1rem 1rem"
         align="center"
@@ -102,7 +95,7 @@ const Base = () => {
       >
         <CImage
           boxSize="70px"
-          src={logo}
+          src="static/logo2.png"
           alt="OurChatStory"
           style={{ imageRendering: "crisp-edges" }}
         />
@@ -139,14 +132,34 @@ const Base = () => {
         )}
       </Box>
       <Box p="1rem">
-        <Stack pb="1rem"
+        <Stack
+          pb="1rem"
           justify="center"
           align="center"
           direction={["column", "row"]}
         >
-          <a href="https://www.producthunt.com/posts/whatsapp-wrapped-by-ourchatstory-co?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-whatsapp-wrapped-by-ourchatstory-co" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=324689&theme=light" alt="WhatsApp Wrapped by OurChatStory.co - Discover crazy insights from your WhatsApp chats | Product Hunt" width="188.81" height="38" /></a>
+          <a
+            href="https://www.producthunt.com/posts/whatsapp-wrapped-by-ourchatstory-co?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-whatsapp-wrapped-by-ourchatstory-co"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=324689&theme=light"
+              alt="WhatsApp Wrapped by OurChatStory.co - Discover crazy insights from your WhatsApp chats | Product Hunt"
+              width="188.81"
+              height="38"
+            />
+          </a>
           <Center pt="0.4rem">
-            <form><ScriptTag src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Ic6eHfMIx84gMI" async> </ScriptTag> </form>
+            <form>
+              <ScriptTag
+                src="https://checkout.razorpay.com/v1/payment-button.js"
+                data-payment_button_id="pl_Ic6eHfMIx84gMI"
+                async
+              >
+                {" "}
+              </ScriptTag>{" "}
+            </form>
           </Center>
         </Stack>
         <Text fontSize={["x1", "2xl"]} align="center">
@@ -164,7 +177,8 @@ const Base = () => {
           <Link
             textDecoration="underline"
             href="https://twitter.com/iamyajat"
-            target="_blank">
+            target="_blank"
+          >
             @iamyajat
           </Link>
         </Text>
