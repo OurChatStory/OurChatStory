@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
           <title>WhatsApp Wrapped - Chat Insights and Analysis</title>
           <meta
             name="description"
-            content="Get Spotify Wrapped style insights on you WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
+            content="Get Spotify Wrapped style insights of your WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
           />
           <meta name="author" content="Yajat Malhotra &amp; Anshul Agarwala" />
           <meta
@@ -25,7 +25,7 @@ export default class MyDocument extends Document {
           <meta property="og:title" content="WhatsApp Wrapped - Chat Insights and Analysis" />
           <meta
             property="og:description"
-            content="Get Spotify Wrapped style insights on you WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
+            content="Get Spotify Wrapped style insights of your WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
           />
           <meta
             property="og:image"
@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="twitter:description"
-            content="Get Spotify Wrapped style insights on you WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
+            content="Get Spotify Wrapped style insights of your WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
           />
           <meta
             name="twitter:image"
