@@ -27,7 +27,6 @@ import {API_URL} from "../constants";
 // import img9 from "../static/bg9.png"; //
 // import img11 from "../static/bg11.png"; //
 // import img99 from "../static/bg99.png";
-import ScriptTag from "react-script-tag/lib/ScriptTag";
 import Intro from "./intro";
 
 const Base = () => {
