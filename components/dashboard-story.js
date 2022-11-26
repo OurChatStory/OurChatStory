@@ -147,6 +147,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           width="100vw"
           height="95vh"
           preventDefault={false}
+          keyboardNavigation={true}
         />
         <IconButton
           aria-label="Close"
