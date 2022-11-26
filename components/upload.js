@@ -10,7 +10,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import axios from "axios";
-
+import {API_URL} from "../constants";
 import { Typewriter, useTypewriter, Cursor } from "react-simple-typewriter";
 
 const sample_data = require("../data/sample-response");
@@ -150,7 +150,7 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
                       setIsUploading(true);
                       axios
                         .post(
-                          "https://wa-chat-analyzer.herokuapp.com/wrap",
+                          API_URL+"wrap",
                           data,
                           {
                             // receive two parameter endpoint url ,form data

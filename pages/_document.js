@@ -9,23 +9,23 @@ export default class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
 
-          <title>WhatsApp Wrapped by OurChatStory</title>
+          <title>WhatsApp Wrapped - Chat Insights and Analysis</title>
           <meta
             name="description"
-            content="Get your WhatsApp Wrapped now and see who texts first, who texts more, when y'all text the most and more!"
+            content="Get Spotify Wrapped style insights of your WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
           />
           <meta name="author" content="Yajat Malhotra &amp; Anshul Agarwala" />
           <meta
             name="keywords"
-            content="WhatsApp, Wrapped, WhatsAppWrapped, #WhatsAppWrapped, Ourchatstory, our, chat, story, "
+            content="WhatsApp, Wrapped, WhatsAppWrapped, #WhatsAppWrapped, Ourchatstory, our, chat, story, spotify, reddit, recap, 2022"
           />
 
           <meta property="og:url" content="https://OurChatStory.co/" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="WhatsApp Wrapped - OurChatStory" />
+          <meta property="og:title" content="WhatsApp Wrapped - Chat Insights and Analysis" />
           <meta
             property="og:description"
-            content="Get your WhatsApp Wrapped now and see who texts you first, who texts more, when y'all text the most and more!"
+            content="Get Spotify Wrapped style insights of your WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
           />
           <meta
             property="og:image"
@@ -37,11 +37,11 @@ export default class MyDocument extends Document {
           <meta property="twitter:url" content="https://OurChatStory.co/" />
           <meta
             name="twitter:title"
-            content="WhatsApp Wrapped - OurChatStory"
+            content="WhatsApp Wrapped - Chat Insights and Analysis"
           />
           <meta
             name="twitter:description"
-            content="Get your WhatsApp Wrapped now and see who texts you first, who texts more, when y'all text the most and more!"
+            content="Get Spotify Wrapped style insights of your WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
           />
           <meta
             name="twitter:image"
