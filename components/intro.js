@@ -24,11 +24,11 @@ const Intro = () => {
                         gradientWidth={30}
                         pauseOnHover={true}
                     >
-                        {[...Array(6)].map((_, i) => (
+                        {[...Array(8)].map((_, i) => (
 
                             <Text
                                 as="span"
-                                fontSize="2xl"
+                                fontSize={{ base: "2xl", md: "2xl", sm: "2xl", lg: "xl" }}
                                 fontWeight="bold"
                                 color="white"
                                 m="0.5rem"

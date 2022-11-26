@@ -82,8 +82,125 @@ const App = () => {
         // backgroundRepeat="repeat"
         // backgroundSize="100%"
         >
+            <CImage
+                src="static/yellow.svg"
+                position="absolute"
+                top="50vh"
+                left="18vw"
+                width="10rem"
+                height="10rem"
+                objectFit="cover"
+                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
+                opacity={0.6}
+                zIndex={0}
+                animation={{
+                    duration: "10s",
+                    repeat: "infinite",
+                    timingFunction: "linear",
+                    animation: "spin 10s linear infinite",
+                }}
+            />
+
+            <CImage
+                src="static/green.svg"
+                position="absolute"
+                top="22vh"
+                left="8vw"
+                width="10rem"
+                height="10rem"
+                objectFit="cover"
+                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
+                opacity={0.6}
+                zIndex={0}
+                animation={{
+                    duration: "10s",
+                    repeat: "infinite",
+                    timingFunction: "linear",
+                    animation: "spin 10s linear infinite",
+                }}
+            />
+
+
+            <CImage
+                src="static/pink.svg"
+                position="absolute"
+                top="75vh"
+                left="5vw"
+                width="10rem"
+                height="10rem"
+                objectFit="cover"
+                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
+                opacity={0.6}
+                zIndex={0}
+                animation={{
+                    duration: "10s",
+                    repeat: "infinite",
+                    timingFunction: "linear",
+                    animation: "spin 10s linear infinite",
+                }}
+            />
+
+
+            <CImage
+                src="static/yellow.svg"
+                position="absolute"
+                top="75vh"
+                right="5vw"
+                width="10rem"
+                height="10rem"
+                objectFit="cover"
+                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
+                opacity={0.6}
+                zIndex={0}
+                animation={{
+                    duration: "10s",
+                    repeat: "infinite",
+                    timingFunction: "linear",
+                    animation: "spin 10s linear infinite",
+                }}
+            />
+
+
+            <CImage
+                src="static/pink.svg"
+                position="absolute"
+                top="22vh"
+                right="8vw"
+                width="10rem"
+                height="10rem"
+                objectFit="cover"
+                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
+                opacity={0.6}
+                zIndex={0}
+                animation={{
+                    duration: "10s",
+                    repeat: "infinite",
+                    timingFunction: "linear",
+                    animation: "spin 10s linear infinite",
+                }}
+            />
+
+
+            <CImage
+                src="static/green.svg"
+                position="absolute"
+                top="50vh"
+                right="18vw"
+                width="10rem"
+                height="10rem"
+                objectFit="cover"
+                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
+                opacity={0.6}
+                zIndex={0}
+                animation={{
+                    duration: "10s",
+                    repeat: "infinite",
+                    timingFunction: "linear",
+                    animation: "spin 10s linear infinite",
+                }}
+            />
             <HStack
-                p="1rem 1.5rem 0.5rem 1.5rem"
+                p="1rem 1.5rem 0.6rem 1.5rem"
                 align="center"
                 bgColor={"#000"}
                 w="100%"
