@@ -12,6 +12,7 @@ import {
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
 import axios from "axios";
+import {API_URL} from "../constants";
 
 // import img2 from "../static/bg2.png"; //
 // import img3 from "../static/bg3.png"; //
@@ -46,12 +47,13 @@ const Base = () => {
     });
 
     navigator.serviceWorker.onmessage = (event) => {
+
       var imageBlob = event.data.file;
       const data = new FormData();
       data.append("file", imageBlob);
       setShowLoader(true);
       axios
-        .post("https://wa-chat-analyzer.herokuapp.com/wrap", data, {
+        .post(API_URL+"wrap", data, {
           // receive two parameter endpoint url ,form data
         })
         .then((res) => {
@@ -74,7 +76,6 @@ const Base = () => {
   const [showLoader, setShowLoader] = useState(false);
   const [isDemo, setIsDemo] = useState(false);
 
-  // axios.get("https://wa-chat-analyzer.herokuapp.com/"); //to wake up heroku dyno
   return showRes ? (
     <Dashboard drawData={data} isDemo={isDemo} />
   ) : (
