@@ -1,18 +1,8 @@
-import Head from "next/head";
-import Image from "next/image";
-
-import { extendTheme } from "@chakra-ui/react";
-
 import { ChakraProvider } from "@chakra-ui/react";
 
 import Base from "../components/base";
 
-const theme = extendTheme({
-  fonts: {
-    heading: "Poppins",
-    body: "Poppins",
-  },
-});
+import theme from "./theme"
 
 export default function Home() {
   return (

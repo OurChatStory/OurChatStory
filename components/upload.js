@@ -35,12 +35,12 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
             position: "absolute",
             bottom: 1,
             left: 0,
-            bg: "green.400",
+            bg: "primary.400",
             zIndex: -1,
           }}
         >
           Want to know
-          <Text as={"span"} color={"green.400"}>
+          <Text as={"span"} color={"primary.400"}>
             <Typewriter
               words={[
                 " who texts first?",
@@ -124,7 +124,7 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
               <>
                 <Button
                   // variant="outline"
-                  colorScheme="green"
+                  colorScheme="primary"
                   size="lg"
                   onClick={() => {
                     document.getElementById("hid").click();
@@ -175,7 +175,7 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
                 <Button
                   variant="link"
                   // size="sm"
-                  colorScheme="green"
+                  colorScheme="primary"
                   onClick={() => {
                     console.log(sample_data);
                     setData(sample_data.sample);
@@ -203,7 +203,7 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
           <Button
             size="xl"
             variant="link"
-            colorScheme="green"
+            colorScheme="primary"
             onClick={() => {
               window.open("https://github.com/anshulagx/OurChatStory-Web");
             }}
@@ -214,7 +214,7 @@ const Upload = ({ setShowRes, setData, setIsDemo }) => {
           <Button
             size="xl"
             variant="link"
-            colorScheme="green"
+            colorScheme="primary"
             onClick={() => {
               window.open(
                 "https://github.com/iamyajat/WhatsApp-Chat-Analyzer-API"

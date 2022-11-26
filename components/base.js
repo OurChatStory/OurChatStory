@@ -8,6 +8,9 @@ import {
   Image as CImage,
   Text,
   Link,
+  Button,
+  HStack,
+  Spacer,
 } from "@chakra-ui/react";
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
@@ -24,6 +27,7 @@ import axios from "axios";
 // import img11 from "../static/bg11.png"; //
 // import img99 from "../static/bg99.png";
 import ScriptTag from "react-script-tag/lib/ScriptTag";
+import Intro from "./intro";
 
 const Base = () => {
   useEffect(() => {
@@ -79,37 +83,98 @@ const Base = () => {
     <Dashboard drawData={data} isDemo={isDemo} />
   ) : (
     <Box
-      p="1.5rem"
       w="100%"
-      h="100%"
-      bgImage="static/bg2.png"
-      backgroundPosition="top"
-      backgroundRepeat="repeat"
-      backgroundSize="100%"
+      h="100vh"
+      bgColor="primary.200"
+    // bgImage="static/bg2.png"
+    // backgroundPosition="top"
+    // backgroundRepeat="repeat"
+    // backgroundSize="100%"
     >
-      <Stack
-        m="0.75rem 1rem 1rem 1rem"
+      <HStack
+        p="1rem 1.5rem 0.5rem 1.5rem"
         align="center"
         direction={["column", "row"]}
-        spacing="1.25rem"
+      // spacing="1.25rem"
       >
         <CImage
-          boxSize="70px"
+          boxSize="45px"
           src="static/logo2.png"
           alt="OurChatStory"
           style={{ imageRendering: "crisp-edges" }}
         />
-        <Heading
+        {/* <Heading
           mb="2rem"
           colorScheme="blue"
           align="center"
           fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
         >
           WhatsApp Wrapped
-        </Heading>
-      </Stack>
+        </Heading> */}
+        <Spacer
+          w={"100%"}
+        />
+        <Button
+          // variant="outline"
+          colorScheme="dark"
+          size="lg"
+          p={["1.5rem", "1rem"]}
+          borderRadius={50}
+          onClick={() => {
+            document.getElementById("hid").click();
+          }}
+        >
+          {/* <label for="hid" cursor="pointer">
+                  </label> */}
+          <Text
+            fontSize={{ base: "sm", sm: "sm", lg: "md" }}
+            color="white"
+          >
+            Make your wrap
+          </Text>
+          <input
+            id="hid"
+            type="file"
+            name="file"
+            title=""
+            hidden
+            className="custom-file-input"
+            size="100"
+            onChange={(event) => {
+              const file = event.target.files[0];
+              console.log("zz", file);
+              const data = new FormData();
+              data.append("file", file);
+              console.log("dd", data);
+              setIsUploading(true);
+              axios
+                .post(
+                  "https://wa-chat-analyzer.herokuapp.com/wrap",
+                  data,
+                  {
+                    // receive two parameter endpoint url ,form data
+                  }
+                )
+                .then((res) => {
+                  setData(res.data);
+                  setIsDemo(false);
+                  setShowRes(true);
+                })
+                .catch((error) => {
+                  setIsUploading(false);
+                  try {
+                    alert(error.response.data);
+                  } catch (error) {
+                    alert("Connection failed. Try again!");
+                  }
+                });
+            }}
+          />
+        </Button>
+      </HStack>
 
-      <Box m={["0.2rem", "1rem"]} boxShadow="2xl" bg="white" p="5" rounded="md">
+      <Box>
+        <Intro />
         {showLoader ? (
           <Box h="80vh">
             <Center mt="2rem">
@@ -124,15 +189,16 @@ const Base = () => {
             </Center>
           </Box>
         ) : (
-          <Uploader
-            setIsDemo={setIsDemo}
-            setShowRes={setShowRes}
-            setData={setData}
-          />
+          // <Uploader
+          //   setIsDemo={setIsDemo}
+          //   setShowRes={setShowRes}
+          //   setData={setData}
+          // />
+          " "
         )}
       </Box>
       <Box p="1rem">
-        <Stack
+        {/* <Stack
           pb="1rem"
           justify="center"
           align="center"
@@ -150,19 +216,8 @@ const Base = () => {
               height="38"
             />
           </a>
-          <Center pt="0.4rem">
-            <form>
-              <ScriptTag
-                src="https://checkout.razorpay.com/v1/payment-button.js"
-                data-payment_button_id="pl_Ic6eHfMIx84gMI"
-                async
-              >
-                {" "}
-              </ScriptTag>{" "}
-            </form>
-          </Center>
-        </Stack>
-        <Text fontSize={["x1", "2xl"]} align="center">
+        </Stack> */}
+        {/* <Text fontSize={["x1", "2xl"]} align="center">
           Made with ❤️ by
         </Text>
         <Text fontSize={["x1", "2xl"]} align="center">
@@ -181,7 +236,7 @@ const Base = () => {
           >
             @iamyajat
           </Link>
-        </Text>
+        </Text> */}
       </Box>
     </Box>
   );
