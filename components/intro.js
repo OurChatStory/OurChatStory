@@ -1,15 +1,15 @@
 import { Box, Text } from '@chakra-ui/react'
 import React from 'react'
 import Marquee from 'react-fast-marquee'
-import useScrollSnap from 'react-use-scroll-snap';
+// import useScrollSnap from 'react-use-scroll-snap';
 
 
 const Intro = () => {
-    const scrollRef = useRef(null);
-    useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
+    // const scrollRef = useRef(null);
+    // useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
 
     return (
-        <section ref={scrollRef}>
+        <section>
             <Box
                 mt="0.5rem"
                 bgColor={"#9b1fe8"}
@@ -47,8 +47,8 @@ const Intro = () => {
             </Box>
 
             <Box
-                m="0.5rem"
-                bgColor="white"
+                m="1rem"
+                bgColor="pink.400"
                 p="1rem"
                 h="80vh"
                 borderRadius="10px"
