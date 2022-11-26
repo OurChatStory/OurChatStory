@@ -22,6 +22,7 @@
     "react-icons": "^4.6.0",
     "react-insta-stories": "^2.4.2",
     "react-simple-typewriter": "^5.0.1",
+    "react-use-scroll-snap": "^0.0.4",
     "victory": "^36.6.8"
   }
 }

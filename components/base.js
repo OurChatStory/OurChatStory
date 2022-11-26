@@ -15,7 +15,7 @@ import {
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
 import axios from "axios";
-import {API_URL} from "../constants";
+import { API_URL } from "../constants";
 
 // import img2 from "../static/bg2.png"; //
 // import img3 from "../static/bg3.png"; //
@@ -30,6 +30,8 @@ import {API_URL} from "../constants";
 import Intro from "./intro";
 
 const Base = () => {
+  const [isUploading, setIsUploading] = useState(false);
+
   useEffect(() => {
     const imagesPreload = [
       "static/bg2.png",
@@ -56,7 +58,7 @@ const Base = () => {
       data.append("file", imageBlob);
       setShowLoader(true);
       axios
-        .post(API_URL+"wrap", data, {
+        .post(API_URL + "wrap", data, {
           // receive two parameter endpoint url ,form data
         })
         .then((res) => {
@@ -85,7 +87,7 @@ const Base = () => {
     <Box
       w="100%"
       h="100vh"
-      bgColor="primary.200"
+      bgColor="#000"
     // bgImage="static/bg2.png"
     // backgroundPosition="top"
     // backgroundRepeat="repeat"
@@ -94,7 +96,10 @@ const Base = () => {
       <HStack
         p="1rem 1.5rem 0.5rem 1.5rem"
         align="center"
+        bgColor={"#000"}
+        w="100%"
         direction={["column", "row"]}
+        // position="fixed"
       // spacing="1.25rem"
       >
         <CImage
@@ -116,9 +121,8 @@ const Base = () => {
         />
         <Button
           // variant="outline"
-          colorScheme="dark"
-          size="lg"
-          p={["1.5rem", "1rem"]}
+          colorScheme="primary"
+          p={{ base: ["2rem", "1.5rem"], sm: ["2rem", "1.5rem"], lg: ["2rem", "1.5rem"] }}
           borderRadius={50}
           onClick={() => {
             document.getElementById("hid").click();
@@ -128,7 +132,7 @@ const Base = () => {
                   </label> */}
           <Text
             fontSize={{ base: "sm", sm: "sm", lg: "md" }}
-            color="white"
+            color="dark"
           >
             Make your wrap
           </Text>
@@ -149,7 +153,7 @@ const Base = () => {
               setIsUploading(true);
               axios
                 .post(
-                  "https://wa-chat-analyzer.herokuapp.com/wrap",
+                  API_URL + "wrap",
                   data,
                   {
                     // receive two parameter endpoint url ,form data

@@ -1,4 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import App from "../components/app";
 
 import Base from "../components/base";
 
@@ -8,7 +9,8 @@ export default function Home() {
   return (
     <div>
       <ChakraProvider theme={theme}>
-        <Base />
+        {/* <Base /> */}
+        <App />
       </ChakraProvider>
     </div>
   );
