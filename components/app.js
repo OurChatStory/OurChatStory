@@ -12,13 +12,25 @@ import {
     HStack,
     Spacer,
     VStack,
+    keyframes,
 } from "@chakra-ui/react";
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
 import axios from "axios";
 import { API_URL } from "../constants";
 import Intro from "./intro";
+
+const spin = keyframes`
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg)}
+`;
+
+
+
+
 const App = () => {
+    const spinAnimation = `${spin} infinite 20s linear`;
+
     const [isUploading, setIsUploading] = useState(false);
 
     useEffect(() => {
@@ -93,12 +105,7 @@ const App = () => {
                 display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
                 opacity={0.6}
                 zIndex={0}
-                animation={{
-                    duration: "10s",
-                    repeat: "infinite",
-                    timingFunction: "linear",
-                    animation: "spin 10s linear infinite",
-                }}
+                animation={spinAnimation}
             />
 
             <CImage
@@ -112,12 +119,7 @@ const App = () => {
                 display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
                 opacity={0.6}
                 zIndex={0}
-                animation={{
-                    duration: "10s",
-                    repeat: "infinite",
-                    timingFunction: "linear",
-                    animation: "spin 10s linear infinite",
-                }}
+                animation={spinAnimation}
             />
 
 
@@ -132,12 +134,7 @@ const App = () => {
                 display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
                 opacity={0.6}
                 zIndex={0}
-                animation={{
-                    duration: "10s",
-                    repeat: "infinite",
-                    timingFunction: "linear",
-                    animation: "spin 10s linear infinite",
-                }}
+                animation={spinAnimation}
             />
 
 
@@ -152,12 +149,7 @@ const App = () => {
                 display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
                 opacity={0.6}
                 zIndex={0}
-                animation={{
-                    duration: "10s",
-                    repeat: "infinite",
-                    timingFunction: "linear",
-                    animation: "spin 10s linear infinite",
-                }}
+                animation={spinAnimation}
             />
 
 
@@ -172,12 +164,7 @@ const App = () => {
                 display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
                 opacity={0.6}
                 zIndex={0}
-                animation={{
-                    duration: "10s",
-                    repeat: "infinite",
-                    timingFunction: "linear",
-                    animation: "spin 10s linear infinite",
-                }}
+                animation={spinAnimation}
             />
 
 
@@ -192,12 +179,7 @@ const App = () => {
                 display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
                 opacity={0.6}
                 zIndex={0}
-                animation={{
-                    duration: "10s",
-                    repeat: "infinite",
-                    timingFunction: "linear",
-                    animation: "spin 10s linear infinite",
-                }}
+                animation={spinAnimation}
             />
             <HStack
                 p="1rem 1.5rem 0.6rem 1.5rem"

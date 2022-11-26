@@ -1,13 +1,19 @@
-import { Box, Center, HStack, Spacer, Text, VStack } from '@chakra-ui/react'
+import { Box, Center, HStack, keyframes, Spacer, Text, VStack } from '@chakra-ui/react'
 import { useRef } from 'react';
 import Marquee from 'react-fast-marquee'
 import { HiArrowCircleUp, HiArrowUp } from 'react-icons/hi';
 import useScrollSnap from 'react-use-scroll-snap';
 
+const moveUp = keyframes`
+    from {transform: translateY(0px);}
+    to {transform: translateY(-10px);}
+`;
 
 const Intro = () => {
     const scrollRef = useRef(null);
-    useScrollSnap({ ref: scrollRef, duration: 100, delay: 0 });
+    useScrollSnap({ ref: scrollRef, duration: 1, delay: 1 });
+    const moveUpAnimation = `${moveUp} infinite 1s ease-in-out alternate`;
+
 
     return (
         <>
@@ -147,6 +153,7 @@ const Intro = () => {
                         w={"100%"}
                         pt="2.5rem"
                         align={"center"}
+                        animation={moveUpAnimation}
                     >
                         <HiArrowUp
                             size="1rem"
@@ -162,7 +169,7 @@ const Intro = () => {
                             fontWeight="400"
                             align={"center"}
                         >
-                            Scroll to see more
+                            scroll to see more
                         </Text>
                     </VStack>
 

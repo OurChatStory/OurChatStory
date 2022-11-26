@@ -24,5 +24,8 @@
     "react-simple-typewriter": "^5.0.1",
     "react-use-scroll-snap": "^0.0.4",
     "victory": "^36.6.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0"
   }
 }
