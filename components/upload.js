@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { API_URL } from "../constants";
-import { Typewriter, useTypewriter, Cursor } from "react-simple-typewriter";
 import { IoClose, IoCloudyNight } from "react-icons/io5";
 
 const sample_data = require("../data/sample-response");
@@ -137,7 +136,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                     Click on the three dots on the top right corner.
                   </ListItem>
                   <ListItem>
-                    Click on "More" &gt; "Export chat" &gt; "Without media".
+                    Click on &quot;More&quot; &gt; &quot;Export chat&quot; &gt; &quot;Without media&quot;.
                   </ListItem>
                   <ListItem>
                     Share it to OurChatStory app.
@@ -158,10 +157,10 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                     Click on the three dots on the top right corner.
                   </ListItem>
                   <ListItem>
-                    Click on "More" &gt; "Export chat" &gt; "Without media".
+                    Click on &quot;More&quot; &gt; &quot;Export chat&quot; &gt; &quot;Without media&quot;.
                   </ListItem>
                   <ListItem>
-                    Click on "Email yourself" &gt; "Send".
+                    Click on &quot;Email yourself&quot; &gt; &quot;Send&quot;.
                   </ListItem>
                   <ListItem>
                     Download the file from your email and upload it here.

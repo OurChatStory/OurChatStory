@@ -129,7 +129,7 @@ const App = () => {
                 w="100%"
                 position="fixed"
                 direction={["column", "row"]}
-                zIndex="200"
+                zIndex="50"
             >
                 <CImage
                     boxSize="45px"
@@ -184,9 +184,9 @@ const App = () => {
                         gradientWidth={30}
                         pauseOnHover={true}
                     >
-                        {[...Array(8)].map((_, i) => (
-
+                        {[...Array(8)].map((i) => (
                             <Text
+                                key={i}
                                 as="span"
                                 fontSize={{ base: "2xl", md: "2xl", sm: "2xl", lg: "xl" }}
                                 fontWeight="bold"
