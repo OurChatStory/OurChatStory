@@ -20,7 +20,7 @@
     "axios": "^1.2.0",
     "framer-motion": "^7.6.12",
     "html-to-image": "^1.10.8",
-    "next": "^12.0.7",
+    "next": "^13.0.5",
     "react": "^18.2.0",
     "react-countup": "^6.4.0",
     "react-dom": "^18.2.0",
