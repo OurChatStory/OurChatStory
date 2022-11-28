@@ -193,7 +193,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                     >
                       {/* <label for="hid" cursor="pointer">
                   </label> */}
-                      Wrap it up!
+                      Upload
                       <input
                         id="hid"
                         type="file"

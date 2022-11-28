@@ -127,7 +127,9 @@ const App = () => {
                 align="center"
                 bgColor={"#000"}
                 w="100%"
+                position="fixed"
                 direction={["column", "row"]}
+                zIndex="200"
             >
                 <CImage
                     boxSize="45px"
@@ -168,37 +170,40 @@ const App = () => {
                     /> */}
                 </Button>
             </HStack>
-
             <Box
-                bgColor={"#9b1fe8"}
+                pt="5rem"
             >
-                <Marquee
-                    gradient={true}
-                    speed={40}
-                    gradientColor={[155, 31, 232]}
-                    gradientWidth={30}
-                    pauseOnHover={true}
+
+                <Box
+                    bgColor={"#9b1fe8"}
                 >
-                    {[...Array(8)].map((_, i) => (
+                    <Marquee
+                        gradient={true}
+                        speed={40}
+                        gradientColor={[155, 31, 232]}
+                        gradientWidth={30}
+                        pauseOnHover={true}
+                    >
+                        {[...Array(8)].map((_, i) => (
 
-                        <Text
-                            as="span"
-                            fontSize={{ base: "2xl", md: "2xl", sm: "2xl", lg: "xl" }}
-                            fontWeight="bold"
-                            color="white"
-                            m="0.5rem"
-                        >
-                            #WhatsAppWrapped
-                        </Text>
-                    ))}
+                            <Text
+                                as="span"
+                                fontSize={{ base: "2xl", md: "2xl", sm: "2xl", lg: "xl" }}
+                                fontWeight="bold"
+                                color="white"
+                                m="0.5rem"
+                            >
+                                #WhatsAppWrapped
+                            </Text>
+                        ))}
 
 
-                </Marquee>
-            </Box>
+                    </Marquee>
+                </Box>
 
-            <Box>
-                <Intro />
-                {/* <CImage
+                <Box>
+                    <Intro />
+                    {/* <CImage
                     src="static/yellow.svg"
                     position="absolute"
                     top="50vh"
@@ -212,35 +217,35 @@ const App = () => {
                     animation={spinAnimation}
                 /> */}
 
-                <CImage
-                    src="static/pink.svg"
-                    position="absolute"
-                    top="22vh"
-                    left="8vw"
-                    width="16rem"
-                    height="10rem"
-                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
-                    opacity={0.6}
-                    zIndex={0}
-                    animation={spinAnimation}
-                />
+                    <CImage
+                        src="static/pink.svg"
+                        position="absolute"
+                        top="22vh"
+                        left="8vw"
+                        width="16rem"
+                        height="10rem"
+                        display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+                        opacity={0.6}
+                        zIndex={0}
+                        animation={spinAnimation}
+                    />
 
 
-                <CImage
-                    src="static/yellow.svg"
-                    position="absolute"
-                    top="65vh"
-                    left="8vw"
-                    width="16rem"
-                    height="10rem"
-                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
-                    opacity={0.6}
-                    zIndex={0}
-                    animation={spinAnimation}
-                />
+                    <CImage
+                        src="static/yellow.svg"
+                        position="absolute"
+                        top="65vh"
+                        left="8vw"
+                        width="16rem"
+                        height="10rem"
+                        display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+                        opacity={0.6}
+                        zIndex={0}
+                        animation={spinAnimation}
+                    />
 
 
-                {/* <CImage
+                    {/* <CImage
                     src="static/yellow.svg"
                     position="absolute"
                     top="75vh"
@@ -254,7 +259,7 @@ const App = () => {
                     animation={spinAnimation}
                 /> */}
 
-                {/* 
+                    {/* 
                 <CImage
                     src="static/pink.svg"
                     position="absolute"
@@ -270,37 +275,38 @@ const App = () => {
                 /> */}
 
 
-                <CImage
-                    src="static/green.svg"
-                    position="absolute"
-                    top="44vh"
-                    right="8vw"
-                    width="16rem"
-                    height="10rem"
-                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
-                    opacity={0.6}
-                    zIndex={0}
-                    animation={spinAnimation}
-                />
-            </Box>
+                    <CImage
+                        src="static/green.svg"
+                        position="absolute"
+                        top="44vh"
+                        right="8vw"
+                        width="16rem"
+                        height="10rem"
+                        display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+                        opacity={0.6}
+                        zIndex={0}
+                        animation={spinAnimation}
+                    />
+                </Box>
 
-            <Box>
-                {showLoader ? (
-                    <Box h="80vh">
-                        <Center mt="2rem">
-                            <Text>
-                                {" "}
-                                Brewing your story...
-                                <br />
-                                Usually takes less than 20 seconds.
-                                <br />
-                            </Text>
-                            <Spinner size="xl" />
-                        </Center>
-                    </Box>
-                ) : (
-                    " "
-                )}
+                <Box>
+                    {showLoader ? (
+                        <Box h="80vh">
+                            <Center mt="2rem">
+                                <Text>
+                                    {" "}
+                                    Brewing your story...
+                                    <br />
+                                    Usually takes less than 20 seconds.
+                                    <br />
+                                </Text>
+                                <Spinner size="xl" />
+                            </Center>
+                        </Box>
+                    ) : (
+                        " "
+                    )}
+                </Box>
             </Box>
         </Box>
     );
