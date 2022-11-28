@@ -20,32 +20,6 @@ const Intro = () => {
             <Box
                 mt="0.5rem"
             >
-                <Box
-                    bgColor={"#9b1fe8"}
-                >
-                    <Marquee
-                        gradient={true}
-                        speed={40}
-                        gradientColor={[155, 31, 232]}
-                        gradientWidth={30}
-                        pauseOnHover={true}
-                    >
-                        {[...Array(8)].map((_, i) => (
-
-                            <Text
-                                as="span"
-                                fontSize={{ base: "2xl", md: "2xl", sm: "2xl", lg: "xl" }}
-                                fontWeight="bold"
-                                color="white"
-                                m="0.5rem"
-                            >
-                                #WhatsAppWrapped
-                            </Text>
-                        ))}
-
-
-                    </Marquee>
-                </Box>
                 <VStack
                     ml={{ base: "1.5rem", sm: "1.5rem", lg: "2rem" }}
                     mr={{ base: "1.5rem", sm: "1.5rem", lg: "2rem" }}
@@ -53,6 +27,7 @@ const Intro = () => {
                     mb={{ base: "1rem", sm: "1rem", lg: "1rem" }}
                     align={"center"}
                     spacing={{ base: "1rem", sm: "1rem", lg: "1rem" }}
+                    h="75vh"
                 >
                     <Spacer />
 
@@ -155,23 +130,29 @@ const Intro = () => {
                         align={"center"}
                         animation={moveUpAnimation}
                     >
-                        <HiArrowUp
-                            size="1rem"
-                            color="yellow"
+                        <Box
                             align={"center"}
-
-                        />
-
-                        <Text
-                            fontSize="md"
-                            color="yellow.200"
-                            w={"100%"}
-                            fontWeight="400"
-                            align={"center"}
+                            borderRadius={"full"}
                         >
-                            scroll to see more
-                        </Text>
+                            <HiArrowUp
+                                size="1rem"
+                                color="yellow"
+                                align={"center"}
+
+                            />
+
+                            <Text
+                                fontSize="md"
+                                color="yellow.200"
+                                w={"100%"}
+                                fontWeight="400"
+                                align={"center"}
+                            >
+                                scroll to see more
+                            </Text>
+                        </Box>
                     </VStack>
+                    <Spacer />
 
                 </VStack>
             </Box>

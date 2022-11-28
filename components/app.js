@@ -19,19 +19,38 @@ import Uploader from "./upload";
 import axios from "axios";
 import { API_URL } from "../constants";
 import Intro from "./intro";
+import Marquee from "react-fast-marquee";
 
 const spin = keyframes`
   from {transform: rotate(0deg);}
   to {transform: rotate(360deg)}
 `;
 
+// random up down animation
+const random = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const randomUpDownAnimation = keyframes`
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(${random(-10, 10)}px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+`;
+
 
 
 
 const App = () => {
-    const spinAnimation = `${spin} infinite 20s linear`;
+    const spinAnimation = `${randomUpDownAnimation} infinite 2s linear`;
 
     const [isUploading, setIsUploading] = useState(false);
+    const [showUploader, setShowUploader] = useState(false);
 
     useEffect(() => {
         const imagesPreload = [
@@ -89,106 +108,26 @@ const App = () => {
         <Box
             w="100%"
             bgColor="#000"
-        // bgImage="static/bg2.png"
-        // backgroundPosition="top"
-        // backgroundRepeat="repeat"
-        // backgroundSize="100%"
         >
-            <CImage
-                src="static/yellow.svg"
-                position="absolute"
-                top="50vh"
-                left="18vw"
-                width="10rem"
-                height="10rem"
-                objectFit="cover"
-                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
-                opacity={0.6}
-                zIndex={0}
-                animation={spinAnimation}
-            />
-
-            <CImage
-                src="static/green.svg"
-                position="absolute"
-                top="22vh"
-                left="8vw"
-                width="10rem"
-                height="10rem"
-                objectFit="cover"
-                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
-                opacity={0.6}
-                zIndex={0}
-                animation={spinAnimation}
-            />
+            {showUploader ? (
+                <Uploader
+                    setIsDemo={setIsDemo}
+                    setShowRes={setShowRes}
+                    setData={setData}
+                    setShowUploader={setShowUploader}
+                />
+            ) : (
+                " "
+            )}
 
 
-            <CImage
-                src="static/pink.svg"
-                position="absolute"
-                top="75vh"
-                left="5vw"
-                width="10rem"
-                height="10rem"
-                objectFit="cover"
-                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
-                opacity={0.6}
-                zIndex={0}
-                animation={spinAnimation}
-            />
 
-
-            <CImage
-                src="static/yellow.svg"
-                position="absolute"
-                top="75vh"
-                right="5vw"
-                width="10rem"
-                height="10rem"
-                objectFit="cover"
-                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
-                opacity={0.6}
-                zIndex={0}
-                animation={spinAnimation}
-            />
-
-
-            <CImage
-                src="static/pink.svg"
-                position="absolute"
-                top="22vh"
-                right="8vw"
-                width="10rem"
-                height="10rem"
-                objectFit="cover"
-                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
-                opacity={0.6}
-                zIndex={0}
-                animation={spinAnimation}
-            />
-
-
-            <CImage
-                src="static/green.svg"
-                position="absolute"
-                top="50vh"
-                right="18vw"
-                width="10rem"
-                height="10rem"
-                objectFit="cover"
-                display={{ base: "none", sm: "none", md: "none", lg: "block" }} 
-                opacity={0.6}
-                zIndex={0}
-                animation={spinAnimation}
-            />
             <HStack
                 p="1rem 1.5rem 0.6rem 1.5rem"
                 align="center"
                 bgColor={"#000"}
                 w="100%"
                 direction={["column", "row"]}
-            // position="fixed"
-            // spacing="1.25rem"
             >
                 <CImage
                     boxSize="45px"
@@ -196,24 +135,17 @@ const App = () => {
                     alt="OurChatStory"
                     style={{ imageRendering: "crisp-edges" }}
                 />
-                {/* <Heading
-              mb="2rem"
-              colorScheme="blue"
-              align="center"
-              fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
-            >
-              WhatsApp Wrapped
-            </Heading> */}
                 <Spacer
                     w={"100%"}
                 />
                 <Button
-                    // variant="outline"
                     colorScheme="primary"
                     p={{ base: ["2rem", "1.5rem"], sm: ["2rem", "1.5rem"], lg: ["2rem", "1.5rem"] }}
                     borderRadius={50}
                     onClick={() => {
-                        document.getElementById("hid").click();
+                        setShowUploader(true);
+                        // Disable scroll
+                        document.body.style.overflow = "hidden";
                     }}
                 >
                     {/* <label for="hid" cursor="pointer">
@@ -224,7 +156,7 @@ const App = () => {
                     >
                         Make your wrap
                     </Text>
-                    <input
+                    {/* <input
                         id="hid"
                         type="file"
                         name="file"
@@ -232,41 +164,127 @@ const App = () => {
                         hidden
                         className="custom-file-input"
                         size="100"
-                        onChange={(event) => {
-                            const file = event.target.files[0];
-                            console.log("zz", file);
-                            const data = new FormData();
-                            data.append("file", file);
-                            console.log("dd", data);
-                            setIsUploading(true);
-                            axios
-                                .post(
-                                    API_URL + "wrap",
-                                    data,
-                                    {
-                                        // receive two parameter endpoint url ,form data
-                                    }
-                                )
-                                .then((res) => {
-                                    setData(res.data);
-                                    setIsDemo(false);
-                                    setShowRes(true);
-                                })
-                                .catch((error) => {
-                                    setIsUploading(false);
-                                    try {
-                                        alert(error.response.data);
-                                    } catch (error) {
-                                        alert("Connection failed. Try again!");
-                                    }
-                                });
-                        }}
-                    />
+                        onChange={uploadFile}
+                    /> */}
                 </Button>
             </HStack>
 
+            <Box
+                bgColor={"#9b1fe8"}
+            >
+                <Marquee
+                    gradient={true}
+                    speed={40}
+                    gradientColor={[155, 31, 232]}
+                    gradientWidth={30}
+                    pauseOnHover={true}
+                >
+                    {[...Array(8)].map((_, i) => (
+
+                        <Text
+                            as="span"
+                            fontSize={{ base: "2xl", md: "2xl", sm: "2xl", lg: "xl" }}
+                            fontWeight="bold"
+                            color="white"
+                            m="0.5rem"
+                        >
+                            #WhatsAppWrapped
+                        </Text>
+                    ))}
+
+
+                </Marquee>
+            </Box>
+
             <Box>
                 <Intro />
+                {/* <CImage
+                    src="static/yellow.svg"
+                    position="absolute"
+                    top="50vh"
+                    left="18vw"
+                    width="10rem"
+                    height="10rem"
+                    objectFit="cover"
+                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+                    opacity={0.6}
+                    zIndex={0}
+                    animation={spinAnimation}
+                /> */}
+
+                <CImage
+                    src="static/pink.svg"
+                    position="absolute"
+                    top="22vh"
+                    left="8vw"
+                    width="16rem"
+                    height="10rem"
+                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+                    opacity={0.6}
+                    zIndex={0}
+                    animation={spinAnimation}
+                />
+
+
+                <CImage
+                    src="static/yellow.svg"
+                    position="absolute"
+                    top="65vh"
+                    left="8vw"
+                    width="16rem"
+                    height="10rem"
+                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+                    opacity={0.6}
+                    zIndex={0}
+                    animation={spinAnimation}
+                />
+
+
+                {/* <CImage
+                    src="static/yellow.svg"
+                    position="absolute"
+                    top="75vh"
+                    right="5vw"
+                    width="10rem"
+                    height="10rem"
+                    objectFit="cover"
+                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+                    opacity={0.6}
+                    zIndex={0}
+                    animation={spinAnimation}
+                /> */}
+
+                {/* 
+                <CImage
+                    src="static/pink.svg"
+                    position="absolute"
+                    top="22vh"
+                    right="8vw"
+                    width="10rem"
+                    height="10rem"
+                    objectFit="cover"
+                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+                    opacity={0.6}
+                    zIndex={0}
+                    animation={spinAnimation}
+                /> */}
+
+
+                <CImage
+                    src="static/green.svg"
+                    position="absolute"
+                    top="44vh"
+                    right="8vw"
+                    width="16rem"
+                    height="10rem"
+                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+                    opacity={0.6}
+                    zIndex={0}
+                    animation={spinAnimation}
+                />
+            </Box>
+
+            <Box>
                 {showLoader ? (
                     <Box h="80vh">
                         <Center mt="2rem">
@@ -281,54 +299,8 @@ const App = () => {
                         </Center>
                     </Box>
                 ) : (
-                    // <Uploader
-                    //   setIsDemo={setIsDemo}
-                    //   setShowRes={setShowRes}
-                    //   setData={setData}
-                    // />
                     " "
                 )}
-            </Box>
-            <Box p="1rem">
-                {/* <Stack
-              pb="1rem"
-              justify="center"
-              align="center"
-              direction={["column", "row"]}
-            >
-              <a
-                href="https://www.producthunt.com/posts/whatsapp-wrapped-by-ourchatstory-co?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-whatsapp-wrapped-by-ourchatstory-co"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=324689&theme=light"
-                  alt="WhatsApp Wrapped by OurChatStory.co - Discover crazy insights from your WhatsApp chats | Product Hunt"
-                  width="188.81"
-                  height="38"
-                />
-              </a>
-            </Stack> */}
-                {/* <Text fontSize={["x1", "2xl"]} align="center">
-              Made with ❤️ by
-            </Text>
-            <Text fontSize={["x1", "2xl"]} align="center">
-              <Link
-                textDecoration="underline"
-                href="https://twitter.com/anshulagx"
-                target="_blank"
-              >
-                @anshulagx
-              </Link>{" "}
-              &{" "}
-              <Link
-                textDecoration="underline"
-                href="https://twitter.com/iamyajat"
-                target="_blank"
-              >
-                @iamyajat
-              </Link>
-            </Text> */}
             </Box>
         </Box>
     );
