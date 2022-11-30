@@ -108,6 +108,9 @@ const App = () => {
         <Box
             w="100%"
             bgColor="#000"
+            overflow="hidden"
+            h="100vh"
+            position="relative"
         >
             {showUploader ? (
                 <Uploader
@@ -120,16 +123,15 @@ const App = () => {
                 " "
             )}
 
-
-
             <HStack
                 p="1rem 1.5rem 0.6rem 1.5rem"
                 align="center"
                 bgColor={"#000"}
                 w="100%"
-                position="fixed"
+                // position="fixed"
                 direction={["column", "row"]}
                 zIndex="50"
+                h="10vh"
             >
                 <CImage
                     boxSize="45px"
@@ -171,10 +173,10 @@ const App = () => {
                 </Button>
             </HStack>
             <Box
-                pt="5rem"
+                // pt="5rem"
             >
 
-                <Box
+                {/* <Box
                     bgColor={"#9b1fe8"}
                 >
                     <Marquee
@@ -199,7 +201,7 @@ const App = () => {
 
 
                     </Marquee>
-                </Box>
+                </Box> */}
 
                 <Box>
                     <Intro />
