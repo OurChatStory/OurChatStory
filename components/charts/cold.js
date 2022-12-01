@@ -8,14 +8,14 @@ const Card6 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage="/static/bg11.png"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize="120%"
+      // bgImage="/static/bg11.png"
+      // backgroundPosition="center"
+      // backgroundRepeat="no-repeat"
+      // backgroundSize="120%"
       p="3rem"
       pt="10"
-      w="100vw"
-      h="100vh"
+      // w="100vw"
+      // h="100vh"
     >
       {" "}
       {parser.time_gap(drawData.longest_gap) > 0 ? (

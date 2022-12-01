@@ -11,7 +11,8 @@ const Card3 = ({ drawData }) => {
       align="center"
       justify="center"
       p="1rem"
-      height="100vh" w="100vw" bg="black">
+      // height="100vh" w="100vw" bg="black"
+      >
       <Heading pt="3rem" textAlign="center" color="white">
         Here is your word cloud
       </Heading>

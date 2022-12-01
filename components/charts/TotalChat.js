@@ -12,13 +12,13 @@ const Card1 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage="/static/bg4.png"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize="140%"
+      // bgImage="/static/bg4.png"
+      // backgroundPosition="center"
+      // backgroundRepeat="no-repeat"
+      // backgroundSize="140%"
       p="1.5rem"
-      w="100vw"
-      h="100vh"
+      // w="100vw"
+      // h="100vh"
     >
       <Text align="center" fontSize="5xl">
         Infact y&apos;all sent a total of{" "}

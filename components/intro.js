@@ -7,12 +7,26 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+const sample_data = require("../data/sample-response");
+
+import { useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { HiArrowCircleUp, HiArrowUp } from "react-icons/hi";
 // import "../styles/style.css";
 // import useScrollSnap from 'react-use-scroll-snap';
+import MonthlyGraph from "./charts/monthly";
+import Card0 from "./charts/Welcome2";
+import GCard0 from "./charts/g-Welcome2";
+import Card1 from "./charts/TotalChat";
+import WordCloud from "./charts/wordcloud";
+import CountPie from "./charts/CountPie";
+import Card5 from "./charts/emoji";
+import HourlyGraph from "./charts/time";
+import NoTalk from "./charts/cold";
+import Card9 from "./charts/MostActive";
 
+import ThankYou from "./charts/ThankCard";
+import Welcome from "./charts/Welcome";
 const moveUp = keyframes`
     from {transform: translateY(0px);}
     to {transform: translateY(-10px);}
@@ -22,6 +36,7 @@ const Intro = () => {
   // const scrollRef = useRef(null);
   // useScrollSnap({ ref: scrollRef, duration: 1, delay: 1 });
   const moveUpAnimation = `${moveUp} infinite 1s ease-in-out alternate`;
+  const dummy_data=sample_data.sample;
 
   return (
     <>
@@ -271,6 +286,7 @@ const Intro = () => {
             </VStack>
           </Box>
         </h1>
+
         <div className="d-flex snap-child">
           <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
             <Box
@@ -279,9 +295,14 @@ const Intro = () => {
               p="1rem"
               w={{ base: "100%", sm: "100%", lg: "80%" }}
               h="78vh"
-            ></Box>
+            >    
+
+
+              <Card1 drawData={dummy_data} />
+            </Box>
           </Box>
         </div>
+
         <div className="d-flex snap-child">
           <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
             <Box
@@ -290,9 +311,12 @@ const Intro = () => {
               p="1rem"
               w={{ base: "100%", sm: "100%", lg: "80%" }}
               h="78vh"
-            ></Box>
+            >
+              <NoTalk drawData={dummy_data}/>
+            </Box>
           </Box>
         </div>
+
         <div className="d-flex snap-child">
           <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
             <Box
@@ -301,9 +325,12 @@ const Intro = () => {
               p="1rem"
               w={{ base: "100%", sm: "100%", lg: "80%" }}
               h="78vh"
-            ></Box>
+            >
+              {/* <HourlyGraph drawData={dummy_data}/>   */}
+            </Box>
           </Box>
         </div>
+
         <div className="d-flex snap-child">
           <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
             <Box
@@ -312,9 +339,13 @@ const Intro = () => {
               p="1rem"
               w={{ base: "100%", sm: "100%", lg: "80%" }}
               h="78vh"
-            ></Box>
+            >
+              {/* <WordCloud drawData={dummy_data}/> */}
+            </Box>
           </Box>
         </div>
+
+
         {/* <h1 style={{ backgroundColor: "red" }} className="d-flex snap-child">
           Slide 3
         </h1>
