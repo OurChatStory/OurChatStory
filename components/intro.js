@@ -24,6 +24,7 @@ import Card5 from "./charts/emoji";
 import HourlyGraph from "./charts/time";
 import NoTalk from "./charts/cold";
 import Card9 from "./charts/MostActive";
+import DummyIntro from "./charts/dummy_intro"
 
 import ThankYou from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
@@ -298,7 +299,7 @@ const Intro = () => {
             >    
 
 
-              <Card1 drawData={dummy_data} />
+              <DummyIntro drawData={dummy_data} />
             </Box>
           </Box>
         </div>
@@ -306,7 +307,7 @@ const Intro = () => {
         <div className="d-flex snap-child">
           <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
             <Box
-              bgColor="yellow"
+              bgColor="green"
               borderRadius="1rem"
               p="1rem"
               w={{ base: "100%", sm: "100%", lg: "80%" }}
@@ -320,7 +321,7 @@ const Intro = () => {
         <div className="d-flex snap-child">
           <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
             <Box
-              bgColor="green"
+              bgColor="yellow"
               borderRadius="1rem"
               p="1rem"
               w={{ base: "100%", sm: "100%", lg: "80%" }}
@@ -400,6 +401,7 @@ const Intro = () => {
             scroll-snap-type: y mandatory;
             scroll-padding: 10px;
             overflow-y: scroll;
+            
           }
 
           .d-flex {

@@ -6,43 +6,48 @@ const Card6 = ({ drawData }) => {
   return (
     <VStack
       spacing="1rem"
-      align="center"
+      align="left"
       justify="center"
       // bgImage="/static/bg11.png"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
-      p="3rem"
-      pt="10"
+      p="1rem"
       // w="100vw"
       // h="100vh"
     >
       {" "}
       {parser.time_gap(drawData.longest_gap) > 0 ? (
         <>
-          <Text fontSize="3xl" align="center">
-            There were some cold moments
+          <Text fontSize="2xl" align="left" fontWeight={"medium"}>
+            You know what? You did not text each other at all between
           </Text>
-          <Box>
-            <Text pt="1rem" fontSize="3xl" align="center">
-              Between
+
+ 
+          <Text fontSize="2xl" fontWeight="medium" align="left">
+              {parser.format_time_gap(drawData.longest_gap.start_time)} 
+              
+          </Text>
+            <Text fontSize="xl" align="left" fontWeight="medium">
+              &
             </Text>
-            <Text fontSize="4xl" align="center" fontWeight="medium">
-              {parser.format_time_gap(drawData.longest_gap.start_time)} and{" "}
+            <Text fontSize="2xl" align="left" fontWeight="medium">
+             
               {parser.format_time_gap(drawData.longest_gap.end_time)}
             </Text>
-          </Box>
-          <br />
-          <Text pt="1rem" fontSize="3xl" align="center">
-            Y&apos;all didn&apos;t talk for{" "}
-            <Text fontSize="5xl" align="center" fontWeight="medium">
+            <Text fontSize="3xl" align="left" fontWeight={"medium"}>
+            Thats 
+            </Text>
+            <Text fontSize="5xl" align="left" fontWeight="extrabold" color={"red"}>
               {parser.time_gap(drawData.longest_gap)}
             </Text>
+            <Text fontSize="3xl" align="left" fontWeight={"medium"}>
             {parser.time_gap(drawData.longest_gap) == 1
               ? "whole day"
-              : "consecutive days"}{" "}
-            🥺
+              : "days of ghosting!!"}{" "}
           </Text>
+         
+
         </>
       ) : (
         <Text fontSize="3xl" align="center">
