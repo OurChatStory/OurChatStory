@@ -31,7 +31,7 @@ const Card6 = ({ drawData }) => {
       h="78vh"
     >
       {/* <Box bgColor={"black"} opacity={0.5} /> */}
-      <VStack align="left" p="1rem" justify="center" spacing="1rem" backgroundColor= {rgba(76, 175, 80, 0.3)}>
+      <VStack align="left" p="1rem" justify="center" spacing="1rem">
         {" "}
         {parser.time_gap(drawData.longest_gap) > 0 ? (
           <>
