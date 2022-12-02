@@ -46,7 +46,9 @@ const Card6 = ({ drawData }) => {
         </>
       ) : (
         <Text fontSize="3xl" align="center">
-          There was not a single day in 2021 when y&apos;all didn&apos;t talk
+          {/* TODO: make this generic to pick up years from System calendar. */}
+          You share the most special relationship❤️ 
+          There was not a single day in 2022 when y&apos;all didn&apos;t talk!!!
         </Text>
       )}
     </VStack>
