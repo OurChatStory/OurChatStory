@@ -13,7 +13,9 @@ const Story = (props) => {
           mb={{ base: "1rem", sm: "1rem", lg: "1rem" }}
           align={"center"}
           spacing={{ base: "1rem", sm: "1rem", lg: "1rem" }}
-          h="78vh"
+          h="100%"
+          maxHeight="78vh"
+          w="100%"
           minWidth={{ lg: "600" }}
           maxWidth="600"
         >
@@ -23,7 +25,6 @@ const Story = (props) => {
             // p="1rem"
             w={{ base: "100%", sm: "100%", md: "60%", lg: "60%" }}
             h="78vh"
-
           >
             {/* <DummyIntro drawData={dummy_data} /> */}
             {props.component}

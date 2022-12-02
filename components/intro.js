@@ -43,6 +43,8 @@ const Intro = () => {
 
   const dummyIntro = <DummyIntro drawData={sample_data.sample} />;
   const noTalk = <NoTalk drawData={dummy_data} />;
+  const hourlyGraph = <HourlyGraph drawData={dummy_data} />;
+  const wordCloud = <WordCloud drawData={dummy_data} />;
 
   return (
     <>
@@ -294,6 +296,8 @@ const Intro = () => {
         </h1>
         <Story component={dummyIntro} />
         <Story component={noTalk} />
+        <Story component={hourlyGraph} />
+        <Story component={wordCloud} />
         {/* <div className="d-flex snap-child">
           <Box
             ml={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
@@ -387,7 +391,6 @@ const Intro = () => {
             </Box>
           </Box>
         </div> */}
-
         <style jsx>{`
           .snap-container {
             width: calc(100vw - (100vw - 100%));
