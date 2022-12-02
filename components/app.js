@@ -36,7 +36,7 @@ const randomUpDownAnimation = keyframes`
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(${random(-10, 10)}px);
+        transform: translateY(${random(10,50)}px);
     }
     100% {
         transform: translateY(0px);
@@ -44,7 +44,7 @@ const randomUpDownAnimation = keyframes`
 `;
 
 const App = () => {
-  const spinAnimation = `${randomUpDownAnimation} infinite 2s linear`;
+  const spinAnimation = `${randomUpDownAnimation} infinite 10s linear`;
 
   const [isUploading, setIsUploading] = useState(false);
   const [showUploader, setShowUploader] = useState(false);
