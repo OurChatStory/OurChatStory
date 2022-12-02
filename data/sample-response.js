@@ -1,19 +1,19 @@
 module.exports.sample = {
   group: false,
-  members: ["Mark", "Radhika"],
+  members: ["Samuel", "Ananya"],
   total_no_of_chats: 14836,
   top_percent: 0.0158343693832475,
   most_active_member: {
-    member: "Mark",
+    member: "Samuel",
     count: 7632,
   },
   no_of_messages_per_member: [
     {
-      member: "Mark",
+      member: "Samuel",
       count: 4632,
     },
     {
-      member: "Radhika",
+      member: "Ananya",
       count: 3204,
     },
     {
@@ -191,7 +191,7 @@ module.exports.sample = {
     start_time: 1623090000000,
     end_time: 1626299940000,
   },
-  who_texts_first: "Radhika",
+  who_texts_first: "Ananya",
   top_10_emojis: [
     {
       emoji: "😂",

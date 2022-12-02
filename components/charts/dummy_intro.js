@@ -57,7 +57,7 @@ const DummyIntro = ({ drawData }) => {
         textAlign="center"
         color="#210934"
       >
-        Divit
+        {drawData.members[0]}
       </Text>
       <Text
         fontSize="4xl"
@@ -80,7 +80,7 @@ const DummyIntro = ({ drawData }) => {
         pl="1rem"
         pr="1rem"
       >
-        Tanisha
+        {drawData.members[1]}
       </Text>
       <Text
         fontSize="4xl"
