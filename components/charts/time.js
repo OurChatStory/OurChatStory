@@ -13,18 +13,21 @@ const Card6 = ({ drawData, isShared }) => {
       p="2rem"
       // w="100vw"
       // h="100vh"
-      // backgroundImage="/static/bg7.png"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize="110%"
+      backgroundImage="/static/owl.jpeg"
+      bgBlendMode={"multiply"}
+      bgRepeat="no-repeat"
+      bgSize="cover"
+      // backgroundPosition="center"
+      // backgroundRepeat="no-repeat"
+      // backgroundSize="110%"
       w="100%"
       h="78vh"
-      bgColor="#D61A46"
+      bgColor="#6f0cfb"
       borderRadius="1rem"
       pt="1rem"
       pb="1rem"
     >
-      <Text color="#F5F5F5" fontSize="3xl" align="center">
+      <Text color="#F5F5F5" fontSize="3xl" align="center" fontWeight={700}>
         The time of the day y&apos;all talk the most is
       </Text>
       <Text color="#14B884" fontSize="5xl" align="center" fontWeight="medium">

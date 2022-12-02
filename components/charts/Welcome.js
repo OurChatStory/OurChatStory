@@ -6,7 +6,10 @@ const Card6 = ({ drawData }) => {
       spacing="2rem"
       align="center"
       justify="center"
-      // backgroundImage="/static/bg99.png"
+      backgroundImage="/static/tbg1.jpeg"
+      bgBlendMode={"lighten"}
+      bgRepeat="no-repeat"
+      bgSize="cover"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"

@@ -22,12 +22,11 @@ const Card1 = ({ drawData }) => {
     >
       <Text
         mb="1rem"
-        fontSize="5xl"
+        fontSize="3xl"
         align="center"
-        fontWeight="bold"
-        color="OldLace"
+
       >
-        FUN FACT
+        Let me tell you this
       </Text>
       <Text fontSize="4xl" align="center">
         Most of the time it&apos;s
@@ -45,7 +44,7 @@ const Card1 = ({ drawData }) => {
       </Text>
       <Text mb="2rem" fontSize="4xl" align="center">
         {" "}
-        who texts first 😤
+        who texts first 
       </Text>
     </VStack>
   );

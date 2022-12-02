@@ -1,5 +1,5 @@
 import { Box, Text, VStack } from "@chakra-ui/react";
-import { VictoryLine } from "victory";
+import { VictoryLabel, VictoryLine } from "victory";
 
 const parser = require("../../script/parser");
 
@@ -19,17 +19,17 @@ const Card2 = ({ drawData, isShared }) => {
       // h="100vh"
       w="100%"
       h="78vh"
-      bgColor="#090934"
+      bgColor="#D61A46"
       borderRadius="1rem"
       pt="1rem"
       pb="1rem"
     >
-      <Text color="#F5F5F5" fontSize="2xl" align="center">
-        Most of your conversations happened in
+      <Text color="#F5F5F5" fontSize="2xl" align="center" fontWeight={500}>
+        Most of your conversations happened in <strong>{parser.months[drawData.most_active_month.month]}</strong> when
+               &nbsp;  <strong>{drawData.most_active_month.count}</strong> messages were exchanged that month!
+
       </Text>
-      <Text color="#F5F5F5" fontSize="5xl" align="center" fontWeight="medium">
-        {parser.months[drawData.most_active_month.month]}
-      </Text>
+
       <Box>
         <VictoryLine
           height={200}
@@ -44,14 +44,13 @@ const Card2 = ({ drawData, isShared }) => {
           }}
           animate={{ onLoad: { duration: isShared ? 0 : 4000 } }}
           data={parser.monthly_count_data(drawData.monthly_chats_count)}
-        />
+        >
+          <VictoryLabel></VictoryLabel>
+          </VictoryLine>
+          <Text color={"yellow"} fontWeight={200}> graph from Jan till today </Text>
+
       </Box>
-      <Text color="#F5F5F5" fontSize="5xl" align="center" fontWeight="medium">
-        {drawData.most_active_month.count}
-      </Text>
-      <Text color="#F5F5F5" fontSize="3xl" align="center">
-        messages were sent!
-      </Text>
+
       {/* <Text pt="0.5rem" color="#F5F5F5" fontSize="2xl" align="center">
         Now that's a lot of messages!!
       </Text> */}
