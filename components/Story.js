@@ -7,8 +7,8 @@ const Story = (props) => {
     <>
       <div className="d-flex snap-child">
         <Box
-          ml={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
-          mr={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
+          ml={{ base: "1rem", sm: "1rem", lg: "2.5rem" }}
+          mr={{ base: "1rem", sm: "1rem", lg: "2.5rem" }}
           mt={{ base: "0.5rem", sm: "0.5rem", lg: "0.5rem" }}
           mb={{ base: "1rem", sm: "1rem", lg: "1rem" }}
           align={"center"}
