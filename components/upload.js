@@ -19,6 +19,8 @@ import {
   TabPanel,
   TabPanels,
 } from "@chakra-ui/react";
+import { FileUploader } from "react-drag-drop-files";
+
 import axios from "axios";
 import { API_URL } from "../constants";
 import { IoClose, IoCloudyNight } from "react-icons/io5";
@@ -43,7 +45,30 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
     (navigator.userAgent.includes("Mac") && "ontouchend" in document);
 
   const [tabIndex, setTabIndex] = useState(isAndroid ? 0 : isiOS ? 1 : 2); // initial -> 0: Android, 1: iOS, 2: PC
-
+  const handleFileUpload = (file) => {
+    console.log("zz", file);
+    const data = new FormData();
+    data.append("file", file);
+    console.log("dd", data);
+    setIsUploading(true);
+    axios
+      .post(API_URL + "wrap", data, {
+        // receive two parameter endpoint url ,form data
+      })
+      .then((res) => {
+        setData(res.data);
+        setIsDemo(false);
+        setShowRes(true);
+      })
+      .catch((error) => {
+        setIsUploading(false);
+        try {
+          alert(error.response.data);
+        } catch (error) {
+          alert("Connection failed. Try again!");
+        }
+      });
+  };
   return (
     <>
       <Box
@@ -174,7 +199,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                   </Text>
                 </TabPanel>
                 <TabPanel>
-                  <Text fontSize={["x1", "2xl"]}>iOS instructions</Text>
+                  <Text fontSize={["x1", "2xl"]}>Kaafi ameer ho bhai aap </Text>
                 </TabPanel>
                 <TabPanel>
                   <Text fontSize={["x1", "2xl"]}>
@@ -203,9 +228,20 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                       </ListItem>
                     </OrderedList>
                   </Text>
+                  <Box mt="1rem">
+                    <FileUploader
+                      multiple={false}
+                      handleChange={handleFileUpload}
+                      name="file"
+                      types={["txt"]}
+                      label="Drag and drop your chat txt file here or use the upload button"
+                      disabled={isUploading}
+                    />
+                  </Box>
                 </TabPanel>
               </TabPanels>
             </Tabs>
+            
             {/* <Text fontSize={["x1", "2xl"]}>
               {/android/i.test(
                 // navigator.userAgent || navigator.vendor || window.opera
@@ -300,28 +336,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                         size="100"
                         onChange={(event) => {
                           const file = event.target.files[0];
-                          console.log("zz", file);
-                          const data = new FormData();
-                          data.append("file", file);
-                          console.log("dd", data);
-                          setIsUploading(true);
-                          axios
-                            .post(API_URL + "wrap", data, {
-                              // receive two parameter endpoint url ,form data
-                            })
-                            .then((res) => {
-                              setData(res.data);
-                              setIsDemo(false);
-                              setShowRes(true);
-                            })
-                            .catch((error) => {
-                              setIsUploading(false);
-                              try {
-                                alert(error.response.data);
-                              } catch (error) {
-                                alert("Connection failed. Try again!");
-                              }
-                            });
+                          handleFileUpload(file);
                         }}
                       />
                     </Button>
