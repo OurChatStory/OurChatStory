@@ -14,19 +14,19 @@ import Marquee from "react-fast-marquee";
 import { HiArrowCircleUp, HiArrowUp } from "react-icons/hi";
 // import "../styles/style.css";
 // import useScrollSnap from 'react-use-scroll-snap';
-import MonthlyGraph from "./charts/monthly";
+import Monthly from "./charts/monthly";
 import Card0 from "./charts/Welcome2";
 import GCard0 from "./charts/g-Welcome2";
-import Card1 from "./charts/TotalChat";
+import TotalChat from "./charts/TotalChat";
 import WordCloud from "./charts/wordcloud";
 import CountPie from "./charts/CountPie";
-import Card5 from "./charts/emoji";
+import Emoji from "./charts/emoji";
 import HourlyGraph from "./charts/time";
 import NoTalk from "./charts/cold";
-import Card9 from "./charts/MostActive";
+import MostActive from "./charts/MostActive";
 import DummyIntro from "./charts/dummy_intro";
 
-import ThankYou from "./charts/ThankCard";
+import ThankCard from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
 import Story from "./Story";
 import { ST } from "next/dist/shared/lib/utils";
@@ -41,8 +41,17 @@ const Intro = () => {
   const moveUpAnimation = `${moveUp} infinite 1s ease-in-out alternate`;
   const dummy_data = sample_data.sample;
 
-  const dummyIntro = <DummyIntro drawData={sample_data.sample} />;
+  const welcome = <Welcome />;
+  const dummyIntro = <DummyIntro drawData={dummy_data} />;
+  const totalChat = <TotalChat drawData={dummy_data} />;
+  const mostActive = <MostActive drawData={dummy_data} />;
+  const monthly = <Monthly drawData={dummy_data} />;
+  const hourlyGraph = <HourlyGraph drawData={dummy_data} />;
   const noTalk = <NoTalk drawData={dummy_data} />;
+  const wordCloud = <WordCloud drawData={dummy_data} />;
+  const countPie = <CountPie drawData={dummy_data} />;
+  const emoji = <Emoji drawData={dummy_data} />;
+  const thankCard = <ThankCard drawData={dummy_data} />;
 
   return (
     <>
@@ -292,8 +301,17 @@ const Intro = () => {
             </VStack>
           </Box>
         </h1>
+        <Story component={welcome} />
         <Story component={dummyIntro} />
+        <Story component={totalChat} />
+        <Story component={mostActive} />
+        <Story component={monthly} />
+        <Story component={hourlyGraph} />
         <Story component={noTalk} />
+        <Story component={wordCloud} />
+        <Story component={countPie} />
+        <Story component={emoji} />
+        <Story component={thankCard} />
         {/* <div className="d-flex snap-child">
           <Box
             ml={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
@@ -387,7 +405,6 @@ const Intro = () => {
             </Box>
           </Box>
         </div> */}
-
         <style jsx>{`
           .snap-container {
             width: calc(100vw - (100vw - 100%));

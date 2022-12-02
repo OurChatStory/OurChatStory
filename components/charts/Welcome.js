@@ -6,13 +6,16 @@ const Card6 = ({ drawData }) => {
       spacing="2rem"
       align="center"
       justify="center"
-      backgroundImage="/static/bg99.png"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize="120%"
-      p="2rem"
-      w="100vw"
-      h="100vh"
+      // backgroundImage="/static/bg99.png"
+      // backgroundPosition="center"
+      // backgroundRepeat="no-repeat"
+      // backgroundSize="120%"
+      w="100%"
+      h="78vh"
+      bgColor="#f4e9e1"
+      borderRadius="1rem"
+      pt="1rem"
+      pb="1rem"
     >
       <Text color="black" fontSize="4xl" align="center" fontWeight="bold">
         This year was eventful

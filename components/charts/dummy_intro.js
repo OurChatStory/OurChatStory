@@ -1,4 +1,5 @@
-import { Text, VStack } from "@chakra-ui/react";
+import { Text, VStack, Box, Spacer } from "@chakra-ui/react";
+import Marquee from "react-fast-marquee";
 
 const DummyIntro = ({ drawData }) => {
   return (
@@ -12,12 +13,29 @@ const DummyIntro = ({ drawData }) => {
       bgSize="cover"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
-      p="1rem"
+      // p="1rem"
       w="100%"
-      h="100%"
+      h="78vh"
       bgColor="#6f0cbb"
       borderRadius="1rem"
+      pt="1rem"
+      pb="1rem"
+      // borderColor="#fcea2b"
+      // errorBorderColor="red.300"
+      border="4px solid #fcea2b"
     >
+      {/* <Marquee
+        gradient={true}
+        speed={40}
+        gradientColor={[155, 31, 232]}
+        gradientWidth={30}
+        pauseOnHover={true}
+      >
+        {[...Array(10)].map((i) => (
+          <Box w="1rem" h="1rem" borderRadius="50%" bgColor="yellow"></Box>
+        ))}
+      </Marquee>
+      <Spacer/> */}
       <Text
         fontSize="4xl"
         align="left"
@@ -26,7 +44,7 @@ const DummyIntro = ({ drawData }) => {
         fontWeight="600"
         textAlign="center"
       >
-        Take a look at Wrapped between
+        Let&apos;s talk about
       </Text>
       <Text
         fontSize="4xl"

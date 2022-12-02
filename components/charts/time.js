@@ -17,11 +17,17 @@ const Card6 = ({ drawData, isShared }) => {
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="110%"
+      w="100%"
+      h="78vh"
+      bgColor="#D61A46"
+      borderRadius="1rem"
+      pt="1rem"
+      pb="1rem"
     >
       <Text color="#F5F5F5" fontSize="3xl" align="center">
         The time of the day y&apos;all talk the most is
       </Text>
-      <Text color="#F5F5F5" fontSize="5xl" align="center" fontWeight="medium">
+      <Text color="#14B884" fontSize="5xl" align="center" fontWeight="medium">
         {parser.active_time(drawData.most_active_hour.hour)}
       </Text>
 

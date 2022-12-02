@@ -6,13 +6,19 @@ const Card1 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      p="1rem"
-      w="100vw"
-      h="100vh"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize="120%"
-      bgImage="/static/bg5.png"
+      // p="1rem"
+      // w="100vw"
+      // h="100vh"
+      // backgroundPosition="center"
+      // backgroundRepeat="no-repeat"
+      // backgroundSize="120%"
+      // bgImage="/static/bg5.png"
+      w="100%"
+      h="78vh"
+      bgColor="#4141D2"
+      borderRadius="1rem"
+      pt="1rem"
+      pb="1rem"
     >
       <Text
         mb="1rem"
@@ -32,7 +38,7 @@ const Card1 = ({ drawData }) => {
         fontSize="4xl"
         align="center"
         fontWeight="medium"
-        backgroundColor="OldLace"
+        backgroundColor="#FCBA12"
       >
         {" "}
         {drawData.who_texts_first}
