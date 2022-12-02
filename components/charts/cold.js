@@ -37,6 +37,7 @@ const Card6 = ({ drawData }) => {
       // h="100vh"
       bgColor="primary.600"
       borderRadius="1rem"
+      h="78vh"
     >
       {" "}
       {parser.time_gap(drawData.longest_gap) > 0 ? (
@@ -211,7 +212,7 @@ const Card6 = ({ drawData }) => {
             fontSize="5xl"
             align="left"
             fontWeight="extrabold"
-            color="#236AB9"
+            color="#D4E4F7"
             textAlign="center"
           >
             {parser.time_gap(drawData.longest_gap)}
