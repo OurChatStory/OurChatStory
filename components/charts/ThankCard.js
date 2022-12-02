@@ -3,17 +3,23 @@ import { VStack, Text, Image, Link, Box, Center } from "@chakra-ui/react";
 const Card6 = ({ drawData }) => {
   return (
     <VStack
-      bg="#30475E"
-      p="1rem"
-      w="100vw"
-      h="100vh"
+      // bg="#30475E"
+      // p="1rem"
+      // w="100vw"
+      // h="100vh"
       align="center"
       justify="center"
       spacing="2rem"
-      backgroundImage="static/bg8.png"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize="120%"
+      // backgroundImage="static/bg8.png"
+      // backgroundPosition="center"
+      // backgroundRepeat="no-repeat"
+      // backgroundSize="120%"
+      w="100%"
+      h="78vh"
+      bg="#30475E"
+      borderRadius="1rem"
+      pt="1rem"
+      pb="1rem"
     >
       <Text color="#F5F5F5" fontSize="3xl" align="center">
         <strike>The End</strike> <br />

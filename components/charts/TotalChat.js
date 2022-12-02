@@ -16,9 +16,15 @@ const Card1 = ({ drawData }) => {
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="140%"
-      p="1.5rem"
+      // p="1.5rem"
       // w="100vw"
       // h="100vh"
+      w="100%"
+      h="78vh"
+      bgColor="#018396"
+      borderRadius="1rem"
+      pt="1rem"
+      pb="1rem"
     >
       <Text align="center" fontSize="5xl">
         Infact y&apos;all sent a total of{" "}

@@ -1,4 +1,4 @@
-import { Text, VStack, Box } from "@chakra-ui/react";
+import { Text, VStack, Box, HStack } from "@chakra-ui/react";
 
 const parser = require("../../script/parser");
 
@@ -69,61 +69,137 @@ const Card6 = ({ drawData }) => {
 
           {/* <Text fontSize="md" align="left" fontWeight={"medium"}> */}
           <Box display="flex" flexWrap="wrap">
-            {cal_days.map((item, index) => {
-              if (item === 0) {
-                return (
-                  <font
-                    key={index}
-                    style={{
-                      "font-size": "16px",
-                      display: "flex",
-                      "flex-direction": "row",
-                    }}
-                  >
-                    <Box
-                      w="1rem"
-                      h="1rem"
-                      borderRadius="50%"
-                      bgColor="yellow"
-                    ></Box>
-                    {(index + 1) % 30 == 0 ? <br></br> : ""}
-                  </font>
-                );
-              } else if (item === 1) {
-                return (
-                  <font
-                    key={index}
-                    fontSize="md"
-                    align="left"
-                    fontWeight={"medium"}
-                  >
-                    <Box
-                      w="1rem"
-                      h="1rem"
-                      borderRadius="50%"
-                      bgColor="red"
-                    ></Box>
-                    {(index + 1) % 30 == 0 ? <br></br> : ""}
-                  </font>
-                );
-              } else if (item == 2) {
-                return (
-                  <font
-                    key={index}
-                    fontSize="md"
-                    align="left"
-                    fontWeight={"medium"}
-                  >
-                    <Box
-                      w="1rem"
-                      h="1rem"
-                      borderRadius="50%"
-                      bgColor="black"
-                    ></Box>
-                    {(index + 1) % 30 == 0 ? <br></br> : ""}
-                  </font>
-                );
-              }
+            {[Array(12)].map((item, index) => {
+              return (
+                <HStack>
+                  {[
+                    Array(30).map((item, index) => {
+                      return <p key={item}>d</p>;
+                      // if (item === 0) {
+                      //   return (
+                      //     <font
+                      //       key={index}
+                      //       style={{
+                      //         "font-size": "16px",
+                      //         display: "flex",
+                      //         "flex-direction": "row",
+                      //       }}
+                      //     >
+                      //       <Box
+                      //         w="4px"
+                      //         h="4px"
+                      //         // borderRadius="50%"
+                      //         bgColor="yellow"
+                      //       ></Box>
+                      //       {(index + 1) % 30 == 0 ? <br></br> : ""}
+                      //     </font>
+                      //   );
+                      // } else if (item === 1) {
+                      //   return (
+                      //     <font
+                      //       key={index}
+                      //       fontSize="md"
+                      //       align="left"
+                      //       fontWeight={"medium"}
+                      //     >
+                      //       <Box
+                      //         w="4px"
+                      //         h="4px"
+                      //         // borderRadius="50%"
+                      //         bgColor="red"
+                      //       ></Box>
+                      //       {(index + 1) % 30 == 0 ? <br></br> : ""}
+                      //     </font>
+                      //   );
+                      // } else if (item == 2) {
+                      //   return (
+                      //     <font
+                      //       key={index}
+                      //       fontSize="md"
+                      //       align="left"
+                      //       fontWeight={"medium"}
+                      //     >
+                      //       <Box
+                      //         w="4px"
+                      //         h="4px"
+                      //         // borderRadius="50%"
+                      //         bgColor="black"
+                      //       ></Box>
+                      //       {(index + 1) % 30 == 0 ? <br></br> : ""}
+                      //     </font>
+                      //   );
+                      // }
+                    }),
+                  ]}
+                </HStack>
+              );
+              // if (index % 30 === 0) {
+              //   return (
+              //     <>
+              //       <Box
+              //         w="4px"
+              //         h="4px"
+              //         // borderRadius="50%"
+              //         bgColor="blue"
+              //       ></Box>
+              //       <br />
+              //     </>
+              //   );
+              // }
+              // if (item === 0) {
+              //   return (
+              //     <font
+              //       key={index}
+              //       style={{
+              //         "font-size": "16px",
+              //         display: "flex",
+              //         "flex-direction": "row",
+              //       }}
+              //     >
+              //       <Box
+              //         w="4px"
+              //         h="4px"
+              //         // borderRadius="50%"
+              //         bgColor="yellow"
+              //       ></Box>
+              //       {(index + 1) % 30 == 0 ? <br></br> : ""}
+              //     </font>
+              //   );
+              // } else if (item === 1) {
+              //   return (
+              //     <font
+              //       key={index}
+              //       fontSize="md"
+              //       align="left"
+              //       fontWeight={"medium"}
+              //     >
+              //       <Box
+              //         w="4px"
+              //         h="4px"
+              //         // borderRadius="50%"
+              //         bgColor="red"
+              //       ></Box>
+              //       {(index + 1) % 30 == 0 ? <br></br> : ""}
+              //     </font>
+              //   );
+              // } else if (item == 2) {
+              //   return (
+              //     <font
+              //       key={index}
+              //       fontSize="md"
+              //       align="left"
+              //       fontWeight={"medium"}
+              //     >
+              //       <Box
+              //         w="4px"
+              //         h="4px"
+              //         // borderRadius="50%"
+              //         bgColor="black"
+              //       ></Box>
+              //       {(index + 1) % 30 == 0 ? <br></br> : ""}
+              //     </font>
+              //   );
+              // }
             })}
           </Box>
           {/* </Text> */}
