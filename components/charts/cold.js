@@ -16,6 +16,8 @@ const Card6 = ({ drawData }) => {
       p="1rem"
       // w="100vw"
       // h="100vh"
+      bgColor="#6f0cbb"
+      borderRadius="1rem"
     >
       {" "}
       {parser.time_gap(drawData.longest_gap) > 0 ? (
@@ -24,50 +26,65 @@ const Card6 = ({ drawData }) => {
             You know what? You did not text each other at all between
           </Text>
 
- 
           <Text fontSize="2xl" fontWeight="medium" align="left">
-              {parser.format_time_gap(drawData.longest_gap.start_time)} 
-              
+            {parser.format_time_gap(drawData.longest_gap.start_time)}
           </Text>
-            <Text fontSize="xl" align="left" fontWeight="medium">
-              &
-            </Text>
-            <Text fontSize="2xl" align="left" fontWeight="medium">
-             
-              {parser.format_time_gap(drawData.longest_gap.end_time)}
-            </Text>
+          <Text fontSize="xl" align="left" fontWeight="medium">
+            &
+          </Text>
+          <Text fontSize="2xl" align="left" fontWeight="medium">
+            {parser.format_time_gap(drawData.longest_gap.end_time)}
+          </Text>
 
-            {/* <Text fontSize="md" align="left" fontWeight={"medium"}> */}
-              <nobr>
-            {  
-              cal_days.map((item, index) => {
-                if (item === 0) {
-                  return <font style={{"font-size":"16px"}} color="white">. {(index+1)%30==0?<br></br>:""}</font>
-                }                
-                else if (item === 1) {
-                  return <font fontSize="md" align="left" fontWeight={"medium"} color="pink">. {(index+1)%30==0?<br></br>:""}</font>
-
-                }
-                else  {
-                  return <font fontSize="md" align="left" fontWeight={"medium"} color="red">. {(index+1)%30==0?<br></br>:""}</font>
-
-                }
+          {/* <Text fontSize="md" align="left" fontWeight={"medium"}> */}
+          <nobr>
+            {cal_days.map((item, index) => {
+              if (item === 0) {
+                return (
+                  <font style={{ "font-size": "16px" }} color="white">
+                    . {(index + 1) % 30 == 0 ? <br></br> : ""}
+                  </font>
+                );
+              } else if (item === 1) {
+                return (
+                  <font
+                    fontSize="md"
+                    align="left"
+                    fontWeight={"medium"}
+                    color="pink"
+                  >
+                    . {(index + 1) % 30 == 0 ? <br></br> : ""}
+                  </font>
+                );
+              } else {
+                return (
+                  <font
+                    fontSize="md"
+                    align="left"
+                    fontWeight={"medium"}
+                    color="red"
+                  >
+                    . {(index + 1) % 30 == 0 ? <br></br> : ""}
+                  </font>
+                );
               }
-              )
-            } 
-              </nobr>
-            {/* </Text> */}
+            })}
+          </nobr>
+          {/* </Text> */}
 
-            <Text fontSize="5xl" align="left" fontWeight="extrabold" color={"red"}>
-              {parser.time_gap(drawData.longest_gap)}
-            </Text>
-            <Text fontSize="3xl" align="left" fontWeight={"medium"}>
+          <Text
+            fontSize="5xl"
+            align="left"
+            fontWeight="extrabold"
+            color={"red"}
+          >
+            {parser.time_gap(drawData.longest_gap)}
+          </Text>
+          <Text fontSize="3xl" align="left" fontWeight={"medium"}>
             {parser.time_gap(drawData.longest_gap) == 1
               ? "whole day"
               : "days of ghosting!!"}{" "}
           </Text>
-         
-
         </>
       ) : (
         <Text fontSize="3xl" align="center">
