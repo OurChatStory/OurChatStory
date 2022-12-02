@@ -9,7 +9,8 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
-import { IoClose } from "react-icons/io5";
+import { IoClose, IoCaretForward, IoCaretBack } from "react-icons/io5";
+
 import Stories from "react-insta-stories";
 
 import MonthlyGraph from "./charts/monthly";
@@ -30,37 +31,39 @@ import * as htmlToImage from "html-to-image";
 
 const Dashboard = ({ drawData, isDemo }) => {
   const [isShared, setIsShared] = useState(false);
-  const ref = useRef();
-  const onButtonClick = useCallback(() => {
-    if (ref.current === null) {
-      return;
-    }
-    setIsShared(true);
-    htmlToImage
-      .toBlob(ref.current, { cacheBust: true })
-      .then((dataUrl) => {
-        const file = new File([dataUrl], "share.png", { type: dataUrl.type });
-        // const link = document.createElement("a");
-        // link.download = "my-image-name.png";
-        // link.href = dataUrl;
-        // link.click();
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          navigator
-            .share({
-              title: "OurChatStory",
-              text: "Look at our #WhatsAppWrapped. I made it using OurChatStory.co!",
-              files: [file],
-            })
-            .then(() => console.log("Share was successful."))
-            .catch((error) => console.log(error));
-          setIsShared(false);
-        } else console.log("no share support");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [ref]);
+  const [storyIndex, setStoryIndex] = useState(0);
 
+  // const ref = useRef();
+  // const onButtonClick = useCallback(() => {
+  //   if (ref.current === null) {
+  //     return;
+  //   }
+  //   setIsShared(true);
+  //   htmlToImage
+  //     .toBlob(ref.current, { cacheBust: true })
+  //     .then((dataUrl) => {
+  //       const file = new File([dataUrl], "share.png", { type: dataUrl.type });
+  //       // const link = document.createElement("a");
+  //       // link.download = "my-image-name.png";
+  //       // link.href = dataUrl;
+  //       // link.click();
+  //       if (navigator.canShare && navigator.canShare({ files: [file] })) {
+  //         navigator
+  //           .share({
+  //             title: "OurChatStory",
+  //             text: "Look at our #WhatsAppWrapped. I made it using OurChatStory.co!",
+  //             files: [file],
+  //           })
+  //           .then(() => console.log("Share was successful."))
+  //           .catch((error) => console.log(error));
+  //         setIsShared(false);
+  //       } else console.log("no share support");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [ref]);
+<></>
   const pStories = [
     {
       content: (props) => <Welcome drawData={drawData} />,
@@ -140,8 +143,9 @@ const Dashboard = ({ drawData, isDemo }) => {
   const stories = drawData.group ? gStories : pStories;
   return (
     <Box>
-      <Box ref={ref}>
+      <Box>
         <Stories
+          currentIndex={storyIndex}
           stories={stories}
           defaultInterval={20000}
           width="100vw"
@@ -160,8 +164,68 @@ const Dashboard = ({ drawData, isDemo }) => {
           position="absolute"
           top="2vh"
           right="1vw"
-          zIndex={10000}
+          zIndex={10003}
         />
+        {storyIndex !== stories.length ? (<>
+          <IconButton
+            aria-label="Next"
+            icon={<IoCaretForward size="1.5em" opacity={0.8} color="#555555" />}
+            variant="none"
+            colorScheme="transparent"
+            onClick={() => {
+              setStoryIndex(storyIndex + 1);
+            }}
+            position="absolute"
+            top="45vh"
+            right="0.5vw"
+            zIndex={10000}
+            />
+          <Box
+            position="absolute"
+            top="0"
+            right="0"
+            zIndex={10001}
+            height="100vh"
+            width="50vw"
+            bgColor="transparent"
+            onClick={() => {
+              setStoryIndex(storyIndex + 1);
+            }}
+            />
+            </>
+        ) : (
+          ""
+        )}
+        {storyIndex !== 0 ? (
+          <><IconButton
+            aria-label="Prev"
+            icon={<IoCaretBack size="1.5em" opacity={0.8} color="#555555" />}
+            variant="none"
+            colorScheme="transparent"
+            onClick={() => {
+              setStoryIndex(storyIndex - 1);
+            }}
+            position="absolute"
+            top="45vh"
+            left="0.5vw"
+            zIndex={10000}
+          />
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            zIndex={10001}
+            height="100vh"
+            width="50vw"
+            bgColor="transparent"
+            onClick={() => {
+              setStoryIndex(storyIndex - 1);
+            }}
+            />
+          </>
+        ) : (
+          ""
+        )}
         <HStack
           w="100%"
           h="5vh"
@@ -199,7 +263,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           }}
           position="sticky"
           bottom="0vh"
-          zIndex={10000}
+          zIndex={10003}
           colorScheme="whatsapp"
           borderRadius={0}
         >
@@ -213,7 +277,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           onClick={onButtonClick}
           position="sticky"
           bottom="0vh"
-          zIndex={10000}
+          zIndex={10003}
         >
           Share
         </Button>
