@@ -75,7 +75,7 @@ const Card6 = ({ drawData }) => {
           <Box display="flex" flexWrap="wrap">
             {[Array(12)].map((item, index) => {
               return (
-                <HStack>
+                <HStack key={item}>
                   {[
                     Array(30).map((item, index) => {
                       return <p key={item}>d</p>;
