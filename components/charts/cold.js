@@ -9,14 +9,17 @@ const Card6 = ({ drawData }) => {
       spacing="1rem"
       align="left"
       justify="center"
-      // bgImage="/static/bg11.png"
+      bgImage="/static/aaa.jpeg"
+      bgBlendMode={"multiply"}
+      bgRepeat="no-repeat"
+      bgSize="cover"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
       p="1rem"
       // w="100vw"
       // h="100vh"
-      bgColor="#6f0cbb"
+      bgColor="primary.600"
       borderRadius="1rem"
     >
       {" "}

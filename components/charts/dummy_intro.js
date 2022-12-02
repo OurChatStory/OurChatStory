@@ -6,7 +6,10 @@ const DummyIntro = ({ drawData }) => {
       align="center"
       justify="center"
       spacing="1rem"
-      // bgImage="static/bg2.png"
+      bgImage="static/download.jpeg"
+      bgBlendMode={"multiply"}
+      bgRepeat="no-repeat"
+      bgSize="cover"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
       p="1rem"
@@ -36,7 +39,7 @@ const DummyIntro = ({ drawData }) => {
         textAlign="center"
         color="#210934"
       >
-        Anshul
+        Divit
       </Text>
       <Text
         fontSize="4xl"
@@ -59,7 +62,7 @@ const DummyIntro = ({ drawData }) => {
         pl="1rem"
         pr="1rem"
       >
-        Sunaina
+        Tanisha
       </Text>
       <Text
         fontSize="4xl"
