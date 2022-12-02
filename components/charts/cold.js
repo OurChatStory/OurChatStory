@@ -3,6 +3,7 @@ import { Text, VStack, Box } from "@chakra-ui/react";
 const parser = require("../../script/parser");
 
 const Card6 = ({ drawData }) => {
+  const cal_days=[0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   return (
     <VStack
       spacing="1rem"
@@ -35,9 +36,28 @@ const Card6 = ({ drawData }) => {
              
               {parser.format_time_gap(drawData.longest_gap.end_time)}
             </Text>
-            <Text fontSize="3xl" align="left" fontWeight={"medium"}>
-            Thats 
-            </Text>
+
+            {/* <Text fontSize="md" align="left" fontWeight={"medium"}> */}
+              <nobr>
+            {  
+              cal_days.map((item, index) => {
+                if (item === 0) {
+                  return <font style={{"font-size":"16px"}} color="white">. {(index+1)%30==0?<br></br>:""}</font>
+                }                
+                else if (item === 1) {
+                  return <font fontSize="md" align="left" fontWeight={"medium"} color="pink">. {(index+1)%30==0?<br></br>:""}</font>
+
+                }
+                else  {
+                  return <font fontSize="md" align="left" fontWeight={"medium"} color="red">. {(index+1)%30==0?<br></br>:""}</font>
+
+                }
+              }
+              )
+            } 
+              </nobr>
+            {/* </Text> */}
+
             <Text fontSize="5xl" align="left" fontWeight="extrabold" color={"red"}>
               {parser.time_gap(drawData.longest_gap)}
             </Text>
