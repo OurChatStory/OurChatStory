@@ -34,13 +34,8 @@ const Card6 = ({ drawData }) => {
       // backgroundSize="120%"
       p="1rem"
       // w="100vw"
-<<<<<<< HEAD
       // h="100vh"
       bgColor="primary.600"
-=======
-      h="78vh"
-      bgColor="#FC7307"
->>>>>>> 3a7dc85624b333b8dac1a0dbb32528a1735d21e9
       borderRadius="1rem"
     >
       {" "}
