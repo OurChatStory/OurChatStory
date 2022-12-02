@@ -10,8 +10,10 @@ const DummyIntro = ({ drawData }) => {
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
       p="1rem"
-      // w="100vw"
-      // h="100vh"
+      w="100%"
+      h="100%"
+      bgColor="#6f0cbb"
+      borderRadius="1rem"
     >
       <Text
         fontSize="4xl"
@@ -19,17 +21,22 @@ const DummyIntro = ({ drawData }) => {
         color="white"
         w={"100%"}
         fontWeight="600"
+        textAlign="center"
       >
         Take a look at Wrapped between
       </Text>
       <Text
         fontSize="4xl"
         align="left"
-        w={"100%"}
+        // w={"100%"}
+        pl="1rem"
+        pr="1rem"
         fontWeight="800"
-        color={"red"}
+        bgColor="#fcea2b"
+        textAlign="center"
+        color="#210934"
       >
-        Yajat
+        Anshul
       </Text>
       <Text
         fontSize="4xl"
@@ -37,15 +44,22 @@ const DummyIntro = ({ drawData }) => {
         w={"100%"}
         fontWeight="800"
         color={"white"}
-      >&</Text>
+        textAlign="center"
+      >
+        &
+      </Text>
       <Text
         fontSize="4xl"
         align="left"
-        w={"100%"}
+        // w={"100%"}
         fontWeight="800"
-        color={"red"}
+        textAlign="center"
+        bgColor="#fcea2b"
+        color="#210934"
+        pl="1rem"
+        pr="1rem"
       >
-        Brinda
+        Sunaina
       </Text>
       <Text
         fontSize="4xl"
@@ -53,8 +67,11 @@ const DummyIntro = ({ drawData }) => {
         color="white"
         w={"100%"}
         fontWeight="600"
+        textAlign="center"
       >
-for example      </Text>    </VStack>
+        for example{" "}
+      </Text>{" "}
+    </VStack>
   );
 };
 

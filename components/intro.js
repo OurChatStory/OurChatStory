@@ -24,10 +24,12 @@ import Card5 from "./charts/emoji";
 import HourlyGraph from "./charts/time";
 import NoTalk from "./charts/cold";
 import Card9 from "./charts/MostActive";
-import DummyIntro from "./charts/dummy_intro"
+import DummyIntro from "./charts/dummy_intro";
 
 import ThankYou from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
+import Story from "./Story";
+import { ST } from "next/dist/shared/lib/utils";
 const moveUp = keyframes`
     from {transform: translateY(0px);}
     to {transform: translateY(-10px);}
@@ -37,7 +39,10 @@ const Intro = () => {
   // const scrollRef = useRef(null);
   // useScrollSnap({ ref: scrollRef, duration: 1, delay: 1 });
   const moveUpAnimation = `${moveUp} infinite 1s ease-in-out alternate`;
-  const dummy_data=sample_data.sample;
+  const dummy_data = sample_data.sample;
+
+  const dummyIntro = <DummyIntro drawData={sample_data.sample} />;
+  const noTalk = <NoTalk drawData={dummy_data} />;
 
   return (
     <>
@@ -287,111 +292,101 @@ const Intro = () => {
             </VStack>
           </Box>
         </h1>
-
-        <div className="d-flex snap-child">
-          <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
+        <Story component={dummyIntro} />
+        <Story component={noTalk} />
+        {/* <div className="d-flex snap-child">
+          <Box
+            ml={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
+            mr={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
+            mt={{ base: "0.5rem", sm: "0.5rem", lg: "0.5rem" }}
+            mb={{ base: "1rem", sm: "1rem", lg: "1rem" }}
+            align={"center"}
+            spacing={{ base: "1rem", sm: "1rem", lg: "1rem" }}
+            h="78vh"
+            minWidth={{lg: "600"}}
+            maxWidth="600"
+          >
             <Box
-              bgColor="pink"
+              bgColor="#48937e"
               borderRadius="1rem"
               p="1rem"
-              w={{ base: "100%", sm: "100%", lg: "80%" }}
+              w={{ base: "100%", sm: "100%", md: "60%", lg: "60%" }}
               h="78vh"
-            >    
-
-
+            >
               <DummyIntro drawData={dummy_data} />
             </Box>
           </Box>
         </div>
 
         <div className="d-flex snap-child">
-          <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
+          <Box
+            ml={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
+            mr={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
+            mt={{ base: "0.5rem", sm: "0.5rem", lg: "0.5rem" }}
+            mb={{ base: "1rem", sm: "1rem", lg: "1rem" }}
+            align={"center"}
+            spacing={{ base: "1rem", sm: "1rem", lg: "1rem" }}
+            h="78vh"
+            minWidth="600"
+            maxWidth="600"
+          >
             <Box
               bgColor="green"
               borderRadius="1rem"
               p="1rem"
-              w={{ base: "100%", sm: "100%", lg: "80%" }}
+              w={{ base: "100%", sm: "100%", md: "60%", lg: "60%" }}
               h="78vh"
             >
-              <NoTalk drawData={dummy_data}/>
+              <NoTalk drawData={dummy_data} />
             </Box>
           </Box>
         </div>
-
         <div className="d-flex snap-child">
-          <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
+          <Box
+            ml={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
+            mr={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
+            mt={{ base: "0.5rem", sm: "0.5rem", lg: "0.5rem" }}
+            mb={{ base: "1rem", sm: "1rem", lg: "1rem" }}
+            align={"center"}
+            spacing={{ base: "1rem", sm: "1rem", lg: "1rem" }}
+            h="78vh"
+            minWidth="600"
+            maxWidth="600"
+          >
             <Box
-              bgColor="yellow"
+              bgColor="brown"
               borderRadius="1rem"
               p="1rem"
-              w={{ base: "100%", sm: "100%", lg: "80%" }}
+              w={{ base: "100%", sm: "100%", md: "60%", lg: "60%" }}
               h="78vh"
             >
-              {/* <HourlyGraph drawData={dummy_data}/>   */}
+              <HourlyGraph drawData={dummy_data} />
             </Box>
           </Box>
         </div>
-
         <div className="d-flex snap-child">
-          <Box w="100vw" pl="1rem" pr="1rem" pb="3rem" pt="1rem" align="center">
+          <Box
+            ml={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
+            mr={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}
+            mt={{ base: "0.5rem", sm: "0.5rem", lg: "0.5rem" }}
+            mb={{ base: "1rem", sm: "1rem", lg: "1rem" }}
+            align={"center"}
+            spacing={{ base: "1rem", sm: "1rem", lg: "1rem" }}
+            h="78vh"
+            minWidth="600"
+            maxWidth="600"
+          >
             <Box
               bgColor="white"
               borderRadius="1rem"
               p="1rem"
-              w={{ base: "100%", sm: "100%", lg: "80%" }}
+              w={{ base: "100%", sm: "100%", md: "60%", lg: "60%" }}
               h="78vh"
             >
-              {/* <WordCloud drawData={dummy_data}/> */}
+              <WordCloud drawData={dummy_data} />
             </Box>
           </Box>
-        </div>
-
-
-        {/* <h1 style={{ backgroundColor: "red" }} className="d-flex snap-child">
-          Slide 3
-        </h1>
-        <h1 className="d-flex snap-child">Slide 4</h1>
-        <h1 className="d-flex snap-child">Slide 5</h1>
-
-        <Box p="0.5rem" align="center">
-          <Box
-            bgColor="#120000"
-            borderRadius="1rem"
-            p="1rem"
-            w={{ base: "100%", sm: "100%", lg: "80%" }}
-            h="90vh"
-          ></Box>
-        </Box>
-
-        <Box p="0.5rem" align="center">
-          <Box
-            bgColor="#00002b"
-            borderRadius="1rem"
-            p="1rem"
-            w={{ base: "100%", sm: "100%", lg: "80%" }}
-            h="90vh"
-          ></Box>
-        </Box>
-        <Box p="0.5rem" align="center">
-          <Box
-            borderRadius="1rem"
-            p="1rem"
-            w={{ base: "100%", sm: "100%", lg: "80%" }}
-            h="90vh"
-          >
-            <Center h="100%" w="100%">
-              <Text
-                fontSize="7xl"
-                color="white"
-                w={"100%"}
-                fontWeight="600"
-                align={"center"}
-              >
-                Thank You
-              </Text>
-            </Center>
-          </Box>
-        </Box> */}
+        </div> */}
 
         <style jsx>{`
           .snap-container {
@@ -401,7 +396,6 @@ const Intro = () => {
             scroll-snap-type: y mandatory;
             scroll-padding: 10px;
             overflow-y: scroll;
-            
           }
 
           .d-flex {
