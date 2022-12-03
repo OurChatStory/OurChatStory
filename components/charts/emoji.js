@@ -1,11 +1,34 @@
-import { Heading, Box, Text, Grid, GridItem ,VStack} from "@chakra-ui/react";
+import {
+  Heading,
+  Box,
+  Text,
+  Grid,
+  GridItem,
+  VStack,
+  keyframes,
+} from "@chakra-ui/react";
+
+const ZoomAnimation = keyframes`
+    0% {
+    background-size: 100% 100%;
+  }
+  50%{
+    background-size: 150% 150%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+`;
+
 const Card5 = ({ drawData }) => {
+  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+
   return (
     <VStack
       spacing="1.5rem"
       align="center"
       justify="center"
-      // bgImage="static/bg3.png"
+      bgImage="static/bg2.png"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
@@ -17,12 +40,13 @@ const Card5 = ({ drawData }) => {
       bgColor="#f3c5b7"
       borderRadius="1rem"
       p="1rem"
+      animation={zoomAnimation}
     >
       <Heading size="md" color="black" textAlign="center">
         An Emoji is worth thousand words
       </Heading>
 
-        {/* <Text
+      {/* <Text
               key={i}
               align="center"
               style={{
@@ -34,7 +58,7 @@ const Card5 = ({ drawData }) => {
               {emoji}
             </Text> */}
 
-        {/* <VStack>
+      {/* <VStack>
           <HStack>
             <Text fontSize={"8xl"}>{drawData.top_10_emojis[1].emoji}</Text>
           </HStack>
@@ -44,28 +68,35 @@ const Card5 = ({ drawData }) => {
           </HStack>
         </VStack> */}
 
-        <Grid
-          templateRows="repeat(2, 1fr)"
-          templateColumns="repeat(4, 1fr)"
-          gap={1}
-        >
-          <GridItem colSpan={2} >
-            <Text fontSize={["6xl","8xl","8xl"]}>{drawData.top_10_emojis[0].emoji}</Text>
-          </GridItem>
-          <GridItem colSpan={2} >
-            <Text fontSize={["6xl","8xl","8xl"]}>{drawData.top_10_emojis[1].emoji}</Text>
-          </GridItem>
-          <GridItem colSpan={2} >
-            <Text fontSize={["6xl","8xl","8xl"]}>{drawData.top_10_emojis[2].emoji}</Text>
-          </GridItem>
-          <GridItem colSpan={2} >
-            <Text fontSize={["6xl","8xl","8xl"]}>{drawData.top_10_emojis[3].emoji}</Text>
-          </GridItem>
-        </Grid>
-        <Heading size="md" color="black" textAlign="center" p="1rem">
-          So these are our most used Emojis
-        </Heading>
-
+      <Grid
+        templateRows="repeat(2, 1fr)"
+        templateColumns="repeat(4, 1fr)"
+        gap={1}
+      >
+        <GridItem colSpan={2}>
+          <Text fontSize={["6xl", "8xl", "8xl"]}>
+            {drawData.top_10_emojis[0].emoji}
+          </Text>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <Text fontSize={["6xl", "8xl", "8xl"]}>
+            {drawData.top_10_emojis[1].emoji}
+          </Text>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <Text fontSize={["6xl", "8xl", "8xl"]}>
+            {drawData.top_10_emojis[2].emoji}
+          </Text>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <Text fontSize={["6xl", "8xl", "8xl"]}>
+            {drawData.top_10_emojis[3].emoji}
+          </Text>
+        </GridItem>
+      </Grid>
+      <Heading size="md" color="black" textAlign="center" p="1rem">
+        So these are our most used Emojis
+      </Heading>
     </VStack>
   );
 };

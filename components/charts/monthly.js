@@ -1,7 +1,23 @@
 import { Box, Text, VStack, keyframes } from "@chakra-ui/react";
-import { VictoryLabel, VictoryLine } from "victory";
+import { VictoryLabel, VictoryLine, VictoryChart } from "victory";
 
 const parser = require("../../script/parser");
+
+const chartTheme = {
+  axis: {
+    style: {
+      tickLabels: {
+        // this changed the color of my numbers to white
+        fill: "white",
+      },
+      grid: {
+        fill: "none",
+        stroke: "none",
+        pointerEvents: "painted",
+      },
+    },
+  },
+};
 
 const ZoomAnimation = keyframes`
     0% {
@@ -49,26 +65,28 @@ const Card2 = ({ drawData, isShared }) => {
       </Text>
 
       <Box>
-        <VictoryLine
-          height={200}
-          interpolation="natural"
-          domain={{ y: [-750, drawData.most_active_month.count + 300] }}
-          style={{
-            data: {
-              stroke: "#FFF600",
-              strokeWidth: 4,
-              strokeLinecap: "round",
-            },
-          }}
-          animate={{ onLoad: { duration: isShared ? 0 : 4000 } }}
-          data={parser.monthly_count_data(drawData.monthly_chats_count)}
-        >
-          <VictoryLabel></VictoryLabel>
-        </VictoryLine>
-        <Text color={"yellow"} fontWeight={200}>
+        <VictoryChart theme={chartTheme}>
+          <VictoryLine
+            height={200}
+            interpolation="natural"
+            domain={{ y: [-750, drawData.most_active_month.count + 300] }}
+            style={{
+              data: {
+                stroke: "#FFF600",
+                strokeWidth: 4,
+                strokeLinecap: "round",
+              },
+            }}
+            animate={{ onLoad: { duration: isShared ? 0 : 4000 } }}
+            data={parser.monthly_count_data(drawData.monthly_chats_count)}
+          >
+            {/* <VictoryLabel></VictoryLabel> */}
+          </VictoryLine>
+        </VictoryChart>
+        {/* <Text color={"yellow"} fontWeight={200}>
           {" "}
           graph from Jan till today{" "}
-        </Text>
+        </Text> */}
       </Box>
 
       {/* <Text pt="0.5rem" color="#F5F5F5" fontSize="2xl" align="center">

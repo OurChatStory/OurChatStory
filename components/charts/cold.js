@@ -22,17 +22,21 @@ const Card6 = ({ drawData }) => {
   ];
   return (
     <Box
-      bgImage="/static/two-kids.jpeg"
+      spacing="1rem"
+      align="center"
+      justify="center"
+      bgImage="/static/two-kids.jpg"
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"
-      bgColor="primary.600"
+      bgColor="purple"
       borderRadius="1rem"
       h="78vh"
       w="100%"
+      border="2px solid pink"
     >
       {/* <Box bgColor={"black"} opacity={0.5} /> */}
-      <VStack align="left" p="1rem" justify="center" spacing="1rem">
+      <VStack h="100%" align="left" p="1rem" justify="center" spacing="1rem">
         {" "}
         {parser.time_gap(drawData.longest_gap) > 0 ? (
           <>
@@ -206,7 +210,7 @@ const Card6 = ({ drawData }) => {
               fontSize="5xl"
               align="left"
               fontWeight="extrabold"
-              color="#D4E4F7"
+              color="pink"
               textAlign="center"
             >
               {parser.time_gap(drawData.longest_gap)}

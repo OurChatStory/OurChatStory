@@ -26,7 +26,7 @@ const Card1 = ({ drawData }) => {
       // backgroundPosition="center"
       backgroundRepeat="no-repeat"
       bgBlendMode="multiply"
-      bgImage="/static/asdf.jpg"
+      bgImage="/static/pop-art.jpg"
       w="100%"
       h="78vh"
       bgColor="gray"
@@ -34,6 +34,7 @@ const Card1 = ({ drawData }) => {
       pt="1rem"
       pb="1rem"
       animation={zoomAnimation}
+      border="2px solid white"
     >
       <Text mb="1rem" fontSize="3xl" align="center">
         Let me tell you this
