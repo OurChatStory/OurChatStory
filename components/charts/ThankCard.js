@@ -18,25 +18,24 @@ const Card6 = ({ drawData }) => {
       h="78vh"
       bg="#30475E"
       borderRadius="1rem"
-      pt="1rem"
-      pb="1rem"
+      p="1rem"
     >
-      <Text color="#F5F5F5" fontSize="3xl" align="center">
-        <strike>The End</strike> <br />
-      </Text>
+
       <Text color="#F5F5F5" fontSize="4xl" align="center">
-        A new year
-        <br /> A new Story!
+        This was OurChatStory
       </Text>
       <Text color="#F5F5F5" fontSize="2xl" align="center">
-        Share with your friends
+        While we create many more amazing stories together, let's share this with friends.
+      </Text>
+      <Text color="#F5F5F5" fontSize="2xl" align="center">
+        Because every story is unique and worth sharing.
       </Text>
       <Image h="80px" src="static/logo2.png" alt="OurChatStory" pb="1rem" />
       <Box zIndex={10000}>
-        <Text color="#F5F5F5" fontSize="2xl" align="center">
+        <Text color="#F5F5F5" fontSize="sm" align="center">
           Made with ❤️ by
         </Text>
-        <Text color="#F5F5F5" fontSize="xl" align="center">
+        <Text color="#F5F5F5" fontSize="sm" align="center">
           <Link
             textDecoration="underline"
             cursor="pointer"
