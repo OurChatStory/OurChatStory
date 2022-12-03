@@ -19,7 +19,7 @@ const Card5 = ({ drawData }) => {
       pt="1rem"
       pb="1rem"
     >
-      <Heading color="black" textAlign="center">Most used emojis :)</Heading>
+      <Heading size="lg" color="black"  textAlign="center">Most used emojis :)</Heading>
       <Box>
         {drawData.top_10_emojis.slice(0, 5).map(({ emoji }, i) => {
           return (

@@ -1,7 +1,7 @@
 import { Box, Text, Flex, Spacer, VStack, Heading } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-import { VictoryBar, VictoryStack, VictoryPie } from "victory";
+import { VictoryBar, VictoryStack, VictoryPie, VictoryLabel } from "victory";
 
 const Card4 = ({ drawData }) => {
   const [piRadii, setPiRadii] = useState(0);
@@ -59,6 +59,13 @@ const Card4 = ({ drawData }) => {
             .map(({ member, count }) => {
               return { x: member.split(" ")[0], y: count };
             })}
+          labelComponent={
+            <VictoryLabel
+              style={[{fill: "white"}]}
+              // backgroundStyle={[{ fill: "white" }]}
+              // backgroundPadding={{ left: 5, right: 5 }}
+            />
+          }
         />
       </Box>
     </VStack>

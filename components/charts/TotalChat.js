@@ -1,4 +1,4 @@
-import { Text, VStack } from "@chakra-ui/react";
+import { Text, VStack, Box } from "@chakra-ui/react";
 
 import CountUp from "react-countup";
 
@@ -26,13 +26,24 @@ const Card1 = ({ drawData }) => {
       h="78vh"
       bgColor="gray"
       borderRadius="1rem"
-      pt="1rem"
-      pb="1rem"
+      // pt="1rem"
+      // pb="1rem"
+      p="1rem"
+      border="4px solid"
     >
-      <Text align="center" fontSize="5xl">
+      <Text align="center" as="b" fontSize="4xl">
         Infact y&apos;all sent a total of{" "}
       </Text>
-      <Text fontSize="6xl" color="Brown" align="center" fontWeight="medium">
+      <Text
+        fontSize="5xl"
+        // color="#fded03"
+        align="center"
+        fontWeight="medium"
+        bgColor="#800280"
+        pl="1rem"
+        pr="1rem"
+        as="b"
+      >
         <CountUp
           end={drawData.total_no_of_chats}
           onEnd={({ countUpRef }) => {
@@ -41,14 +52,16 @@ const Card1 = ({ drawData }) => {
           duration={2}
         />
       </Text>
-      <Text fontSize="3xl" align="center">
+      <Text fontSize="2xl" align="center">
         {" "}
         messages to each other this year!!
       </Text>
       <br />
-      <Text fontSize="4xl" align="center">
+      <Text fontSize="3xl" align="center">
         That puts you into top{" "}
-        <b>{parseFloat(drawData.top_percent * 100).toFixed(2)}% </b>
+        <b style={{ textDecoration: "underline" }}>
+          {parseFloat(drawData.top_percent * 100).toFixed(2)}%
+        </b>{" "}
         of texters in the world🤯
       </Text>
     </VStack>

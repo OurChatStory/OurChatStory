@@ -17,8 +17,9 @@ const Card6 = ({ drawData }) => {
       h="78vh"
       bgColor="#f4e9e1"
       borderRadius="1rem"
-      pt="1rem"
-      pb="1rem"
+      // pt="1rem"
+      // pb="1rem"
+      p="1rem"
     >
       <Text color="black" fontSize="4xl" align="center" fontWeight="bold">
         This year was eventful
