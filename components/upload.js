@@ -213,19 +213,20 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                       fontWeight={500}
                     >
                       <ListItem>
-                        On the chat you would like to export. Tap on the name of the
-                        chat.
+                        On the chat you would like to export. Tap on the name of
+                        the chat.
                       </ListItem>
                       <ListItem>
-                      In chat info, scroll all the way to the bottom and Tap on Export Chat. Choose Without Media.
+                        In chat info, scroll all the way to the bottom and Tap
+                        on Export Chat. Choose Without Media.
                       </ListItem>
                       <ListItem>
                         Tap on Save to Files to save it on your iPhone.
                       </ListItem>
                       <ListItem>
-                        Finally select <strong>On my iPhone</strong> and save to save it locally.
-                        At last you can select your exported .zip to be
-                        analyzed.{" "}
+                        Finally select <strong>On my iPhone</strong> and save to
+                        save it locally. At last you can select your exported
+                        .zip to be analyzed.{" "}
                       </ListItem>
                     </OrderedList>
                   </Text>
@@ -268,53 +269,52 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                       // max size of file in mb
                       maxSize={200}
                       // hoverTitle="Upload your chat file"
-                      children={
-                        <HStack
-                          w="100%"
-                          h="100%"
-                          justifyContent="center"
-                          align="center"
-                          border="1px dashed #cef23f"
-                          pr="1rem"
-                          pl="1rem"
-                          pt="0.5rem"
-                          pb="0.5rem"
-                          cursor={isUploading ? "not-allowed" : "pointer"}
-                          borderRadius="0.5rem"
-                          transition={"0.4s"}
-                          _hover={{
-                            bgColor: "#cef23f10",
-                          }}
-                        >
-                          <IconButton
-                            aria-label="Upload"
-                            icon={<BiDownload size="1.5em" />}
-                            variant="none"
-                            colorScheme="transparent"
-                            color={"#cef23f"}
-                            isDisabled={isUploading}
-                            isActive={!isUploading}
-                          />
+                    >
+                      <HStack
+                        w="100%"
+                        h="100%"
+                        justifyContent="center"
+                        align="center"
+                        border="1px dashed #cef23f"
+                        pr="1rem"
+                        pl="1rem"
+                        pt="0.5rem"
+                        pb="0.5rem"
+                        cursor={isUploading ? "not-allowed" : "pointer"}
+                        borderRadius="0.5rem"
+                        transition={"0.4s"}
+                        _hover={{
+                          bgColor: "#cef23f10",
+                        }}
+                      >
+                        <IconButton
+                          aria-label="Upload"
+                          icon={<BiDownload size="1.5em" />}
+                          variant="none"
+                          colorScheme="transparent"
+                          color={"#cef23f"}
+                          isDisabled={isUploading}
+                          isActive={!isUploading}
+                        />
 
-                          <Text fontSize="md" fontWeight="300" color="#cef23f">
-                            <u>{isUploading ? "" : "upload"}</u>
-                            {isUploading
-                              ? "uploading..."
-                              : " or drop your chat here"}
-                          </Text>
-                          <Spacer />
-                          <Text
-                            fontSize="sm"
-                            color="#cef23f"
-                            opacity={0.8}
-                            fontWeight="500"
-                            textAlign="center"
-                          >
-                            TXT, ZIP
-                          </Text>
-                        </HStack>
-                      }
-                    />
+                        <Text fontSize="md" fontWeight="300" color="#cef23f">
+                          <u>{isUploading ? "" : "upload"}</u>
+                          {isUploading
+                            ? "uploading..."
+                            : " or drop your chat here"}
+                        </Text>
+                        <Spacer />
+                        <Text
+                          fontSize="sm"
+                          color="#cef23f"
+                          opacity={0.8}
+                          fontWeight="500"
+                          textAlign="center"
+                        >
+                          TXT, ZIP
+                        </Text>
+                      </HStack>
+                    </FileUploader>
                   </Box>
                 </TabPanel>
               </TabPanels>
