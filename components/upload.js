@@ -100,7 +100,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
           m={{ base: "0.5rem", sm: "0.5rem", lg: "1rem" }}
           borderRadius="1rem"
           w={{ base: "90vw", sm: "90vw", lg: "50vw" }}
-          top="20"
+          top="10"
           pt="2rem"
           pr="1rem"
           pb="0rem"
