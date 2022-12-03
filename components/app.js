@@ -50,29 +50,30 @@ const App = () => {
   const [showUploader, setShowUploader] = useState(false);
 
   useEffect(() => {
-    // const imagesPreload = [
-    //   "static/bg2.png",
-    //   "static/bg3.png",
-    //   "static/bg4.png",
-    //   "static/bg5.png",
-    //   "static/bg6.png",
-    //   "static/bg7.png",
-    //   "static/bg8.png",
-    //   "static/bg9.png",
-    //   "static/bg11.png",
-    //   "static/bg99.png",
-    // ];
-    // imagesPreload.forEach((image) => {
-    //   const newImage = new Image();
-    //   newImage.src = image;
-    //   window[image] = newImage;
-    // });
-    if (navigator.serviceWorker)
+    const imagesPreload = [
+      "static/bg2.png",
+      "static/bg3.png",
+      "static/bg4.png",
+      "static/bg5.png",
+      "static/bg6.png",
+      "static/bg7.png",
+      "static/bg8.png",
+      "static/bg9.png",
+      "static/bg11.png",
+      "static/bg99.png",
+    ];
+    imagesPreload.forEach((image) => {
+      const newImage = new Image();
+      newImage.src = image;
+      window[image] = newImage;
+    });
+    if ('serviceWorker' in navigator) {
       navigator.serviceWorker.onmessage = (event) => {
+        console.log("received: onmessage", event);
         var imageBlob = event.data.file;
         const data = new FormData();
         data.append("file", imageBlob);
-        // setShowLoader(true);
+        setShowLoader(true);
         axios
           .post(API_URL + "wrap", data, {
             // receive two parameter endpoint url ,form data
@@ -88,8 +89,11 @@ const App = () => {
             } catch (error) {
               alert("Connection failed. Try again!");
             }
-          });
-      };
+          })};
+    }
+    else{
+      console.log("service worker not supported 3");
+    }
   });
 
   const [showRes, setShowRes] = useState(false);
