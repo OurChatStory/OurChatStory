@@ -31,6 +31,7 @@ import Welcome from "./charts/Welcome";
 import Story from "./Story";
 import { ST } from "next/dist/shared/lib/utils";
 import DummyCTA from "./charts/dummy_cta";
+import GridStats from "./charts/GridStats";
 const moveUp = keyframes`
     from {transform: translateY(0px);}
     to {transform: translateY(-10px);}
@@ -54,7 +55,7 @@ const Intro = ({ setShowUploader }) => {
   const emoji = <Emoji drawData={dummy_data} />;
   const thankCard = <ThankCard drawData={dummy_data} />;
   const dummyCTA = <DummyCTA drawData={dummy_data} setShowUploader={setShowUploader} />;
-
+  const gridStats= <GridStats drawData={dummy_data} />
   const BackgroundImageArray = [];
   return (
     <>
@@ -310,11 +311,11 @@ const Intro = ({ setShowUploader }) => {
         <Story component={totalChat} />
         <Story component={mostActive} />
         <Story component={monthly} />
-        <Story component={hourlyGraph} />
+        {/* <Story component={hourlyGraph} /> */}
         <Story component={noTalk} />
         <Story component={wordCloud} />
         {/* <Story component={countPie} /> */}
-        <Story component={emoji} />
+        <Story component={gridStats} />
         <Story component={dummyCTA} />
         {/* <div className="d-flex snap-child">
           <Box
