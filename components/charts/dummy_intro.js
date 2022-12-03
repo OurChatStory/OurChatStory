@@ -1,7 +1,21 @@
-import { Text, VStack, Box, Spacer } from "@chakra-ui/react";
+import { Text, VStack, Box, Spacer, keyframes } from "@chakra-ui/react";
 import Marquee from "react-fast-marquee";
 
+const ZoomAnimation = keyframes`
+    0% {
+    background-size: 100% 100%;
+  }
+  50%{
+    background-size: 150% 150%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+`;
+
 const DummyIntro = ({ drawData }) => {
+  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+
   return (
     <>
       {/* <div id="overlay"></div> */}
@@ -10,7 +24,7 @@ const DummyIntro = ({ drawData }) => {
         justify="center"
         spacing="1rem"
         // bgImage="static/asdf.png"
-        bgImage="static/download.jpeg"
+        bgImage="static/v2bg0.jpg"
         bgBlendMode={"multiply"}
         bgRepeat="no-repeat"
         bgSize="cover"
@@ -23,6 +37,7 @@ const DummyIntro = ({ drawData }) => {
         // borderColor="#fcea2b"
         // errorBorderColor="red.300"
         border="2px solid #fcea2b"
+        animation={zoomAnimation}
       >
         {/* <Marquee
         gradient={true}

@@ -26,7 +26,7 @@ const Card1 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage="/static/asdf.jpg"
+      bgImage="/static/v2bg3.jpg"
       bgBlendMode="multiply"
       // add blur to the background image
       // filter="blur(10px)"
@@ -73,10 +73,7 @@ const Card1 = ({ drawData }) => {
         style={{ imageRendering: "crisp-edges" }}
         animation={zoomAnimation}
       ></CImage> */}
-      <Text
-        align="center"
-        as="b"
-        fontSize="4xl">
+      <Text align="center" as="b" fontSize="4xl">
         Infact y&apos;all sent a total of{" "}
       </Text>
       <Text
@@ -84,7 +81,7 @@ const Card1 = ({ drawData }) => {
         // color="#fded03"
         align="center"
         fontWeight="medium"
-        bgColor="#800280"
+        bgColor="#cef23f"
         pl="1rem"
         pr="1rem"
         as="b"

@@ -1,16 +1,30 @@
-import { Box, Text, VStack } from "@chakra-ui/react";
+import { Box, Text, VStack, keyframes } from "@chakra-ui/react";
 import { VictoryLabel, VictoryLine } from "victory";
 
 const parser = require("../../script/parser");
 
+const ZoomAnimation = keyframes`
+    0% {
+    background-size: 100% 100%;
+  }
+  50%{
+    background-size: 150% 150%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+`;
+
 const Card2 = ({ drawData, isShared }) => {
+  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+
   return (
     <VStack
       spacing="0.5rem"
       align="center"
       justify="center"
-      // bgImage="/static/bg6.png"
-      // backgroundBlendMode="lighten"
+      bgImage="/static/v2bg4.jpg"
+      backgroundBlendMode="multiply"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
@@ -19,15 +33,19 @@ const Card2 = ({ drawData, isShared }) => {
       // h="100vh"
       w="100%"
       h="78vh"
-      bgColor="#D61A46"
+      bgColor="indigo"
       borderRadius="1rem"
-      pt="1rem"
-      pb="1rem"
+      animation={zoomAnimation}
+      // pt="1rem"
+      // pb="1rem"
+      p="1rem"
+      border="2px solid yellow"
     >
       <Text color="#F5F5F5" fontSize="2xl" align="center" fontWeight={500}>
-        Most of your conversations happened in <strong>{parser.months[drawData.most_active_month.month]}</strong> when
-               &nbsp;  <strong>{drawData.most_active_month.count}</strong> messages were exchanged that month!
-
+        Most of your conversations happened in{" "}
+        <strong>{parser.months[drawData.most_active_month.month]}</strong> when
+        &nbsp; <strong>{drawData.most_active_month.count}</strong> messages were
+        exchanged that month!
       </Text>
 
       <Box>
@@ -46,9 +64,11 @@ const Card2 = ({ drawData, isShared }) => {
           data={parser.monthly_count_data(drawData.monthly_chats_count)}
         >
           <VictoryLabel></VictoryLabel>
-          </VictoryLine>
-          <Text color={"yellow"} fontWeight={200}> graph from Jan till today </Text>
-
+        </VictoryLine>
+        <Text color={"yellow"} fontWeight={200}>
+          {" "}
+          graph from Jan till today{" "}
+        </Text>
       </Box>
 
       {/* <Text pt="0.5rem" color="#F5F5F5" fontSize="2xl" align="center">
