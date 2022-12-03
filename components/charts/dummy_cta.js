@@ -1,9 +1,8 @@
-import { Text, VStack, Box, Spacer, Button } from "@chakra-ui/react";
+import { Text, VStack, Box, Spacer, Button, Link } from "@chakra-ui/react";
 import React from "react";
 import Marquee from "react-fast-marquee";
 
 const DummyCTA = ({ drawData, setShowUploader }) => {
-
   return (
     <VStack
       align="center"
@@ -36,8 +35,7 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
         fontWeight="600"
         textAlign="center"
       >
-        Now to the best part
-
+        Now to the best part!
       </Text>
       <Text
         fontSize="2xl"
@@ -49,7 +47,7 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
         pl={"1rem"}
         pr={"1rem"}
       >
-        You can get to know all this about your WhatsApp conversation with your friends too!
+        You can know your WhatsApp Chat Story with your friends!
       </Text>
       {/* <Spacer /> */}
       <Button
@@ -69,7 +67,7 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
         {/* <label for="hid" cursor="pointer">
                       </label> */}
         <Text fontSize={{ base: "sm", sm: "sm", lg: "md" }} color="dark">
-          Make your wrap
+          Click to make your WhatsApp Wrapped
         </Text>
         {/* <input
                         id="hid"
@@ -105,6 +103,36 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
       </Text> */}
       {/* <Spacer /> */}
       <Spacer />
+      <Text fontSize={{ base:"smaller", sm: "sm", lg: "smaller" }} color="grey" pb="2rem">
+        And yes, we take privacy very seriously and don't store or see any of
+        your chats{" "}
+      </Text>
+      {/* <Spacer/>
+      <Box pb="2rem">
+        <Text color="#F5F5F5" fontSize="sm" align="center">
+          Made with ❤️ by
+        </Text>
+        <Text color="#F5F5F5" fontSize="sm" align="center">
+          <Link
+            textDecoration="underline"
+            cursor="pointer"
+            zIndex={10000}
+            href="https://twitter.com/anshulagx"
+            target="_blank"
+          >
+            @anshulagx
+          </Link>{" "}
+          &{" "}
+          <Link
+            zIndex={10000}
+            textDecoration="underline"
+            href="https://twitter.com/iamyajat"
+            target="_blank"
+          >
+            @iamyajat
+          </Link>
+        </Text>
+      </Box> */}
     </VStack>
   );
 };

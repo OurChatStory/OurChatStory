@@ -1,5 +1,5 @@
 import { Text, VStack } from "@chakra-ui/react";
-
+const parser = require("../../script/parser");
 const Card6 = ({ drawData }) => {
   return (
     <VStack
@@ -22,10 +22,11 @@ const Card6 = ({ drawData }) => {
       p="1rem"
     >
       <Text color="black" fontSize="4xl" align="center" fontWeight="bold">
-        This year was eventful
+        Let&apos;s {parser.get_random_element(["experience","see","go through"])} the chat story of two {parser.get_random_element(["Amazing","Coolest",""])} persons
       </Text>
+
       <Text color="black" fontSize="3xl" align="center">
-        We were locked inside our home, but together we made it to the end!
+        ------------------&gt;
       </Text>
     </VStack>
   );

@@ -33,7 +33,7 @@ const GridStats = ({ drawData }) => {
       pb="1rem"
     >
       <Heading size="xl" color="white" textAlign="center">
-        Random stats
+        Few Cool Numbers
       </Heading>
 
       <Grid

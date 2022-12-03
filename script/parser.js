@@ -84,7 +84,11 @@ function timeConverter (UNIX_timestamp) {
   return time;
 }
 module.exports.no_of_days_talked = ( string ) => {
-  console.log(string);
+  // console.log(string);
   return string.split('').filter((z)=>{return z==='0'?true:false}).length
 
+};
+
+module.exports.get_random_element = ( array ) => {
+  return array[Math.floor(Math.random() * array.length)]
 };

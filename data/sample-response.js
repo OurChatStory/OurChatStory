@@ -34,55 +34,55 @@ module.exports.sample = {
     month: "Jan",
     count: 6045,
   },
-  month_correlation: -0.5926430516899394,
+  month_correlation: 0.3926430516899394,
   monthly_chats_count: [
     {
       month: "Jan",
-      count: 6045,
+      count: 1045,
     },
     {
       month: "Feb",
-      count: 1721,
+      count: 2000,
     },
     {
       month: "Mar",
-      count: 1072,
+      count: 4072,
     },
     {
       month: "Apr",
-      count: 311,
+      count: 2011,
     },
     {
       month: "May",
-      count: 2096,
+      count: 4096,
     },
     {
       month: "Jun",
-      count: 134,
+      count: 4034,
     },
     {
       month: "Jul",
-      count: 71,
+      count: 5071,
     },
     {
       month: "Aug",
-      count: 1026,
+      count: 4026,
     },
     {
       month: "Sep",
-      count: 648,
+      count: 3048,
     },
     {
       month: "Oct",
-      count: 1111,
+      count: 4011,
     },
     {
       month: "Nov",
-      count: 286,
+      count: 3986,
     },
     {
       month: "Dec",
-      count: 315,
+      count: 5015,
     },
   ],
   most_active_hour: {

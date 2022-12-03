@@ -22,8 +22,8 @@ const Card6 = ({ drawData }) => {
       border="2px solid #fcea2b"
       // animation={zoomAnimation}
     >
-      <Text color="white" fontSize="4xl" align="center">
-        But the Texts between
+      <Text color="white" fontSize="4xl" align="center" fontWeight={"600"}>
+        The story of
       </Text>
       <br />
       <Text
@@ -57,7 +57,7 @@ const Card6 = ({ drawData }) => {
       </Text>
       <br />
       <Text color="white" fontSize="4xl" align="center">
-        never stopped!
+
       </Text>
     </VStack>
   );
