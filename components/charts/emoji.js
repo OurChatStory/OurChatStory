@@ -95,7 +95,7 @@ const Card5 = ({ drawData }) => {
         </GridItem>
       </Grid>
       <Heading size="md" color="black" textAlign="center" p="1rem">
-        So these are our most used Emojis
+        So these are your most used Emojis
       </Heading>
     </VStack>
   );

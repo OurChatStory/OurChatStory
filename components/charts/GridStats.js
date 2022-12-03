@@ -1,11 +1,11 @@
 import {
   Heading,
-  Box,
   Text,
   Grid,
   GridItem,
   VStack,
-  Center,
+  Spacer,
+  HStack,
 } from "@chakra-ui/react";
 const parser = require("../../script/parser");
 
@@ -27,16 +27,21 @@ const GridStats = ({ drawData }) => {
       bgColor="primary.800"
       borderRadius="1rem"
       border="2px solid #f78901"
-      p="1rem"
+      pl="0rem"
+      pr="0rem"
+      pt="0.5rem"
+      pb="1rem"
     >
-      {/* <Heading size="md" color="black" textAlign="center">
-        An Emoji is worth thousand words
-      </Heading> */}
+      <Heading size="xl" color="white" textAlign="center">
+        Random stats
+      </Heading>
 
       <Grid
         templateRows="repeat(2, 1fr)"
         templateColumns="repeat(4, 1fr)"
-        gap={7}
+        gap="1rem"
+        height={"80%"}
+        p="1rem"
       >
         <GridItem
           colSpan={2}
@@ -44,19 +49,70 @@ const GridStats = ({ drawData }) => {
           p="1rem"
           borderRadius={"6px"}
         >
-          <Center>
-            <VStack>
-              <Text fontSize={["md", "md", "lg"]} fontWeight="700">
-                Minutes Involved
-              </Text>
-              <Text fontSize={["5xl", "7xl", "8xl"]} fontWeight="800">
+          <VStack
+            spacing={"0rem"}
+            align="center"
+            height="100%"
+          >
+            <Spacer />
+            <HStack
+              align="baseline"
+              spacing={"0.25rem"}
+            >
+
+              <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
+                textAlign={"center"}
+              >
                 {drawData.total_no_of_minutes}
               </Text>
-              <Text fontSize={["lg", "sm", "xl"]} fontWeight="200">
-                get a life guys
+              <Text>m</Text>
+            </HStack>
+            <Text
+              fontSize={["md", "md", "lg"]}
+              fontWeight="700"
+              textAlign={"center"}
+            >
+              involved<br />in total
+            </Text>
+
+            <Spacer />
+          </VStack>
+        </GridItem>
+        <GridItem
+          colSpan={2}
+          border="1px solid #ffffff50"
+          p="1rem"
+          borderRadius={"6px"}
+        >
+          <VStack
+            spacing={"0rem"}
+            align="center"
+            height="100%"
+          >
+            <Spacer />
+
+            <HStack
+              align="baseline"
+              spacing={"0.25rem"}
+            >
+
+              <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
+                textAlign={"center"}
+              >
+                {parseInt(drawData.total_no_of_minutes / 60)}
               </Text>
-            </VStack>
-          </Center>
+              <Text>h</Text>
+            </HStack>
+            <Text
+              fontSize={["md", "md", "lg"]}
+              fontWeight="700"
+              textAlign={"center"}
+            >
+              lost forever<br />chatting
+            </Text>
+
+            <Spacer />
+          </VStack>
         </GridItem>
         <GridItem
           colSpan={2}
@@ -64,15 +120,36 @@ const GridStats = ({ drawData }) => {
           p="1rem"
           borderRadius={"6px"}
         >
-          <Text fontSize={["lg", "md", "md"]} fontWeight="700">
-            That in hour is
-          </Text>
-          <Text fontSize={["5xl", "7xl", "8xl"]} fontWeight="800">
-            {parseInt(drawData.total_no_of_minutes / 60)}
-          </Text>
-          <Text fontSize={["lg", "sm", "sm"]} fontWeight="200">
-            get a life guys
-          </Text>{" "}
+          <VStack
+            spacing={"0rem"}
+            align="center"
+            height="100%"
+          >
+            <Spacer />
+
+            <HStack
+              align="baseline"
+              spacing={"0.25rem"}
+            >
+
+              <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
+                textAlign={"center"}
+              >
+                {drawData.longest_session.streak_duration}
+              </Text>
+              <Text
+              >m</Text>
+            </HStack>
+            <Text
+              fontSize={["md", "md", "lg"]}
+              fontWeight="700"
+              textAlign={"center"}
+            >
+              longest <br /> session
+            </Text>
+
+            <Spacer />
+          </VStack>
         </GridItem>
         <GridItem
           colSpan={2}
@@ -80,32 +157,38 @@ const GridStats = ({ drawData }) => {
           p="1rem"
           borderRadius={"6px"}
         >
-          <Text fontSize={["sm", "md", "md"]} fontWeight="700">
-            Days Involved
-          </Text>
-          <Text fontSize={["5xl", "7xl", "8xl"]} fontWeight="800">
-            {parser.no_of_days_talked(drawData.no_talk_string)}
-          </Text>
-          <Text fontSize={["sm", "sm", "sm"]} fontWeight="200">
-            Thats more than couples in a relationship
-          </Text>{" "}
+          <VStack
+            spacing={"0rem"}
+            align="center"
+            height="100%"
+          >
+            <Spacer />
+
+            <HStack
+              align="baseline"
+              spacing={"0.25rem"}
+            >
+
+              <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
+                textAlign={"center"}
+              >
+                {Math.round(drawData.longest_session.average_reply_time * 10) / 10}
+              </Text>
+              <Text>s</Text>
+            </HStack>
+
+            <Text
+              fontSize={["sm", "sm", "sm"]}
+              fontWeight="700"
+              textAlign={"center"}
+            >
+              reply time during the longest session
+            </Text>
+
+            <Spacer />
+          </VStack>
         </GridItem>
-        <GridItem
-          colSpan={2}
-          border="1px solid #ffffff50"
-          p="1rem"
-          borderRadius={"6px"}
-        >
-          <Text fontSize={["sm", "md", "md"]} fontWeight="700">
-            Placeholder
-          </Text>
-          <Text fontSize={["5xl", "7xl", "8xl"]} fontWeight="800">
-            2
-          </Text>
-          <Text fontSize={["sm", "sm", "sm"]} fontWeight="200">
-            get a life guys
-          </Text>{" "}
-        </GridItem>
+
       </Grid>
       {/* <Heading size="md" color="black" textAlign="center" p="1rem">
           So these are our most used Emojis

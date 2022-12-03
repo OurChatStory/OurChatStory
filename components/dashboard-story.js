@@ -154,7 +154,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           bgColor="#111111">
           <Center>
 
-            {window.innerWidth > 600 ? (
+            {window.innerWidth > 500 ? (
               <Stories
                 currentIndex={storyIndex}
                 stories={stories}
