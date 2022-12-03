@@ -104,7 +104,7 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
       {/* <Spacer /> */}
       <Spacer />
       <Text fontSize={{ base:"smaller", sm: "sm", lg: "smaller" }} color="grey" pb="2rem">
-        And yes, we take privacy very seriously and don't store or see any of
+        And yes, we take privacy very seriously and don&aps;t store or see any of
         your chats{" "}
       </Text>
       {/* <Spacer/>
