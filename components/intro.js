@@ -291,10 +291,10 @@ const Intro = () => {
                     fontSize="md"
                     color="yellow.200"
                     w={"100%"}
-                    fontWeight="400"
+                    fontWeight="600"
                     align={"center"}
                   >
-                    scroll to see more
+                    swipe to see demo
                   </Text>
                 </Box>
               </VStack>

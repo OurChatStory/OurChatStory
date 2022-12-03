@@ -100,7 +100,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
           m={{ base: "0.5rem", sm: "0.5rem", lg: "1rem" }}
           borderRadius="1rem"
           w={{ base: "90vw", sm: "90vw", lg: "50vw" }}
-          top="20"
+          top="5"
           pt="2rem"
           pr="1rem"
           pb="0rem"
@@ -184,7 +184,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                         You will find the &quot;Install App&quot; option.
                       </ListItem>
                       <ListItem>
-                        Then open the chat or group whose wrap you want to
+                        Then open the chat whose wrap you want to
                         generate.
                       </ListItem>
                       <ListItem>
@@ -228,80 +228,25 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                       </ListItem>
                     </OrderedList>
                   </Text>
-                  <Box mt="1rem">
+                  <Box mt="1rem"
+                    minW={0}
+                  >
                     <FileUploader
                       multiple={false}
                       handleChange={handleFileUpload}
                       name="file"
-                      types={["txt"]}
-                      label="Drag and drop your chat txt file here or use the upload button"
+                      types={["TXT", "ZIP"]}
+                      label="Upload or drop your chat here"
                       disabled={isUploading}
+                      // max size of file in mb
+                      maxSize={200}
+                    // hoverTitle="Upload your chat file"
                     />
                   </Box>
                 </TabPanel>
               </TabPanels>
             </Tabs>
-            
-            {/* <Text fontSize={["x1", "2xl"]}>
-              {/android/i.test(
-                // navigator.userAgent || navigator.vendor || window.opera
-                ""
-              ) ? (
-                <OrderedList
-                  spacing={3}
-                  pt="1rem"
-                  fontSize={["md", "md"]}
-                  fontWeight={500}
-                >
-                  <ListItem>
-                    <strong>Android</strong> users can install the WebApp and
-                    share chat directly to the app.
-                  </ListItem>
-                  <ListItem>
-                    <strong>To install the WebApp</strong>: Click on the three
-                    dots of Chrome browser.
-                  </ListItem>
-                  <ListItem>
-                    You will find the &quot;Install App&quot; option.
-                  </ListItem>
-                  <ListItem>
-                    Then open the chat or group whose wrap you want to generate.
-                  </ListItem>
-                  <ListItem>
-                    Click on the three dots on the top right corner.
-                  </ListItem>
-                  <ListItem>
-                    Click on &quot;More&quot; &gt; &quot;Export chat&quot; &gt;
-                    &quot;Without media&quot;.
-                  </ListItem>
-                  <ListItem>Share it to OurChatStory app.</ListItem>
-                </OrderedList>
-              ) : (
-                <OrderedList
-                  spacing={3}
-                  pt="1rem"
-                  fontSize={["md", "md"]}
-                  fontWeight={500}
-                >
-                  <ListItem>
-                    Open the chat or group whose wrap you want to generate.
-                  </ListItem>
-                  <ListItem>
-                    Click on the three dots on the top right corner.
-                  </ListItem>
-                  <ListItem>
-                    Click on &quot;More&quot; &gt; &quot;Export chat&quot; &gt;
-                    &quot;Without media&quot;.
-                  </ListItem>
-                  <ListItem>
-                    Click on &quot;Email yourself&quot; &gt; &quot;Send&quot;.
-                  </ListItem>
-                  <ListItem>
-                    Download the file from your email and upload it here.
-                  </ListItem>
-                </OrderedList>
-              )}
-            </Text> */}
+
             <Center ml="2rem" mr="2rem" mt="1rem" mb="2rem">
               <VStack mt="2rem" mb="2rem" spacing="0.5rem" align="center">
                 {isUploading ? (
