@@ -154,7 +154,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           bgColor="#111111">
           <Center>
 
-            {window.innerWidth > 500 ? (
+            {/* {window.innerWidth > 500 ? (
               <Stories
                 currentIndex={storyIndex}
                 stories={stories}
@@ -166,7 +166,7 @@ const Dashboard = ({ drawData, isDemo }) => {
                 preventDefault={false}
                 keyboardNavigation={true}
               />)
-              : (
+              : ( */}
                 <Stories
                   currentIndex={storyIndex}
                   stories={stories}
@@ -179,7 +179,7 @@ const Dashboard = ({ drawData, isDemo }) => {
                   preventDefault={false}
                   keyboardNavigation={true}
                 />
-              )}
+              {/* )} */}
 
           </Center>
 
