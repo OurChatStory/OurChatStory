@@ -171,53 +171,53 @@ const Dashboard = ({ drawData, isDemo }) => {
           zIndex={10003}
         />
         {storyIndex !== stories.length ? (
-        <>
-          <IconButton
-            aria-label="Next"
-            icon={<IoCaretForward size="1.5em" color="#cccccc" />}
-            variant="none"
-            colorScheme="transparent"
-            onClick={() => {
-              setStoryIndex(storyIndex + 1);
-            }}
-            position="absolute"
-            bottom="50vh"
-            right="0.5vw"
-            zIndex={10000}
-            opacity={0.3}
-          />
-          <Box
-            position="absolute"
-            top="0"
-            right="0"
-            zIndex={10001}
-            height="100vh"
-            width="50vw"
-            bgColor="transparent"
-            onClick={() => {
-              setStoryIndex(storyIndex + 1);
-            }}
-          />
-        </>
+          <>
+            <IconButton
+              aria-label="Next"
+              icon={<IoCaretForward size="1.5em" color="#cccccc" />}
+              variant="none"
+              colorScheme="transparent"
+              onClick={() => {
+                setStoryIndex(storyIndex + 1);
+              }}
+              position="absolute"
+              bottom="50vh"
+              right="0.5vw"
+              zIndex={10000}
+              opacity={0.3}
+            />
+            <Box
+              position="absolute"
+              top="0"
+              right="0"
+              zIndex={10001}
+              height="100vh"
+              width="50vw"
+              bgColor="transparent"
+              onClick={() => {
+                setStoryIndex(storyIndex + 1);
+              }}
+            />
+          </>
         ) : (
           ""
         )}
         {storyIndex !== 0 ? (
           <>
-          <IconButton
-            aria-label="Prev"
-            icon={<IoCaretBack size="1.5em" color="#cccccc" />}
-            variant="none"
-            colorScheme="transparent"
-            onClick={() => {
-              setStoryIndex(storyIndex - 1);
-            }}
-            position="absolute"
-            bottom="50vh"
-            left="0.5vw"
-            zIndex={10000}
-            opacity={0.3}
-          />
+            <IconButton
+              aria-label="Prev"
+              icon={<IoCaretBack size="1.5em" color="#cccccc" />}
+              variant="none"
+              colorScheme="transparent"
+              onClick={() => {
+                setStoryIndex(storyIndex - 1);
+              }}
+              position="absolute"
+              bottom="50vh"
+              left="0.5vw"
+              zIndex={10000}
+              opacity={0.3}
+            />
             <Box
               position="absolute"
               top="0"
@@ -262,36 +262,44 @@ const Dashboard = ({ drawData, isDemo }) => {
           </Text>
         </HStack>
       </Box>
-      {isDemo ? (
-        <Button
-          w="100%"
-          h="5vh"
-          onClick={() => {
-            window.location.reload(false);
-          }}
-          position="sticky"
-          bottom="0vh"
-          zIndex={10003}
-          colorScheme="whatsapp"
-          borderRadius={0}
-        >
-          Click here to make your own wrap
-        </Button>
-      ) : navigator.canShare ? (
-        <Button
-          rightIcon={isShared ? <Spinner color="black" /> : <HiShare />}
-          w="100%"
-          h="5vh"
-          onClick={onButtonClick}
-          position="sticky"
-          bottom="0vh"
-          zIndex={10003}
-        >
-          Share
-        </Button>
-      ) : (
-        ""
-      )}
+      <Box
+        // pl="0.5rem"
+        // pr="0.5rem"
+        bgColor={"black"}
+      >
+
+        {isDemo ? (
+          <Button
+            w="100%"
+            h="5vh"
+            onClick={() => {
+              window.location.reload(false);
+            }}
+            position="sticky"
+            bottom="0vh"
+            zIndex={10003}
+            colorScheme="primary"
+            borderRadius={"0"}
+          >
+            Click here to make your own wrap
+          </Button>
+        ) : navigator.canShare ? (
+          <Button
+            rightIcon={isShared ? <Spinner color="black" /> : <HiShare />}
+            w="100%"
+            h="5vh"
+            onClick={onButtonClick}
+            position="sticky"
+            bottom="0vh"
+            zIndex={10003}            
+            borderRadius={"0"}
+          >
+            Share
+          </Button>
+        ) : (
+          ""
+        )}
+      </Box>
     </Box>
   );
 };
