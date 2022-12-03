@@ -46,7 +46,7 @@ const Card5 = ({ drawData }) => {
 
         <Grid
           templateRows="repeat(2, 1fr)"
-          templateColumns="repeat(5, 1fr)"
+          templateColumns="repeat(4, 1fr)"
           gap={1}
         >
           <GridItem colSpan={2} >
