@@ -29,7 +29,7 @@ import { IoClose } from "react-icons/io5";
 
 const sample_data = require("../data/sample-response");
 
-const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
+const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, setShowLoader }) => {
   const [isUploading, setIsUploading] = useState(false);
   let isAndroid = /android/i.test(
     navigator.userAgent || navigator.vendor || window.opera
@@ -53,6 +53,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
     data.append("file", file);
     console.log("dd", data);
     setIsUploading(true);
+    setShowLoader(true);
     axios
       .post(API_URL + "wrap", data, {
         // receive two parameter endpoint url ,form data
@@ -64,6 +65,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
       })
       .catch((error) => {
         setIsUploading(false);
+        setShowLoader(false);
         try {
           alert(error.response.data);
         } catch (error) {
@@ -268,7 +270,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                       disabled={isUploading}
                       // max size of file in mb
                       maxSize={200}
-                      // hoverTitle="Upload your chat file"
+                    // hoverTitle="Upload your chat file"
                     >
                       <HStack
                         w="100%"
@@ -327,7 +329,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                 spacing="0.5rem"
                 align="center"
               >
-                {isUploading ? (
+                {(isUploading || showLoader) ? (
                   <>
                     <Spinner />
                     <Text textAlign="center">

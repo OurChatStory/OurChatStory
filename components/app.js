@@ -74,6 +74,8 @@ const App = () => {
         const data = new FormData();
         data.append("file", imageBlob);
         setShowLoader(true);
+        setShowUploader(true);
+        document.body.style.overflow = "hidden";
         axios
           .post(API_URL + "wrap", data, {
             // receive two parameter endpoint url ,form data
@@ -89,9 +91,10 @@ const App = () => {
             } catch (error) {
               alert("Connection failed. Try again!");
             }
-          })};
+          })
+      };
     }
-    else{
+    else {
       console.log("service worker not supported 3");
     }
   });
@@ -111,12 +114,14 @@ const App = () => {
       h="100vh"
       position="relative"
     >
-      {showUploader ? (
+      {(showUploader || showLoader) ? (
         <Uploader
           setIsDemo={setIsDemo}
           setShowRes={setShowRes}
           setData={setData}
           setShowUploader={setShowUploader}
+          showLoader={showLoader}
+          setShowLoader={setShowLoader}
         />
       ) : (
         " "
@@ -170,51 +175,10 @@ const App = () => {
                     /> */}
         </Button>
       </HStack>
-      <Box
-      // pt="5rem"
-      >
-        {/* <Box
-                    bgColor={"#9b1fe8"}
-                >
-                    <Marquee
-                        gradient={true}
-                        speed={40}
-                        gradientColor={[155, 31, 232]}
-                        gradientWidth={30}
-                        pauseOnHover={true}
-                    >
-                        {[...Array(8)].map((i) => (
-                            <Text
-                                key={i}
-                                as="span"
-                                fontSize={{ base: "2xl", md: "2xl", sm: "2xl", lg: "xl" }}
-                                fontWeight="bold"
-                                color="white"
-                                m="0.5rem"
-                            >
-                                #WhatsAppWrapped
-                            </Text>
-                        ))}
-
-
-                    </Marquee>
-                </Box> */}
-
+      <Box>
         <Box>
           <Intro setShowUploader={setShowUploader} />
-          {/* <CImage
-                    src="static/yellow.svg"
-                    position="absolute"
-                    top="50vh"
-                    left="18vw"
-                    width="10rem"
-                    height="10rem"
-                    objectFit="cover"
-                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
-                    opacity={0.6}
-                    zIndex={0}
-                    animation={spinAnimation}
-                /> */}
+
           <Box>
             <CImage
               src="static/pink.svg"
@@ -242,35 +206,6 @@ const App = () => {
               animation={spinAnimation}
             />
 
-            {/* <CImage
-                    src="static/yellow.svg"
-                    position="absolute"
-                    top="75vh"
-                    right="5vw"
-                    width="10rem"
-                    height="10rem"
-                    objectFit="cover"
-                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
-                    opacity={0.6}
-                    zIndex={0}
-                    animation={spinAnimation}
-                /> */}
-
-            {/* 
-                <CImage
-                    src="static/pink.svg"
-                    position="absolute"
-                    top="22vh"
-                    right="8vw"
-                    width="10rem"
-                    height="10rem"
-                    objectFit="cover"
-                    display={{ base: "none", sm: "none", md: "none", lg: "block" }}
-                    opacity={0.6}
-                    zIndex={0}
-                    animation={spinAnimation}
-                /> */}
-
             <CImage
               src="static/green.svg"
               position="absolute"
@@ -286,7 +221,7 @@ const App = () => {
           </Box>
         </Box>
 
-        <Box>
+        {/* <Box>
           {showLoader ? (
             <Box h="80vh">
               <Center mt="2rem">
@@ -303,7 +238,7 @@ const App = () => {
           ) : (
             " "
           )}
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );
