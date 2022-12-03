@@ -12,7 +12,10 @@ const Card1 = ({ drawData }) => {
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
-      // bgImage="/static/bg5.png"
+      bgImage="/static/two-kids.jpeg"
+      bgBlendMode={"multiply"}
+      bgRepeat="no-repeat"
+      bgSize="cover"
       w="100%"
       h="78vh"
       bgColor="#4141D2"
