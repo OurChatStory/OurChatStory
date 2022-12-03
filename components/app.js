@@ -67,7 +67,7 @@ const App = () => {
       newImage.src = image;
       window[image] = newImage;
     });
-    if ('serviceWorker' in navigator) 
+    if ('serviceWorker' in navigator) {
       navigator.serviceWorker.onmessage = (event) => {
         console.log("received: onmessage", event);
         var imageBlob = event.data.file;
@@ -90,7 +90,10 @@ const App = () => {
               alert("Connection failed. Try again!");
             }
           })};
-
+    }
+    else{
+      console.log("service worker not supported 3");
+    }
   });
 
   const [showRes, setShowRes] = useState(false);
