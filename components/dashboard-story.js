@@ -35,36 +35,36 @@ const Dashboard = ({ drawData, isDemo }) => {
   const [isShared, setIsShared] = useState(false);
   const [storyIndex, setStoryIndex] = useState(0);
 
-  // const ref = useRef();
-  // const onButtonClick = useCallback(() => {
-  //   if (ref.current === null) {
-  //     return;
-  //   }
-  //   setIsShared(true);
-  //   htmlToImage
-  //     .toBlob(ref.current, { cacheBust: true })
-  //     .then((dataUrl) => {
-  //       const file = new File([dataUrl], "share.png", { type: dataUrl.type });
-  //       // const link = document.createElement("a");
-  //       // link.download = "my-image-name.png";
-  //       // link.href = dataUrl;
-  //       // link.click();
-  //       if (navigator.canShare && navigator.canShare({ files: [file] })) {
-  //         navigator
-  //           .share({
-  //             title: "OurChatStory",
-  //             text: "Look at our #WhatsAppWrapped. I made it using OurChatStory.co!",
-  //             files: [file],
-  //           })
-  //           .then(() => console.log("Share was successful."))
-  //           .catch((error) => console.log(error));
-  //         setIsShared(false);
-  //       } else console.log("no share support");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [ref]);
+  const ref = useRef();
+  const onButtonClick = useCallback(() => {
+    if (ref.current === null) {
+      return;
+    }
+    setIsShared(true);
+    htmlToImage
+      .toBlob(ref.current, { cacheBust: true })
+      .then((dataUrl) => {
+        const file = new File([dataUrl], "share.png", { type: dataUrl.type });
+        // const link = document.createElement("a");
+        // link.download = "my-image-name.png";
+        // link.href = dataUrl;
+        // link.click();
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator
+            .share({
+              title: "OurChatStory",
+              text: "Look at our #WhatsAppWrapped. I made it using OurChatStory.co!",
+              files: [file],
+            })
+            .then(() => console.log("Share was successful."))
+            .catch((error) => console.log(error));
+          setIsShared(false);
+        } else console.log("no share support");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [ref]);
   <></>
   const pStories = [
     {
@@ -154,7 +154,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           bgColor="#111111">
           <Center>
 
-            {/* {window.innerWidth > 500 ? (
+            {window.innerWidth > 500 ? (
               <Stories
                 currentIndex={storyIndex}
                 stories={stories}
@@ -166,7 +166,7 @@ const Dashboard = ({ drawData, isDemo }) => {
                 preventDefault={false}
                 keyboardNavigation={true}
               />)
-              : ( */}
+              : (
                 <Stories
                   currentIndex={storyIndex}
                   stories={stories}
@@ -179,7 +179,7 @@ const Dashboard = ({ drawData, isDemo }) => {
                   preventDefault={false}
                   keyboardNavigation={true}
                 />
-              {/* )} */}
+              )}
 
           </Center>
 
