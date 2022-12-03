@@ -29,6 +29,7 @@ const Card6 = ({ drawData }) => {
       bgColor="primary.600"
       borderRadius="1rem"
       h="78vh"
+      w="100%"
     >
       {/* <Box bgColor={"black"} opacity={0.5} /> */}
       <VStack align="left" p="1rem" justify="center" spacing="1rem">
