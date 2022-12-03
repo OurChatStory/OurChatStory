@@ -53,7 +53,7 @@ const Intro = ({ setShowUploader }) => {
   const countPie = <CountPie drawData={dummy_data} />;
   const emoji = <Emoji drawData={dummy_data} />;
   const thankCard = <ThankCard drawData={dummy_data} />;
-  const dummyCTA = <DummyCTA drawData={dummy_data} />;
+  const dummyCTA = <DummyCTA drawData={dummy_data} setShowUploader={setShowUploader} />;
 
   const BackgroundImageArray = [];
   return (
