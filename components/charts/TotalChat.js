@@ -2,20 +2,20 @@ import { Text, VStack, Box, Image as CImage, keyframes } from "@chakra-ui/react"
 
 import CountUp from "react-countup";
 
-const randomUpDownAnimation = keyframes`
+const ZoomAnimation = keyframes`
     0% {
-        background-position: 0 0;
-    }
-    50%{
-      background-position: 100% 0;
-    }
-    100% {
-        background-position: 0 0;
-    }
+    background-size: 100% 100%;
+  }
+  50%{
+    background-size: 150% 150%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
 `;
 
 const Card1 = ({ drawData }) => {
-  const spinAnimation = `${randomUpDownAnimation} infinite 70s linear`;
+  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
 
   // var end = 0;
   // const temp = drawData.monthly_chat_count.map(({ month, count }) => {
@@ -26,9 +26,10 @@ const Card1 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage="/static/asdf.png"
-      bgBlendMode={"darken"}
-      bgRepeat="no-repeat"
+      bgImage="/static/asdf.jpg"
+      bgBlendMode="multiply"
+      // backdropFilter="blur(70px) hue-rotate(90deg)"
+      // bgRepeat="no-repeat"
       bgSize="cover"
       w="100%"
       h="78vh"
@@ -36,7 +37,7 @@ const Card1 = ({ drawData }) => {
       borderRadius="1rem"
       p="1rem"
       border="4px solid"
-      animation={spinAnimation}
+      animation={zoomAnimation}
     >
       {/* <CImage
         // boxSize="45px"
@@ -52,7 +53,7 @@ const Card1 = ({ drawData }) => {
         bgSize="cover"
         position={"absolute"}
         style={{ imageRendering: "crisp-edges" }}
-        animation={spinAnimation}
+        animation={zoomAnimation}
       ></CImage>
       <CImage
         // boxSize="45px"
@@ -68,7 +69,7 @@ const Card1 = ({ drawData }) => {
         bgSize="cover"
         // position={"absolute"}
         style={{ imageRendering: "crisp-edges" }}
-        animation={spinAnimation}
+        animation={zoomAnimation}
       ></CImage> */}
       <Text align="center" as="b" fontSize="4xl">
         Infact y&apos;all sent a total of{" "}

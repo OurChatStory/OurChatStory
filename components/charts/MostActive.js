@@ -1,6 +1,20 @@
-import { Text, VStack } from "@chakra-ui/react";
+import { Text, VStack, keyframes } from "@chakra-ui/react";
+
+const ZoomAnimation = keyframes`
+    0% {
+    background-size: 100% 100%;
+  }
+  50%{
+    background-size: 150% 150%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+`;
 
 const Card1 = ({ drawData }) => {
+  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+
   return (
     <VStack
       spacing="1rem"
@@ -10,22 +24,18 @@ const Card1 = ({ drawData }) => {
       // w="100vw"
       // h="100vh"
       // backgroundPosition="center"
-      // backgroundRepeat="no-repeat"
-      // backgroundSize="120%"
-      // bgImage="/static/bg5.png"
+      backgroundRepeat="no-repeat"
+      bgBlendMode="multiply"
+      bgImage="/static/asdf.jpg"
       w="100%"
       h="78vh"
-      bgColor="#4141D2"
+      bgColor="gray"
       borderRadius="1rem"
       pt="1rem"
       pb="1rem"
+      animation={zoomAnimation}
     >
-      <Text
-        mb="1rem"
-        fontSize="3xl"
-        align="center"
-
-      >
+      <Text mb="1rem" fontSize="3xl" align="center">
         Let me tell you this
       </Text>
       <Text fontSize="4xl" align="center">
@@ -44,7 +54,7 @@ const Card1 = ({ drawData }) => {
       </Text>
       <Text mb="2rem" fontSize="4xl" align="center">
         {" "}
-        who texts first 
+        who texts first
       </Text>
     </VStack>
   );

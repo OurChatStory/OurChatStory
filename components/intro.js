@@ -54,6 +54,8 @@ const Intro = () => {
   const emoji = <Emoji drawData={dummy_data} />;
   const thankCard = <ThankCard drawData={dummy_data} />;
   const dummyCTA = <DummyCTA drawData={dummy_data} />;
+
+  const BackgroundImageArray = [];
   return (
     <>
       {/* <section ref={scrollRef}> */}

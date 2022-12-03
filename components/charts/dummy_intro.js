@@ -14,9 +14,6 @@ const DummyIntro = ({ drawData }) => {
         bgBlendMode={"multiply"}
         bgRepeat="no-repeat"
         bgSize="cover"
-        // backgroundRepeat="no-repeat"
-        // backgroundSize="120%"
-        // p="1rem"
         w="100%"
         h="78vh"
         bgColor="#6f0cbb"
