@@ -1,12 +1,14 @@
 import { Text, VStack, Box, Spacer, Button } from "@chakra-ui/react";
+import React from "react";
 import Marquee from "react-fast-marquee";
 
 const DummyCTA = ({ drawData, setShowUploader }) => {
+
   return (
     <VStack
       align="center"
       // justify="center"
-      spacing="3rem"
+      spacing="2rem"
       // bgImage="static/download.jpeg"
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
@@ -18,14 +20,14 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
       h="78vh"
       bgColor="#6f0cbb00"
       borderRadius="1rem"
-      pt="1rem"
+      mt="5rem"
       // pb="1rem"
       p="1rem"
       // borderColor="#fcea2b"
       // errorBorderColor="red.300"
       border="0px solid #fcea2b"
     >
-      <Spacer />
+      {/* <Spacer /> */}
       <Text
         fontSize="3xl"
         align="left"
@@ -80,6 +82,28 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
                         onChange={uploadFile}
                     /> */}
       </Button>
+      <Spacer />
+      {/* scroll to top to #marquee */}
+      {/* <Text
+        fontSize="2xl"
+        align="left"
+        color="white"
+        w={"100%"}
+        fontWeight="500"
+        textAlign="center"
+        pl={"1rem"}
+        pr={"1rem"}
+        as="a"
+        cursor={"pointer"}
+        onClick={() => {
+          console.log("scrolling to top");
+          document.getPageTop().scrollIntoView();
+          // window.scrollTo(0, 0)
+        }}
+      >
+        See what others have made
+      </Text> */}
+      {/* <Spacer /> */}
       <Spacer />
     </VStack>
   );
