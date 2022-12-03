@@ -10,7 +10,6 @@ import {
   VStack,
   HStack,
   IconButton,
-  List,
   ListItem,
   OrderedList,
   Tab,
@@ -19,13 +18,14 @@ import {
   TabPanel,
   TabPanels,
   Spacer,
+  Divider,
 } from "@chakra-ui/react";
 import { FileUploader } from "react-drag-drop-files";
-import { BiUpload, BiDownload, BiTrash, BiCheck, BiX } from "react-icons/bi";
+import { BiDownload } from "react-icons/bi";
 
 import axios from "axios";
 import { API_URL } from "../constants";
-import { IoClose, IoCloudyNight } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 
 const sample_data = require("../data/sample-response");
 
@@ -131,6 +131,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
             lineHeight={1.1}
             fontWeight={700}
             fontSize={{ base: "3xl", sm: "4xl", lg: "4xl" }}
+            textAlign="center"
           >
             <Text fontSize={{ base: "2xl", sm: "1xl", lg: "4xl" }}>
               Get your
@@ -138,7 +139,6 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                 {" "}
                 #WhatsAppWrapped
               </Text>
-              !
             </Text>
 
             {/* <Text as={"span"} color={"green.400"}>
@@ -147,30 +147,41 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
           </Heading>
 
           <Stack spacing={1} m={["1rem", "1rem"]}>
-            <Heading
-              fontSize={{ base: "1xl", sm: "xl", lg: "2xl" }}
-              fontWeight={600}
-            >
-              How?
-            </Heading>
+
             <Tabs
               index={tabIndex}
               onChange={(index) => setTabIndex(index)}
-              pt="1rem"
-              variant="soft-rounded"
+              variant="solid-rounded"
               colorScheme="primary"
             >
-              <TabList>
-                <Tab>Android</Tab>
-                <Tab>iPhone</Tab>
-                <Tab>Desktop</Tab>
-              </TabList>
+              <Divider />
+
+              <Center>
+
+                <TabList>
+                  <Tab>Android</Tab>
+                  <Tab>iPhone</Tab>
+                  <Tab>Desktop</Tab>
+                </TabList>
+
+
+              </Center>
+              <Divider />
+
+              {/* <Heading
+              pt={"2rem"}
+              fontSize={{ base: "1xl", sm: "xl", lg: "2xl" }}
+              fontWeight={600}
+              textAlign="center"
+              width={{ base: "100%", sm: "100%", lg: "100%" }}
+            >
+              Instructions
+            </Heading> */}
               <TabPanels>
                 <TabPanel>
                   <Text fontSize={["x1", "2xl"]}>
                     <OrderedList
                       spacing={3}
-                      pt="1rem"
                       fontSize={["md", "md"]}
                       fontWeight={500}
                     >
@@ -249,7 +260,10 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                           justifyContent="center"
                           align="center"
                           border="1px dashed #cef23f"
-                          p="1rem"
+                          pr="1rem"
+                          pl="1rem"
+                          pt="0.5rem"
+                          pb="0.5rem"
                           cursor={isUploading ? "not-allowed" : "pointer"}
                           borderRadius="0.5rem"
                           transition={"0.4s"}
