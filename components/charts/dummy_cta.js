@@ -1,0 +1,83 @@
+import { Text, VStack, Box, Spacer, Button } from "@chakra-ui/react";
+import Marquee from "react-fast-marquee";
+
+const DummyCTA = ({ drawData }) => {
+  return (
+    <VStack
+      align="center"
+      // justify="center"
+      spacing="1rem"
+      // bgImage="static/download.jpeg"
+      bgBlendMode={"multiply"}
+      bgRepeat="no-repeat"
+      bgSize="cover"
+      // backgroundRepeat="no-repeat"
+      // backgroundSize="120%"
+      // p="1rem"
+      w="100%"
+      h="78vh"
+      bgColor="#6f0cbb"
+      borderRadius="1rem"
+      // pt="1rem"
+      // pb="1rem"
+      p="1rem"
+      // borderColor="#fcea2b"
+      // errorBorderColor="red.300"
+      border="4px solid #fcea2b"
+    >
+            <Text
+        fontSize="2xl"
+        align="left"
+        color="white"
+        w={"100%"}
+        fontWeight="500"
+        textAlign="center"
+      >
+        Now to the best part
+
+      </Text>
+      <Text
+        fontSize="4xl"
+        align="left"
+        color="white"
+        w={"100%"}
+        fontWeight="500"
+        textAlign="center"
+      >
+        You can get to know all this about WhatsApp conversation with your friends too!
+      </Text>
+      <Button
+          colorScheme="primary"
+          p={{
+            base: ["2rem", "1.5rem"],
+            sm: ["2rem", "1.5rem"],
+            lg: ["2rem", "1.5rem"],
+          }}
+          borderRadius={50}
+          onClick={() => {
+            setShowUploader(true);
+            // Disable scroll
+            document.body.style.overflow = "hidden";
+          }}
+        >
+          {/* <label for="hid" cursor="pointer">
+                      </label> */}
+          <Text fontSize={{ base: "sm", sm: "sm", lg: "md" }} color="dark">
+            Make your wrap
+          </Text>
+          {/* <input
+                        id="hid"
+                        type="file"
+                        name="file"
+                        title=""
+                        hidden
+                        className="custom-file-input"
+                        size="100"
+                        onChange={uploadFile}
+                    /> */}
+        </Button>
+    </VStack>
+  );
+};
+
+export default DummyCTA;

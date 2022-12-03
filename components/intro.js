@@ -30,6 +30,7 @@ import ThankCard from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
 import Story from "./Story";
 import { ST } from "next/dist/shared/lib/utils";
+import DummyCTA from "./charts/dummy_cta";
 const moveUp = keyframes`
     from {transform: translateY(0px);}
     to {transform: translateY(-10px);}
@@ -52,7 +53,7 @@ const Intro = () => {
   const countPie = <CountPie drawData={dummy_data} />;
   const emoji = <Emoji drawData={dummy_data} />;
   const thankCard = <ThankCard drawData={dummy_data} />;
-
+  const dummyCTA = <DummyCTA drawData={dummy_data} />;
   return (
     <>
       {/* <section ref={scrollRef}> */}
@@ -301,7 +302,7 @@ const Intro = () => {
             </VStack>
           </Box>
         </h1>
-        <Story component={welcome} />
+        {/* <Story component={welcome} /> */}
         <Story component={dummyIntro} />
         <Story component={totalChat} />
         <Story component={mostActive} />
@@ -309,9 +310,9 @@ const Intro = () => {
         <Story component={hourlyGraph} />
         <Story component={noTalk} />
         <Story component={wordCloud} />
-        <Story component={countPie} />
+        {/* <Story component={countPie} /> */}
         <Story component={emoji} />
-        <Story component={thankCard} />
+        <Story component={dummyCTA} />
         {/* <div className="d-flex snap-child">
           <Box
             ml={{ base: "2rem", sm: "2rem", lg: "4.5rem" }}

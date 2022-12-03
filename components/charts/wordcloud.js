@@ -22,8 +22,8 @@ const Card3 = ({ drawData }) => {
       border="1px"
     >
       <Heading pt="3rem" textAlign="center" color="white">
-        Here is your word cloud
-      </Heading>
+        What do you talk about?
+        </Heading>
       <Image
         src={"data:image/png;base64, " + drawData.word_cloud_base64}
         alt="Word Cloud"
