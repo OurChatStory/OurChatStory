@@ -18,8 +18,10 @@ import {
   TabList,
   TabPanel,
   TabPanels,
+  Spacer,
 } from "@chakra-ui/react";
 import { FileUploader } from "react-drag-drop-files";
+import { BiUpload, BiDownload, BiTrash, BiCheck, BiX } from "react-icons/bi";
 
 import axios from "axios";
 import { API_URL } from "../constants";
@@ -229,7 +231,6 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                     </OrderedList>
                   </Text>
                   <Box mt="1rem"
-                    minW={0}
                   >
                     <FileUploader
                       multiple={false}
@@ -240,7 +241,54 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                       disabled={isUploading}
                       // max size of file in mb
                       maxSize={200}
-                    // hoverTitle="Upload your chat file"
+                      // hoverTitle="Upload your chat file"
+                      children={
+                        <HStack
+                          w="100%"
+                          h="100%"
+                          justifyContent="center"
+                          align="center"
+                          border="1px dashed #cef23f"
+                          p="1rem"
+                          cursor={isUploading ? "not-allowed" : "pointer"}
+                          borderRadius="0.5rem"
+                          transition={"0.4s"}
+                          _hover={{
+                            bgColor: "#cef23f10",
+                          }}
+                        >
+                          <IconButton
+                            aria-label="Upload"
+                            icon={<BiDownload size="1.5em" />}
+                            variant="none"
+                            colorScheme="transparent"
+                            color={"#cef23f"}
+                            isDisabled={isUploading}
+                            isActive={!isUploading}
+                          />
+
+                          <Text
+                            fontSize="md"
+                            fontWeight="300"
+                            color="#cef23f"
+                          >
+                            <u>{isUploading ? "" : "upload"}</u>
+                            {isUploading ? "uploading..." : " or drop your chat here"}
+                          </Text>
+                          <Spacer />
+                          <Text
+
+                            fontSize="sm"
+                            color="#cef23f"
+                            opacity={0.8}
+                            fontWeight="500"
+                            textAlign="center"
+                          >
+                            TXT, ZIP
+                          </Text>
+                        </HStack>
+                      }
+
                     />
                   </Box>
                 </TabPanel>
