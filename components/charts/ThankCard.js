@@ -25,7 +25,7 @@ const Card6 = ({ drawData }) => {
         This was OurChatStory
       </Text>
       <Text color="#F5F5F5" fontSize="2xl" align="center">
-        While we create many more amazing stories together, let's share this with friends.
+        While we create many more amazing stories together, let&apos;s share this with friends.
       </Text>
       <Text color="#F5F5F5" fontSize="2xl" align="center">
         Because every story is unique and worth sharing.

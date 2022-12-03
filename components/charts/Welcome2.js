@@ -36,7 +36,6 @@ const Card6 = ({ drawData }) => {
       </Text>
       <br />
       <Text
-        color="white"
         pl="1rem"
         pr="1rem"
         backgroundColor="LightSalmon"
@@ -54,7 +53,6 @@ const Card6 = ({ drawData }) => {
         &{" "}
       </Text>
       <Text
-        color="white"
         pl="1rem"
         pr="1rem"
         bgColor="#fcea2b"
