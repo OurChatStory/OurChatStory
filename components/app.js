@@ -72,7 +72,7 @@ const App = () => {
         var imageBlob = event.data.file;
         const data = new FormData();
         data.append("file", imageBlob);
-        setShowLoader(true);
+        // setShowLoader(true);
         axios
           .post(API_URL + "wrap", data, {
             // receive two parameter endpoint url ,form data
