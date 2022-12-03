@@ -33,8 +33,5 @@ for i in range(len(onlyfiles)):
     # convert to webp
     cv2.imwrite(base_export_path + onlyfiles[i], blurred, [cv2.IMWRITE_WEBP_QUALITY, 100])
 
-    # # write the image to disk
-    # cv2.imwrite(base_export_path + onlyfiles[i], blurred)
-
 
 
