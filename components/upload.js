@@ -10,7 +10,6 @@ import {
   VStack,
   HStack,
   IconButton,
-  List,
   ListItem,
   OrderedList,
   Tab,
@@ -18,12 +17,15 @@ import {
   TabList,
   TabPanel,
   TabPanels,
+  Spacer,
+  Divider,
 } from "@chakra-ui/react";
 import { FileUploader } from "react-drag-drop-files";
+import { BiDownload } from "react-icons/bi";
 
 import axios from "axios";
 import { API_URL } from "../constants";
-import { IoClose, IoCloudyNight } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 
 const sample_data = require("../data/sample-response");
 
@@ -102,9 +104,9 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
           w={{ base: "90vw", sm: "90vw", lg: "50vw" }}
           top="5"
           pt="2rem"
-          pr="1rem"
+          pr={["0.3rem", "0.6rem", "1rem"]}
           pb="0rem"
-          pl="1rem"
+          pl={["0.3rem", "0.6rem", "1rem"]}
           position="fixed"
           onClick={(e) => e.stopPropagation()}
           zIndex={101}
@@ -125,10 +127,11 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
             zIndex={102}
           />
           <Heading
-            p="1rem"
+            // p="1rem"
             lineHeight={1.1}
             fontWeight={700}
             fontSize={{ base: "3xl", sm: "4xl", lg: "4xl" }}
+            textAlign="center"
           >
             <Text fontSize={{ base: "2xl", sm: "1xl", lg: "4xl" }}>
               Get your
@@ -136,7 +139,6 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                 {" "}
                 #WhatsAppWrapped
               </Text>
-              !
             </Text>
 
             {/* <Text as={"span"} color={"green.400"}>
@@ -145,47 +147,51 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
           </Heading>
 
           <Stack spacing={1} m={["1rem", "1rem"]}>
-            <Heading
-              fontSize={{ base: "1xl", sm: "xl", lg: "2xl" }}
-              fontWeight={600}
-            >
-              How?
-            </Heading>
             <Tabs
               index={tabIndex}
               onChange={(index) => setTabIndex(index)}
-              pt="1rem"
-              variant="soft-rounded"
+              variant="solid-rounded"
               colorScheme="primary"
             >
-              <TabList>
-                <Tab>Android</Tab>
-                <Tab>iPhone</Tab>
-                <Tab>Desktop</Tab>
-              </TabList>
+              <Divider />
+
+              <Center>
+                <TabList>
+                  <Tab>Android</Tab>
+                  <Tab>iPhone</Tab>
+                  <Tab>Desktop</Tab>
+                </TabList>
+              </Center>
+              <Divider />
+
+              {/* <Heading
+              pt={"2rem"}
+              fontSize={{ base: "1xl", sm: "xl", lg: "2xl" }}
+              fontWeight={600}
+              textAlign="center"
+              width={{ base: "100%", sm: "100%", lg: "100%" }}
+            >
+              Instructions
+            </Heading> */}
               <TabPanels>
                 <TabPanel>
                   <Text fontSize={["x1", "2xl"]}>
                     <OrderedList
                       spacing={3}
-                      pt="1rem"
                       fontSize={["md", "md"]}
                       fontWeight={500}
                     >
-                      <ListItem>
+                      {/* <ListItem>
                         <strong>Android</strong> users can install the WebApp
                         and share chat directly to the app.
-                      </ListItem>
+                      </ListItem> */}
                       <ListItem>
                         <strong>To install the WebApp</strong>: Click on the
-                        three dots of Chrome browser.
+                        three dots of Chrome browser. You will find the
+                        &quot;Install App&quot; option.
                       </ListItem>
                       <ListItem>
-                        You will find the &quot;Install App&quot; option.
-                      </ListItem>
-                      <ListItem>
-                        Then open the chat whose wrap you want to
-                        generate.
+                        Then open the chat whose wrap you want to generate.
                       </ListItem>
                       <ListItem>
                         Click on the three dots on the top right corner.
@@ -199,7 +205,30 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                   </Text>
                 </TabPanel>
                 <TabPanel>
-                  <Text fontSize={["x1", "2xl"]}>Kaafi ameer ho bhai aap </Text>
+                  <Text fontSize={["x1", "2xl"]}>
+                    <OrderedList
+                      spacing={3}
+                      pt="1rem"
+                      fontSize={["md", "md"]}
+                      fontWeight={500}
+                    >
+                      <ListItem>
+                        On the chat you would like to export. Tap on the name of the
+                        chat.
+                      </ListItem>
+                      <ListItem>
+                      In chat info, scroll all the way to the bottom and Tap on Export Chat. Choose Without Media.
+                      </ListItem>
+                      <ListItem>
+                        Tap on Save to Files to save it on your iPhone.
+                      </ListItem>
+                      <ListItem>
+                        Finally select <strong>On my iPhone</strong> and save to save it locally.
+                        At last you can select your exported .zip to be
+                        analyzed.{" "}
+                      </ListItem>
+                    </OrderedList>
+                  </Text>
                 </TabPanel>
                 <TabPanel>
                   <Text fontSize={["x1", "2xl"]}>
@@ -228,9 +257,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                       </ListItem>
                     </OrderedList>
                   </Text>
-                  <Box mt="1rem"
-                    minW={0}
-                  >
+                  <Box mt="1rem">
                     <FileUploader
                       multiple={false}
                       handleChange={handleFileUpload}
@@ -240,7 +267,53 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                       disabled={isUploading}
                       // max size of file in mb
                       maxSize={200}
-                    // hoverTitle="Upload your chat file"
+                      // hoverTitle="Upload your chat file"
+                      children={
+                        <HStack
+                          w="100%"
+                          h="100%"
+                          justifyContent="center"
+                          align="center"
+                          border="1px dashed #cef23f"
+                          pr="1rem"
+                          pl="1rem"
+                          pt="0.5rem"
+                          pb="0.5rem"
+                          cursor={isUploading ? "not-allowed" : "pointer"}
+                          borderRadius="0.5rem"
+                          transition={"0.4s"}
+                          _hover={{
+                            bgColor: "#cef23f10",
+                          }}
+                        >
+                          <IconButton
+                            aria-label="Upload"
+                            icon={<BiDownload size="1.5em" />}
+                            variant="none"
+                            colorScheme="transparent"
+                            color={"#cef23f"}
+                            isDisabled={isUploading}
+                            isActive={!isUploading}
+                          />
+
+                          <Text fontSize="md" fontWeight="300" color="#cef23f">
+                            <u>{isUploading ? "" : "upload"}</u>
+                            {isUploading
+                              ? "uploading..."
+                              : " or drop your chat here"}
+                          </Text>
+                          <Spacer />
+                          <Text
+                            fontSize="sm"
+                            color="#cef23f"
+                            opacity={0.8}
+                            fontWeight="500"
+                            textAlign="center"
+                          >
+                            TXT, ZIP
+                          </Text>
+                        </HStack>
+                      }
                     />
                   </Box>
                 </TabPanel>
@@ -248,7 +321,12 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
             </Tabs>
 
             <Center ml="2rem" mr="2rem" mt="1rem" mb="2rem">
-              <VStack mt="2rem" mb="2rem" spacing="0.5rem" align="center">
+              <VStack
+                mt={["0.5rem", "1rem", "2rem"]}
+                mb="2rem"
+                spacing="0.5rem"
+                align="center"
+              >
                 {isUploading ? (
                   <>
                     <Spinner />

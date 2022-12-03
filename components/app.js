@@ -197,7 +197,7 @@ const App = () => {
                 </Box> */}
 
         <Box>
-          <Intro />
+          <Intro setShowUploader={setShowUploader}/>
           {/* <CImage
                     src="static/yellow.svg"
                     position="absolute"

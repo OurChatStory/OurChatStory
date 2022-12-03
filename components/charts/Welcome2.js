@@ -20,7 +20,7 @@ const Card6 = ({ drawData }) => {
       p="1rem"
       // borderColor="#fcea2b"
       // errorBorderColor="red.300"
-      border="4px solid #fcea2b"
+      border="2px solid #fcea2b"
       // align="center"
       // justify="center"
       // spacing="1rem"
@@ -36,7 +36,6 @@ const Card6 = ({ drawData }) => {
       </Text>
       <br />
       <Text
-        color="white"
         pl="1rem"
         pr="1rem"
         backgroundColor="LightSalmon"
@@ -54,7 +53,6 @@ const Card6 = ({ drawData }) => {
         &{" "}
       </Text>
       <Text
-        color="white"
         pl="1rem"
         pr="1rem"
         bgColor="#fcea2b"

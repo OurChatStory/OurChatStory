@@ -28,6 +28,7 @@ import ThankYou from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
 
 import * as htmlToImage from "html-to-image";
+import GridStats from "./charts/GridStats";
 
 const Dashboard = ({ drawData, isDemo }) => {
   const [isShared, setIsShared] = useState(false);
@@ -63,7 +64,7 @@ const Dashboard = ({ drawData, isDemo }) => {
   //       console.log(err);
   //     });
   // }, [ref]);
-<></>
+  <></>
   const pStories = [
     {
       content: (props) => <Welcome drawData={drawData} />,
@@ -73,6 +74,9 @@ const Dashboard = ({ drawData, isDemo }) => {
     },
     {
       content: (props) => <Card1 drawData={drawData} />,
+    },
+    {
+      content: (props) => <GridStats drawData={drawData} />,
     },
     {
       content: (props) => <Card9 drawData={drawData} />,
@@ -166,61 +170,65 @@ const Dashboard = ({ drawData, isDemo }) => {
           right="1vw"
           zIndex={10003}
         />
-        {storyIndex !== stories.length ? (<>
-          <IconButton
-            aria-label="Next"
-            icon={<IoCaretForward size="1.5em" opacity={0.8} color="#555555" />}
-            variant="none"
-            colorScheme="transparent"
-            onClick={() => {
-              setStoryIndex(storyIndex + 1);
-            }}
-            position="absolute"
-            top="45vh"
-            right="0.5vw"
-            zIndex={10000}
+        {storyIndex !== stories.length ? (
+          <>
+            <IconButton
+              aria-label="Next"
+              icon={<IoCaretForward size="1.5em" color="#cccccc" />}
+              variant="none"
+              colorScheme="transparent"
+              onClick={() => {
+                setStoryIndex(storyIndex + 1);
+              }}
+              position="absolute"
+              bottom="50vh"
+              right="0.5vw"
+              zIndex={10000}
+              opacity={0.3}
             />
-          <Box
-            position="absolute"
-            top="0"
-            right="0"
-            zIndex={10001}
-            height="100vh"
-            width="50vw"
-            bgColor="transparent"
-            onClick={() => {
-              setStoryIndex(storyIndex + 1);
-            }}
+            <Box
+              position="absolute"
+              top="0"
+              right="0"
+              zIndex={10001}
+              height="100vh"
+              width="50vw"
+              bgColor="transparent"
+              onClick={() => {
+                setStoryIndex(storyIndex + 1);
+              }}
             />
-            </>
+          </>
         ) : (
           ""
         )}
         {storyIndex !== 0 ? (
-          <><IconButton
-            aria-label="Prev"
-            icon={<IoCaretBack size="1.5em" opacity={0.8} color="#555555" />}
-            variant="none"
-            colorScheme="transparent"
-            onClick={() => {
-              setStoryIndex(storyIndex - 1);
-            }}
-            position="absolute"
-            top="45vh"
-            left="0.5vw"
-            zIndex={10000}
-          />
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            zIndex={10001}
-            height="100vh"
-            width="50vw"
-            bgColor="transparent"
-            onClick={() => {
-              setStoryIndex(storyIndex - 1);
-            }}
+          <>
+            <IconButton
+              aria-label="Prev"
+              icon={<IoCaretBack size="1.5em" color="#cccccc" />}
+              variant="none"
+              colorScheme="transparent"
+              onClick={() => {
+                setStoryIndex(storyIndex - 1);
+              }}
+              position="absolute"
+              bottom="50vh"
+              left="0.5vw"
+              zIndex={10000}
+              opacity={0.3}
+            />
+            <Box
+              position="absolute"
+              top="0"
+              left="0"
+              zIndex={10001}
+              height="100vh"
+              width="50vw"
+              bgColor="transparent"
+              onClick={() => {
+                setStoryIndex(storyIndex - 1);
+              }}
             />
           </>
         ) : (
@@ -233,7 +241,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           spacing="0.5rem"
           p="1rem"
           align="center"
-          bottom="5vh"
+          bottom="15vh"
         >
           <Image
             boxSize="3vh"
@@ -254,36 +262,44 @@ const Dashboard = ({ drawData, isDemo }) => {
           </Text>
         </HStack>
       </Box>
-      {isDemo ? (
-        <Button
-          w="100%"
-          h="5vh"
-          onClick={() => {
-            window.location.reload(false);
-          }}
-          position="sticky"
-          bottom="0vh"
-          zIndex={10003}
-          colorScheme="whatsapp"
-          borderRadius={0}
-        >
-          Click here to make your own wrap
-        </Button>
-      ) : navigator.canShare ? (
-        <Button
-          rightIcon={isShared ? <Spinner color="black" /> : <HiShare />}
-          w="100%"
-          h="5vh"
-          onClick={onButtonClick}
-          position="sticky"
-          bottom="0vh"
-          zIndex={10003}
-        >
-          Share
-        </Button>
-      ) : (
-        ""
-      )}
+      <Box
+        // pl="0.5rem"
+        // pr="0.5rem"
+        bgColor={"black"}
+      >
+
+        {isDemo ? (
+          <Button
+            w="100%"
+            h="5vh"
+            onClick={() => {
+              window.location.reload(false);
+            }}
+            position="sticky"
+            bottom="0vh"
+            zIndex={10003}
+            colorScheme="primary"
+            borderRadius={"0"}
+          >
+            Click here to make your own wrap
+          </Button>
+        ) : navigator.canShare ? (
+          <Button
+            rightIcon={isShared ? <Spinner color="black" /> : <HiShare />}
+            w="100%"
+            h="5vh"
+            onClick={onButtonClick}
+            position="sticky"
+            bottom="0vh"
+            zIndex={10003}            
+            borderRadius={"0"}
+          >
+            Share
+          </Button>
+        ) : (
+          ""
+        )}
+      </Box>
     </Box>
   );
 };
