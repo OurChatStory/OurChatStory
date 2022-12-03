@@ -25,9 +25,9 @@ const Card6 = ({ drawData }) => {
         Let&apos;s {parser.get_random_element(["experience","see","go through"])} the chat story of two {parser.get_random_element(["Amazing","Coolest",""])} persons
       </Text>
 
-      <Text color="black" fontSize="3xl" align="center">
+      {/* <Text color="black" fontSize="3xl" align="center">
         ------------------&gt;
-      </Text>
+      </Text> */}
     </VStack>
   );
 };
