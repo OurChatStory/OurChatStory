@@ -36,7 +36,7 @@ const randomUpDownAnimation = keyframes`
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(${random(10,50)}px);
+        transform: translateY(${random(10, 50)}px);
     }
     100% {
         transform: translateY(0px);
@@ -50,46 +50,46 @@ const App = () => {
   const [showUploader, setShowUploader] = useState(false);
 
   useEffect(() => {
-    const imagesPreload = [
-      "static/bg2.png",
-      "static/bg3.png",
-      "static/bg4.png",
-      "static/bg5.png",
-      "static/bg6.png",
-      "static/bg7.png",
-      "static/bg8.png",
-      "static/bg9.png",
-      "static/bg11.png",
-      "static/bg99.png",
-    ];
-    imagesPreload.forEach((image) => {
-      const newImage = new Image();
-      newImage.src = image;
-      window[image] = newImage;
-    });
-
-    navigator.serviceWorker.onmessage = (event) => {
-      var imageBlob = event.data.file;
-      const data = new FormData();
-      data.append("file", imageBlob);
-      setShowLoader(true);
-      axios
-        .post(API_URL + "wrap", data, {
-          // receive two parameter endpoint url ,form data
-        })
-        .then((res) => {
-          setData(res.data);
-          setIsDemo(false);
-          setShowRes(true);
-        })
-        .catch((error) => {
-          try {
-            alert(error.response.data);
-          } catch (error) {
-            alert("Connection failed. Try again!");
-          }
-        });
-    };
+    // const imagesPreload = [
+    //   "static/bg2.png",
+    //   "static/bg3.png",
+    //   "static/bg4.png",
+    //   "static/bg5.png",
+    //   "static/bg6.png",
+    //   "static/bg7.png",
+    //   "static/bg8.png",
+    //   "static/bg9.png",
+    //   "static/bg11.png",
+    //   "static/bg99.png",
+    // ];
+    // imagesPreload.forEach((image) => {
+    //   const newImage = new Image();
+    //   newImage.src = image;
+    //   window[image] = newImage;
+    // });
+    if (navigator.serviceWorker)
+      navigator.serviceWorker.onmessage = (event) => {
+        var imageBlob = event.data.file;
+        const data = new FormData();
+        data.append("file", imageBlob);
+        setShowLoader(true);
+        axios
+          .post(API_URL + "wrap", data, {
+            // receive two parameter endpoint url ,form data
+          })
+          .then((res) => {
+            setData(res.data);
+            setIsDemo(false);
+            setShowRes(true);
+          })
+          .catch((error) => {
+            try {
+              alert(error.response.data);
+            } catch (error) {
+              alert("Connection failed. Try again!");
+            }
+          });
+      };
   });
 
   const [showRes, setShowRes] = useState(false);
@@ -197,7 +197,7 @@ const App = () => {
                 </Box> */}
 
         <Box>
-          <Intro setShowUploader={setShowUploader}/>
+          <Intro setShowUploader={setShowUploader} />
           {/* <CImage
                     src="static/yellow.svg"
                     position="absolute"
