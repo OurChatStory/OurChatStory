@@ -100,7 +100,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
           m={{ base: "0.5rem", sm: "0.5rem", lg: "1rem" }}
           borderRadius="1rem"
           w={{ base: "90vw", sm: "90vw", lg: "50vw" }}
-          top="10"
+          top="5"
           pt="2rem"
           pr="1rem"
           pb="0rem"
@@ -229,22 +229,24 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader }) => {
                     </OrderedList>
                   </Text>
                   <Box mt="1rem"
+                    minW={0}
                   >
                     <FileUploader
                       multiple={false}
                       handleChange={handleFileUpload}
                       name="file"
-                      types={["txt","zip"]}
-                      label="Drop your chat here"
+                      types={["TXT", "ZIP"]}
+                      label="Upload or drop your chat here"
                       disabled={isUploading}
                       // max size of file in mb
                       maxSize={200}
+                    // hoverTitle="Upload your chat file"
                     />
                   </Box>
                 </TabPanel>
               </TabPanels>
             </Tabs>
-            
+
             <Center ml="2rem" mr="2rem" mt="1rem" mb="2rem">
               <VStack mt="2rem" mb="2rem" spacing="0.5rem" align="center">
                 {isUploading ? (
