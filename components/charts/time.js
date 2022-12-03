@@ -1,6 +1,6 @@
 import { Box, Text, VStack } from "@chakra-ui/react";
 
-import { VictoryLine } from "victory";
+import { VictoryLine, VictoryChart } from "victory";
 
 const parser = require("../../script/parser");
 
@@ -35,6 +35,7 @@ const Card6 = ({ drawData, isShared }) => {
       </Text>
 
       <Box>
+        <VictoryChart>
         <VictoryLine
           height={200}
           domain={{ y: [-50, drawData.most_active_hour.count + 100] }}
@@ -49,6 +50,8 @@ const Card6 = ({ drawData, isShared }) => {
           animate={{ onLoad: { duration: isShared ? 0 : 4000 } }}
           data={parser.hourly_count_data(drawData.hourly_count)}
         />
+        </VictoryChart>
+        
       </Box>
       <Text color="#F5F5F5" fontSize="3xl" align="center">
         {parser.active_time_type(drawData.most_active_hour.hour)}

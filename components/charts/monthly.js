@@ -1,5 +1,5 @@
 import { Box, Text, VStack } from "@chakra-ui/react";
-import { VictoryLabel, VictoryLine } from "victory";
+import { VictoryLabel, VictoryLine, VictoryChart } from "victory";
 
 const parser = require("../../script/parser");
 
@@ -31,6 +31,7 @@ const Card2 = ({ drawData, isShared }) => {
       </Text>
 
       <Box>
+        <VictoryChart>
         <VictoryLine
           height={200}
           interpolation="natural"
@@ -45,8 +46,9 @@ const Card2 = ({ drawData, isShared }) => {
           animate={{ onLoad: { duration: isShared ? 0 : 4000 } }}
           data={parser.monthly_count_data(drawData.monthly_chats_count)}
         >
-          <VictoryLabel></VictoryLabel>
+
           </VictoryLine>
+          </VictoryChart>
           <Text color={"yellow"} fontWeight={200}> graph from Jan till today </Text>
 
       </Box>
