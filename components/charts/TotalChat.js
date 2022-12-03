@@ -29,7 +29,7 @@ const Card1 = ({ drawData }) => {
       // pt="1rem"
       // pb="1rem"
       p="1rem"
-      border="4px solid"
+      border="2px solid"
     >
       <Text align="center" as="b" fontSize="4xl">
         Infact y&apos;all sent a total of{" "}
