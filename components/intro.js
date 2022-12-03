@@ -36,7 +36,7 @@ const moveUp = keyframes`
     to {transform: translateY(-10px);}
 `;
 
-const Intro = () => {
+const Intro = ({ setShowUploader }) => {
   // const scrollRef = useRef(null);
   // useScrollSnap({ ref: scrollRef, duration: 1, delay: 1 });
   const moveUpAnimation = `${moveUp} infinite 1s ease-in-out alternate`;
@@ -53,7 +53,7 @@ const Intro = () => {
   const countPie = <CountPie drawData={dummy_data} />;
   const emoji = <Emoji drawData={dummy_data} />;
   const thankCard = <ThankCard drawData={dummy_data} />;
-  const dummyCTA = <DummyCTA drawData={dummy_data} />;
+  const dummyCTA = <DummyCTA drawData={dummy_data} setShowUploader={setShowUploader} />;
   return (
     <>
       {/* <section ref={scrollRef}> */}
@@ -158,6 +158,7 @@ const Intro = () => {
           <Box>
             <Box bgColor={"#9b1fe8"}>
               <Marquee
+                id="marquee"
                 gradient={true}
                 speed={40}
                 gradientColor={[155, 31, 232]}
