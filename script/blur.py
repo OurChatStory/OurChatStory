@@ -24,14 +24,13 @@ for i in range(len(onlyfiles)):
     # load the input image and display it to our screen
     image = cv2.imread(mypath + onlyfiles[i])
 
-    # gaussian blur the image a lot
-    blurred = cv2.GaussianBlur(image, (51, 51), 0)
+    # gaussian blur the image a lot like a lott
+    blurred = cv2.GaussianBlur(image, (101, 101), 0)
 
     # decrease exposure
-    blurred = cv2.addWeighted(blurred, 0.5, blurred, 0, 0)
+    # blurred = cv2.addWeighted(blurred, 0.5, blurred, 0, 0)
 
     # convert to webp
-    cv2.imwrite(base_export_path + onlyfiles[i], blurred, [cv2.IMWRITE_WEBP_QUALITY, 100])
-
-
-
+    cv2.imwrite(
+        base_export_path + onlyfiles[i], blurred, [cv2.IMWRITE_WEBP_QUALITY, 100]
+    )

@@ -17,7 +17,7 @@ const Card1 = ({ drawData }) => {
 
   return (
     <VStack
-      spacing="1rem"
+      spacing="1.5rem"
       align="center"
       justify="center"
       // p="1rem"
@@ -26,21 +26,20 @@ const Card1 = ({ drawData }) => {
       // backgroundPosition="center"
       backgroundRepeat="no-repeat"
       bgBlendMode="multiply"
-      bgImage="/static/blur/pop-art.jpg"
+      bgImage="/static/blur/v2bg5.jpg"
       w="100%"
       h="78vh"
       bgColor="gray"
       borderRadius="1rem"
-      pt="1rem"
-      pb="1rem"
+      p="1.5rem"
       animation={zoomAnimation}
-      border="2px solid white"
+      border="2px solid #779132"
     >
       <Text mb="1rem" fontSize="3xl" align="center">
         Let me tell you this
       </Text>
       <Text fontSize="4xl" align="center">
-        Most of the time it&apos;s
+        Most of the <br />time it&apos;s
       </Text>
       <Text
         pl="1rem"
@@ -48,7 +47,7 @@ const Card1 = ({ drawData }) => {
         fontSize="4xl"
         align="center"
         fontWeight="medium"
-        backgroundColor="#FCBA12"
+        backgroundColor="#779132"
       >
         {" "}
         {drawData.who_texts_first}
