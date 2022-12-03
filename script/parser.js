@@ -83,3 +83,8 @@ function timeConverter (UNIX_timestamp) {
   var time = date + " " + month;
   return time;
 }
+module.exports.no_of_days_talked = ( string ) => {
+  console.log(string);
+  return string.split('').filter((z)=>{return z==='0'?true:false}).length
+
+};

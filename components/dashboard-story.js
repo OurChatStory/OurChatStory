@@ -28,6 +28,7 @@ import ThankYou from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
 
 import * as htmlToImage from "html-to-image";
+import GridStats from "./charts/GridStats";
 
 const Dashboard = ({ drawData, isDemo }) => {
   const [isShared, setIsShared] = useState(false);
@@ -73,6 +74,9 @@ const Dashboard = ({ drawData, isDemo }) => {
     },
     {
       content: (props) => <Card1 drawData={drawData} />,
+    },
+    {
+      content: (props) => <GridStats drawData={drawData} />,
     },
     {
       content: (props) => <Card9 drawData={drawData} />,
