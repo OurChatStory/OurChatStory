@@ -187,6 +187,13 @@ module.exports.sample = {
       count: 1790,
     },
   ],
+  longest_session: {
+    streak_duration: 41,
+    streak_start: 1666739580000,
+    streak_end: 1666742040000,
+    total_messages_sent: 270,
+    average_reply_time: 6.585365853658536
+  },
   longest_gap: {
     gap: 3209940000,
     start_time: 1623090000000,
