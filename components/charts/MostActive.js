@@ -35,10 +35,10 @@ const Card1 = ({ drawData }) => {
       animation={zoomAnimation}
       border="2px solid #779132"
     >
-      <Text mb="1rem" fontSize="3xl" align="center">
+      <Text mb="1rem" fontSize="3xl" align="center" fontWeight={"600"}>
         Let me tell you this
       </Text>
-      <Text fontSize="4xl" align="center">
+      <Text fontSize="4xl" align="center" fontWeight={"600"}>
         Most of the <br />time it&apos;s
       </Text>
       <Text
@@ -46,13 +46,13 @@ const Card1 = ({ drawData }) => {
         pr="1rem"
         fontSize="4xl"
         align="center"
-        fontWeight="medium"
+        fontWeight="800"
         backgroundColor="#779132"
       >
         {" "}
         {drawData.who_texts_first}
       </Text>
-      <Text mb="2rem" fontSize="4xl" align="center">
+      <Text mb="2rem" fontSize="4xl" align="center" fontWeight={"600"}>
         {" "}
         who texts first
       </Text>

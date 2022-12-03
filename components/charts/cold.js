@@ -241,8 +241,8 @@ const Card6 = ({ drawData }) => {
                 : "days only when you didn't talk!"}
             </Text>
             {parser.time_gap(drawData.longest_gap) < 20 ? (
-              <Text>
-                Very few in world have such people in life. You both are lucky
+              <Text fontWeight={"500"}>
+                Having someone to talk to everyday is a privilege and You both are very lucky
                 to have each other.
               </Text>
             ) : (
