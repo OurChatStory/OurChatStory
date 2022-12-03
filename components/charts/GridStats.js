@@ -15,7 +15,7 @@ const GridStats = ({ drawData }) => {
       spacing="1.5rem"
       align="center"
       justify="center"
-      bgImage="static/blur/v2bg2.jpg"
+      bgImage="static/dark/v2bg2.jpg"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       // backgroundSize="120%"

@@ -24,7 +24,7 @@ const Card5 = ({ drawData }) => {
   const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
   return (
     <VStack
-      spacing="1.5rem"
+      spacing="1rem"
       align="center"
       justify="center"
       bgImage="static/blur/v2bg7.jpg"
@@ -42,7 +42,10 @@ const Card5 = ({ drawData }) => {
       p="1rem"
       animation={zoomAnimation}
     >
-      <Heading size="lg" color="white" textAlign="center"
+      <Heading
+        fontSize={["4xl", "4xl", "4xl", "5xl"]}
+        color="white"
+        textAlign="center"
         style={{
           textShadow:
             "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
@@ -79,28 +82,32 @@ const Card5 = ({ drawData }) => {
         gap={1}
       >
         <GridItem colSpan={2}>
-          <Text fontSize={["6xl", "8xl", "8xl"]}>
+          <Text fontSize={["8xl", "8xl", "8xl"]}>
             {drawData.top_10_emojis[0].emoji}
           </Text>
         </GridItem>
         <GridItem colSpan={2}>
-          <Text fontSize={["6xl", "8xl", "8xl"]}>
+          <Text fontSize={["8xl", "8xl", "8xl"]}>
             {drawData.top_10_emojis[1].emoji}
           </Text>
         </GridItem>
         <GridItem colSpan={2}>
-          <Text fontSize={["6xl", "8xl", "8xl"]}>
+          <Text fontSize={["8xl", "8xl", "8xl"]}>
             {drawData.top_10_emojis[2].emoji}
           </Text>
         </GridItem>
         <GridItem colSpan={2}>
-          <Text fontSize={["6xl", "8xl", "8xl"]}>
+          <Text fontSize={["8xl", "8xl", "8xl"]}>
             {drawData.top_10_emojis[3].emoji}
           </Text>
         </GridItem>
       </Grid>
-      <Heading size="lg" color="white" textAlign="center" p="1rem"
-       style={{
+      <Heading
+        fontSize={["4xl", "4xl", "4xl", "5xl"]}
+        color="white"
+        textAlign="center"
+        pb="1rem"
+        style={{
           textShadow:
             "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
         }}

@@ -1,6 +1,20 @@
-import { VStack, Text, Image, Link, Box, Center } from "@chakra-ui/react";
+import { VStack, Text, Image, Link, Box, Center, keyframes } from "@chakra-ui/react";
+
+const ZoomAnimation = keyframes`
+    0% {
+    background-size: 100% 100%;
+  }
+  50%{
+    background-size: 150% 150%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+`;
 
 const Card6 = ({ drawData }) => {
+  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+
   return (
     <VStack
       // bg="#30475E"
@@ -10,19 +24,22 @@ const Card6 = ({ drawData }) => {
       align="center"
       justify="center"
       spacing="2rem"
-      // backgroundImage="static/bg8.png"
+      backgroundImage="static/dark/v2bg8.jpg"
+      bgSize="cover"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
       w="100%"
       h="78vh"
-      bg="#30475E"
+      border="2px solid white"
+      // bg="#30475E"
       borderRadius="1rem"
       p="1rem"
+      animation={zoomAnimation}
     >
 
       <Text color="#F5F5F5" fontSize="4xl" align="center">
-        This was OurChatStory
+        This was <b>OurChatStory</b>
       </Text>
       <Text color="#F5F5F5" fontSize="2xl" align="center">
         While we create many more amazing stories together, let&apos;s share this with friends.

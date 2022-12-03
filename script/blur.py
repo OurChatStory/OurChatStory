@@ -10,16 +10,18 @@ from os.path import isfile, join
 mypath = "./public/static/"
 onlyfiles = listdir(mypath)
 base_export_path = "./public/static/blur/"
+dark_base_export_path = "./public/static/dark/"
 
 for i in range(len(onlyfiles)):
 
-    print(onlyfiles[i])
 
     if onlyfiles[i].endswith(".svg"):
         continue
 
-    if onlyfiles[i] == "blur":
+    if onlyfiles[i] == "blur" or onlyfiles[i] == "dark":
         continue
+
+    print(onlyfiles[i])
 
     # load the input image and display it to our screen
     image = cv2.imread(mypath + onlyfiles[i])
@@ -28,9 +30,13 @@ for i in range(len(onlyfiles)):
     blurred = cv2.GaussianBlur(image, (101, 101), 0)
 
     # decrease exposure
-    # blurred = cv2.addWeighted(blurred, 0.5, blurred, 0, 0)
+    dark_blurred = cv2.addWeighted(blurred, 0.5, blurred, 0, 0)
 
     # convert to webp
     cv2.imwrite(
         base_export_path + onlyfiles[i], blurred, [cv2.IMWRITE_WEBP_QUALITY, 100]
+    )
+
+    cv2.imwrite(
+        dark_base_export_path + onlyfiles[i], dark_blurred, [cv2.IMWRITE_WEBP_QUALITY, 100]
     )
