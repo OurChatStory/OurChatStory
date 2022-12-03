@@ -27,7 +27,7 @@ const Card5 = ({ drawData }) => {
       spacing="1.5rem"
       align="center"
       justify="center"
-      bgImage="static/bg2.png"
+      bgImage="static/blur/v2bg7.jpg"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
@@ -38,12 +38,17 @@ const Card5 = ({ drawData }) => {
       h="78vh"
       bgColor="#f3c5b7"
       borderRadius="1rem"
-      border="2px solid brown"
+      border="2px solid #f62856"
       p="1rem"
       animation={zoomAnimation}
     >
-      <Heading size="md" color="black" textAlign="center">
-        An Emoji is worth thousand words
+      <Heading size="lg" color="white" textAlign="center"
+        style={{
+          textShadow:
+            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+        }}
+      >
+        An Emoji is worth <br /> a thousand words
       </Heading>
 
       {/* <Text
@@ -94,8 +99,13 @@ const Card5 = ({ drawData }) => {
           </Text>
         </GridItem>
       </Grid>
-      <Heading size="md" color="black" textAlign="center" p="1rem">
-        So these are your most used Emojis
+      <Heading size="lg" color="white" textAlign="center" p="1rem"
+       style={{
+          textShadow:
+            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+        }}
+      >
+        So these are your <br /> most used Emojis
       </Heading>
     </VStack>
   );

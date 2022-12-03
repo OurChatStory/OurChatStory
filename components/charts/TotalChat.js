@@ -38,7 +38,7 @@ const Card1 = ({ drawData }) => {
       bgColor="gray"
       borderRadius="1rem"
       p="1.5rem"
-      border="2px solid #3159FF"
+      border="2px solid #3f9383"
       animation={zoomAnimation}
     >
       {/* <CImage
@@ -78,9 +78,9 @@ const Card1 = ({ drawData }) => {
       </Text>
       <Text
         fontSize="5xl"
-        color="black"
+        color="white"
         align="center"
-        bgColor="#cef23f"
+        bgColor="#3f9383"
         fontWeight="bold"
         pl="1rem"
         pr="1rem"
@@ -104,7 +104,7 @@ const Card1 = ({ drawData }) => {
         <b style={{ textDecoration: "underline" }}>
           {parseFloat(drawData.top_percent * 100).toFixed(2)}%
         </b>{" "}
-        of texters in the world🤯
+        of texters in the world
       </Text>
     </VStack>
   );

@@ -7,7 +7,7 @@ import {
 const Card3 = ({ drawData }) => {
   return (
     <VStack
-      spacing="1.5rem"
+      spacing="2rem"
       align="center"
       justify="center"
       p="1rem"
@@ -21,7 +21,10 @@ const Card3 = ({ drawData }) => {
       pb="1rem"
       border="2px"
     >
-      <Heading pt="3rem" textAlign="center" color="white">
+      <Heading pt="3rem"
+      fontSize={["xl", "xl", "2xl", "2xl"]}
+      
+      textAlign="center" color="white">
         What do you talk about?
         </Heading>
       <Image

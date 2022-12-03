@@ -96,7 +96,7 @@ const Card2 = ({ drawData, isShared }) => {
         {drawData.month_correlation > 0.5
           ? "There is an increasing warmth in your relationship :)"
           : drawData.month_correlation < -0.5
-          ? "but y'all have decreased talking now :/"
+          ? "but y'all have decreased talking now"
           : "Now that's a lot of messages!!"}{" "}
       </Text>
     </VStack>
