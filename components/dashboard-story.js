@@ -154,14 +154,33 @@ const Dashboard = ({ drawData, isDemo }) => {
           bgColor="#111111">
           <Center>
 
-            <Stories
-              currentIndex={storyIndex}
-              stories={stories}
-              defaultInterval={20000}
-              height="95vh"
-              preventDefault={false}
-              keyboardNavigation={true}
-            />
+            {window.innerWidth > 600 ? (
+              <Stories
+                currentIndex={storyIndex}
+                stories={stories}
+                defaultInterval={20000}
+                height="95vh"
+                onAllStoriesEnd={() => {
+                  console.log("PAYYYYY USSSSSS");
+                }}
+                preventDefault={false}
+                keyboardNavigation={true}
+              />)
+              : (
+                <Stories
+                  currentIndex={storyIndex}
+                  stories={stories}
+                  defaultInterval={20000}
+                  height="95vh"
+                  width="97vw"
+                  onAllStoriesEnd={() => {
+                    console.log("PAYYYYY USSSSSS");
+                  }}
+                  preventDefault={false}
+                  keyboardNavigation={true}
+                />
+              )}
+
           </Center>
 
           <Center>
@@ -207,7 +226,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           right="1vw"
           zIndex={10003}
         />
-        {storyIndex !== stories.length-1 ? (
+        {storyIndex !== stories.length - 1 ? (
           <>
             <IconButton
               aria-label="Next"
