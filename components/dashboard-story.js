@@ -7,6 +7,7 @@ import {
   Image,
   IconButton,
   Spinner,
+  Center,
 } from "@chakra-ui/react";
 import { HiShare } from "react-icons/hi";
 import { IoClose, IoCaretForward, IoCaretBack } from "react-icons/io5";
@@ -148,15 +149,51 @@ const Dashboard = ({ drawData, isDemo }) => {
   return (
     <Box>
       <Box>
-        <Stories
-          currentIndex={storyIndex}
-          stories={stories}
-          defaultInterval={20000}
-          width="100vw"
-          height="95vh"
-          preventDefault={false}
-          keyboardNavigation={true}
-        />
+
+        <Box
+          bgColor="#111111">
+          <Center>
+
+            <Stories
+              currentIndex={storyIndex}
+              stories={stories}
+              defaultInterval={20000}
+              height="95vh"
+              preventDefault={false}
+              keyboardNavigation={true}
+            />
+          </Center>
+
+          <Center>
+
+            <HStack
+              h="5vh"
+              position="absolute"
+              spacing="0.5rem"
+              p="1rem"
+              align="center"
+              bottom="15vh"
+            >
+              <Image
+                boxSize="3vh"
+                src="static/logo2.png"
+                alt="OurChatStory"
+                style={{ imageRendering: "crisp-edges" }}
+              />
+              <Text
+                align="center"
+                color="white"
+                fontSize="xs"
+                style={{
+                  textShadow:
+                    "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+                }}
+              >
+                Made using OurChatStory.co
+              </Text>
+            </HStack>
+          </Center>
+        </Box>
         <IconButton
           aria-label="Close"
           icon={<IoClose size="1.5em" opacity={0.8} color="#555555" />}
@@ -170,7 +207,7 @@ const Dashboard = ({ drawData, isDemo }) => {
           right="1vw"
           zIndex={10003}
         />
-        {storyIndex !== stories.length ? (
+        {storyIndex !== stories.length-1 ? (
           <>
             <IconButton
               aria-label="Next"
@@ -234,33 +271,7 @@ const Dashboard = ({ drawData, isDemo }) => {
         ) : (
           ""
         )}
-        <HStack
-          w="100%"
-          h="5vh"
-          position="absolute"
-          spacing="0.5rem"
-          p="1rem"
-          align="center"
-          bottom="15vh"
-        >
-          <Image
-            boxSize="3vh"
-            src="static/logo2.png"
-            alt="OurChatStory"
-            style={{ imageRendering: "crisp-edges" }}
-          />
-          <Text
-            align="center"
-            color="white"
-            fontSize="xs"
-            style={{
-              textShadow:
-                "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
-            }}
-          >
-            Made using OurChatStory.co
-          </Text>
-        </HStack>
+
       </Box>
       <Box
         // pl="0.5rem"
@@ -291,7 +302,7 @@ const Dashboard = ({ drawData, isDemo }) => {
             onClick={onButtonClick}
             position="sticky"
             bottom="0vh"
-            zIndex={10003}            
+            zIndex={10003}
             borderRadius={"0"}
           >
             Share
