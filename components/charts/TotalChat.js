@@ -23,7 +23,7 @@ const Card1 = ({ drawData }) => {
   // });
   return (
     <VStack
-      spacing="1rem"
+      spacing="1.5rem"
       align="center"
       justify="center"
       bgImage="/static/v2bg3.jpg"
@@ -37,8 +37,8 @@ const Card1 = ({ drawData }) => {
       h="78vh"
       bgColor="gray"
       borderRadius="1rem"
-      p="1rem"
-      border="2px solid"
+      p="1.5rem"
+      border="2px solid #3159FF"
       animation={zoomAnimation}
     >
       {/* <CImage
@@ -74,14 +74,14 @@ const Card1 = ({ drawData }) => {
         animation={zoomAnimation}
       ></CImage> */}
       <Text align="center" as="b" fontSize="4xl">
-        Infact y&apos;all sent a total of{" "}
+        Y&apos;all sent a<br /> total of{" "}
       </Text>
       <Text
         fontSize="5xl"
         color="black"
         align="center"
-        fontWeight="medium"
         bgColor="#cef23f"
+        fontWeight="bold"
         pl="1rem"
         pr="1rem"
         as="b"
@@ -94,9 +94,9 @@ const Card1 = ({ drawData }) => {
           duration={2}
         />
       </Text>
-      <Text fontSize="2xl" align="center">
+      <Text fontSize="2xl" align="center" fontWeight={500}>
         {" "}
-        messages to each other this year!!
+        messages to each<br />other this year!!
       </Text>
       <br />
       <Text fontSize="3xl" align="center">

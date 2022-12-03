@@ -75,6 +75,7 @@ const App = () => {
         data.append("file", imageBlob);
         setShowLoader(true);
         setShowUploader(true);
+        document.body.style.overflow = "hidden";
         axios
           .post(API_URL + "wrap", data, {
             // receive two parameter endpoint url ,form data
@@ -113,7 +114,7 @@ const App = () => {
       h="100vh"
       position="relative"
     >
-      {showUploader ? (
+      {(showUploader || showLoader) ? (
         <Uploader
           setIsDemo={setIsDemo}
           setShowRes={setShowRes}
