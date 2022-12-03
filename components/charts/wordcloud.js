@@ -19,7 +19,7 @@ const Card3 = ({ drawData }) => {
       borderRadius="1rem"
       pt="1rem"
       pb="1rem"
-      border="1px"
+      border="2px"
     >
       <Heading pt="3rem" textAlign="center" color="white">
         What do you talk about?
