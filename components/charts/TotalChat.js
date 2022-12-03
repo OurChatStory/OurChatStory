@@ -78,7 +78,7 @@ const Card1 = ({ drawData }) => {
       </Text>
       <Text
         fontSize="5xl"
-        // color="#fded03"
+        color="black"
         align="center"
         fontWeight="medium"
         bgColor="#cef23f"

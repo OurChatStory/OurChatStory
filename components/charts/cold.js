@@ -1,6 +1,18 @@
-import { Text, VStack, Box, HStack } from "@chakra-ui/react";
+import { Text, VStack, Box, HStack, keyframes } from "@chakra-ui/react";
 
 const parser = require("../../script/parser");
+
+const ZoomAnimation = keyframes`
+  0% {
+    background-position: 0 0;
+  }
+  50%{
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+`;
 
 const Card6 = ({ drawData }) => {
   const cal_days = [
@@ -20,6 +32,8 @@ const Card6 = ({ drawData }) => {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ];
+  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+
   return (
     <Box
       spacing="1rem"
@@ -34,6 +48,7 @@ const Card6 = ({ drawData }) => {
       h="78vh"
       w="100%"
       border="2px solid pink"
+      animation={zoomAnimation}
     >
       {/* <Box bgColor={"black"} opacity={0.5} /> */}
       <VStack h="100%" align="left" p="1rem" justify="center" spacing="1rem">

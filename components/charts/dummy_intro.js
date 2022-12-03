@@ -2,14 +2,14 @@ import { Text, VStack, Box, Spacer, keyframes } from "@chakra-ui/react";
 import Marquee from "react-fast-marquee";
 
 const ZoomAnimation = keyframes`
-    0% {
-    background-size: 100% 100%;
+  0% {
+    background-position: 0 0;
   }
   50%{
-    background-size: 150% 150%;
+    background-position: 100% 0;
   }
   100% {
-    background-size: 100% 100%;
+    background-position: 0 0;
   }
 `;
 

@@ -22,7 +22,6 @@ const ZoomAnimation = keyframes`
 
 const Card5 = ({ drawData }) => {
   const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
-
   return (
     <VStack
       spacing="1.5rem"
@@ -39,6 +38,7 @@ const Card5 = ({ drawData }) => {
       h="78vh"
       bgColor="#f3c5b7"
       borderRadius="1rem"
+      border="2px solid brown"
       p="1rem"
       animation={zoomAnimation}
     >

@@ -26,7 +26,7 @@ const Card1 = ({ drawData }) => {
       // backgroundPosition="center"
       backgroundRepeat="no-repeat"
       bgBlendMode="multiply"
-      bgImage="/static/pop-art.jpg"
+      bgImage="/static/blur/pop-art.jpg"
       w="100%"
       h="78vh"
       bgColor="gray"

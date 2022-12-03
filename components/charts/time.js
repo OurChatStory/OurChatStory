@@ -1,8 +1,20 @@
-import { Box, Text, VStack } from "@chakra-ui/react";
+import { Box, Text, VStack, keyframes } from "@chakra-ui/react";
 
 import { VictoryLine, VictoryChart } from "victory";
 
 const parser = require("../../script/parser");
+
+const ZoomAnimation = keyframes`
+  0% {
+    background-position: 0 0;
+  }
+  50%{
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+`;
 
 const chartTheme = {
   axis: {
@@ -21,6 +33,8 @@ const chartTheme = {
 };
 
 const Card6 = ({ drawData, isShared }) => {
+  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+
   return (
     <VStack
       spacing="1rem"
@@ -43,6 +57,7 @@ const Card6 = ({ drawData, isShared }) => {
       borderRadius="1rem"
       pt="1rem"
       pb="1rem"
+      animation={zoomAnimation}
     >
       <Text color="#F5F5F5" fontSize="3xl" align="center" fontWeight={700}>
         The time of the day y&apos;all talk the most is
