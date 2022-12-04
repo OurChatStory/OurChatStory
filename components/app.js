@@ -77,6 +77,12 @@ const App = () => {
       // Optionally, send analytics event that PWA install promo was shown.
       console.log(`'beforeinstallprompt' event was fired.`);
     });
+
+    // check if the website is opened in standalone mode / PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsSuccessfulPWAInstall(true);
+    }
+    
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.onmessage = (event) => {
         console.log("received: onmessage", event);
