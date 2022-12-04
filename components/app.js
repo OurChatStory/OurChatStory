@@ -48,6 +48,7 @@ const App = () => {
 
   const [isUploading, setIsUploading] = useState(false);
   const [showUploader, setShowUploader] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
     // const imagesPreload = [
@@ -67,6 +68,21 @@ const App = () => {
     //   newImage.src = image;
     //   window[image] = newImage;
     // });
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      setDeferredPrompt(e);
+      // Optionally, send analytics event that PWA install promo was shown.
+      console.log(`'beforeinstallprompt' event was fired.`);
+    });
+
+    // check if the website is opened in standalone mode / PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsSuccessfulPWAInstall(true);
+    }
+    
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.onmessage = (event) => {
         console.log("received: onmessage", event);
@@ -103,6 +119,7 @@ const App = () => {
   const [data, setData] = useState({});
   const [showLoader, setShowLoader] = useState(false);
   const [isDemo, setIsDemo] = useState(false);
+  const [isSuccessfulPWAInstall, setIsSuccessfulPWAInstall] = useState(false);
 
   return showRes ? (
     <Dashboard drawData={data} isDemo={isDemo} />
@@ -122,6 +139,9 @@ const App = () => {
           setShowUploader={setShowUploader}
           showLoader={showLoader}
           setShowLoader={setShowLoader}
+          deferredPrompt={deferredPrompt}
+          isSuccessfulPWAInstall={isSuccessfulPWAInstall}
+          setIsSuccessfulPWAInstall={setIsSuccessfulPWAInstall}
         />
       ) : (
         " "
