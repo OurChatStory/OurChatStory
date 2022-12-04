@@ -63,9 +63,9 @@ const GridStats = ({ drawData }) => {
               <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
                 textAlign={"center"}
               >
-                {drawData.total_no_of_minutes}
+                {parser.no_of_days_talked(drawData.no_talk_string)}
               </Text>
-              <Text>m</Text>
+              <Text>d</Text>
             </HStack>
             <Text
               fontSize={["md", "md", "lg"]}
@@ -99,16 +99,16 @@ const GridStats = ({ drawData }) => {
               <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
                 textAlign={"center"}
               >
-                {parseInt(drawData.total_no_of_minutes / 60)}
+                {drawData.total_no_of_minutes>60?parseInt(drawData.total_no_of_minutes / 60):drawData.total_no_of_minutes}
               </Text>
-              <Text>h</Text>
+              <Text>{drawData.total_no_of_minutes>60?"h":"m"}</Text>
             </HStack>
             <Text
               fontSize={["md", "md", "lg"]}
               fontWeight="700"
               textAlign={"center"}
             >
-              lost forever<br />chatting
+              spent talking together
             </Text>
 
             <Spacer />
@@ -145,7 +145,7 @@ const GridStats = ({ drawData }) => {
               fontWeight="700"
               textAlign={"center"}
             >
-              longest <br /> session
+              longest <br /> at a stretch
             </Text>
 
             <Spacer />
@@ -182,7 +182,7 @@ const GridStats = ({ drawData }) => {
               fontWeight="700"
               textAlign={"center"}
             >
-              reply time during the longest session
+              reply time when properly talking
             </Text>
 
             <Spacer />
