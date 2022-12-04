@@ -49,18 +49,12 @@ const GridStats = ({ drawData }) => {
           p="1rem"
           borderRadius={"6px"}
         >
-          <VStack
-            spacing={"0rem"}
-            align="center"
-            height="100%"
-          >
+          <VStack spacing={"0rem"} align="center" height="100%">
             <Spacer />
-            <HStack
-              align="baseline"
-              spacing={"0.25rem"}
-            >
-
-              <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
+            <HStack align="baseline" spacing={"0.25rem"}>
+              <Text
+                fontSize={["4xl", "4xl", "5xl"]}
+                fontWeight="800"
                 textAlign={"center"}
               >
                 {parser.no_of_days_talked(drawData.no_talk_string)}
@@ -72,8 +66,25 @@ const GridStats = ({ drawData }) => {
               fontWeight="700"
               textAlign={"center"}
             >
-              involved<br />in total
+              involved
+              <br />
+              in total
             </Text>
+            {parser.no_of_days_talked(drawData.no_talk_string) > 300 ? (
+              <>
+                <Spacer />
+                <Text
+                  fontSize={["sm", "sm", "3xs", ""]}
+                  fontWeight="300"
+                  textAlign={"center"}
+                  textColor="purple.100"
+                >
+                  WOW! Start dating maybe? 👀
+                </Text>
+              </>
+            ) : (
+              ""
+            )}
 
             <Spacer />
           </VStack>
@@ -84,31 +95,27 @@ const GridStats = ({ drawData }) => {
           p="1rem"
           borderRadius={"6px"}
         >
-          <VStack
-            spacing={"0rem"}
-            align="center"
-            height="100%"
-          >
+          <VStack spacing={"0rem"} align="center" height="100%">
             <Spacer />
 
-            <HStack
-              align="baseline"
-              spacing={"0.25rem"}
-            >
-
-              <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
+            <HStack align="baseline" spacing={"0.25rem"}>
+              <Text
+                fontSize={["4xl", "4xl", "5xl"]}
+                fontWeight="800"
                 textAlign={"center"}
               >
-                {drawData.total_no_of_minutes>60?parseInt(drawData.total_no_of_minutes / 60):drawData.total_no_of_minutes}
+                {drawData.total_no_of_minutes > 60
+                  ? parseInt(drawData.total_no_of_minutes / 60)
+                  : drawData.total_no_of_minutes}
               </Text>
-              <Text>{drawData.total_no_of_minutes>60?"h":"m"}</Text>
+              <Text>{drawData.total_no_of_minutes > 60 ? "h" : "m"}</Text>
             </HStack>
             <Text
-              fontSize={["md", "md", "lg"]}
+              fontSize={["md", "md", "md"]}
               fontWeight="700"
               textAlign={"center"}
             >
-              spent talking together
+              spent talking <br></br>together
             </Text>
 
             <Spacer />
@@ -120,25 +127,18 @@ const GridStats = ({ drawData }) => {
           p="1rem"
           borderRadius={"6px"}
         >
-          <VStack
-            spacing={"0rem"}
-            align="center"
-            height="100%"
-          >
+          <VStack spacing={"0rem"} align="center" height="100%">
             <Spacer />
 
-            <HStack
-              align="baseline"
-              spacing={"0.25rem"}
-            >
-
-              <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
+            <HStack align="baseline" spacing={"0.25rem"}>
+              <Text
+                fontSize={["4xl", "4xl", "5xl"]}
+                fontWeight="800"
                 textAlign={"center"}
               >
                 {drawData.longest_session.streak_duration}
               </Text>
-              <Text
-              >m</Text>
+              <Text>m</Text>
             </HStack>
             <Text
               fontSize={["md", "md", "lg"]}
@@ -157,22 +157,17 @@ const GridStats = ({ drawData }) => {
           p="1rem"
           borderRadius={"6px"}
         >
-          <VStack
-            spacing={"0rem"}
-            align="center"
-            height="100%"
-          >
+          <VStack spacing={"0rem"} align="center" height="100%">
             <Spacer />
 
-            <HStack
-              align="baseline"
-              spacing={"0.25rem"}
-            >
-
-              <Text fontSize={["4xl", "4xl", "5xl"]} fontWeight="800"
+            <HStack align="baseline" spacing={"0.25rem"}>
+              <Text
+                fontSize={["4xl", "4xl", "5xl"]}
+                fontWeight="800"
                 textAlign={"center"}
               >
-                {Math.round(drawData.longest_session.average_reply_time * 10) / 10}
+                {Math.round(drawData.longest_session.average_reply_time * 10) /
+                  10}
               </Text>
               <Text>s</Text>
             </HStack>
@@ -182,13 +177,27 @@ const GridStats = ({ drawData }) => {
               fontWeight="700"
               textAlign={"center"}
             >
-              reply time when properly talking
+              reply time when<br></br> properly talking
             </Text>
-
+            {Math.round(drawData.longest_session.average_reply_time * 10) /
+                  10 < 5 ? (
+              <>
+                {/* <Spacer /> */}
+                <Text
+                  fontSize={["3xs", "3xs", "3xs", ""]}
+                  fontWeight="300"
+                  textAlign={"center"}
+                  textColor="purple.100"
+                >
+                  Thats the top <br></br>1% of all users globally! 🤯
+                </Text>
+              </>
+            ) : (
+              ""
+            )}
             <Spacer />
           </VStack>
         </GridItem>
-
       </Grid>
       {/* <Heading size="md" color="black" textAlign="center" p="1rem">
           So these are our most used Emojis
