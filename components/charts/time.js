@@ -69,9 +69,10 @@ const Card6 = ({ drawData, isShared }) => {
           "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
       }}
     >
-      <Text color="#F5F5F5" fontSize="3xl" align="center" fontWeight={700}>
+      <Text color="#F5F5F5" fontSize="2xl" align="center" fontWeight={600}>
         The time of the day y&apos;all talk the most is
       </Text>
+      <br />
       <Text bgColor="#14B884" fontSize="5xl" align="center" fontWeight="bold"
         pl="1rem"
         pr="1rem"
@@ -143,7 +144,7 @@ const Card6 = ({ drawData, isShared }) => {
           />
         </VictoryChart>
       </Box>
-      <Text color="#F5F5F5" fontSize="3xl" align="center">
+      <Text color="#F5F5F5" fontSize="2xl" align="center" fontWeight="600">
         {parser.active_time_type(drawData.most_active_hour.hour)}
       </Text>
     </VStack>
