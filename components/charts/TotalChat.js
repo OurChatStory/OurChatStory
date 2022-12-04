@@ -26,8 +26,8 @@ const Card1 = ({ drawData }) => {
       spacing="1.5rem"
       align="center"
       justify="center"
-      bgImage="/static/v2bg3.jpg"
-      bgBlendMode="multiply"
+      bgImage="/static/dark/v2bg3.jpg"
+      // bgBlendMode="overlay"
       // add blur to the background image
       // filter="blur(10px)"
       // backdropFilter="blur(70px) hue-rotate(90deg)"
