@@ -42,9 +42,10 @@ const Dashboard = ({ drawData, isDemo }) => {
     }
     setIsShared(true);
     htmlToImage
-      .toBlob(ref.current, { cacheBust: true })
+      .toBlob(document.body)
       .then((dataUrl) => {
         const file = new File([dataUrl], "share.png", { type: dataUrl.type });
+        console.log("file", file);
         // const link = document.createElement("a");
         // link.download = "my-image-name.png";
         // link.href = dataUrl;
@@ -63,6 +64,7 @@ const Dashboard = ({ drawData, isDemo }) => {
       })
       .catch((err) => {
         console.log(err);
+        setIsShared(false);
       });
   }, [ref]);
   <></>
@@ -323,6 +325,9 @@ const Dashboard = ({ drawData, isDemo }) => {
             bottom="0vh"
             zIndex={10003}
             borderRadius={"0"}
+            bgColor="white"
+            _hover={{ bgColor: "white" }}
+            _active={{ bgColor: "white" }}
           >
             Share
           </Button>
