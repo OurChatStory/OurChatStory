@@ -42,6 +42,7 @@ module.exports.monthly_count_data = (data) => {
     return { x: month, y: count };
   });
 };
+
 module.exports.hourly_count_data = (data) => {
   return data.map(({ hour, count }) => {
     return { x: hour, y: count };
@@ -58,7 +59,7 @@ module.exports.time_gap = ({ start_time, end_time }) => {
 
   return Math.floor((b - a) / 86400000);
 };
-function timeConverter (UNIX_timestamp) {
+function timeConverter(UNIX_timestamp) {
   var a = new Date(UNIX_timestamp);
   var months = [
     "Jan",
@@ -83,12 +84,12 @@ function timeConverter (UNIX_timestamp) {
   var time = date + " " + month;
   return time;
 }
-module.exports.no_of_days_talked = ( string ) => {
+module.exports.no_of_days_talked = (string) => {
   // console.log(string);
-  return string.split('').filter((z)=>{return z==='0'?true:false}).length
+  return string.split('').filter((z) => { return z === '0' ? true : false }).length
 
 };
 
-module.exports.get_random_element = ( array ) => {
+module.exports.get_random_element = (array) => {
   return array[Math.floor(Math.random() * array.length)]
 };

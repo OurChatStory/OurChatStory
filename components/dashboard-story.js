@@ -112,9 +112,9 @@ const Dashboard = ({ drawData, isDemo }) => {
     {
       content: (props) => <Welcome drawData={drawData} />,
     },
-    {
-      content: (props) => <GCard0 drawData={drawData} />,
-    },
+    // {
+    //   content: (props) => <GCard0 drawData={drawData} />,
+    // },
     {
       content: (props) => <Card1 drawData={drawData} />,
     },
@@ -195,7 +195,7 @@ const Dashboard = ({ drawData, isDemo }) => {
             >
               <Image
                 boxSize="3vh"
-                src="static/logo2.png"
+                src="static/compress/logo2.webp"
                 alt="OurChatStory"
                 style={{ imageRendering: "crisp-edges" }}
               />

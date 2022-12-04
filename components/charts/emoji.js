@@ -27,7 +27,7 @@ const Card5 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage="static/blur/v2bg7.jpg"
+      bgImage="static/dark/v2bg7.webp"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="120%"
@@ -43,7 +43,7 @@ const Card5 = ({ drawData }) => {
       animation={zoomAnimation}
     >
       <Heading
-        fontSize={["4xl", "4xl", "3xl", "3xl"]}
+        fontSize={["3xl", "3xl", "3xl", "3xl"]}
         color="white"
         textAlign="center"
         style={{
@@ -79,7 +79,7 @@ const Card5 = ({ drawData }) => {
       <Grid
         templateRows="repeat(2, 1fr)"
         templateColumns="repeat(4, 1fr)"
-        gap={1}
+        gap="0rem"
       >
         <GridItem colSpan={2}>
           <Text fontSize={["8xl", "8xl", "8xl"]}>
@@ -103,7 +103,7 @@ const Card5 = ({ drawData }) => {
         </GridItem>
       </Grid>
       <Heading
-        fontSize={["4xl", "4xl", "3xl", "3xl"]}
+        fontSize={["3xl", "3xl", "3xl", "3xl"]}
         color="white"
         textAlign="center"
         pb="1rem"

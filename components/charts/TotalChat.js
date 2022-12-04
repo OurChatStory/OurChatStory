@@ -26,8 +26,8 @@ const Card1 = ({ drawData }) => {
       spacing="1.5rem"
       align="center"
       justify="center"
-      bgImage="/static/v2bg3.jpg"
-      bgBlendMode="multiply"
+      bgImage="/static/dark/v2bg3.webp"
+      // bgBlendMode="overlay"
       // add blur to the background image
       // filter="blur(10px)"
       // backdropFilter="blur(70px) hue-rotate(90deg)"
@@ -38,41 +38,15 @@ const Card1 = ({ drawData }) => {
       bgColor="gray"
       borderRadius="1rem"
       p="1.5rem"
+      pb="2rem"
       border="2px solid #3f9383"
       animation={zoomAnimation}
+
+      style={{
+        textShadow:
+          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+      }}
     >
-      {/* <CImage
-        // boxSize="45px"
-        borderRadius="1rem"
-        src="static/asdf.png"
-        alt="OurChatStory"
-        // w="100%"
-        bgRepeat="no-repeat"
-        // h="100%"
-        w="100%"
-        h="78vh"
-        zIndex="5"
-        bgSize="cover"
-        position={"absolute"}
-        style={{ imageRendering: "crisp-edges" }}
-        animation={zoomAnimation}
-      ></CImage>
-      <CImage
-        // boxSize="45px"
-        borderRadius="1rem"
-        src="static/asdf.png"
-        alt="OurChatStory"
-        // w="100%"
-        bgRepeat="no-repeat"
-        // h="100%"
-        w="100%"
-        h="78vh"
-        zIndex="3"
-        bgSize="cover"
-        // position={"absolute"}
-        style={{ imageRendering: "crisp-edges" }}
-        animation={zoomAnimation}
-      ></CImage> */}
       <Text align="center" as="b" fontSize="4xl">
         Y&apos;all sent a<br /> total of{" "}
       </Text>
@@ -85,6 +59,10 @@ const Card1 = ({ drawData }) => {
         pl="1rem"
         pr="1rem"
         as="b"
+        style={{
+          textShadow:
+            "none",
+        }}
       >
         <CountUp
           end={drawData.total_no_of_chats}
@@ -94,16 +72,15 @@ const Card1 = ({ drawData }) => {
           duration={2}
         />
       </Text>
-      <Text fontSize="2xl" align="center" fontWeight={500}>
+      <Text fontSize="3xl" align="center" fontWeight={600}>
         {" "}
         messages to each<br />other this year!!
       </Text>
-      <br />
-      <Text fontSize="3xl" align="center">
+      <Text fontSize="xl" align="center">
         That puts you into top{" "}
         <b style={{ textDecoration: "underline" }}>
           {parseFloat(drawData.top_percent * 100).toFixed(2)}%
-        </b>{" "}
+        </b><br />
         of texters in the world
       </Text>
     </VStack>

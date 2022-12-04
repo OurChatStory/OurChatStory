@@ -1,4 +1,4 @@
-import { Text, VStack, Box, HStack, keyframes } from "@chakra-ui/react";
+import { Text, VStack, Box, HStack, keyframes, Spacer } from "@chakra-ui/react";
 
 const parser = require("../../script/parser");
 
@@ -39,7 +39,7 @@ const Card6 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage="/static/two-kids.jpg"
+      bgImage="/static/compress/two-kids.webp"
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"
@@ -47,8 +47,14 @@ const Card6 = ({ drawData }) => {
       borderRadius="1rem"
       h="78vh"
       w="100%"
+      p="1.5rem"
       border="2px solid pink"
       animation={zoomAnimation}
+
+      style={{
+        textShadow:
+          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+      }}
     >
       {/* <Box bgColor={"black"} opacity={0.5} /> */}
       <VStack h="100%" align="left" p="1rem" justify="center" spacing="1rem">
@@ -220,16 +226,23 @@ const Card6 = ({ drawData }) => {
               })}
             </Box>
             {/* </Text> */}
-
-            <Text
-              fontSize="5xl"
-              align="left"
-              fontWeight="extrabold"
-              color="pink"
-              textAlign="center"
-            >
-              {parser.time_gap(drawData.longest_gap)}
-            </Text>
+            <HStack>
+              <Spacer />
+              <Text
+                fontSize="5xl"
+                align="left"
+                fontWeight="bold"
+                bgColor="pink"
+                pl="1rem"
+                pr="1rem"
+                color="black"
+                textAlign="center"
+                style={{ textShadow: "none" }}
+              >
+                {parser.time_gap(drawData.longest_gap)}
+              </Text>
+              <Spacer />
+            </HStack>
             <Text
               fontSize="3xl"
               align="left"
@@ -242,7 +255,7 @@ const Card6 = ({ drawData }) => {
             </Text>
             {parser.time_gap(drawData.longest_gap) < 20 ? (
               <Text fontWeight={"500"}>
-                Having someone to talk to everyday is a privilege and You both are very lucky
+                Having someone to talk to everyday is a privilege and you {drawData.group ? "all" : "both"} are very lucky
                 to have each other.
               </Text>
             ) : (

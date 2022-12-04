@@ -12,10 +12,10 @@ const parser = require("../../script/parser");
 const GridStats = ({ drawData }) => {
   return (
     <VStack
-      spacing="1.5rem"
+      spacing="0.5rem"
       align="center"
       justify="center"
-      bgImage="static/dark/v2bg2.jpg"
+      bgImage="static/dark/v2bg2.webp"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       // backgroundSize="120%"
@@ -27,12 +27,17 @@ const GridStats = ({ drawData }) => {
       bgColor="primary.800"
       borderRadius="1rem"
       border="2px solid #f78901"
-      pl="0rem"
-      pr="0rem"
-      pt="0.5rem"
-      pb="1rem"
+      pt="1rem"
+      pb="2rem"
+      style={{
+        textShadow:
+          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+      }}
     >
-      <Heading size="xl" color="white" textAlign="center">
+      <Heading size="xl" color="white" textAlign="center"
+        pl="1rem"
+        pr="1rem"
+      >
         Few Cool Numbers
       </Heading>
 
@@ -45,7 +50,7 @@ const GridStats = ({ drawData }) => {
       >
         <GridItem
           colSpan={2}
-          border="1px solid #ffffff50"
+          border="1px solid #ffffff80"
           p="1rem"
           borderRadius={"6px"}
         >
@@ -91,7 +96,7 @@ const GridStats = ({ drawData }) => {
         </GridItem>
         <GridItem
           colSpan={2}
-          border="1px solid #ffffff50"
+          border="1px solid #ffffff80"
           p="1rem"
           borderRadius={"6px"}
         >
@@ -123,7 +128,7 @@ const GridStats = ({ drawData }) => {
         </GridItem>
         <GridItem
           colSpan={2}
-          border="1px solid #ffffff50"
+          border="1px solid #ffffff80"
           p="1rem"
           borderRadius={"6px"}
         >
@@ -153,7 +158,7 @@ const GridStats = ({ drawData }) => {
         </GridItem>
         <GridItem
           colSpan={2}
-          border="1px solid #ffffff50"
+          border="1px solid #ffffff80"
           p="1rem"
           borderRadius={"6px"}
         >
@@ -180,7 +185,7 @@ const GridStats = ({ drawData }) => {
               reply time when<br></br> properly talking
             </Text>
             {Math.round(drawData.longest_session.average_reply_time * 10) /
-                  10 < 5 ? (
+              10 < 5 ? (
               <>
                 {/* <Spacer /> */}
                 <Text

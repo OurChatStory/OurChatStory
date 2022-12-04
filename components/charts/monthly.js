@@ -1,5 +1,5 @@
 import { Box, Text, VStack, keyframes } from "@chakra-ui/react";
-import { VictoryLabel, VictoryLine, VictoryChart } from "victory";
+import { VictoryAxis, VictoryLine, VictoryChart } from "victory";
 
 const parser = require("../../script/parser");
 
@@ -8,12 +8,17 @@ const chartTheme = {
     style: {
       tickLabels: {
         // this changed the color of my numbers to white
-        fill: "white",
+        fill: "#ffffffde",
       },
       grid: {
         fill: "none",
         stroke: "none",
         pointerEvents: "painted",
+      },
+      axis: {
+        fill: "white",
+        stroke: "#ebe007de",
+        strokeWidth: 1,
       },
     },
   },
@@ -39,11 +44,11 @@ const Card2 = ({ drawData, isShared }) => {
       spacing="0.5rem"
       align="center"
       justify="center"
-      bgImage="/static/v2bg4.jpg"
-      backgroundBlendMode="multiply"
+      bgImage="/static/compress/v2bg4.webp"
+      bgBlendMode={"multiply"}
+      bgRepeat="no-repeat"
+      bgSize="cover"
       // backgroundPosition="center"
-      // backgroundRepeat="no-repeat"
-      // backgroundSize="120%"
       // p="2rem"
       // w="100vw"
       // h="100vh"
@@ -52,6 +57,10 @@ const Card2 = ({ drawData, isShared }) => {
       bgColor="indigo"
       borderRadius="1rem"
       animation={zoomAnimation}
+      style={{
+        textShadow:
+          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+      }}
       // pt="1rem"
       // pb="1rem"
       p="1rem"
@@ -69,7 +78,7 @@ const Card2 = ({ drawData, isShared }) => {
           <VictoryLine
             height={200}
             interpolation="natural"
-            domain={{ y: [-750, drawData.most_active_month.count + 300] }}
+            domain={{ y: [0, drawData.most_active_month.count + 300] }}
             style={{
               data: {
                 stroke: "#FFF600",
@@ -96,8 +105,8 @@ const Card2 = ({ drawData, isShared }) => {
         {drawData.month_correlation > 0.5
           ? "There is an increasing warmth in your relationship :)"
           : drawData.month_correlation < -0.5
-          ? "but y'all have decreased talking now"
-          : "Now that's a lot of messages!!"}{" "}
+            ? "but y'all have decreased talking now"
+            : "Now that's a lot of messages!!"}{" "}
       </Text>
     </VStack>
   );

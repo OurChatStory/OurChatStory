@@ -1,4 +1,4 @@
-import { VStack, Text, Image, Link, Box, Center, keyframes } from "@chakra-ui/react";
+import { VStack, Text, Image, Link, Box, Center, keyframes, Spacer } from "@chakra-ui/react";
 
 const ZoomAnimation = keyframes`
     0% {
@@ -23,8 +23,8 @@ const Card6 = ({ drawData }) => {
       // h="100vh"
       align="center"
       justify="center"
-      spacing="2rem"
-      backgroundImage="static/dark/v2bg8.jpg"
+      spacing="1rem"
+      backgroundImage="static/dark/v2bg6.webp"
       bgSize="cover"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
@@ -36,19 +36,27 @@ const Card6 = ({ drawData }) => {
       borderRadius="1rem"
       p="1rem"
       animation={zoomAnimation}
+      
+      style={{
+        textShadow:
+          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+      }}
     >
 
-      <Text color="#F5F5F5" fontSize="4xl" align="center">
-        This was <b>OurChatStory</b>
+      <Text color="#F5F5F5" fontSize="3xl" align="center">
+        This was
       </Text>
-      <Text color="#F5F5F5" fontSize="2xl" align="center">
-        While we create many more amazing stories together, let&apos;s share this with friends.
+      <Image h="80px" src="static/compress/logo2.webp" alt="OurChatStory"/>
+      <Text color="#F5F5F5" fontSize="4xl" align="center" pb="1rem" >
+        <b>OurChatStory</b>
       </Text>
-      <Text color="#F5F5F5" fontSize="2xl" align="center">
-        Because every story is unique and worth sharing.
+      <Text color="#F5F5F5" fontSize="xl" align="center">
+        While we create many more amazing stories together, let&apos;s share this with friends
       </Text>
-      <Image h="80px" src="static/logo2.png" alt="OurChatStory" pb="1rem" />
-      <Box zIndex={10000}>
+      <Text color="#F5F5F5" fontSize="xl" align="center">
+        Because every story is<br />unique and worth sharing
+      </Text>
+      {/* <Box zIndex={10000}>
         <Text color="#F5F5F5" fontSize="sm" align="center">
           Made with ❤️ by
         </Text>
@@ -72,7 +80,8 @@ const Card6 = ({ drawData }) => {
             @iamyajat
           </Link>
         </Text>
-      </Box>
+      </Box> */}
+      {/* <Spacer /> */}
     </VStack>
   );
 };

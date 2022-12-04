@@ -8,7 +8,6 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
       align="center"
       // justify="center"
       spacing="2rem"
-      // bgImage="static/download.jpeg"
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"

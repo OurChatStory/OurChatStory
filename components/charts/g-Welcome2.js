@@ -6,7 +6,7 @@ const Card6 = ({ drawData }) => {
       align="center"
       justify="center"
       spacing="1rem"
-      bgImage="static/bg2.png"
+      bgImage="static/compress/bg2.webp"
       backgroundRepeat="no-repeat"
       backgroundSize="120%"
       p="1rem"

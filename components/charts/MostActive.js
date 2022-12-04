@@ -17,7 +17,7 @@ const Card1 = ({ drawData }) => {
 
   return (
     <VStack
-      spacing="1.5rem"
+      spacing="2rem"
       align="center"
       justify="center"
       // p="1rem"
@@ -26,7 +26,7 @@ const Card1 = ({ drawData }) => {
       // backgroundPosition="center"
       backgroundRepeat="no-repeat"
       bgBlendMode="multiply"
-      bgImage="/static/blur/v2bg5.jpg"
+      bgImage="/static/blur/v2bg5.webp"
       w="100%"
       h="78vh"
       bgColor="gray"
@@ -34,11 +34,15 @@ const Card1 = ({ drawData }) => {
       p="1.5rem"
       animation={zoomAnimation}
       border="2px solid #779132"
+      style={{
+        textShadow:
+          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+      }}
     >
-      <Text mb="1rem" fontSize="3xl" align="center" fontWeight={"600"}>
-        Let me tell you this
+      <Text mb="1rem" fontSize="4xl" align="center" fontWeight={"600"}>
+        Let us tell you
       </Text>
-      <Text fontSize="4xl" align="center" fontWeight={"600"}>
+      <Text fontSize="3xl" align="center" fontWeight={"600"}>
         Most of the <br />time it&apos;s
       </Text>
       <Text
@@ -48,6 +52,10 @@ const Card1 = ({ drawData }) => {
         align="center"
         fontWeight="800"
         backgroundColor="#779132"
+        style={{
+          textShadow:
+            "none",
+        }}
       >
         {" "}
         {drawData.who_texts_first}

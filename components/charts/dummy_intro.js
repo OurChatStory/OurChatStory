@@ -23,8 +23,7 @@ const DummyIntro = ({ drawData }) => {
         align="center"
         justify="center"
         spacing="1rem"
-        // bgImage="static/asdf.png"
-        bgImage="static/v2bg0.jpg"
+        bgImage="static/compress/v2bg0.webp"
         bgBlendMode={"multiply"}
         bgRepeat="no-repeat"
         bgSize="cover"
@@ -38,6 +37,10 @@ const DummyIntro = ({ drawData }) => {
         // errorBorderColor="red.300"
         border="2px solid #fcea2b"
         animation={zoomAnimation}
+        style={{
+          textShadow:
+            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+        }}
       >
         {/* <Marquee
         gradient={true}
@@ -71,6 +74,9 @@ const DummyIntro = ({ drawData }) => {
           bgColor="#fcea2b"
           textAlign="center"
           color="#210934"
+          style={{
+            textShadow: "none",
+          }}
         >
           {drawData.members[0]}
         </Text>
@@ -94,6 +100,9 @@ const DummyIntro = ({ drawData }) => {
           color="#210934"
           pl="1rem"
           pr="1rem"
+          style={{
+            textShadow: "none",
+          }}
         >
           {drawData.members[1]}
         </Text>

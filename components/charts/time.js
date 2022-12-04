@@ -1,6 +1,6 @@
 import { Box, Text, VStack, keyframes } from "@chakra-ui/react";
 
-import { VictoryLine, VictoryChart } from "victory";
+import { VictoryLine, VictoryChart, VictoryAxis } from "victory";
 
 const parser = require("../../script/parser");
 
@@ -21,14 +21,20 @@ const chartTheme = {
     style: {
       tickLabels: {
         // this changed the color of my numbers to white
-        fill: "white",
+        fill: "#ffffffde",
       },
       grid: {
         fill: "none",
         stroke: "none",
         pointerEvents: "painted",
       },
+      axis: {
+        fill: "white",
+        stroke: "#ffffffde",
+        strokeWidth: 1,
+      },
     },
+
   },
 };
 
@@ -43,7 +49,7 @@ const Card6 = ({ drawData, isShared }) => {
       p="2rem"
       // w="100vw"
       // h="100vh"
-      backgroundImage="/static/owl.jpg"
+      backgroundImage="/static/compress/owl.webp"
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"
@@ -58,19 +64,32 @@ const Card6 = ({ drawData, isShared }) => {
       pt="1rem"
       pb="1rem"
       animation={zoomAnimation}
+      style={{
+        textShadow:
+          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+      }}
     >
-      <Text color="#F5F5F5" fontSize="3xl" align="center" fontWeight={700}>
+      <Text color="#F5F5F5" fontSize="2xl" align="center" fontWeight={600}>
         The time of the day y&apos;all talk the most is
       </Text>
-      <Text color="#14B884" fontSize="5xl" align="center" fontWeight="medium">
+      <br />
+      <Text bgColor="#14B884" fontSize="5xl" align="center" fontWeight="bold"
+        pl="1rem"
+        pr="1rem"
+        style={{
+          textShadow: "none"
+        }}
+      >
         {parser.active_time(drawData.most_active_hour.hour)}
       </Text>
 
       <Box>
-        <VictoryChart theme={chartTheme}>
+        <VictoryChart theme={chartTheme}
+
+        >
           <VictoryLine
             height={200}
-            domain={{ y: [-50, drawData.most_active_hour.count + 100] }}
+            domain={{ y: [0, drawData.most_active_hour.count + 100] }}
             interpolation="natural"
             style={{
               data: {
@@ -81,10 +100,51 @@ const Card6 = ({ drawData, isShared }) => {
             }}
             animate={{ onLoad: { duration: isShared ? 0 : 4000 } }}
             data={parser.hourly_count_data(drawData.hourly_count)}
+
+          />
+          <VictoryAxis
+            // fix overlapping time labels
+            // fixLabelOverlap={true}
+            style={{
+              tickLabels: {
+                fontSize: 12,
+                padding: 5,
+              },
+            }}
+            tickFormat={(t) => parser.active_time(t).toLowerCase().replace(" ", "")}
+            // increase the number of ticks
+            tickCount={8}
+
+            // show y axis
+            // dependentAxis
+            // show x axis
+            independentAxis
+
+
+          />
+          <VictoryAxis
+            // fix overlapping time labels
+            // fixLabelOverlap={true}
+            style={{
+              tickLabels: {
+                fontSize: 14,
+                padding: 5,
+              },
+            }}
+            // tickFormat={(t) => parser.active_time(t)}
+            // increase the number of ticks
+            tickCount={4}
+
+            // show y axis
+            dependentAxis
+          // show x axis
+          // independentAxis
+
+
           />
         </VictoryChart>
       </Box>
-      <Text color="#F5F5F5" fontSize="3xl" align="center">
+      <Text color="#F5F5F5" fontSize="2xl" align="center" fontWeight="600">
         {parser.active_time_type(drawData.most_active_hour.hour)}
       </Text>
     </VStack>

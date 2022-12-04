@@ -7,21 +7,17 @@ from os import listdir
 from os.path import isfile, join
 
 # get a list of files in a folder
-mypath = "./public/static/"
+mypath = "./public/static/original/"
 onlyfiles = listdir(mypath)
 base_export_path = "./public/static/blur/"
 dark_base_export_path = "./public/static/dark/"
 shallow_base_export_path = "./public/static/shallow/"
+compress_base_export_path = "./public/static/compress/"
 
 for i in range(len(onlyfiles)):
 
     if onlyfiles[i].endswith(".svg"):
         continue
-
-    if onlyfiles[i] == "blur" or onlyfiles[i] == "dark" or onlyfiles[i] == "shallow":
-        continue
-
-    print(onlyfiles[i])
 
     # load the input image and display it to our screen
     image = cv2.imread(mypath + onlyfiles[i])
@@ -36,8 +32,9 @@ for i in range(len(onlyfiles)):
     dark_blurred = cv2.addWeighted(blurred, 0.5, blurred, 0, 0)
 
     # convert to webp
-    cv2.imwrite(base_export_path + onlyfiles[i], blurred)
+    cv2.imwrite(base_export_path + onlyfiles[i].split(".")[0] + ".webp", blurred, [cv2.IMWRITE_WEBP_QUALITY, 100])
+    cv2.imwrite(dark_base_export_path + onlyfiles[i].split(".")[0] + ".webp", dark_blurred, [cv2.IMWRITE_WEBP_QUALITY, 100])
+    cv2.imwrite(shallow_base_export_path + onlyfiles[i].split(".")[0] + ".webp", shallow_blurred, [cv2.IMWRITE_WEBP_QUALITY, 100])
+    cv2.imwrite(compress_base_export_path + onlyfiles[i].split(".")[0] + ".webp", image, [cv2.IMWRITE_WEBP_QUALITY, 100])
 
-    cv2.imwrite(dark_base_export_path + onlyfiles[i], dark_blurred)
-
-    cv2.imwrite(shallow_base_export_path + onlyfiles[i], shallow_blurred)
+    print(onlyfiles[i])
