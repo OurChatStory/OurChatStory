@@ -255,7 +255,7 @@ const Card6 = ({ drawData }) => {
             </Text>
             {parser.time_gap(drawData.longest_gap) < 20 ? (
               <Text fontWeight={"500"}>
-                Having someone to talk to everyday is a privilege and You both are very lucky
+                Having someone to talk to everyday is a privilege and you {drawData.group ? "all" : "both"} are very lucky
                 to have each other.
               </Text>
             ) : (

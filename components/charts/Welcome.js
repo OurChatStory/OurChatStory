@@ -22,7 +22,7 @@ const Card6 = ({ drawData }) => {
       p="1rem"
     >
       <Text color="black" fontSize="4xl" align="center" fontWeight="bold">
-        Let&apos;s {parser.get_random_element(["experience","see","go through"])} the chat story of two {parser.get_random_element(["Amazing","Coolest",""])} persons
+        Let&apos;s {parser.get_random_element(["experience", "see", "go through"])} the chat story of {drawData.group ? "a group of" : "two"} {parser.get_random_element(["amazing", "coolest", ""])} people
       </Text>
 
       {/* <Text color="black" fontSize="3xl" align="center">
