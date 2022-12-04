@@ -213,12 +213,12 @@ const Intro = ({ setShowUploader }) => {
         <Story component={dummyIntro} />
         <Story component={totalChat} />
         <Story component={mostActive} />
-        <Story component={monthly} />
-        {/* <Story component={hourlyGraph} /> */}
         <Story component={noTalk} />
-        <Story component={wordCloud} />
-        {/* <Story component={countPie} /> */}
         <Story component={gridStats} />
+        {/* <Story component={monthly} /> */}
+        {/* <Story component={hourlyGraph} /> */}
+        <Story component={countPie} />
+        <Story component={wordCloud} />
         <Story component={dummyCTA} />
         {/* <div className="d-flex snap-child">
           <Box

@@ -30,7 +30,7 @@ const RotateAnimation = keyframes`
 
 const Card4 = ({ drawData }) => {
   const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
-  const rotateAnimation = `${RotateAnimation} 15s ease-out infinite;`;
+  const rotateAnimation = `${RotateAnimation} 20s ease-out infinite;`;
 
   const [piRadii, setPiRadii] = useState(0);
   return (
@@ -51,11 +51,15 @@ const Card4 = ({ drawData }) => {
       bgColor="#5138C2"
       border="2px solid orange"
       borderRadius="1rem"
-      pt="1rem"
-      pb="1rem"
+      p="1rem"
       animation={zoomAnimation}
     >
-      <Heading mt="4rem" fontSize="3xl" textAlign="center" fontWeight="bold">
+      <Heading mt="4rem" fontSize="3xl" textAlign="center" fontWeight="bold"
+        style={{
+          textShadow:
+            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+        }}
+      >
         Who texts the most?
       </Heading>
       <Text
@@ -96,9 +100,9 @@ const Card4 = ({ drawData }) => {
             })}
           labelComponent={
             <VictoryLabel
-              style={[{fill: "white"}]}
-              // backgroundStyle={[{ fill: "white" }]}
-              // backgroundPadding={{ left: 5, right: 5 }}
+              style={[{ fill: "white" }]}
+            // backgroundStyle={[{ fill: "white" }]}
+            // backgroundPadding={{ left: 5, right: 5 }}
             />
           }
         />
