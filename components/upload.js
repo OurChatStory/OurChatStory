@@ -29,7 +29,7 @@ import { IoClose } from "react-icons/io5";
 
 const sample_data = require("../data/sample-response");
 
-const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, setShowLoader }) => {
+const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, setShowLoader, deferredPrompt }) => {
   const [isUploading, setIsUploading] = useState(false);
   let isAndroid = /android/i.test(
     navigator.userAgent || navigator.vendor || window.opera
@@ -45,6 +45,18 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
     ].includes(navigator.platform) ||
     // iPad on iOS 13 detection
     (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+
+  const handlePWAInstall = () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === "accepted") {
+        console.log("User accepted the A2HS prompt");
+      } else {
+        console.log("User dismissed the A2HS prompt");
+      }
+      setDeferredPrompt(null);
+    });
+  };
 
   const [tabIndex, setTabIndex] = useState(isAndroid ? 0 : isiOS ? 1 : 2); // initial -> 0: Android, 1: iOS, 2: PC
   const handleFileUpload = (file) => {
@@ -192,6 +204,16 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                         three dots of Chrome browser. You will find the
                         &quot;Install App&quot; option.
                       </ListItem>
+                      {deferredPrompt ? (
+                        <Button
+                          onClick={handlePWAInstall}
+                          colorScheme="primary"
+                          variant="outline"
+                          size="sm"
+                          w="100%"
+                        >
+                          Install the WebApp
+                        </Button>) : null}
                       <ListItem>
                         Then open the chat whose wrap you want to generate.
                       </ListItem>

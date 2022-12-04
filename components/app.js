@@ -48,6 +48,7 @@ const App = () => {
 
   const [isUploading, setIsUploading] = useState(false);
   const [showUploader, setShowUploader] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
     // const imagesPreload = [
@@ -67,6 +68,15 @@ const App = () => {
     //   newImage.src = image;
     //   window[image] = newImage;
     // });
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      setDeferredPrompt(e);
+      // Optionally, send analytics event that PWA install promo was shown.
+      console.log(`'beforeinstallprompt' event was fired.`);
+    });
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.onmessage = (event) => {
         console.log("received: onmessage", event);
@@ -122,6 +132,7 @@ const App = () => {
           setShowUploader={setShowUploader}
           showLoader={showLoader}
           setShowLoader={setShowLoader}
+          deferredPrompt={deferredPrompt}
         />
       ) : (
         " "
