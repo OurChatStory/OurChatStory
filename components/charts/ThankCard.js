@@ -51,10 +51,10 @@ const Card6 = ({ drawData }) => {
         <b>OurChatStory</b>
       </Text>
       <Text color="#F5F5F5" fontSize="xl" align="center">
-        While we create many more amazing stories together, let&apos;s share this with friends.
+        While we create many more amazing stories together, let&apos;s share this with friends
       </Text>
       <Text color="#F5F5F5" fontSize="xl" align="center">
-        Because every story is unique and worth sharing.
+        Because every story is<br />unique and worth sharing
       </Text>
       {/* <Box zIndex={10000}>
         <Text color="#F5F5F5" fontSize="sm" align="center">
