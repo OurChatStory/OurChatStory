@@ -1,5 +1,5 @@
 import { Box, Text, VStack, keyframes } from "@chakra-ui/react";
-import { VictoryLabel, VictoryLine, VictoryChart } from "victory";
+import { VictoryAxis, VictoryLine, VictoryChart } from "victory";
 
 const parser = require("../../script/parser");
 
