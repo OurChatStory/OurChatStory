@@ -43,7 +43,7 @@ const Card5 = ({ drawData }) => {
       animation={zoomAnimation}
     >
       <Heading
-        fontSize={["4xl", "4xl", "4xl", "5xl"]}
+        fontSize={["4xl", "4xl", "3xl", "3xl"]}
         color="white"
         textAlign="center"
         style={{
@@ -103,7 +103,7 @@ const Card5 = ({ drawData }) => {
         </GridItem>
       </Grid>
       <Heading
-        fontSize={["4xl", "4xl", "4xl", "5xl"]}
+        fontSize={["4xl", "4xl", "3xl", "3xl"]}
         color="white"
         textAlign="center"
         pb="1rem"
