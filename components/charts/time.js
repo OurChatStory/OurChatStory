@@ -72,7 +72,7 @@ const Card6 = ({ drawData, isShared }) => {
       <Text color="#F5F5F5" fontSize="3xl" align="center" fontWeight={700}>
         The time of the day y&apos;all talk the most is
       </Text>
-      <Text bgColor="#14B884" fontSize="5xl" align="center" fontWeight="medium"
+      <Text bgColor="#14B884" fontSize="5xl" align="center" fontWeight="bold"
         pl="1rem"
         pr="1rem"
         style={{
