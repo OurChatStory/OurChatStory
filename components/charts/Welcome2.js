@@ -15,14 +15,18 @@ const Card6 = ({ drawData }) => {
       h="78vh"
       bgColor="#6f0cbb"
       borderRadius="1rem"
-      pt="1rem"
-      pb="1rem"
+      p="1rem"
       // borderColor="#fcea2b"
       // errorBorderColor="red.300"
       border="2px solid #fcea2b"
-      // animation={zoomAnimation}
+    // animation={zoomAnimation}
     >
-      <Text color="white" fontSize="4xl" align="center" fontWeight={"600"}>
+      <Text color="white" fontSize="4xl" align="center" fontWeight={"600"}
+        style={{
+          textShadow:
+            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+        }}
+      >
         The story of
       </Text>
       <br />
@@ -32,7 +36,7 @@ const Card6 = ({ drawData }) => {
         backgroundColor="LightSalmon"
         fontSize="4xl"
         align="center"
-        fontWeight="medium"
+        fontWeight="bold"
         bgColor="#fcea2b"
         textAlign="center"
         color="#210934"
@@ -40,7 +44,12 @@ const Card6 = ({ drawData }) => {
         {console.log("d", drawData)}
         {drawData.members[0]}
       </Text>
-      <Text color="white" fontSize="4xl" align="center">
+      <Text color="white" fontSize="4xl" align="center" fontWeight={"600"}
+        style={{
+          textShadow:
+            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+        }}
+      >
         &{" "}
       </Text>
       <Text
@@ -51,13 +60,18 @@ const Card6 = ({ drawData }) => {
         color="#210934"
         fontSize="4xl"
         align="center"
-        fontWeight="medium"
+        fontWeight="bold"
       >
         {drawData.members[1]}
       </Text>
       <br />
-      <Text color="white" fontSize="4xl" align="center">
-
+      <Text color="white" fontSize="4xl" align="center" fontWeight={"600"}
+        style={{
+          textShadow:
+            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+        }}
+      >
+        in 2022
       </Text>
     </VStack>
   );
