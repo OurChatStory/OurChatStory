@@ -199,12 +199,11 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                         <strong>Android</strong> users can install the WebApp
                         and share chat directly to the app.
                       </ListItem> */}
-                      <ListItem>
-                        <strong>To install the WebApp</strong>: Click on the
-                        three dots of Chrome browser. You will find the
-                        &quot;Install App&quot; option.
+
+                      {deferredPrompt ? (<>
+                        <ListItem>
+                        <strong>Install the WebApp</strong> by clicking below.
                       </ListItem>
-                      {deferredPrompt ? (
                         <Button
                           onClick={handlePWAInstall}
                           colorScheme="primary"
@@ -213,7 +212,14 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                           w="100%"
                         >
                           Install the WebApp
-                        </Button>) : null}
+                        </Button>
+                      </>
+                      ) : <ListItem>
+                        <strong>To install the WebApp</strong>: Click on the
+                        three dots of Chrome browser. You will find the
+                        &quot;Install App&quot; option.
+                      </ListItem>
+                      }
                       <ListItem>
                         Then open the chat whose wrap you want to generate.
                       </ListItem>
