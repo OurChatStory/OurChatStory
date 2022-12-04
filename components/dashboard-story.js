@@ -195,7 +195,7 @@ const Dashboard = ({ drawData, isDemo }) => {
             >
               <Image
                 boxSize="3vh"
-                src="static/logo2.png"
+                src="static/compress/logo2.webp"
                 alt="OurChatStory"
                 style={{ imageRendering: "crisp-edges" }}
               />

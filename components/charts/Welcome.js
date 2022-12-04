@@ -6,7 +6,7 @@ const Card6 = ({ drawData }) => {
       spacing="2rem"
       align="center"
       justify="center"
-      backgroundImage="/static/tbg1.jpeg"
+      backgroundImage="/static/original/tbg1.webp"
       bgBlendMode={"lighten"}
       bgRepeat="no-repeat"
       bgSize="cover"

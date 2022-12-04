@@ -38,7 +38,7 @@ const Card4 = ({ drawData }) => {
       spacing="0.5rem"
       align="center"
       justify="top"
-      bgImage="/static/dark/v2bg9.jpg"
+      bgImage="/static/dark/v2bg9.webp"
       bgSize="cover"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"

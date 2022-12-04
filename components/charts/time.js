@@ -49,7 +49,7 @@ const Card6 = ({ drawData, isShared }) => {
       p="2rem"
       // w="100vw"
       // h="100vh"
-      backgroundImage="/static/owl.jpg"
+      backgroundImage="/static/compress/owl.webp"
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"

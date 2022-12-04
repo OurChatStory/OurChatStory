@@ -139,7 +139,7 @@ const App = () => {
       >
         <CImage
           boxSize="45px"
-          src="static/logo2.png"
+          src="static/compress/logo2.webp"
           alt="OurChatStory"
           style={{ imageRendering: "crisp-edges" }}
         />
@@ -181,7 +181,7 @@ const App = () => {
 
           <Box>
             <CImage
-              src="static/pink.svg"
+              src="static/original/pink.svg"
               position="fixed"
               top="22vh"
               left="8vw"
@@ -194,7 +194,7 @@ const App = () => {
             />
 
             <CImage
-              src="static/yellow.svg"
+              src="static/original/yellow.svg"
               position="absolute"
               top="65vh"
               left="8vw"
@@ -207,7 +207,7 @@ const App = () => {
             />
 
             <CImage
-              src="static/green.svg"
+              src="static/original/green.svg"
               position="absolute"
               top="44vh"
               right="8vw"

@@ -39,7 +39,7 @@ const Card6 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage="/static/two-kids.jpg"
+      bgImage="/static/compress/two-kids.webp"
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"

@@ -24,7 +24,7 @@ const Card6 = ({ drawData }) => {
       align="center"
       justify="center"
       spacing="1rem"
-      backgroundImage="static/dark/v2bg6.jpg"
+      backgroundImage="static/dark/v2bg6.webp"
       bgSize="cover"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
@@ -46,7 +46,7 @@ const Card6 = ({ drawData }) => {
       <Text color="#F5F5F5" fontSize="3xl" align="center">
         This was
       </Text>
-      <Image h="80px" src="static/logo2.png" alt="OurChatStory"/>
+      <Image h="80px" src="static/compress/logo2.webp" alt="OurChatStory"/>
       <Text color="#F5F5F5" fontSize="4xl" align="center" pb="1rem" >
         <b>OurChatStory</b>
       </Text>

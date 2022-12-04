@@ -44,7 +44,7 @@ const Card2 = ({ drawData, isShared }) => {
       spacing="0.5rem"
       align="center"
       justify="center"
-      bgImage="/static/v2bg4.jpg"
+      bgImage="/static/compress/v2bg4.webp"
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"

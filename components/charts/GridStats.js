@@ -12,10 +12,10 @@ const parser = require("../../script/parser");
 const GridStats = ({ drawData }) => {
   return (
     <VStack
-      spacing="1.5rem"
+      spacing="0.5rem"
       align="center"
       justify="center"
-      bgImage="static/dark/v2bg2.jpg"
+      bgImage="static/dark/v2bg2.webp"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       // backgroundSize="120%"

@@ -23,8 +23,7 @@ const DummyIntro = ({ drawData }) => {
         align="center"
         justify="center"
         spacing="1rem"
-        // bgImage="static/asdf.png"
-        bgImage="static/v2bg0.jpg"
+        bgImage="static/compress/v2bg0.webp"
         bgBlendMode={"multiply"}
         bgRepeat="no-repeat"
         bgSize="cover"
