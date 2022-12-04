@@ -29,7 +29,7 @@ import { IoClose } from "react-icons/io5";
 
 const sample_data = require("../data/sample-response");
 
-const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, setShowLoader, deferredPrompt }) => {
+const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, setShowLoader, deferredPrompt, isSuccessfulPWAInstall, setIsSuccessfulPWAInstall }) => {
   const [isUploading, setIsUploading] = useState(false);
   let isAndroid = /android/i.test(
     navigator.userAgent || navigator.vendor || window.opera
@@ -50,8 +50,10 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === "accepted") {
+        setIsSuccessfulPWAInstall(true);
         console.log("User accepted the A2HS prompt");
       } else {
+        setIsSuccessfulPWAInstall(false);
         console.log("User dismissed the A2HS prompt");
       }
       setDeferredPrompt(null);
@@ -200,18 +202,21 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                         and share chat directly to the app.
                       </ListItem> */}
 
-                      {deferredPrompt ? (<>
+                      {(deferredPrompt || isSuccessfulPWAInstall) ? (<>
                         <ListItem>
-                        <strong>Install the WebApp</strong> by clicking below.
-                      </ListItem>
+                          <strong>Install the WebApp</strong> by clicking below.
+                        </ListItem>
                         <Button
                           onClick={handlePWAInstall}
                           colorScheme="primary"
                           variant="outline"
                           size="sm"
                           w="100%"
+                          disabled={isSuccessfulPWAInstall}
                         >
-                          Install the WebApp
+                          {isSuccessfulPWAInstall
+                            ? "Installed"
+                            : "Install the WebApp"}
                         </Button>
                       </>
                       ) : <ListItem>

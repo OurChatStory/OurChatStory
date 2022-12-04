@@ -113,6 +113,7 @@ const App = () => {
   const [data, setData] = useState({});
   const [showLoader, setShowLoader] = useState(false);
   const [isDemo, setIsDemo] = useState(false);
+  const [isSuccessfulPWAInstall, setIsSuccessfulPWAInstall] = useState(false);
 
   return showRes ? (
     <Dashboard drawData={data} isDemo={isDemo} />
@@ -133,6 +134,8 @@ const App = () => {
           showLoader={showLoader}
           setShowLoader={setShowLoader}
           deferredPrompt={deferredPrompt}
+          isSuccessfulPWAInstall={isSuccessfulPWAInstall}
+          setIsSuccessfulPWAInstall={setIsSuccessfulPWAInstall}
         />
       ) : (
         " "
