@@ -45,10 +45,10 @@ const Card2 = ({ drawData, isShared }) => {
       align="center"
       justify="center"
       bgImage="/static/v2bg4.jpg"
-      bgBlendMode="multiply"
+      bgBlendMode={"multiply"}
+      bgRepeat="no-repeat"
+      bgSize="cover"
       // backgroundPosition="center"
-      // backgroundRepeat="no-repeat"
-      // backgroundSize="120%"
       // p="2rem"
       // w="100vw"
       // h="100vh"
