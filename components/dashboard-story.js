@@ -55,7 +55,7 @@ const Dashboard = ({ drawData, isDemo }) => {
             .share({
               title: "OurChatStory",
               text: "Look at our #WhatsAppWrapped. I made it using OurChatStory.co!",
-              files: [file],
+              files: [file,file,file,file],
             })
             .then(() => console.log("Share was successful."))
             .catch((error) => console.log(error));
