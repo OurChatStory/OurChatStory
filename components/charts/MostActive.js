@@ -13,7 +13,7 @@ const ZoomAnimation = keyframes`
 `;
 
 const Card1 = ({ drawData }) => {
-  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+  const zoomAnimation = `${ZoomAnimation} 20s ease-in infinite alternate;`;
 
   return (
     <VStack

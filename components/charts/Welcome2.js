@@ -1,4 +1,5 @@
 import { Text, VStack } from "@chakra-ui/react";
+const parser = require("../../script/parser");
 
 const Card6 = ({ drawData }) => {
   return (
@@ -6,7 +7,10 @@ const Card6 = ({ drawData }) => {
       align="center"
       justify="center"
       spacing="1rem"
-      bgImage="static/compress/v2bg0.webp"
+      bgImage={parser.get_random_element(
+        ["static/compress/v2bg0.webp", "static/dark/v2bg6.webp"],
+        drawData.members
+      )}
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"
@@ -18,9 +22,13 @@ const Card6 = ({ drawData }) => {
       // borderColor="#fcea2b"
       // errorBorderColor="red.300"
       border="2px solid #fcea2b"
-    // animation={zoomAnimation}
+      // animation={zoomAnimation}
     >
-      <Text color="white" fontSize="4xl" align="center" fontWeight={"600"}
+      <Text
+        color="white"
+        fontSize="4xl"
+        align="center"
+        fontWeight={"600"}
         style={{
           textShadow:
             "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
@@ -40,10 +48,14 @@ const Card6 = ({ drawData }) => {
         textAlign="center"
         color="#210934"
       >
-        {console.log("d", drawData)}
+        {/* {console.log("d", drawData)} */}
         {drawData.members[0]}
       </Text>
-      <Text color="white" fontSize="4xl" align="center" fontWeight={"600"}
+      <Text
+        color="white"
+        fontSize="4xl"
+        align="center"
+        fontWeight={"600"}
         style={{
           textShadow:
             "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
@@ -64,7 +76,11 @@ const Card6 = ({ drawData }) => {
         {drawData.members[1]}
       </Text>
       <br />
-      <Text color="white" fontSize="4xl" align="center" fontWeight={"600"}
+      <Text
+        color="white"
+        fontSize="4xl"
+        align="center"
+        fontWeight={"600"}
         style={{
           textShadow:
             "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
