@@ -1,5 +1,4 @@
-import React, { useCallback, useRef, useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { useCallback, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -31,13 +30,12 @@ import Welcome from "./charts/Welcome";
 
 import * as htmlToImage from "html-to-image";
 import GridStats from "./charts/GridStats";
-import { html2canvas } from "html-to-canvas";
 
 const Dashboard = ({ drawData, isDemo }) => {
   const [isShared, setIsShared] = useState(false);
   const [storyIndex, setStoryIndex] = useState(0);
 
-  const ref = useRef(null);
+  const ref = useRef();
   const onButtonClick = useCallback(() => {
     if (ref.current === null) {
       return;
@@ -46,7 +44,6 @@ const Dashboard = ({ drawData, isDemo }) => {
     htmlToImage
       .toBlob(document.body)
       .then((dataUrl) => {
-        console.log(dataUrl);
         const file = new File([dataUrl], "share.png", { type: dataUrl.type });
         // console.log("file", file);
         // const link = document.createElement("a");
@@ -70,41 +67,7 @@ const Dashboard = ({ drawData, isDemo }) => {
         setIsShared(false);
       });
   }, [ref]);
-
-// render using html2canvas
-  const onButtonClick2 = useCallback(() => {
-    if (ref.current === null) {
-      return;
-    }
-
-    setIsShared(true);
-    html2canvas(document.body).then((canvas) => {
-      // canvas to png
-      const dataUrl = canvas.toDataURL("image/png");
-      const file = new File([dataUrl], "share.png", { type: dataUrl.type });
-      // const file = new File([canvas], "share.png", { type: "image/png" });
-      console.image(file);
-
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator
-          .share({
-            title: "OurChatStory",
-            text: "Look at our #WhatsAppWrapped. I made it using OurChatStory.co!",
-            files: [file],
-          })
-          .then(() => console.log("Share was successful."))
-          .catch((error) => console.log(error));
-        setIsShared(false);
-      } else console.log("no share support");
-    });
-  }, [ref]);
-
-
-
-  useEffect(() => {
-    ReactDOM.render(<Welcome drawData={drawData} />, document.getElementById("invisible"))
-  }, [drawData])
-
+  <></>
   const pStories = [
     {
       content: (props) => <Welcome drawData={drawData} />,
@@ -187,26 +150,10 @@ const Dashboard = ({ drawData, isDemo }) => {
     },
   ];
 
-
-
   const stories = drawData.group ? gStories : pStories;
   return (
     <Box>
       <Box>
-        <div
-          ref={ref}
-          id="invisible"
-          // hide it
-          style={{
-            zIndex: -1,
-            position: "absolute",
-            top: 0,
-            left: 0,
-            overflow: "hidden",
-            backgroundColor: "transparent",
-            pointerEvents: "none",
-          }}
-        ></div>
 
         <Box
           bgColor="#111111">
@@ -220,6 +167,11 @@ const Dashboard = ({ drawData, isDemo }) => {
                 height="95vh"
                 onAllStoriesEnd={() => {
                   console.log("PAYYYYY USSSSSS");
+                }}
+                // on story change
+                onStoryChange={(s, st) => {
+                  console.log("story change", s, st);
+                  setStoryIndex(s);
                 }}
                 preventDefault={false}
                 keyboardNavigation={true}
@@ -376,7 +328,7 @@ const Dashboard = ({ drawData, isDemo }) => {
             rightIcon={isShared ? <Spinner color="black" /> : <HiShare />}
             w="100%"
             h="5vh"
-            onClick={onButtonClick2}
+            onClick={onButtonClick}
             position="sticky"
             bottom="0vh"
             zIndex={10003}
