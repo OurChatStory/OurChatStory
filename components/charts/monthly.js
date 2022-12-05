@@ -69,8 +69,8 @@ const Card2 = ({ drawData, isShared }) => {
       <Text color="#F5F5F5" fontSize="2xl" align="center" fontWeight={500}>
         Most of your conversations happened in{" "}
         <strong>{parser.months[drawData.most_active_month.month]}</strong> when
-        &nbsp; <strong>{drawData.most_active_month.count}</strong> messages were
-        exchanged that month!
+        &nbsp;<strong>{drawData.most_active_month.count}</strong> messages were
+        exchanged!
       </Text>
 
       <Box>

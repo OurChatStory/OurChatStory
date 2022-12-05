@@ -25,7 +25,7 @@ import HourlyGraph from "./charts/time";
 import NoTalk from "./charts/cold";
 import MostActive from "./charts/MostActive";
 import DummyIntro from "./charts/dummy_intro";
-
+import Arora from "./charts/Arora";
 import ThankCard from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
 import Story from "./Story";
@@ -44,6 +44,7 @@ const Intro = ({ setShowUploader }) => {
   const dummy_data = sample_data.sample;
 
   const welcome = <Welcome />;
+  const arora = <Arora drawData={dummy_data} />;
   const dummyIntro = <DummyIntro drawData={dummy_data} />;
   const totalChat = <TotalChat drawData={dummy_data} />;
   const mostActive = <MostActive drawData={dummy_data} />;
@@ -210,6 +211,7 @@ const Intro = ({ setShowUploader }) => {
           </Box>
         </h1>
         {/* <Story component={welcome} /> */}
+        {/* <Story component={arora} /> */}
         <Story component={dummyIntro} />
         <Story component={totalChat} />
         <Story component={mostActive} />

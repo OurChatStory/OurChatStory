@@ -45,7 +45,7 @@ const Dashboard = ({ drawData, isDemo }) => {
       .toBlob(document.body)
       .then((dataUrl) => {
         const file = new File([dataUrl], "share.png", { type: dataUrl.type });
-        console.log("file", file);
+        // console.log("file", file);
         // const link = document.createElement("a");
         // link.download = "my-image-name.png";
         // link.href = dataUrl;
@@ -119,6 +119,9 @@ const Dashboard = ({ drawData, isDemo }) => {
     // },
     {
       content: (props) => <Card1 drawData={drawData} />,
+    },
+    {
+      content: (props) => <GridStats drawData={drawData} />,
     },
     {
       content: (props) => <Card9 drawData={drawData} />,

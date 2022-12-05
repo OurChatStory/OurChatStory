@@ -2,9 +2,12 @@ module.exports.sample = {
   group: false,
   members: ["Samuel", "Ananya"],
   total_no_of_chats: 35836,
-  total_no_of_minutes: 500,
+  total_no_of_minutes: 1700,
   top_percent: 0.0158343693832475,
-  most_active_member: {
+  most_active_day: {
+    date: 1647993600000,
+    amount: 521
+  },  most_active_member: {
     member: "Samuel",
     count: 7632,
   },
@@ -34,6 +37,7 @@ module.exports.sample = {
     month: "Jan",
     count: 6045,
   },
+  chat_responsiveness: 8,
   month_correlation: 0.3926430516899394,
   monthly_chats_count: [
     {
@@ -188,7 +192,7 @@ module.exports.sample = {
     },
   ],
   longest_session: {
-    streak_duration: 41,
+    streak_duration: 180,
     streak_start: 1666739580000,
     streak_end: 1666742040000,
     total_messages_sent: 270,

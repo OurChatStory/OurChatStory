@@ -71,11 +71,11 @@ const GridStats = ({ drawData }) => {
               fontWeight="700"
               textAlign={"center"}
             >
-              involved
+              interacted
               <br />
               in total
             </Text>
-            {parser.no_of_days_talked(drawData.no_talk_string) > 300 ? (
+            {parser.no_of_days_talked(drawData.no_talk_string) > 330 ? (
               <>
                 <Spacer />
                 <Text
@@ -141,9 +141,12 @@ const GridStats = ({ drawData }) => {
                 fontWeight="800"
                 textAlign={"center"}
               >
-                {drawData.longest_session.streak_duration}
+                {
+                drawData.longest_session.streak_duration > 120
+                ? parseInt(drawData.longest_session.streak_duration / 60)
+                : drawData.longest_session.streak_duration}
               </Text>
-              <Text>m</Text>
+              <Text>{drawData.longest_session.streak_duration > 120 ? "h" : "m"}</Text>
             </HStack>
             <Text
               fontSize={["md", "md", "lg"]}
@@ -152,7 +155,21 @@ const GridStats = ({ drawData }) => {
             >
               longest <br /> at a stretch
             </Text>
-
+            {drawData.longest_session.streak_duration > 200 ? (
+              <>
+                <Spacer />
+                <Text
+                  fontSize={["sm", "sm", "3xs", ""]}
+                  fontWeight="300"
+                  textAlign={"center"}
+                  textColor="purple.100"
+                >
+                  Thats a WORLD RECORD!! ☠️
+                </Text>
+              </>
+            ) : (
+              ""
+            )}
             <Spacer />
           </VStack>
         </GridItem>
