@@ -253,7 +253,7 @@ const Card6 = ({ drawData }) => {
                 ? "whole day"
                 : "days only when you didn't talk!"}
             </Text>
-            {parser.time_gap(drawData.longest_gap) < 20 ? (
+            {parser.time_gap(drawData.longest_gap) < 5 ? (
               <Text fontWeight={"500"}>
                 Having someone to talk to everyday is a privilege and you {drawData.group ? "all" : "both"} are very lucky
                 to have each other.

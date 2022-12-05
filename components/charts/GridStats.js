@@ -75,7 +75,7 @@ const GridStats = ({ drawData }) => {
               <br />
               in total
             </Text>
-            {parser.no_of_days_talked(drawData.no_talk_string) > 300 ? (
+            {parser.no_of_days_talked(drawData.no_talk_string) > 330 ? (
               <>
                 <Spacer />
                 <Text
