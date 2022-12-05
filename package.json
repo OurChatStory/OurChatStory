@@ -19,6 +19,7 @@
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.2.0",
     "framer-motion": "^7.6.12",
+    "html-to-canvas": "^0.0.11",
     "html-to-image": "^1.10.8",
     "next": "^13.0.5",
     "react": "^18.2.0",
