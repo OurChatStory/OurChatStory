@@ -9,7 +9,7 @@ const Card6 = ({ drawData }) => {
       spacing="1rem"
       bgImage={parser.get_random_element(
         ["static/compress/v2bg0.webp", "static/dark/v2bg6.webp"],
-        drawData.members[0] + drawData.members[1]
+        drawData.members
       )}
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"

@@ -116,14 +116,14 @@ function generateHash(seed){
     hash = (hash << 5) - hash + char;
     hash = hash & hash; // Convert to 32bit integer
   }
-  return hash;
+  return Math.abs(hash);
 }
 
 module.exports.get_random_element = (array,random_key) => {
   if(random_key==undefined)
     random_key=(Math.random().toString());
-  const hash=generateHash(random_key)%array.length;
-  console.log(hash);
+  const hash=generateHash(random_key.toString())%array.length;
+  // console.log(hash);
   
   return array[hash];
 };
