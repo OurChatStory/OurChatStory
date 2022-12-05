@@ -8,19 +8,37 @@
 // };
 
 module.exports.active_time = (data) => {
-  if (data == 0)
-    return "12 AM"
-  if (data == 12)
-    return "12 PM"
+  if (data == 0) return "12 AM";
+  if (data == 12) return "12 PM";
   return data < 12 ? data + " AM" : data - 12 + " PM";
+};
+module.exports.getArora = (data) => {
+    let arora="Arora: "
+
+    const days_gap=1;
+    const chat_responsiveness=0.5;
+    if(days_gap<2)
+      arora+="SoulMates";
+
+    if(chat_responsiveness>0.85)
+      arora+="Besties";
+    if(chat_responsiveness<0.85)
+      arora+="Friends";
+    if(chat_responsiveness<0.5)
+      arora+="Acquaintances";
+    if(chat_responsiveness<0.25)
+      arora+="Strangers";
+    
+    
+    return arora;
 };
 
 module.exports.active_time_type = (data) => {
   return data < 12 && data > 4
-    ? "Looks like y'all are Early Birds 🌅"
+    ? "Looks like y'all are Early Birds"
     : data > 20 || (data > 0 && data < 4)
-      ? "Looks like y'all are Night Owls 🦉"
-      : "";
+    ? "Looks like y'all are Night Owls 🦉"
+    : "";
 };
 module.exports.months = {
   Jan: "January",
@@ -86,10 +104,26 @@ function timeConverter(UNIX_timestamp) {
 }
 module.exports.no_of_days_talked = (string) => {
   // console.log(string);
-  return string.split('').filter((z) => { return z === '0' ? true : false }).length
-
+  return string.split("").filter((z) => {
+    return z === "0" ? true : false;
+  }).length;
 };
 
-module.exports.get_random_element = (array) => {
-  return array[Math.floor(Math.random() * array.length)]
+function generateHash(seed){
+  var hash = 0;
+  for (var i = 0; i < seed.length; i++) {
+    var char = seed.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return hash;
+}
+
+module.exports.get_random_element = (array,random_key) => {
+  if(random_key==undefined)
+    random_key=(Math.random().toString());
+  const hash=generateHash(random_key)%array.length;
+  console.log(hash);
+  
+  return array[hash];
 };

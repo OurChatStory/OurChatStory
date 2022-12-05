@@ -50,7 +50,6 @@ const Card6 = ({ drawData }) => {
       p="1.5rem"
       border="2px solid pink"
       animation={zoomAnimation}
-
       style={{
         textShadow:
           "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
@@ -98,131 +97,10 @@ const Card6 = ({ drawData }) => {
                     {[
                       Array(30).map((item, index) => {
                         return <p key={item}>d</p>;
-                        // if (item === 0) {
-                        //   return (
-                        //     <font
-                        //       key={index}
-                        //       style={{
-                        //         "font-size": "16px",
-                        //         display: "flex",
-                        //         "flex-direction": "row",
-                        //       }}
-                        //     >
-                        //       <Box
-                        //         w="4px"
-                        //         h="4px"
-                        //         // borderRadius="50%"
-                        //         bgColor="yellow"
-                        //       ></Box>
-                        //       {(index + 1) % 30 == 0 ? <br></br> : ""}
-                        //     </font>
-                        //   );
-                        // } else if (item === 1) {
-                        //   return (
-                        //     <font
-                        //       key={index}
-                        //       fontSize="md"
-                        //       align="left"
-                        //       fontWeight={"medium"}
-                        //     >
-                        //       <Box
-                        //         w="4px"
-                        //         h="4px"
-                        //         // borderRadius="50%"
-                        //         bgColor="red"
-                        //       ></Box>
-                        //       {(index + 1) % 30 == 0 ? <br></br> : ""}
-                        //     </font>
-                        //   );
-                        // } else if (item == 2) {
-                        //   return (
-                        //     <font
-                        //       key={index}
-                        //       fontSize="md"
-                        //       align="left"
-                        //       fontWeight={"medium"}
-                        //     >
-                        //       <Box
-                        //         w="4px"
-                        //         h="4px"
-                        //         // borderRadius="50%"
-                        //         bgColor="black"
-                        //       ></Box>
-                        //       {(index + 1) % 30 == 0 ? <br></br> : ""}
-                        //     </font>
-                        //   );
-                        // }
                       }),
                     ]}
                   </HStack>
                 );
-                // if (index % 30 === 0) {
-                //   return (
-                //     <>
-                //       <Box
-                //         w="4px"
-                //         h="4px"
-                //         // borderRadius="50%"
-                //         bgColor="blue"
-                //       ></Box>
-                //       <br />
-                //     </>
-                //   );
-                // }
-                // if (item === 0) {
-                //   return (
-                //     <font
-                //       key={index}
-                //       style={{
-                //         "font-size": "16px",
-                //         display: "flex",
-                //         "flex-direction": "row",
-                //       }}
-                //     >
-                //       <Box
-                //         w="4px"
-                //         h="4px"
-                //         // borderRadius="50%"
-                //         bgColor="yellow"
-                //       ></Box>
-                //       {(index + 1) % 30 == 0 ? <br></br> : ""}
-                //     </font>
-                //   );
-                // } else if (item === 1) {
-                //   return (
-                //     <font
-                //       key={index}
-                //       fontSize="md"
-                //       align="left"
-                //       fontWeight={"medium"}
-                //     >
-                //       <Box
-                //         w="4px"
-                //         h="4px"
-                //         // borderRadius="50%"
-                //         bgColor="red"
-                //       ></Box>
-                //       {(index + 1) % 30 == 0 ? <br></br> : ""}
-                //     </font>
-                //   );
-                // } else if (item == 2) {
-                //   return (
-                //     <font
-                //       key={index}
-                //       fontSize="md"
-                //       align="left"
-                //       fontWeight={"medium"}
-                //     >
-                //       <Box
-                //         w="4px"
-                //         h="4px"
-                //         // borderRadius="50%"
-                //         bgColor="black"
-                //       ></Box>
-                //       {(index + 1) % 30 == 0 ? <br></br> : ""}
-                //     </font>
-                //   );
-                // }
               })}
             </Box>
             {/* </Text> */}
@@ -255,17 +133,51 @@ const Card6 = ({ drawData }) => {
             </Text>
             {parser.time_gap(drawData.longest_gap) < 5 ? (
               <Text fontWeight={"500"}>
-                Having someone to talk to everyday is a privilege and you {drawData.group ? "all" : "both"} are very lucky
-                to have each other.
+                Having someone to talk to everyday is a privilege and you{" "}
+                {drawData.group ? "all" : "both"} are very lucky to have each
+                other.
               </Text>
             ) : (
               ""
             )}
           </>
         ) : (
-          <Text fontSize="3xl" align="center" textAlign="center">
-            There was not a single day in 2022 when y&apos;all didn&apos;t talk
-          </Text>
+          <>
+            <Text
+              fontSize="3xl"
+              align="center"
+              fontWeight={300}
+              textAlign="center"
+            >
+              There was <strong>not a single day</strong> in 2022 when
+              y&apos;all didn&apos;t talk to each other.
+            </Text>
+            {drawData.group ? (
+              ""
+            ) : (
+              <>
+                <Text
+                  fontSize="3xl"
+                  align="center"
+                  fontWeight={700}
+                  textAlign="center"
+                >
+                  You&apos;re made for each other ❤️!
+                </Text>
+                <Text
+                  fontSize="sm"
+                  align="center"
+                  fontWeight={400}
+                  textAlign="center"
+                  bgColor={"pink"}
+                  style={{ textShadow: "none" }}
+                  color="black"
+                  >
+                  This is really special because only 1 out of 15000 of people can say the same
+                </Text>
+              </>
+            )}
+          </>
         )}
       </VStack>
     </Box>

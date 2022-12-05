@@ -62,10 +62,10 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
 
   const [tabIndex, setTabIndex] = useState(isAndroid ? 0 : isiOS ? 1 : 2); // initial -> 0: Android, 1: iOS, 2: PC
   const handleFileUpload = (file) => {
-    console.log("zz", file);
+    // console.log("zz", file);
     const data = new FormData();
     data.append("file", file);
-    console.log("dd", data);
+    // console.log("dd", data);
     setIsUploading(true);
     setShowLoader(true);
     axios
@@ -368,7 +368,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                     <Text textAlign="center">
                       Brewing your story...
                       <br />
-                      Usually takes less than 20 seconds.
+                      Usually takes less than 10 seconds.
                     </Text>
                   </>
                 ) : (
@@ -403,7 +403,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                       // size="sm"
                       colorScheme="primary"
                       onClick={() => {
-                        console.log(sample_data);
+                        // console.log(sample_data);
                         setData(sample_data.sample);
                         setIsDemo(true);
                         setShowRes(true);
