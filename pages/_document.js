@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://ourchatstory.co/banner_sd.png"
+            content="https://ourchatstory.co/banner_sdd.png"
           />
 
           <meta name="twitter:card" content="summary_large_image" />
@@ -45,7 +45,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="twitter:image"
-            content="https://ourchatstory.co/banner_sd.png"
+            content="https://ourchatstory.co/banner_sdd.png"
           />
 
           <link rel="manifest" href="manifest.json" />
