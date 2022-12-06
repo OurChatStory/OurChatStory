@@ -278,8 +278,7 @@ export default function About() {
               id="mayank"
               onClick={(e) => {
                 e.preventDefault();
-                const textarea = document.querySelector(
-                  "textarea[name='json']"
+                const textarea = document.querySelector("textarea[name='aneesh']"
                 );
                 // console.log(textarea.value);
                 const json = JSON.parse(textarea.value);
