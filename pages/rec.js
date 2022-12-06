@@ -267,10 +267,10 @@ export default function About() {
     <div>
       <ChakraProvider theme={theme}>
         {showLoader ? (
-          <form>
+          <form name="panda">
             <label>Enter JSON:</label>
             <br />
-            <textarea name="json" cols="30" rows="10"></textarea>
+            <textarea name="aneesh" id="aneesh" cols="30" rows="10"></textarea>
             <br />
             {console.log(JSON.stringify(sample_data))}
             <button
