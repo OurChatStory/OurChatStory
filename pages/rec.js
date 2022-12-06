@@ -274,6 +274,8 @@ export default function About() {
             <br />
             {console.log(JSON.stringify(sample_data))}
             <button
+              name="mayank"
+              id="mayank"
               onClick={(e) => {
                 e.preventDefault();
                 const textarea = document.querySelector(
