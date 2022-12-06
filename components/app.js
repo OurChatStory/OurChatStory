@@ -20,6 +20,7 @@ import axios from "axios";
 import { API_URL } from "../constants";
 import Intro from "./intro";
 import Marquee from "react-fast-marquee";
+const sample_data = require("../data/sample-response");
 
 const spin = keyframes`
   from {transform: rotate(0deg);}
@@ -50,6 +51,11 @@ const App = () => {
   const [showUploader, setShowUploader] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
+  const [showRes, setShowRes] = useState(true);
+  const [data, setData] = useState(sample_data.sample);
+  const [showLoader, setShowLoader] = useState(false);
+  const [isDemo, setIsDemo] = useState(true);
+  const [isSuccessfulPWAInstall, setIsSuccessfulPWAInstall] = useState(false);
   useEffect(() => {
     // const imagesPreload = [
     //   "static/bg2.png",
@@ -115,11 +121,6 @@ const App = () => {
     }
   });
 
-  const [showRes, setShowRes] = useState(false);
-  const [data, setData] = useState({});
-  const [showLoader, setShowLoader] = useState(false);
-  const [isDemo, setIsDemo] = useState(false);
-  const [isSuccessfulPWAInstall, setIsSuccessfulPWAInstall] = useState(false);
 
   return showRes ? (
     <Dashboard drawData={data} isDemo={isDemo} />

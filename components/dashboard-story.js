@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -34,7 +34,53 @@ import GridStats from "./charts/GridStats";
 const Dashboard = ({ drawData, isDemo }) => {
   const [isShared, setIsShared] = useState(false);
   const [storyIndex, setStoryIndex] = useState(0);
+  useEffect(() => {
+    // const timer = setTimeout(() => console.log('Initial timeout!'), 1000);
 
+    setTimeout(() => {
+      setStoryIndex(1);
+    }, 2000);
+
+    setTimeout(() => {
+      setStoryIndex(2);
+    }, 4000);
+
+    setTimeout(() => {
+      setStoryIndex(3);
+    }, 6000);
+
+    setTimeout(() => {
+      setStoryIndex(4);
+    }, 8000);
+
+    setTimeout(() => {
+      setStoryIndex(5);
+    }, 10000);
+
+    setTimeout(() => {
+      setStoryIndex(6);
+    }, 12000);
+
+    setTimeout(() => {
+      setStoryIndex(7);
+    }, 14000);
+
+    setTimeout(() => {
+      setStoryIndex(8);
+    }, 16000);
+
+    setTimeout(() => {
+      setStoryIndex(9);
+    }, 18000);
+
+    setTimeout(() => {
+      setStoryIndex(10);
+    }, 20000);
+
+    setTimeout(() => {
+      setStoryIndex(11);
+    }, 22000);
+  }, []);
   const ref = useRef();
   const onButtonClick = useCallback(() => {
     if (ref.current === null) {
@@ -67,7 +113,7 @@ const Dashboard = ({ drawData, isDemo }) => {
         setIsShared(false);
       });
   }, [ref]);
-  <></>
+  <></>;
   const pStories = [
     {
       content: (props) => <Welcome drawData={drawData} />,
@@ -154,42 +200,38 @@ const Dashboard = ({ drawData, isDemo }) => {
   return (
     <Box>
       <Box>
-
-        <Box
-          bgColor="#111111">
+        <Box bgColor="#111111">
           <Center>
-
-            {window.innerWidth > 500 ? (
+            {700 > 500 ? (
               <Stories
                 currentIndex={storyIndex}
                 stories={stories}
-                defaultInterval={20000}
+                // defaultInterval={2000}
+                isPaused={true}
                 height="95vh"
                 onAllStoriesEnd={() => {
                   console.log("PAYYYYY USSSSSS");
                 }}
                 preventDefault={false}
                 keyboardNavigation={true}
-              />)
-              : (
-                <Stories
-                  currentIndex={storyIndex}
-                  stories={stories}
-                  defaultInterval={20000}
-                  height="95vh"
-                  width="97vw"
-                  onAllStoriesEnd={() => {
-                    console.log("PAYYYYY USSSSSS");
-                  }}
-                  preventDefault={false}
-                  keyboardNavigation={true}
-                />
-              )}
-
+              />
+            ) : (
+              <Stories
+                currentIndex={storyIndex}
+                stories={stories}
+                defaultInterval={20000}
+                height="95vh"
+                width="97vw"
+                onAllStoriesEnd={() => {
+                  console.log("PAYYYYY USSSSSS");
+                }}
+                preventDefault={false}
+                keyboardNavigation={true}
+              />
+            )}
           </Center>
 
           <Center>
-
             <HStack
               h="5vh"
               position="absolute"
@@ -295,14 +337,12 @@ const Dashboard = ({ drawData, isDemo }) => {
         ) : (
           ""
         )}
-
       </Box>
       <Box
         // pl="0.5rem"
         // pr="0.5rem"
         bgColor={"black"}
       >
-
         {isDemo ? (
           <Button
             w="100%"
