@@ -1,4 +1,13 @@
-import { VStack, Text, Image, Link, Box, Center, keyframes, Spacer } from "@chakra-ui/react";
+import {
+  VStack,
+  Text,
+  Image,
+  Link,
+  Box,
+  Center,
+  keyframes,
+  Spacer,
+} from "@chakra-ui/react";
 
 const ZoomAnimation = keyframes`
     0% {
@@ -12,9 +21,33 @@ const ZoomAnimation = keyframes`
   }
 `;
 
-const Card6 = ({ drawData }) => {
-  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+// function fun(dataUrl) {
+//   const file = new File([dataUrl], "share.mp4", { type: dataUrl.type });
 
+//   if (navigator.canShare && navigator.canShare({ files: [file] })) {
+//     navigator
+//       .share({
+//         title: "OurChatStory",
+//         text: "Look at our #WhatsAppWrapped. I made it using OurChatStory.co!",
+//         files: [file],
+//       })
+//       .then(() => console.log("Share was successful."))
+//       .catch((error) => console.log(error));
+//     // setIsShared(false);
+//   } else {
+//     console.log("no share support");
+//     console.log("file", file);
+//     const link = document.createElement("a");
+//     link.download = "my-image-name.mp4";
+//     link.href = dataUrl;
+//     link.click();
+//   }
+// }
+
+const Card6 = ({ drawData, videoFile }) => {
+  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+  // if(videoFile)
+  //   fun(videoFile);
   return (
     <VStack
       // bg="#30475E"
@@ -36,25 +69,26 @@ const Card6 = ({ drawData }) => {
       borderRadius="1rem"
       p="1rem"
       animation={zoomAnimation}
-      
       style={{
         textShadow:
           "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
       }}
     >
-
       <Text color="#F5F5F5" fontSize="3xl" align="center">
         This was
       </Text>
-      <Image h="80px" src="static/compress/logo2.webp" alt="OurChatStory"/>
-      <Text color="#F5F5F5" fontSize="4xl" align="center" pb="1rem" >
+      <Image h="80px" src="static/compress/logo2.webp" alt="OurChatStory" />
+      <Text color="#F5F5F5" fontSize="4xl" align="center" pb="1rem">
         <b>OurChatStory</b>
       </Text>
       <Text color="#F5F5F5" fontSize="xl" align="center">
-        While we create many more amazing stories together, let&apos;s share this with friends
+        While we create many more amazing stories together, let&apos;s share
+        this with friends
       </Text>
       <Text color="#F5F5F5" fontSize="xl" align="center">
-        Because every story is<br />unique and worth sharing
+        Because every story is
+        <br />
+        unique and worth sharing
       </Text>
       {/* <Box zIndex={10000}>
         <Text color="#F5F5F5" fontSize="sm" align="center">

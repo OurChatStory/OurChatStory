@@ -29,7 +29,18 @@ import { IoClose } from "react-icons/io5";
 
 const sample_data = require("../data/sample-response");
 
-const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, setShowLoader, deferredPrompt, isSuccessfulPWAInstall, setIsSuccessfulPWAInstall }) => {
+const Upload = ({
+  setShowRes,
+  setData,
+  setIsDemo,
+  setShowUploader,
+  showLoader,
+  setShowLoader,
+  deferredPrompt,
+  isSuccessfulPWAInstall,
+  setIsSuccessfulPWAInstall,
+  setVideoFile
+}) => {
   const [isUploading, setIsUploading] = useState(false);
   let isAndroid = /android/i.test(
     navigator.userAgent || navigator.vendor || window.opera
@@ -74,6 +85,51 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
       })
       .then((res) => {
         setData(res.data);
+        // #TODO: Validate data before setting
+        // Get sharable video
+        console.log("res1" + res.data);
+        if (res.data) {
+          console.log("res making video req", res.data);
+          axios
+            .request({
+              url: "http://ec2-54-163-4-25.compute-1.amazonaws.com:8081/rec",
+              method: "POST",
+              responseType: "blob",
+              data: res.data,
+            })
+            .then((response) => {
+              // create file link in browser's memory
+              console.log("Video Ready");
+
+              setVideoFile(response.data)
+              // console.log("Video Ready");
+
+              // const href = URL.createObjectURL(response.data);
+              // console.log("Video Ready");
+
+              // // create "a" HTML element with href to file & click
+              // const link = document.createElement("a");
+              // console.log("Video Ready");
+
+              // link.href = href;
+              // link.setAttribute("download", "file.mp4"); //or any other extension
+              // document.body.appendChild(link);
+              // link.click();
+
+              // console.log("Video Ready");
+              // // clean up "a" element & remove ObjectURL
+              // document.body.removeChild(link);
+              // URL.revokeObjectURL(href);
+            })
+            .catch((error) => {
+              console.log("error", error);
+              // Handle any errors that occur during the request
+            });
+        }
+        else{
+          console.log("No data")
+        }
+
         setIsDemo(false);
         setShowRes(true);
       })
@@ -202,29 +258,32 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                         and share chat directly to the app.
                       </ListItem> */}
 
-                      {(deferredPrompt || isSuccessfulPWAInstall) ? (<>
+                      {deferredPrompt || isSuccessfulPWAInstall ? (
+                        <>
+                          <ListItem>
+                            <strong>Install the WebApp</strong> by clicking
+                            below.
+                          </ListItem>
+                          <Button
+                            onClick={handlePWAInstall}
+                            colorScheme="primary"
+                            variant="outline"
+                            size="sm"
+                            w="100%"
+                            disabled={isSuccessfulPWAInstall}
+                          >
+                            {isSuccessfulPWAInstall
+                              ? "Installed"
+                              : "Install the WebApp"}
+                          </Button>
+                        </>
+                      ) : (
                         <ListItem>
-                          <strong>Install the WebApp</strong> by clicking below.
+                          <strong>To install the WebApp</strong>: Click on the
+                          three dots of Chrome browser. You will find the
+                          &quot;Install App&quot; option.
                         </ListItem>
-                        <Button
-                          onClick={handlePWAInstall}
-                          colorScheme="primary"
-                          variant="outline"
-                          size="sm"
-                          w="100%"
-                          disabled={isSuccessfulPWAInstall}
-                        >
-                          {isSuccessfulPWAInstall
-                            ? "Installed"
-                            : "Install the WebApp"}
-                        </Button>
-                      </>
-                      ) : <ListItem>
-                        <strong>To install the WebApp</strong>: Click on the
-                        three dots of Chrome browser. You will find the
-                        &quot;Install App&quot; option.
-                      </ListItem>
-                      }
+                      )}
                       <ListItem>
                         Then open the chat whose wrap you want to generate.
                       </ListItem>
@@ -303,7 +362,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                       disabled={isUploading}
                       // max size of file in mb
                       maxSize={200}
-                    // hoverTitle="Upload your chat file"
+                      // hoverTitle="Upload your chat file"
                     >
                       <HStack
                         w="100%"
@@ -362,7 +421,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                 spacing="0.5rem"
                 align="center"
               >
-                {(isUploading || showLoader) ? (
+                {isUploading || showLoader ? (
                   <>
                     <Spinner />
                     <Text textAlign="center">

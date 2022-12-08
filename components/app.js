@@ -69,7 +69,7 @@ const App = () => {
     //   window[image] = newImage;
     // });
 
-    window.addEventListener('beforeinstallprompt', (e) => {
+    window.addEventListener("beforeinstallprompt", (e) => {
       // Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
       // Stash the event so it can be triggered later.
@@ -79,11 +79,11 @@ const App = () => {
     });
 
     // check if the website is opened in standalone mode / PWA
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    if (window.matchMedia("(display-mode: standalone)").matches) {
       setIsSuccessfulPWAInstall(true);
     }
-    
-    if ('serviceWorker' in navigator) {
+
+    if ("serviceWorker" in navigator) {
       navigator.serviceWorker.onmessage = (event) => {
         console.log("received: onmessage", event);
         var imageBlob = event.data.file;
@@ -107,10 +107,9 @@ const App = () => {
             } catch (error) {
               alert("Connection failed. Try again!");
             }
-          })
+          });
       };
-    }
-    else {
+    } else {
       console.log("service worker not supported 3");
     }
   });
@@ -120,9 +119,10 @@ const App = () => {
   const [showLoader, setShowLoader] = useState(false);
   const [isDemo, setIsDemo] = useState(false);
   const [isSuccessfulPWAInstall, setIsSuccessfulPWAInstall] = useState(false);
+  const [videoFile, setVideoFile] = useState(null);
 
   return showRes ? (
-    <Dashboard drawData={data} isDemo={isDemo} />
+    <Dashboard drawData={data} isDemo={isDemo} videoFile={videoFile}/>
   ) : (
     <Box
       w="100%"
@@ -131,7 +131,7 @@ const App = () => {
       h="100vh"
       position="relative"
     >
-      {(showUploader || showLoader) ? (
+      {showUploader || showLoader ? (
         <Uploader
           setIsDemo={setIsDemo}
           setShowRes={setShowRes}
@@ -142,6 +142,7 @@ const App = () => {
           deferredPrompt={deferredPrompt}
           isSuccessfulPWAInstall={isSuccessfulPWAInstall}
           setIsSuccessfulPWAInstall={setIsSuccessfulPWAInstall}
+          setVideoFile={setVideoFile}
         />
       ) : (
         " "
