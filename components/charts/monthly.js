@@ -44,7 +44,8 @@ const Card2 = ({ drawData, isShared }) => {
       spacing="0.5rem"
       align="center"
       justify="center"
-      bgImage="/static/compress/v2bg4.webp"
+      // bgImage="/static/compress/v2bg4.webp"
+      bgImage={parser.get_random_element(["/static/compress/v2bg4.webp", "/static/blur/v2bg15.webp"], drawData.members)}
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"

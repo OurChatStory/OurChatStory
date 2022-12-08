@@ -39,7 +39,7 @@ const Card6 = ({ drawData }) => {
       spacing="1rem"
       align="center"
       justify="center"
-      bgImage="/static/compress/two-kids.webp"
+      bgImage={parser.get_random_element(["/static/blur/v2bg15.webp", "/static/blur/two-kids.webp"], drawData.members)}
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"

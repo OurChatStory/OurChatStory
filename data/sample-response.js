@@ -1,7 +1,7 @@
 module.exports.sample = {
   group: false,
   members: ["Samuel", "Ananya"],
-  total_no_of_chats: 35836,
+  total_no_of_chats: 65836,
   total_no_of_minutes: 1700,
   top_percent: 0.0158343693832475,
   most_active_day: {
