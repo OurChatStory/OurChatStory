@@ -26,6 +26,11 @@ import { BiDownload } from "react-icons/bi";
 import axios from "axios";
 import { API_URL } from "../constants";
 import { IoClose } from "react-icons/io5";
+import ReactGA from "react-ga";
+
+const eventTracker = (category = "wrap", action = "make wrap", label = "true") => {
+  ReactGA.event({ category, action, label });
+}
 
 const sample_data = require("../data/sample-response");
 
@@ -76,10 +81,12 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
         setData(res.data);
         setIsDemo(false);
         setShowRes(true);
+        eventTracker();
       })
       .catch((error) => {
         setIsUploading(false);
         setShowLoader(false);
+        eventTracker("wrap", "make wrap", "false");
         try {
           alert(error.response.data);
         } catch (error) {
