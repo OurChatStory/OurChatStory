@@ -31,8 +31,6 @@ import ReactGA from "react-ga";
 const eventTracker = (category = "wrap", action = "make wrap", label = "true") => {
   ReactGA.event({ category, action, label });
 }
-return eventTracker;
-
 
 const sample_data = require("../data/sample-response");
 
