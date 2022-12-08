@@ -219,7 +219,7 @@ const Intro = ({ setShowUploader }) => {
         <Story component={gridStats} />
         {/* <Story component={monthly} /> */}
         {/* <Story component={hourlyGraph} /> */}
-        <Story component={countPie} />
+        {/* <Story component={countPie} /> */}
         <Story component={wordCloud} />
         <Story component={dummyCTA} />
         {/* <div className="d-flex snap-child">

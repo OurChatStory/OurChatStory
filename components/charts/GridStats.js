@@ -15,9 +15,9 @@ const GridStats = ({ drawData }) => {
       spacing="0.5rem"
       align="center"
       justify="center"
-      bgImage="static/dark/v2bg2.webp"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
+      bgImage={parser.get_random_element(["static/dark/v2bg2.webp", "/static/dark/v2bg16.webp"], drawData.members)}
+      bgRepeat="no-repeat"
+      bgSize="cover"
       // backgroundSize="120%"
       // p="2rem"
       // height="100vh"

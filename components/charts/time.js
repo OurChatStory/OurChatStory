@@ -41,6 +41,8 @@ const chartTheme = {
 const Card6 = ({ drawData, isShared }) => {
   const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
 
+  const complementaryColor = parser.is_night_owl(drawData.most_active_hour.hour) ? "#14B884" : "#E74E18";
+
   return (
     <VStack
       spacing="1rem"
@@ -49,17 +51,19 @@ const Card6 = ({ drawData, isShared }) => {
       p="2rem"
       // w="100vw"
       // h="100vh"
-      backgroundImage="/static/compress/owl.webp"
+      backgroundImage={parser.is_night_owl(drawData.most_active_hour.hour) ?
+        "/static/compress/owl.webp" : "/static/dark/v2bg12.webp"}
       bgBlendMode={"multiply"}
       bgRepeat="no-repeat"
       bgSize="cover"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
       // backgroundSize="110%"
-      border="2px solid #14B884"
+      border={`1px solid ${complementaryColor}`}
       w="100%"
       h="78vh"
-      bgColor="#6f0cfb"
+      bgColor={parser.is_night_owl(drawData.most_active_hour.hour) ?
+        "#6f0cfb" : ""}
       borderRadius="1rem"
       pt="1rem"
       pb="1rem"
@@ -73,7 +77,7 @@ const Card6 = ({ drawData, isShared }) => {
         The time of the day y&apos;all talk the most is
       </Text>
       <br />
-      <Text bgColor="#14B884" fontSize="5xl" align="center" fontWeight="bold"
+      <Text bgColor={complementaryColor} fontSize="5xl" align="center" fontWeight="bold"
         pl="1rem"
         pr="1rem"
         style={{

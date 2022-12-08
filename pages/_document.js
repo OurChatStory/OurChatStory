@@ -81,10 +81,10 @@ export default class MyDocument extends Document {
     gtag('config', 'G-8GG4ESYN0D');`,
             }}
           />
-          <script             
+          <script
             dangerouslySetInnerHTML={{
               __html:
-                      `  window._mfq = window._mfq || [];
+                `  window._mfq = window._mfq || [];
                         (function() {
                           var mf = document.createElement("script");
                           mf.type = "text/javascript"; mf.defer = true;
@@ -92,7 +92,7 @@ export default class MyDocument extends Document {
                           document.getElementsByTagName("head")[0].appendChild(mf);
                         })();
                       `
-            }}/>
+            }} />
         </Head>
         <body>
           <Main />

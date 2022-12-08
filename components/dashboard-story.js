@@ -154,11 +154,9 @@ const Dashboard = ({ drawData, isDemo }) => {
   return (
     <Box>
       <Box>
-
         <Box
           bgColor="#111111">
           <Center>
-
             {window.innerWidth > 500 ? (
               <Stories
                 currentIndex={storyIndex}
@@ -167,6 +165,11 @@ const Dashboard = ({ drawData, isDemo }) => {
                 height="95vh"
                 onAllStoriesEnd={() => {
                   console.log("PAYYYYY USSSSSS");
+                }}
+                // on story change
+                onStoryChange={(s, st) => {
+                  console.log("story change", s, st);
+                  setStoryIndex(s);
                 }}
                 preventDefault={false}
                 keyboardNavigation={true}
@@ -189,7 +192,6 @@ const Dashboard = ({ drawData, isDemo }) => {
           </Center>
 
           <Center>
-
             <HStack
               h="5vh"
               position="absolute"

@@ -5,6 +5,7 @@ import numpy as np
 import os
 from os import listdir
 from os.path import isfile, join
+from scipy.cluster.vq import kmeans
 
 # get a list of files in a folder
 mypath = "./public/static/original/"
@@ -32,9 +33,25 @@ for i in range(len(onlyfiles)):
     dark_blurred = cv2.addWeighted(blurred, 0.5, blurred, 0, 0)
 
     # convert to webp
-    cv2.imwrite(base_export_path + onlyfiles[i].split(".")[0] + ".webp", blurred, [cv2.IMWRITE_WEBP_QUALITY, 100])
-    cv2.imwrite(dark_base_export_path + onlyfiles[i].split(".")[0] + ".webp", dark_blurred, [cv2.IMWRITE_WEBP_QUALITY, 100])
-    cv2.imwrite(shallow_base_export_path + onlyfiles[i].split(".")[0] + ".webp", shallow_blurred, [cv2.IMWRITE_WEBP_QUALITY, 100])
-    cv2.imwrite(compress_base_export_path + onlyfiles[i].split(".")[0] + ".webp", image, [cv2.IMWRITE_WEBP_QUALITY, 100])
+    cv2.imwrite(
+        base_export_path + onlyfiles[i].split(".")[0] + ".webp",
+        blurred,
+        [cv2.IMWRITE_WEBP_QUALITY, 100],
+    )
+    cv2.imwrite(
+        dark_base_export_path + onlyfiles[i].split(".")[0] + ".webp",
+        dark_blurred,
+        [cv2.IMWRITE_WEBP_QUALITY, 100],
+    )
+    cv2.imwrite(
+        shallow_base_export_path + onlyfiles[i].split(".")[0] + ".webp",
+        shallow_blurred,
+        [cv2.IMWRITE_WEBP_QUALITY, 100],
+    )
+    cv2.imwrite(
+        compress_base_export_path + onlyfiles[i].split(".")[0] + ".webp",
+        image,
+        [cv2.IMWRITE_WEBP_QUALITY, 100],
+    )
 
     print(onlyfiles[i])
