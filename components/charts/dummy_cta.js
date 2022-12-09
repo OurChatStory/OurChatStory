@@ -193,13 +193,17 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
       >
         Read our{" "}
         <Link style={{ textDecoration: "underline" }} href="/privacy">
-          privacy policy
+          privacy policy.
         </Link>{" "}
-        a.k.a.
         <br />
         <strong style={{ textTransform: "uppercase" }}>
           no one reads or stores your chats
         </strong>
+        <br />
+        You can be confident by checking our {" "}
+        <Link style={{ textDecoration: "underline" }} href="https://github.com/OurChatStory/OurChatStory-Web">
+          code.
+        </Link>
       </Text>
       {/* <Spacer/>
       <Box pb="2rem">
