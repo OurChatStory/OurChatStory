@@ -138,6 +138,10 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
           </a>
         </Box> */}
         <IconButton
+          as="a"
+          href="https://twitter.com/ourchatstory"
+          target="_blank"
+          rel="noreferrer"
           aria-label="Close"
           icon={<FaTwitter size="1.5em" opacity={0.8} color="white" />}
           variant="none"
@@ -146,6 +150,10 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
           zIndex={10003}
         />
         <IconButton
+          as="a"
+          href="https://www.instagram.com/ourchatstory.co/"
+          target="_blank"
+          rel="noreferrer"
           aria-label="Close"
           icon={<FaInstagram size="1.5em" opacity={0.8} color="white" />}
           variant="none"
