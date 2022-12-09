@@ -146,8 +146,6 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
           icon={<FaTwitter size="1.5em" opacity={0.8} color="white" />}
           variant="none"
           colorScheme="transparent"
-          right="1vw"
-          zIndex={10003}
         />
         <IconButton
           as="a"
@@ -158,8 +156,6 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
           icon={<FaInstagram size="1.5em" opacity={0.8} color="white" />}
           variant="none"
           colorScheme="transparent"
-          right="1vw"
-          zIndex={10003}
         />
         {/* <Button color={"white"} leftIcon={<FaFacebook />}></Button>
         <Button colorScheme="twitter" leftIcon={<FaTwitter />}></Button> */}

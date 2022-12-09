@@ -1,17 +1,52 @@
-Welcome to OurChatStory.co, a web app that allows you to analyze and gain insights from your WhatsApp chats. With OurChatStory.co, you can easily visualize your chat data using informative graphs and charts.
+# OurChatStory.co
 
-OurChatStory.co is built using NextJS, a powerful JavaScript framework for building server-rendered applications. NextJS makes it easy to create efficient and scalable web apps, and it allows us to easily integrate with your WhatsApp data.
+![OurChatStory banner](https://ourchatstory.co/banner_sdd.png)
 
-To get started with OurChatStory.co, you will need to set up some environment variables. These variables will allow the app to connect to your WhatsApp account and retrieve your chat data.
+- OurChatStory is a tool that provides insights into your WhatsApp chats with your friends.
+- With OurChatStory, you can see which of your friends texts you first, who texts more, and when you and your friends tend to text each other the most.
+- To use OurChatStory, simply connect your WhatsApp account and choose the chat you want to analyse. 
+- OurChatStory will then provide you with detailed insights and statistics about your conversations with your friends.
+- The codebase has **no connection to any database servers**  as we process all the data in a stateless manner **without storing** any chats, not even temporarily. 
+- Whether you're curious about your texting habits or just want to learn more about your relationships with your friends, OurChatStory has you covered. 
+- Give it a try and see what your WhatsApp chats have to say about you!
 
-To set up the environment variables, create a file called .env in the root directory of the app. In this file, you will need to specify the following variables:
+[Try Now](https://ourchatstory.co)
 
-NEXT_PUBLIC_API_URL: The URL of the API server. This is the URL of the server that will be used to retrieve your chat data. 
-NEXT_PUBLIC_ENV: The environment that the app is running in. This can be either "staging" or "prod".
-Once you have set up the environment variables, you can start the app by running the following command in the terminal:
 
-Copy code
+## Stack
+OurChatStory's user interface is built using the NextJS framework.
+NextJS is a framework for building server-rendered or statically-exported React applications. It provides a number of features out of the box, such as automatic code splitting, optimized performance, and simple deployment to production. With NextJS, developers can quickly and easily create high-performance React applications that are optimized for search engines and are easy to maintain. Whether you're building a simple website or a complex web app, NextJS has the tools you need to get the job done. Give it a try and see how it can help you build better React applications faster.
+## Installation
+
+Use the package manager npm to set up OurChatStory.
+
+```bash
+npm i
+```
+## Set up environment variables
+
+Set up the following environment variables.
+
+> NEXT_PUBLIC_API_URL = ...
+ 
+> NEXT_PUBLIC_ENV = ...
+
+The backend for the website can be self hosted using repo provided [here](https://github.com/OurChatStory/WhatsApp-Chat-Analysis-API).
+## Development
+
+```python
 npm run dev
-This will start the NextJS development server, and you can access the app at http://localhost:3000.
+```
+## Maintainers
+You can reach out to them on Twitter for any issues or suggestions
+- Anshul Agarwala - [@anshulagx](https://twitter.com/anshulagx)
+- Yajat Malhotra  - [@iamyajat](https://twitter.com/iamyajat)
+- Divit Agarwala - [@divit_agrawal_](https://twitter.com/Divit_Agrawal_)
+## Contributing
 
-We hope you enjoy using OurChatStory.co to analyze and gain insights from your WhatsApp chats. Let us know if you have any feedback or suggestions.
+Pull requests are welcome for both bug fixes and features. For major changes, please open an issue first
+to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
