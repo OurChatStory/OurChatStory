@@ -53,6 +53,8 @@ export default class MyDocument extends Document {
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="theme-color" content="#536878" />
+          <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://ec2-54-163-4-25.compute-1.amazonaws.com:8081"/>
+
 
           <link rel="manifest" href=" manifest.json" />
 
