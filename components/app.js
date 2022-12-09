@@ -103,9 +103,15 @@ const App = () => {
           })
           .catch((error) => {
             try {
-              alert(error.response.data);
+              alert(
+                typeof error.response.data === "string"
+                  ? error.response.data
+                  : "Connection failed. Try again! If it's still not working, please contact us via Twitter @ourchatstory."
+              );
             } catch (error) {
-              alert("Connection failed. Try again!");
+              alert(
+                "Connection failed. Try again! If it's still not working, please contact us via Twitter @ourchatstory."
+              );
             }
           });
       };

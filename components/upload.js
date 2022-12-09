@@ -28,9 +28,13 @@ import { API_URL } from "../constants";
 import { IoClose } from "react-icons/io5";
 import ReactGA from "react-ga";
 
-const eventTracker = (category = "wrap", action = "make wrap", label = "successful") => {
+const eventTracker = (
+  category = "wrap",
+  action = "make wrap",
+  label = "successful"
+) => {
   ReactGA.event({ category, action, label });
-}
+};
 
 const sample_data = require("../data/sample-response");
 
@@ -84,8 +88,8 @@ const Upload = ({
       file.name.substring(file.name.length - 3) === "txt" ||
       file.name.substring(file.name.length - 3) === "zip"
     ) {
-          const data = new FormData();
-          data.append("file", file);
+      const data = new FormData();
+      data.append("file", file);
       // console.log("dd", data);
       setIsUploading(true);
       setShowLoader(true);
@@ -104,13 +108,21 @@ const Upload = ({
           setShowLoader(false);
           eventTracker("wrap", "make wrap", "failed");
           try {
-            alert(error.response.data);
+            alert(
+              typeof error.response.data === "string"
+                ? error.response.data
+                : "Connection failed. Try again! If it's still not working, please contact us via Twitter @ourchatstory."
+            );
           } catch (error) {
-            alert("Connection failed. Try again!");
+            alert(
+              "Connection failed. Try again! If it's still not working, please contact us via Twitter @ourchatstory."
+            );
           }
         });
     } else {
-      alert("Please upload .txt or .zip files only");
+      alert(
+        "Please upload .txt or .zip files only. If it's still not working, please contact us via Twitter @ourchatstory."
+      );
     }
   };
   return (
