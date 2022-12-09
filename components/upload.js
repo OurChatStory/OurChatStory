@@ -78,14 +78,14 @@ const Upload = ({
   const [tabIndex, setTabIndex] = useState(isAndroid ? 0 : isiOS ? 1 : 2); // initial -> 0: Android, 1: iOS, 2: PC
   const handleFileUpload = (file) => {
     // console.log("zz", file);
-    const data = new FormData();
-    data.append("file", file);
     // console.log(file.name);
     // console.log(file.name.substring(file.name.length - 3));
     if (
       file.name.substring(file.name.length - 3) === "txt" ||
       file.name.substring(file.name.length - 3) === "zip"
     ) {
+          const data = new FormData();
+          data.append("file", file);
       // console.log("dd", data);
       setIsUploading(true);
       setShowLoader(true);

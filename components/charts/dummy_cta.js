@@ -6,6 +6,7 @@ import {
   Spacer,
   Button,
   Link,
+  IconButton,
 } from "@chakra-ui/react";
 import React from "react";
 import Marquee from "react-fast-marquee";
@@ -116,9 +117,9 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
                         onChange={uploadFile}
                     /> */}
       </Button>
-      <Spacer />
+      {/* <Spacer /> */}
       <HStack>
-        <Box>
+        {/* <Box>
           <a
             href="https://twitter.com/ourchatstory"
             target="_blank"
@@ -135,7 +136,23 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
           >
             <FaInstagram />
           </a>
-        </Box>
+        </Box> */}
+        <IconButton
+          aria-label="Close"
+          icon={<FaTwitter size="1.5em" opacity={0.8} color="white" />}
+          variant="none"
+          colorScheme="transparent"
+          right="1vw"
+          zIndex={10003}
+        />
+        <IconButton
+          aria-label="Close"
+          icon={<FaInstagram size="1.5em" opacity={0.8} color="white" />}
+          variant="none"
+          colorScheme="transparent"
+          right="1vw"
+          zIndex={10003}
+        />
         {/* <Button color={"white"} leftIcon={<FaFacebook />}></Button>
         <Button colorScheme="twitter" leftIcon={<FaTwitter />}></Button> */}
       </HStack>
@@ -170,11 +187,15 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
         color="grey"
         pb="2rem"
       >
-        And yes, we take{" "}
+        Read our{" "}
         <Link style={{ textDecoration: "underline" }} href="/privacy">
-          privacy
+          privacy policy
         </Link>{" "}
-        very seriously and don&apos;t store or see any of your chats{" "}
+        a.k.a.
+        <br />
+        <strong style={{ textTransform: "uppercase" }}>
+          no one reads or stores your chats
+        </strong>
       </Text>
       {/* <Spacer/>
       <Box pb="2rem">
