@@ -1,5 +1,7 @@
 # OurChatStory.co
 
+![OurChatStory banner](https://ourchatstory.co/banner_sdd.png)
+
 - OurChatStory is a tool that provides insights into your WhatsApp chats with your friends.
 - With OurChatStory, you can see which of your friends texts you first, who texts more, and when you and your friends tend to text each other the most.
 - To use OurChatStory, simply connect your WhatsApp account and choose the chat you want to analyse. 
