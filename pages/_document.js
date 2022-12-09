@@ -22,7 +22,10 @@ export default class MyDocument extends Document {
 
           <meta property="og:url" content="https://OurChatStory.co/" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="WhatsApp Wrapped - Chat Insights and Analysis" />
+          <meta
+            property="og:title"
+            content="WhatsApp Wrapped - Chat Insights and Analysis"
+          />
           <meta
             property="og:description"
             content="Get Spotify Wrapped style insights of your WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
@@ -83,18 +86,18 @@ export default class MyDocument extends Document {
           />
           <script
             dangerouslySetInnerHTML={{
-              __html:
-                `  window._mfq = window._mfq || [];
+              __html: `  window._mfq = window._mfq || [];
                         (function() {
                           var mf = document.createElement("script");
                           mf.type = "text/javascript"; mf.defer = true;
                           mf.src = "//cdn.mouseflow.com/projects/af5670c3-9e52-4c07-a303-77b5beac27e0.js";
                           document.getElementsByTagName("head")[0].appendChild(mf);
                         })();
-                      `
-            }} />
+                      `,
+            }}
+          />
         </Head>
-        <body>
+        <body style={{ margin: "0" }}>
           <Main />
           <NextScript />
         </body>

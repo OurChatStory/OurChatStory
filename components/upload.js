@@ -29,7 +29,17 @@ import { IoClose } from "react-icons/io5";
 
 const sample_data = require("../data/sample-response");
 
-const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, setShowLoader, deferredPrompt, isSuccessfulPWAInstall, setIsSuccessfulPWAInstall }) => {
+const Upload = ({
+  setShowRes,
+  setData,
+  setIsDemo,
+  setShowUploader,
+  showLoader,
+  setShowLoader,
+  deferredPrompt,
+  isSuccessfulPWAInstall,
+  setIsSuccessfulPWAInstall,
+}) => {
   const [isUploading, setIsUploading] = useState(false);
   let isAndroid = /android/i.test(
     navigator.userAgent || navigator.vendor || window.opera
@@ -65,27 +75,36 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
     // console.log("zz", file);
     const data = new FormData();
     data.append("file", file);
-    // console.log("dd", data);
-    setIsUploading(true);
-    setShowLoader(true);
-    axios
-      .post(API_URL + "wrap", data, {
-        // receive two parameter endpoint url ,form data
-      })
-      .then((res) => {
-        setData(res.data);
-        setIsDemo(false);
-        setShowRes(true);
-      })
-      .catch((error) => {
-        setIsUploading(false);
-        setShowLoader(false);
-        try {
-          alert(error.response.data);
-        } catch (error) {
-          alert("Connection failed. Try again!");
-        }
-      });
+    // console.log(file.name);
+    // console.log(file.name.substring(file.name.length - 3));
+    if (
+      file.name.substring(file.name.length - 3) === "txt" ||
+      file.name.substring(file.name.length - 3) === "zip"
+    ) {
+      // console.log("dd", data);
+      setIsUploading(true);
+      setShowLoader(true);
+      axios
+        .post(API_URL + "wrap", data, {
+          // receive two parameter endpoint url ,form data
+        })
+        .then((res) => {
+          setData(res.data);
+          setIsDemo(false);
+          setShowRes(true);
+        })
+        .catch((error) => {
+          setIsUploading(false);
+          setShowLoader(false);
+          try {
+            alert(error.response.data);
+          } catch (error) {
+            alert("Connection failed. Try again!");
+          }
+        });
+    } else {
+      alert("Please upload .txt or .zip files only");
+    }
   };
   return (
     <>
@@ -202,29 +221,32 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                         and share chat directly to the app.
                       </ListItem> */}
 
-                      {(deferredPrompt || isSuccessfulPWAInstall) ? (<>
+                      {deferredPrompt || isSuccessfulPWAInstall ? (
+                        <>
+                          <ListItem>
+                            <strong>Install the WebApp</strong> by clicking
+                            below.
+                          </ListItem>
+                          <Button
+                            onClick={handlePWAInstall}
+                            colorScheme="primary"
+                            variant="outline"
+                            size="sm"
+                            w="100%"
+                            disabled={isSuccessfulPWAInstall}
+                          >
+                            {isSuccessfulPWAInstall
+                              ? "Installed"
+                              : "Install the WebApp"}
+                          </Button>
+                        </>
+                      ) : (
                         <ListItem>
-                          <strong>Install the WebApp</strong> by clicking below.
+                          <strong>To install the WebApp</strong>: Click on the
+                          three dots of Chrome browser. You will find the
+                          &quot;Install App&quot; option.
                         </ListItem>
-                        <Button
-                          onClick={handlePWAInstall}
-                          colorScheme="primary"
-                          variant="outline"
-                          size="sm"
-                          w="100%"
-                          disabled={isSuccessfulPWAInstall}
-                        >
-                          {isSuccessfulPWAInstall
-                            ? "Installed"
-                            : "Install the WebApp"}
-                        </Button>
-                      </>
-                      ) : <ListItem>
-                        <strong>To install the WebApp</strong>: Click on the
-                        three dots of Chrome browser. You will find the
-                        &quot;Install App&quot; option.
-                      </ListItem>
-                      }
+                      )}
                       <ListItem>
                         Then open the chat whose wrap you want to generate.
                       </ListItem>
@@ -303,7 +325,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                       disabled={isUploading}
                       // max size of file in mb
                       maxSize={200}
-                    // hoverTitle="Upload your chat file"
+                      // hoverTitle="Upload your chat file"
                     >
                       <HStack
                         w="100%"
@@ -362,7 +384,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                 spacing="0.5rem"
                 align="center"
               >
-                {(isUploading || showLoader) ? (
+                {isUploading || showLoader ? (
                   <>
                     <Spinner />
                     <Text textAlign="center">
@@ -387,6 +409,7 @@ const Upload = ({ setShowRes, setData, setIsDemo, setShowUploader, showLoader, s
                       <input
                         id="hid"
                         type="file"
+                        accept=".txt, .zip"
                         name="file"
                         title=""
                         hidden

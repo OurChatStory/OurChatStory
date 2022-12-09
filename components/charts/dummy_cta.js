@@ -1,6 +1,16 @@
-import { Text, VStack, Box, Spacer, Button, Link } from "@chakra-ui/react";
+import {
+  Text,
+  VStack,
+  HStack,
+  Box,
+  Spacer,
+  Button,
+  Link,
+} from "@chakra-ui/react";
 import React from "react";
 import Marquee from "react-fast-marquee";
+import { FaInstagram, FaTwitter } from "react-icons/fa";
+import CountUp from "react-countup";
 
 const DummyCTA = ({ drawData, setShowUploader }) => {
   return (
@@ -18,14 +28,14 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
       h="78vh"
       bgColor="#6f0cbb00"
       borderRadius="1rem"
-      mt="5rem"
+      mt="2rem"
       // pb="1rem"
       p="1rem"
       // borderColor="#fcea2b"
       // errorBorderColor="red.300"
       border="0px solid #fcea2b"
     >
-      {/* <Spacer /> */}
+      <Spacer />
       <Text
         fontSize="3xl"
         align="left"
@@ -48,6 +58,33 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
       >
         You can know your WhatsApp Chat Story with your friends!
       </Text>
+      {/* <Text color="#F5F5F5" fontSize="2xl" align="center">
+        These many people have already tried out their #WhatsAppWrapped
+      </Text> */}
+      {/* <Box
+        border="2px solid #ffffff80"
+        p="4px 1rem"
+        borderRadius={"4px"}
+        // bgColor="#ffa500"
+      >
+        <Text color="#F5F5F5" fontSize="3xl" align="center" as="b">
+          <CountUp
+            // className="account-balance"
+            start={1234}
+            end={1240}
+            duration={2.75}
+            useEasing={true}
+            useGrouping={true}
+            separator=" "
+            decimals={4}
+            decimal=","
+            // prefix="EUR "
+            // suffix=" left"
+            // onComplete={onComplete}
+            // onStart={onStart}
+          />
+        </Text>
+      </Box> */}
       {/* <Spacer /> */}
       <Button
         colorScheme="primary"
@@ -80,6 +117,32 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
                     /> */}
       </Button>
       <Spacer />
+      <HStack>
+        <Box>
+          <a
+            href="https://twitter.com/ourchatstory"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaTwitter />
+          </a>
+        </Box>
+        <Box>
+          <a
+            href="https://www.instagram.com/ourchatstory.co/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaInstagram />
+          </a>
+        </Box>
+        {/* <Button color={"white"} leftIcon={<FaFacebook />}></Button>
+        <Button colorScheme="twitter" leftIcon={<FaTwitter />}></Button> */}
+      </HStack>
+      {/* <Link href="/privacy">
+        <Text fontSize={"1x1"}>Privacy</Text>
+      </Link> */}
+      <Spacer />
       {/* scroll to top to #marquee */}
       {/* <Text
         fontSize="2xl"
@@ -102,9 +165,16 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
       </Text> */}
       {/* <Spacer /> */}
       <Spacer />
-      <Text fontSize={{ base:"smaller", sm: "sm", lg: "smaller" }} color="grey" pb="2rem">
-        And yes, we take privacy very seriously and don&apos;t store or see any of
-        your chats{" "}
+      <Text
+        fontSize={{ base: "smaller", sm: "sm", lg: "smaller" }}
+        color="grey"
+        pb="2rem"
+      >
+        And yes, we take{" "}
+        <Link style={{ textDecoration: "underline" }} href="/privacy">
+          privacy
+        </Link>{" "}
+        very seriously and don&apos;t store or see any of your chats{" "}
       </Text>
       {/* <Spacer/>
       <Box pb="2rem">
