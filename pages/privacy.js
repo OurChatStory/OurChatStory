@@ -45,26 +45,29 @@ export default function Privacy() {
           data is handled in accordance with our strict privacy policy.
         </p>
 
-        <h2>We collect your messages temporarily</h2>
+        <h2>WE DONT OWN A DATABASE</h2>
         <p>
-          When you use our tool, we collect your WhatsApp messages temporarily
+          OurChatStory servers does not connect to a database and hence we have a ZERO-DATA-SRORAGE-POLICY.
+          When you use our tool, our server get your WhatsApp messages
           in order to perform the analysis. However, we do not store any of your
-          personal data on our servers, and all messages are deleted immediately
-          after the analysis is complete. This means that your messages remain
-          private and confidential at all times.
+          personal data or messages on our servers, and all messages are
+          processed and the insights are sent immediately after the analysis is
+          complete. This means that your messages remain private and
+          confidential at all times. Some parts of the generated meta-data numbers are recorded after
+          the analysis for product improvements, but this data is not linked to
+          your messages in any way. The wordcloud is not recorded.
         </p>
 
         <h2>We use secure encryption methods</h2>
         <p>
           We use secure encryption methods to protect your data while it is
           being transmitted to our servers, and we do not share your data with
-          any third parties. We also provide clear instructions on how to revoke
-          access to your messages at any time.
+          any third parties.
         </p>
 
-        <h2>We use Google Analytics for tracking</h2>
+        <h2>We use Google Analytics</h2>
         <p>
-          We use Google Analytics to track usage of our tool. This helps us
+          We use Google Analytics to monitor usage of our tool. This helps us
           understand how our users are interacting with the tool, so we can
           improve the user experience and make sure the tool is meeting their
           needs. However, we do not share any personal information with Google
