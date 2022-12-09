@@ -92,7 +92,7 @@ const Upload = ({
           console.log("res making video req", res.data);
           axios
             .request({
-              url: "http://ec2-54-163-4-25.compute-1.amazonaws.com:8081/rec",
+              url: "https://video.ourchatstory.co/rec",
               method: "POST",
               responseType: "blob",
               data: res.data,
