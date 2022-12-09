@@ -31,7 +31,7 @@ Set up the following environment variables.
  
 > NEXT_PUBLIC_ENV = ...
 
-The backend for the website can be self hosted using repo provided [here](https://github.com/OurChatStory/WhatsApp-Chat-Analysis-API).
+The backend for the website can be self hosted using repo provided [here](https://github.com/OurChatStory/WhatsApp-Chat-Analyzer-API).
 ## Development
 
 ```python
