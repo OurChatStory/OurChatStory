@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 import { VictoryBar, VictoryStack, VictoryPie, VictoryLabel } from "victory";
 
+const parser = require("../../script/parser");
+
 const ZoomAnimation = keyframes`
     0% {
     background-size: 100% 100%;
@@ -38,7 +40,7 @@ const Card4 = ({ drawData }) => {
       spacing="0.5rem"
       align="center"
       justify="top"
-      bgImage="/static/dark/v2bg9.webp"
+      bgImage={parser.get_random_element(["/static/dark/v2bg18.webp", "/static/dark/v2bg9.webp"], drawData.members)}
       bgSize="cover"
       // backgroundPosition="center"
       // backgroundRepeat="no-repeat"
@@ -48,7 +50,6 @@ const Card4 = ({ drawData }) => {
       // h="100vh"
       w="100%"
       h="78vh"
-      bgColor="#5138C2"
       border="2px solid orange"
       borderRadius="1rem"
       p="1rem"

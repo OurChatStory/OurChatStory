@@ -1,5 +1,7 @@
 import { Text, VStack, keyframes } from "@chakra-ui/react";
 
+const parser = require("../../script/parser");
+
 const ZoomAnimation = keyframes`
     0% {
     background-size: 100% 100%;
@@ -26,10 +28,10 @@ const Card1 = ({ drawData }) => {
       // backgroundPosition="center"
       backgroundRepeat="no-repeat"
       bgBlendMode="multiply"
-      bgImage="/static/blur/v2bg5.webp"
+      bgImage={parser.get_random_element(["/static/dark/v2bg5.webp", "/static/dark/v2bg14.webp"], drawData.members)}
       w="100%"
       h="78vh"
-      bgColor="gray"
+      bgColor="pink"
       borderRadius="1rem"
       p="1.5rem"
       animation={zoomAnimation}

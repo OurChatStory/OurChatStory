@@ -13,33 +13,42 @@ module.exports.active_time = (data) => {
   return data < 12 ? data + " AM" : data - 12 + " PM";
 };
 module.exports.getArora = (data) => {
-    let arora="Arora: "
+  let arora = "Arora: "
 
-    const days_gap=1;
-    const chat_responsiveness=0.5;
-    if(days_gap<2)
-      arora+="SoulMates";
+  const days_gap = 1;
+  const chat_responsiveness = 0.5;
+  if (days_gap < 2)
+    arora += "SoulMates";
 
-    if(chat_responsiveness>0.85)
-      arora+="Besties";
-    if(chat_responsiveness<0.85)
-      arora+="Friends";
-    if(chat_responsiveness<0.5)
-      arora+="Acquaintances";
-    if(chat_responsiveness<0.25)
-      arora+="Strangers";
-    
-    
-    return arora;
+  if (chat_responsiveness > 0.85)
+    arora += "Besties";
+  if (chat_responsiveness < 0.85)
+    arora += "Friends";
+  if (chat_responsiveness < 0.5)
+    arora += "Acquaintances";
+  if (chat_responsiveness < 0.25)
+    arora += "Strangers";
+
+
+  return arora;
 };
 
 module.exports.active_time_type = (data) => {
   return data < 12 && data > 4
     ? "Looks like y'all are Early Birds"
     : data > 20 || (data > 0 && data < 4)
-    ? "Looks like y'all are Night Owls 🦉"
-    : "";
+      ? "Looks like y'all are Night Owls 🦉"
+      : "";
 };
+
+module.exports.is_night_owl = (data) => {
+  return data < 12 && data > 4
+    ? false
+    : data > 20 || (data > 0 && data < 4)
+      ? true
+      : false;
+};
+
 module.exports.months = {
   Jan: "January",
   Feb: "February",
@@ -109,7 +118,7 @@ module.exports.no_of_days_talked = (string) => {
   }).length;
 };
 
-function generateHash(seed){
+function generateHash(seed) {
   var hash = 0;
   for (var i = 0; i < seed.length; i++) {
     var char = seed.charCodeAt(i);
@@ -119,11 +128,11 @@ function generateHash(seed){
   return Math.abs(hash);
 }
 
-module.exports.get_random_element = (array,random_key) => {
-  if(random_key==undefined)
-    random_key=(Math.random().toString());
-  const hash=generateHash(random_key.toString())%array.length;
+module.exports.get_random_element = (array, random_key) => {
+  if (random_key == undefined)
+    random_key = (Math.random().toString());
+  const hash = generateHash(random_key.toString()) % array.length;
   // console.log(hash);
-  
+
   return array[hash];
 };

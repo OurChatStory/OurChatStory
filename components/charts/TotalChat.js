@@ -2,6 +2,8 @@ import { Text, VStack, Box, Image as CImage, keyframes } from "@chakra-ui/react"
 
 import CountUp from "react-countup";
 
+const parser = require("../../script/parser");
+
 const ZoomAnimation = keyframes`
     0% {
     background-size: 100% 100%;
@@ -26,7 +28,7 @@ const Card1 = ({ drawData }) => {
       spacing="1.5rem"
       align="center"
       justify="center"
-      bgImage="/static/dark/v2bg3.webp"
+      bgImage={parser.get_random_element(["/static/dark/v2bg14.webp", "/static/dark/v2bg3.webp"], drawData.members)}
       // bgBlendMode="overlay"
       // add blur to the background image
       // filter="blur(10px)"
@@ -79,7 +81,7 @@ const Card1 = ({ drawData }) => {
       <Text fontSize="xl" align="center">
         That puts you into top{" "}
         <b style={{ textDecoration: "underline" }}>
-          {parseFloat(drawData.top_percent * 100).toFixed(2)}%
+          {parseFloat(drawData.top_percent * 100).toFixed(drawData.top_percent < 0.001 ? 4 : 2)}%
         </b><br />
         of texters in the world
       </Text>
