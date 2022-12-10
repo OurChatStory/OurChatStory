@@ -19,6 +19,7 @@ import {
   TabPanels,
   Spacer,
   Divider,
+  AspectRatio,
 } from "@chakra-ui/react";
 import { FileUploader } from "react-drag-drop-files";
 import { BiDownload } from "react-icons/bi";
@@ -235,6 +236,13 @@ const Upload = ({
                       fontSize={["md", "md"]}
                       fontWeight={500}
                     >
+                                              <AspectRatio maxW="560px" ratio={1.8}>
+                          <iframe
+                            title="Instructions"
+                            src="https://www.youtube.com/embed/6bnrIGoYuE8?autoplay=1"
+                            allowFullScreen
+                          />
+                        </AspectRatio>
                       {/* <ListItem>
                         <strong>Android</strong> users can install the WebApp
                         and share chat directly to the app.
