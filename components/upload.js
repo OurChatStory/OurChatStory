@@ -109,8 +109,8 @@ const Upload = ({
           eventTracker("wrap", "make wrap", "failed");
           try {
             alert(
-              typeof error.response.data === "string"
-                ? error.response.data
+              typeof error.response.data.detail === "string"
+                ? error.response.data.detail
                 : "Connection failed. Try again! If it's still not working, please contact us via Twitter @ourchatstory."
             );
           } catch (error) {

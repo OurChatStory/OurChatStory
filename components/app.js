@@ -75,7 +75,7 @@ const App = () => {
       // Stash the event so it can be triggered later.
       setDeferredPrompt(e);
       // Optionally, send analytics event that PWA install promo was shown.
-      console.log(`'beforeinstallprompt' event was fired.`);
+      // console.log(`'beforeinstallprompt' event was fired.`);
     });
 
     // check if the website is opened in standalone mode / PWA
@@ -85,7 +85,7 @@ const App = () => {
 
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.onmessage = (event) => {
-        console.log("received: onmessage", event);
+        // console.log("received: onmessage", event);
         var imageBlob = event.data.file;
         const data = new FormData();
         data.append("file", imageBlob);
@@ -116,7 +116,7 @@ const App = () => {
           });
       };
     } else {
-      console.log("service worker not supported 3");
+      // console.log("service worker not supported 3");
     }
   });
 
@@ -168,8 +168,6 @@ const App = () => {
           alt="OurChatStory"
           style={{ imageRendering: "crisp-edges" }}
         />
-        {console.log("staging=" + process.env.NEXT_PUBLIC_ENV + " staging")}
-
         {process.env.NEXT_PUBLIC_ENV === "staging" ? (
           <>
             {/* <Spacer w={"100%"} /> */}
