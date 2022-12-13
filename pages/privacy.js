@@ -13,6 +13,7 @@ export default function Privacy() {
           backgroundColor: "black",
           height: "100vh",
           fontFamily: "sans-serif",
+          overflowY: "auto",
         }}
       >
         <Link href="/">
@@ -47,15 +48,16 @@ export default function Privacy() {
 
         <h2>WE DONT OWN A DATABASE</h2>
         <p>
-          OurChatStory servers does not connect to a database and hence we have a ZERO-DATA-SRORAGE-POLICY.
-          When you use our tool, our server get your WhatsApp messages
-          in order to perform the analysis. However, we do not store any of your
-          personal data or messages on our servers, and all messages are
-          processed and the insights are sent immediately after the analysis is
-          complete. This means that your messages remain private and
-          confidential at all times. Some parts of the generated meta-data numbers are recorded after
-          the analysis for product improvements, but this data is not linked to
-          your messages in any way. The wordcloud is not recorded.
+          OurChatStory servers does not connect to a database and hence we have
+          a ZERO-DATA-SRORAGE-POLICY. When you use our tool, our server get your
+          WhatsApp messages in order to perform the analysis. However, we do not
+          store any of your personal data or messages on our servers, and all
+          messages are processed and the insights are sent immediately after the
+          analysis is complete. This means that your messages remain private and
+          confidential at all times. Some parts of the generated meta-data
+          numbers are recorded after the analysis for product improvements, but
+          this data is not linked to your messages in any way. The wordcloud is
+          not recorded.
         </p>
 
         <h2>We use secure encryption methods</h2>

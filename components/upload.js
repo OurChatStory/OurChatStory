@@ -19,6 +19,7 @@ import {
   TabPanels,
   Spacer,
   Divider,
+  AspectRatio,
 } from "@chakra-ui/react";
 import { FileUploader } from "react-drag-drop-files";
 import { BiDownload } from "react-icons/bi";
@@ -229,56 +230,75 @@ const Upload = ({
             </Heading> */}
               <TabPanels>
                 <TabPanel>
-                  <Text fontSize={["x1", "2xl"]}>
-                    <OrderedList
-                      spacing={3}
-                      fontSize={["md", "md"]}
-                      fontWeight={500}
-                    >
-                      {/* <ListItem>
+                  <div
+                    // style={
+                    //   window.innerWidth < 600
+                    //     ? { height: "350px", overflowY: "auto" }
+                    //     : {}
+                    // }
+                    style={{ height: "350px", overflowY: "auto" }}
+                  >
+                    <Text fontSize={["x1", "2xl"]}>
+                      <OrderedList
+                        spacing={3}
+                        fontSize={["md", "md"]}
+                        fontWeight={500}
+                        mr="16px"
+                      >
+                        <Box w="100%" >
+                          <AspectRatio ratio={1.8}>
+                            <iframe
+                              title="Instructions"
+                              src="https://www.youtube.com/embed/6bnrIGoYuE8?autoplay=1"
+                              allowFullScreen
+                            />
+                          </AspectRatio>
+                        </Box>
+                        {/* <ListItem>
                         <strong>Android</strong> users can install the WebApp
                         and share chat directly to the app.
                       </ListItem> */}
 
-                      {deferredPrompt || isSuccessfulPWAInstall ? (
-                        <>
+                        {deferredPrompt || isSuccessfulPWAInstall ? (
+                          <>
+                            <ListItem>
+                              <strong>Install the WebApp</strong> by clicking
+                              below.
+                            </ListItem>
+                            <Button
+                              onClick={handlePWAInstall}
+                              colorScheme="primary"
+                              variant="outline"
+                              size="sm"
+                              w="100%"
+                              disabled={isSuccessfulPWAInstall}
+                            >
+                              {isSuccessfulPWAInstall
+                                ? "Installed"
+                                : "Install the WebApp"}
+                            </Button>
+                          </>
+                        ) : (
                           <ListItem>
-                            <strong>Install the WebApp</strong> by clicking
-                            below.
+                            <strong>To install the WebApp</strong>: Click on the
+                            three dots of Chrome browser. You will find the
+                            &quot;Install App&quot; option.
                           </ListItem>
-                          <Button
-                            onClick={handlePWAInstall}
-                            colorScheme="primary"
-                            variant="outline"
-                            size="sm"
-                            w="100%"
-                            disabled={isSuccessfulPWAInstall}
-                          >
-                            {isSuccessfulPWAInstall
-                              ? "Installed"
-                              : "Install the WebApp"}
-                          </Button>
-                        </>
-                      ) : (
+                        )}
                         <ListItem>
-                          <strong>To install the WebApp</strong>: Click on the
-                          three dots of Chrome browser. You will find the
-                          &quot;Install App&quot; option.
+                          Then open the chat whose wrap you want to generate.
                         </ListItem>
-                      )}
-                      <ListItem>
-                        Then open the chat whose wrap you want to generate.
-                      </ListItem>
-                      <ListItem>
-                        Click on the three dots on the top right corner.
-                      </ListItem>
-                      <ListItem>
-                        Click on &quot;More&quot; &gt; &quot;Export chat&quot;
-                        &gt; &quot;Without media&quot;.
-                      </ListItem>
-                      <ListItem>Share it to OurChatStory app.</ListItem>
-                    </OrderedList>
-                  </Text>
+                        <ListItem>
+                          Click on the three dots on the top right corner.
+                        </ListItem>
+                        <ListItem>
+                          Click on &quot;More&quot; &gt; &quot;Export chat&quot;
+                          &gt; &quot;Without media&quot;.
+                        </ListItem>
+                        <ListItem>Share it to OurChatStory app.</ListItem>
+                      </OrderedList>
+                    </Text>
+                  </div>
                 </TabPanel>
                 <TabPanel>
                   <Text fontSize={["x1", "2xl"]}>
