@@ -201,7 +201,7 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
         </strong>
         <br />
         You can be confident by checking our {" "}
-        <Link style={{ textDecoration: "underline" }} href="https://github.com/OurChatStory/OurChatStory-Web">
+        <Link style={{ textDecoration: "underline" }} href="https://github.com/OurChatStory/OurChatStory">
           code.
         </Link>
       </Text>
