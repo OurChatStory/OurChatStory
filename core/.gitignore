@@ -3,3 +3,4 @@
 /functions/__pycache__
 /.vscode
 __pycache__
+.env
