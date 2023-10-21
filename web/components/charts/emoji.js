@@ -68,11 +68,11 @@ const Card5 = ({ drawData }) => {
 
       {/* <VStack>
           <HStack>
-            <Text fontSize={"8xl"}>{drawData.top_10_emojis[1].emoji}</Text>
+            <Text fontSize={"8xl"}>{drawData.top_emojis[1].emoji}</Text>
           </HStack>
           <HStack>
-            <Text fontSize={"8xl"}>{drawData.top_10_emojis[2].emoji}</Text>
-            <Text fontSize={"8xl"}>{drawData.top_10_emojis[3].emoji}</Text>
+            <Text fontSize={"8xl"}>{drawData.top_emojis[2].emoji}</Text>
+            <Text fontSize={"8xl"}>{drawData.top_emojis[3].emoji}</Text>
           </HStack>
         </VStack> */}
 
@@ -83,22 +83,22 @@ const Card5 = ({ drawData }) => {
       >
         <GridItem colSpan={2}>
           <Text fontSize={["8xl", "8xl", "8xl"]}>
-            {drawData.top_10_emojis[0].emoji}
+            {drawData.top_emojis[0]}
           </Text>
         </GridItem>
         <GridItem colSpan={2}>
           <Text fontSize={["8xl", "8xl", "8xl"]}>
-            {drawData.top_10_emojis[1].emoji}
+            {drawData.top_emojis[1]}
           </Text>
         </GridItem>
         <GridItem colSpan={2}>
           <Text fontSize={["8xl", "8xl", "8xl"]}>
-            {drawData.top_10_emojis[2].emoji}
+            {drawData.top_emojis[2]}
           </Text>
         </GridItem>
         <GridItem colSpan={2}>
           <Text fontSize={["8xl", "8xl", "8xl"]}>
-            {drawData.top_10_emojis[3].emoji}
+            {drawData.top_emojis[3]}
           </Text>
         </GridItem>
       </Grid>

@@ -119,9 +119,7 @@ module.exports.no_of_days_talked = (string) => {
 };
 
 module.exports.format_date = (date) => {
-  // input = "2023-01-07"
-  // output = "Jan 7th"
-  console.log(date);
+
   const inputDate = new Date(date);
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 

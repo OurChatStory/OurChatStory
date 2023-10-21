@@ -1,27 +1,27 @@
 module.exports.sample = {
   "group": false,
   "members": [
-    "Yajat Malhotra",
-    "Anshul Agarwala"
+    "Samuel",
+    "Ananya"
   ],
   "total_no_of_chats": 2288,
   "total_days_talked": 96,
   "most_active_date": "2023-01-07",
   "no_of_messages_per_member": [
     {
-      "member": "Anshul Agarwala",
+      "member": "Ananya",
       "count": 1194
     },
     {
-      "member": "Yajat Malhotra",
+      "member": "Samuel",
       "count": 1094
     }
   ],
   "most_active_member": {
-    "member": "Anshul Agarwala",
+    "member": "Ananya",
     "count": 1194
   },
-  "who_texts_first": "Yajat Malhotra",
+  "who_texts_first": "Samuel",
   "monthly_chats_count": [
     {
       "month": "Jan",
