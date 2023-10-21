@@ -46,7 +46,7 @@ def parse_datetime(
 
         # if year is 2 digit, convert it to 4 digit
         if year < 100:
-            if year <= 22:
+            if year <= datetime.datetime.now().year % 100:
                 year += 2000
             else:
                 year += 1900
@@ -138,6 +138,7 @@ def check_dayfirst(dates: list) -> bool:
 # test the function
 # print(check_dayfirst(["11/05/22, 5:59 pm", "12/05/22, 5:30 am", "13/05/22, 5:59 pm"]))
 # print(check_dayfirst(["05/11/22, 5:59 pm", "05/12/22, 5:30 am", "05/13/22, 5:59 pm"]))
+
 
 def convert_long_to_date(long_date: int) -> datetime.date:
     dt = datetime.datetime.fromtimestamp(long_date / 1000)

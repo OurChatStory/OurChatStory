@@ -1,6 +1,7 @@
 import numpy as np
 import emoji
 
+
 def time_extractor(chat: str, phone: str) -> str:
     y = 0
     if phone == "IOS":
@@ -54,7 +55,8 @@ def message_extractor(chat: str) -> str:
         return np.nan
     else:
         return s
-    
+
+
 def extract_emojis(s: str) -> str:
     return "".join(c for c in s if c in emoji.EMOJI_DATA)
 
