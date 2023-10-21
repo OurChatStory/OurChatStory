@@ -38,7 +38,7 @@ const GridStats = ({ drawData }) => {
         pl="1rem"
         pr="1rem"
       >
-        Few Cool Numbers
+        Few Cool Stats
       </Heading>
 
       <Grid
@@ -62,7 +62,7 @@ const GridStats = ({ drawData }) => {
                 fontWeight="800"
                 textAlign={"center"}
               >
-                {parser.no_of_days_talked(drawData.no_talk_string)}
+                {drawData.total_days_talked}
               </Text>
               <Text>d</Text>
             </HStack>
@@ -75,7 +75,7 @@ const GridStats = ({ drawData }) => {
               <br />
               in total
             </Text>
-            {parser.no_of_days_talked(drawData.no_talk_string) > 330 ? (
+            {drawData.total_days_talked > 330 ? (
               <>
                 <Spacer />
                 <Text
@@ -109,18 +109,15 @@ const GridStats = ({ drawData }) => {
                 fontWeight="800"
                 textAlign={"center"}
               >
-                {drawData.total_no_of_minutes > 60
-                  ? parseInt(drawData.total_no_of_minutes / 60)
-                  : drawData.total_no_of_minutes}
+                {drawData.most_active_day.day.substring(0, 3)}
               </Text>
-              <Text>{drawData.total_no_of_minutes > 60 ? "h" : "m"}</Text>
             </HStack>
             <Text
               fontSize={["md", "md", "md"]}
               fontWeight="700"
               textAlign={"center"}
             >
-              spent talking <br></br>together
+              most active<br></br>day
             </Text>
 
             <Spacer />
@@ -142,11 +139,11 @@ const GridStats = ({ drawData }) => {
                 textAlign={"center"}
               >
                 {
-                drawData.longest_session.streak_duration > 120
-                ? parseInt(drawData.longest_session.streak_duration / 60)
-                : drawData.longest_session.streak_duration}
+                  drawData.longest_session.total_time > (120 * 60)
+                    ? parseInt(drawData.longest_session.total_time / (60 * 60))
+                    : parseInt(drawData.longest_session.total_time / 60)}
               </Text>
-              <Text>{drawData.longest_session.streak_duration > 120 ? "h" : "m"}</Text>
+              <Text>{drawData.longest_session.total_time > (120 * 60) ? "h" : "m"}</Text>
             </HStack>
             <Text
               fontSize={["md", "md", "lg"]}
@@ -155,7 +152,7 @@ const GridStats = ({ drawData }) => {
             >
               longest <br /> at a stretch
             </Text>
-            {drawData.longest_session.streak_duration > 200 ? (
+            {drawData.longest_session.total_time > (200 * 60) ? (
               <>
                 <Spacer />
                 <Text
@@ -188,7 +185,7 @@ const GridStats = ({ drawData }) => {
                 fontWeight="800"
                 textAlign={"center"}
               >
-                {Math.round(drawData.longest_session.average_reply_time * 10) /
+                {Math.round(drawData.longest_session.avg_reply_time * 10) /
                   10}
               </Text>
               <Text>s</Text>

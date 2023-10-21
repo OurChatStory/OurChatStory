@@ -118,6 +118,19 @@ module.exports.no_of_days_talked = (string) => {
   }).length;
 };
 
+module.exports.format_date = (date) => {
+  // input = "2023-01-07"
+  // output = "Jan 7th"
+  console.log(date);
+  const inputDate = new Date(date);
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  const day = inputDate.getDate();
+  const month = inputDate.getMonth();
+  const formattedDate = `${day} ${monthNames[month]}`;
+  return formattedDate;
+}
+
 function generateHash(seed) {
   var hash = 0;
   for (var i = 0; i < seed.length; i++) {

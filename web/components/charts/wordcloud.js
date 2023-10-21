@@ -28,7 +28,7 @@ const Card3 = ({ drawData }) => {
         What do you talk about?
         </Heading>
       <Image
-        src={"data:image/png;base64, " + drawData.word_cloud_base64}
+        src={"data:image/png;base64, " + drawData.wordcloud}
         alt="Word Cloud"
         pb="4rem"
       />

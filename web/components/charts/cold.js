@@ -58,7 +58,7 @@ const Card6 = ({ drawData }) => {
       {/* <Box bgColor={"black"} opacity={0.5} /> */}
       <VStack h="100%" align="left" p="1rem" justify="center" spacing="1rem">
         {" "}
-        {parser.time_gap(drawData.longest_gap) > 0 ? (
+        {drawData.longest_gap.length > 0 ? (
           <>
             <Text
               fontSize="2xl"
@@ -85,8 +85,7 @@ const Card6 = ({ drawData }) => {
               align="left"
               textAlign="center"
             >
-              {parser.format_time_gap(drawData.longest_gap.start_time)} &{" "}
-              {parser.format_time_gap(drawData.longest_gap.end_time)}
+              {parser.format_date(drawData.longest_gap.start_date)} &{" "} {parser.format_date(drawData.longest_gap.end_date)}
             </Text>
 
             {/* <Text fontSize="md" align="left" fontWeight={"medium"}> */}
@@ -117,7 +116,7 @@ const Card6 = ({ drawData }) => {
                 textAlign="center"
                 style={{ textShadow: "none" }}
               >
-                {parser.time_gap(drawData.longest_gap)}
+                {drawData.longest_gap.length}
               </Text>
               <Spacer />
             </HStack>
@@ -127,11 +126,11 @@ const Card6 = ({ drawData }) => {
               fontWeight={"medium"}
               textAlign="center"
             >
-              {parser.time_gap(drawData.longest_gap) == 1
+              {drawData.longest_gap.length == 1
                 ? "whole day"
                 : "days only when you didn't talk!"}
             </Text>
-            {parser.time_gap(drawData.longest_gap) < 5 ? (
+            {drawData.longest_gap.length < 5 ? (
               <Text fontWeight={"500"}>
                 Having someone to talk to everyday is a privilege and you{" "}
                 {drawData.group ? "all" : "both"} are very lucky to have each
@@ -172,7 +171,7 @@ const Card6 = ({ drawData }) => {
                   bgColor={"pink"}
                   style={{ textShadow: "none" }}
                   color="black"
-                  >
+                >
                   This is really special because only 1 out of 15000 of people can say the same
                 </Text>
               </>
