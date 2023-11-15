@@ -170,7 +170,7 @@ const Intro = ({ setShowUploader }) => {
                     fontWeight="600"
                     align={"start"}
                   >
-                    2022
+                    2023
                   </Text>
                 </HStack>
 
