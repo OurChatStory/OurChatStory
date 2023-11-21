@@ -32,4 +32,5 @@ To contribute, fork the repo and create a PR.
 
 - [Yajat Malhotra](https://www.github.com/iamyajat)
 - [Anshul Agarwala](https://www.github.com/anshulagx)
+- [Divit Agrawal](https://www.github.com/divit-agrawal)
 
