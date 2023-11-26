@@ -148,6 +148,7 @@ const Card6 = ({ drawData }) => {
       <a
         href="https://www.buymeacoffee.com/whatsappwrapped"
         target="_blank"
+        rel="noreferrer"
         style={{ zIndex: "10000" }}>
         {/* <img
           src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
