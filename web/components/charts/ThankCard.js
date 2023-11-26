@@ -1,4 +1,16 @@
-import { VStack, Text, Image, Link, Box, Center, keyframes, Spacer } from "@chakra-ui/react";
+import {
+  VStack,
+  Text,
+  Image,
+  Link,
+  Box,
+  Center,
+  keyframes,
+  Spacer,
+  Button,
+} from "@chakra-ui/react";
+import { FaRegCopy } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const ZoomAnimation = keyframes`
     0% {
@@ -14,6 +26,31 @@ const ZoomAnimation = keyframes`
 
 const Card6 = ({ drawData }) => {
   const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+
+  const UPI_ID = "ourchatstory@ybl"
+
+  const [copiedTextTrue, setCoppiedTextTrue] = useState(false);
+
+  useEffect(() => {
+    fetch("https://extreme-ip-lookup.com/json/")
+      .then((res) => res.json())
+      .then((response) => {
+        console.log("Country is : ", response);
+      })
+      .catch((data, status) => {
+        console.log("Request failed:", data);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (copiedTextTrue) {
+      setTimeout(() => {
+        document.getElementById("copy").setAttribute("tooltip", "Copy");
+        setCoppiedTextTrue(false);
+      }, 2000);
+    }
+  }
+  , [copiedTextTrue]);
 
   return (
     <VStack
@@ -36,26 +73,94 @@ const Card6 = ({ drawData }) => {
       borderRadius="1rem"
       p="1rem"
       animation={zoomAnimation}
-      
       style={{
         textShadow:
           "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
-      }}
-    >
-
+      }}>
       <Text color="#F5F5F5" fontSize="3xl" align="center">
         This was
       </Text>
-      <Image h="80px" src="static/compress/logo2.webp" alt="OurChatStory"/>
-      <Text color="#F5F5F5" fontSize="4xl" align="center" pb="1rem" >
+      {/* <Image h="80px" src="static/compress/logo2.webp" alt="OurChatStory" /> */}
+      <Text color="#F5F5F5" fontSize="4xl" align="center" pb="1rem">
         <b>OurChatStory</b>
       </Text>
       <Text color="#F5F5F5" fontSize="xl" align="center">
-        While we create many more amazing stories together, let&apos;s share this with friends
+        Your chats tell a story.
       </Text>
+      {/* <Text color="#F5F5F5" fontSize="xl" align="center">
+        Because every story is
+        <br />
+        unique and worth sharing
+      </Text> */}
       <Text color="#F5F5F5" fontSize="xl" align="center">
-        Because every story is<br />unique and worth sharing
+        Help us keep the story going. A small donation keeps our servers running
+        and your memories flowing
       </Text>
+      <Text color="#F5F5F5" fontSize="xs" align="center">
+        Donate using UPI:
+      </Text>
+      <Box style={{margin: "0px"}}>
+        <div
+          className="shareLink"
+          onClick={() => {
+            // e.preventDefault();
+            navigator.clipboard.writeText(UPI_ID);
+            document.getElementById("copy").setAttribute("tooltip", "Copied!");
+            setCoppiedTextTrue(true);
+            // alert("UPI copied to clipboard");
+          }}>
+          <div className="permalink">
+            <input
+              className="textLink"
+              id="text"
+              type="text"
+              name="shortlink"
+              value={UPI_ID}
+              readonly=""
+            />
+            <span className="copyLink" id="copy" tooltip="Copy to clipboard">
+              <FaRegCopy />
+            </span>
+          </div>
+        </div>
+      </Box>
+      {copiedTextTrue && (
+        <Text color="green" fontSize="xs" align="center" style={{margin: "0px"}}>
+          Copied to clipboard!
+        </Text>
+      )}
+      {/* <Text color="green" fontSize="xs" align="center">
+        Copied to clipboard!
+      </Text> */}
+      <Text m={0}>or</Text>
+      {/* <Box>
+        <Button colorScheme="yellow" variant="outline">
+          <Link
+            textDecoration="underline"
+            cursor="pointer"
+            zIndex={10000}
+            href="https://www.buymeacoffee.com/whatsappwrapped"
+            target="_blank">
+            Support us using BuyMeACoffee
+          </Link>
+        </Button>
+      </Box> */}
+      <a
+        href="https://www.buymeacoffee.com/whatsappwrapped"
+        target="_blank"
+        rel="noreferrer"
+        style={{ zIndex: "10000" }}>
+        {/* <img
+          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+          alt="Buy Me A Coffee"
+          style="height: 60px !important;width: 217px !important;"
+        /> */}
+        <Image
+          h={10}
+          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+          alt="Buy Me A Coffee"
+        />
+      </a>
       {/* <Box zIndex={10000}>
         <Text color="#F5F5F5" fontSize="sm" align="center">
           Made with ❤️ by
@@ -82,6 +187,82 @@ const Card6 = ({ drawData }) => {
         </Text>
       </Box> */}
       {/* <Spacer /> */}
+      <style jsx>{`
+        .shareLink {
+          z-index: 10000;
+          position: block !important;
+          display: flex;
+        }
+
+        .shareLink {
+          .permalink {
+            cursor: pointer;
+            z-index: 10000;
+            position: relative;
+            border-radius: 30px;
+            .textLink {
+              opacity: 0.5;
+              text-align: center;
+              padding: 12px 40px 12px 10px;
+              height: 36px;
+              width: 400px;
+              font-size: 12px;
+              letter-spacing: 0.3px;
+              color: #494949;
+              border-radius: 25px;
+              border: 1px solid #f2f2f2;
+              background-color: #f2f2f2;
+              outline: 0;
+              appearance: none;
+              transition: all 0.3s ease;
+              @media (max-width: 767px) {
+                width: 100%;
+              }
+              &:focus {
+                border-color: #d8d8d8;
+              }
+              &::selection {
+                color: #fff;
+                background-color: #ff0a4b;
+              }
+            }
+            .copyLink {
+              position: absolute;
+              top: 50%;
+              right: 15px;
+              cursor: pointer;
+              transform: translateY(-50%);
+              &:hover {
+                &:after {
+                  opacity: 1;
+                  transform: translateY(0) translateX(-50%);
+                }
+              }
+              &:after {
+                content: attr(tooltip);
+                width: 140px;
+                bottom: -40px;
+                left: 50%;
+                padding: 5px;
+                border-radius: 4px;
+                font-size: 0.8rem;
+                opacity: 0;
+                pointer-events: none;
+                position: absolute;
+                background-color: #000000;
+                color: #ffffff;
+                transform: translateY(-10px) translateX(-50%);
+                transition: all 300ms ease;
+                text-align: center;
+              }
+              i {
+                font-size: 20px;
+                color: #ff0a4b;
+              }
+            }
+          }
+        }
+      `}</style>
     </VStack>
   );
 };
