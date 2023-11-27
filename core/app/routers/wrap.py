@@ -15,4 +15,5 @@ async def wrap(chats: str = Depends(get_chats)):
         if MODE == "dev":
             raise e
         else:
+            print(e)
             raise HTTPException(status_code=400, detail="Invalid chats")
