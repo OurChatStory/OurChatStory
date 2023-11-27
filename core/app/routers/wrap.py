@@ -7,7 +7,7 @@ from app.utils.constants import MODE
 router = APIRouter()
 
 
-@router.post("/wrap/", tags=["wrap"])
+@router.post("/wrap", tags=["wrap"])
 async def wrap(chats: str = Depends(get_chats)):
     try:
         return get_wrap(chats)

@@ -1,10 +1,12 @@
 from app.services.chats import WhatsAppChat
 from app.utils.constants import (
+    LOG,
     MAX_EMOJIS,
     MIN_CHATS_REQUIRED,
     MIN_MEMBERS_REQUIRED,
     YEAR,
 )
+from app.utils.logging import log_metadata
 
 
 def get_wrap(chats: str) -> dict:
@@ -51,7 +53,7 @@ def get_wrap(chats: str) -> dict:
 
     wordcloud = wc.get_wordcloud()
 
-    return {
+    stats = {
         "group": is_group,
         "members": chat_members,
         "total_no_of_chats": total_chats,
@@ -73,3 +75,8 @@ def get_wrap(chats: str) -> dict:
         "longest_session": longest_session,
         "wordcloud": wordcloud,
     }
+
+    if LOG == 1:
+        log_metadata(stats)
+
+    return stats
