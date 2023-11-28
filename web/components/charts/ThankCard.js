@@ -27,7 +27,7 @@ const ZoomAnimation = keyframes`
 const Card6 = ({ drawData }) => {
   const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
 
-  const UPI_ID = "ourchatstory@ybl"
+  const UPI_ID = "ourchatstory@ybl";
 
   const [copiedTextTrue, setCoppiedTextTrue] = useState(false);
 
@@ -49,8 +49,7 @@ const Card6 = ({ drawData }) => {
         setCoppiedTextTrue(false);
       }, 2000);
     }
-  }
-  , [copiedTextTrue]);
+  }, [copiedTextTrue]);
 
   return (
     <VStack
@@ -81,25 +80,39 @@ const Card6 = ({ drawData }) => {
         This was
       </Text>
       {/* <Image h="80px" src="static/compress/logo2.webp" alt="OurChatStory" /> */}
-      <Text color="#F5F5F5" fontSize="4xl" align="center" pb="1rem">
+      <Text
+        color="#F5F5F5"
+        fontSize="4xl"
+        align="center"
+        pb="1rem"
+        style={{ marginTop: "0px" }}>
         <b>OurChatStory</b>
       </Text>
-      <Text color="#F5F5F5" fontSize="xl" align="center">
+      <Text color="#F5F5F5" fontSize="s" align="center">
         Your chats tell a story.
       </Text>
-      {/* <Text color="#F5F5F5" fontSize="xl" align="center">
-        Because every story is
-        <br />
-        unique and worth sharing
-      </Text> */}
-      <Text color="#F5F5F5" fontSize="xl" align="center">
+      <Text color="#F5F5F5" fontSize="s" align="center">
         Help us keep the story going. A small donation keeps our servers running
-        and your memories flowing
+        and your memories flowing!
       </Text>
-      <Text color="#F5F5F5" fontSize="xs" align="center">
-        Donate using UPI:
+      <br />
+      <br />
+      <a
+        href="https://www.buymeacoffee.com/whatsappwrapped"
+        target="_blank"
+        rel="noreferrer"
+        style={{ zIndex: "10000" }}>
+        <Image
+          h={10}
+          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+          alt="Buy Me A Coffee"
+        />
+      </a>
+      <Text m={0}>or</Text>
+      <Text color="#F5F5F5" fontSize="s" align="center" pb={1}>
+        Sponsor this project using UPI:
       </Text>
-      <Box style={{margin: "0px"}}>
+      <Box style={{ margin: "0px" }}>
         <div
           className="shareLink"
           onClick={() => {
@@ -124,43 +137,17 @@ const Card6 = ({ drawData }) => {
           </div>
         </div>
       </Box>
-      {copiedTextTrue && (
-        <Text color="green" fontSize="xs" align="center" style={{margin: "0px"}}>
-          Copied to clipboard!
-        </Text>
-      )}
-      {/* <Text color="green" fontSize="xs" align="center">
-        Copied to clipboard!
-      </Text> */}
-      <Text m={0}>or</Text>
-      {/* <Box>
-        <Button colorScheme="yellow" variant="outline">
-          <Link
-            textDecoration="underline"
-            cursor="pointer"
-            zIndex={10000}
-            href="https://www.buymeacoffee.com/whatsappwrapped"
-            target="_blank">
-            Support us using BuyMeACoffee
-          </Link>
-        </Button>
-      </Box> */}
-      <a
-        href="https://www.buymeacoffee.com/whatsappwrapped"
-        target="_blank"
-        rel="noreferrer"
-        style={{ zIndex: "10000" }}>
-        {/* <img
-          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-          alt="Buy Me A Coffee"
-          style="height: 60px !important;width: 217px !important;"
-        /> */}
-        <Image
-          h={10}
-          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-          alt="Buy Me A Coffee"
-        />
-      </a>
+      <Box minHeight={6}>
+        {copiedTextTrue && (
+          <Text
+            color="#F5F5F5"
+            fontSize="xs"
+            align="center"
+            style={{ margin: "0px" }}>
+            Copied to clipboard!
+          </Text>
+        )}
+      </Box>
       {/* <Box zIndex={10000}>
         <Text color="#F5F5F5" fontSize="sm" align="center">
           Made with ❤️ by
@@ -215,9 +202,10 @@ const Card6 = ({ drawData }) => {
               outline: 0;
               appearance: none;
               transition: all 0.3s ease;
-              @media (max-width: 767px) {
-                width: 100%;
-              }
+              // @media (max-width: 767px) {
+              //   width: 100%;
+              // }
+              width: 100%;
               &:focus {
                 border-color: #d8d8d8;
               }
