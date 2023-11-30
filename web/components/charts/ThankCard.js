@@ -47,7 +47,7 @@ const Card6 = ({ drawData }) => {
       setTimeout(() => {
         document.getElementById("copy").setAttribute("tooltip", "Copy");
         setCoppiedTextTrue(false);
-      }, 2000);
+      }, 1000);
     }
   }, [copiedTextTrue]);
 
@@ -95,20 +95,6 @@ const Card6 = ({ drawData }) => {
         Help us keep the story going. A small donation keeps our servers running
         and your memories flowing!
       </Text>
-      <br />
-      <br />
-      <a
-        href="https://www.buymeacoffee.com/whatsappwrapped"
-        target="_blank"
-        rel="noreferrer"
-        style={{ zIndex: "10000" }}>
-        <Image
-          h={10}
-          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-          alt="Buy Me A Coffee"
-        />
-      </a>
-      <Text m={0}>or</Text>
       <Text color="#F5F5F5" fontSize="s" align="center" pb={1}>
         Sponsor this project using UPI:
       </Text>
@@ -137,17 +123,29 @@ const Card6 = ({ drawData }) => {
           </div>
         </div>
       </Box>
-      <Box minHeight={6}>
+      <Box minHeight={6} style={{margin: "0px"}}>
         {copiedTextTrue && (
           <Text
             color="#F5F5F5"
             fontSize="xs"
             align="center"
             style={{ margin: "0px" }}>
-            Copied to clipboard!
+            Copied!
           </Text>
         )}
       </Box>
+      <Text style={{margin: "0px"}}>or</Text>
+      <a
+        href="https://www.buymeacoffee.com/whatsappwrapped"
+        target="_blank"
+        rel="noreferrer"
+        style={{ zIndex: "10000" }}>
+        <Image
+          h={10}
+          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+          alt="Buy Me A Coffee"
+        />
+      </a>
       {/* <Box zIndex={10000}>
         <Text color="#F5F5F5" fontSize="sm" align="center">
           Made with ❤️ by
