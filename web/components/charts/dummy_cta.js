@@ -7,13 +7,27 @@ import {
   Button,
   Link,
   IconButton,
+  Image
 } from "@chakra-ui/react";
 import React from "react";
 import Marquee from "react-fast-marquee";
-import { FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaInstagram, FaTwitter, FaRegCopy } from "react-icons/fa";
 import CountUp from "react-countup";
+import { useEffect, useState } from "react";
+
 
 const DummyCTA = ({ drawData, setShowUploader }) => {
+  const UPI_ID = "ourchatstory@ybl";
+  const [copiedTextTrue, setCoppiedTextTrue] = useState(false);
+
+  useEffect(() => {
+    if (copiedTextTrue) {
+      setTimeout(() => {
+        document.getElementById("copy").setAttribute("tooltip", "Copy");
+        setCoppiedTextTrue(false);
+      }, 1000);
+    }
+  }, [copiedTextTrue]);
   return (
     <VStack
       align="center"
@@ -163,7 +177,58 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
       {/* <Link href="/privacy">
         <Text fontSize={"1x1"}>Privacy</Text>
       </Link> */}
-      <Spacer />
+      <Text color="#F5F5F5" fontSize="s" align="center" pb={1}>
+        Sponsor this project using UPI:
+      </Text>
+      <Box style={{ margin: "0px" }}>
+        <div
+          className="shareLink"
+          onClick={() => {
+            // e.preventDefault();
+            navigator.clipboard.writeText(UPI_ID);
+            document.getElementById("copy").setAttribute("tooltip", "Copied!");
+            setCoppiedTextTrue(true);
+            // alert("UPI copied to clipboard");
+          }}>
+          <div className="permalink">
+            <input
+              className="textLink"
+              id="text"
+              type="text"
+              name="shortlink"
+              value={UPI_ID}
+              readonly=""
+            />
+            <span className="copyLink" id="copy" tooltip="Copy to clipboard">
+              <FaRegCopy />
+            </span>
+          </div>
+        </div>
+      </Box>
+      <Box minHeight={6} style={{margin: "0px"}}>
+        {copiedTextTrue && (
+          <Text
+            color="#F5F5F5"
+            fontSize="xs"
+            align="center"
+            style={{ margin: "0px" }}>
+            Copied!
+          </Text>
+        )}
+      </Box>
+      <Text style={{margin: "0px"}}>or</Text>
+      <a
+        href="https://www.buymeacoffee.com/whatsappwrapped"
+        target="_blank"
+        rel="noreferrer"
+        style={{ zIndex: "99" }}>
+        <Image
+          h={10}
+          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+          alt="Buy Me A Coffee"
+        />
+      </a>
+      {/* <Spacer /> */}
       {/* scroll to top to #marquee */}
       {/* <Text
         fontSize="2xl"
@@ -185,7 +250,7 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
         See what others have made
       </Text> */}
       {/* <Spacer /> */}
-      <Spacer />
+      {/* <Spacer /> */}
       <Text
         fontSize={{ base: "smaller", sm: "sm", lg: "smaller" }}
         color="grey"
@@ -231,6 +296,82 @@ const DummyCTA = ({ drawData, setShowUploader }) => {
           </Link>
         </Text>
       </Box> */}
+      <style jsx>{`
+        .shareLink {
+          z-index: 10000;
+          display: flex;
+        }
+
+        .shareLink {
+          .permalink {
+            cursor: pointer;
+            z-index: 20;
+            position: relative;
+            border-radius: 30px;
+            .textLink {
+              opacity: 0.5;
+              text-align: center;
+              padding: 12px 40px 12px 10px;
+              height: 36px;
+              width: 400px;
+              font-size: 12px;
+              letter-spacing: 0.3px;
+              color: #494949;
+              border-radius: 25px;
+              border: 1px solid #f2f2f2;
+              background-color: #f2f2f2;
+              outline: 0;
+              appearance: none;
+              transition: all 0.3s ease;
+              // @media (max-width: 767px) {
+              //   width: 100%;
+              // }
+              width: 100%;
+              &:focus {
+                border-color: #d8d8d8;
+              }
+              &::selection {
+                color: #fff;
+                background-color: #ff0a4b;
+              }
+            }
+            .copyLink {
+              position: absolute;
+              top: 50%;
+              right: 15px;
+              cursor: pointer;
+              transform: translateY(-50%);
+              &:hover {
+                &:after {
+                  opacity: 1;
+                  transform: translateY(0) translateX(-50%);
+                }
+              }
+              &:after {
+                content: attr(tooltip);
+                width: 140px;
+                bottom: -40px;
+                left: 50%;
+                padding: 5px;
+                border-radius: 4px;
+                font-size: 0.8rem;
+                opacity: 0;
+                pointer-events: none;
+                // position: absolute;
+                background-color: #000000;
+                color: #ffffff;
+                transform: translateY(-10px) translateX(-50%);
+                transition: all 300ms ease;
+                text-align: center;
+              }
+              i {
+                font-size: 20px;
+                color: #ff0a4b;
+              }
+            }
+          }
+        }
+      `}</style>
     </VStack>
   );
 };
