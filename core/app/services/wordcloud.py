@@ -9,6 +9,9 @@ from app.utils.constants import WORDCLOUD_HEIGHT, WORDCLOUD_WIDTH
 with open("./assets/stopwords/stop_words.pkl", "rb") as f:
     stopwords = pickle.load(f)
 
+with open("./assets/stopwords/more_stopwords.wordlist", "r") as f:
+    more_stopwords = set(f.read().splitlines())
+    stopwords.update(more_stopwords)
 
 def words_weight(df):
     chat_words = ""
