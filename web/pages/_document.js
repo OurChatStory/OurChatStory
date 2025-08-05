@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
 
-          <title>WhatsApp Wrapped - Chat Insights and Analysis</title>
+          <title>WhatsApp Wrapped 2025 - Chat Insights and Analysis</title>
           <meta
             name="description"
             content="Get Spotify Wrapped style insights of your WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
           <meta property="og:type" content="website" />
           <meta
             property="og:title"
-            content="WhatsApp Wrapped - Chat Insights and Analysis"
+            content="WhatsApp Wrapped 2025 - Chat Insights and Analysis"
           />
           <meta
             property="og:description"
@@ -40,7 +40,7 @@ export default class MyDocument extends Document {
           <meta property="twitter:url" content="https://OurChatStory.co/" />
           <meta
             name="twitter:title"
-            content="WhatsApp Wrapped - Chat Insights and Analysis"
+            content="WhatsApp Wrapped 2025 - Chat Insights and Analysis"
           />
           <meta
             name="twitter:description"
