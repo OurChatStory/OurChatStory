@@ -78,7 +78,7 @@ const NoTalk = ({ drawData }) => {
             py={8}
           >
             <Text fontSize="2xl" fontWeight="bold" color="#e9edef">
-              You didn't talk for
+              You didn&apos;t talk for
             </Text>
             <Text
               fontSize="6xl"

@@ -59,7 +59,7 @@ const ThankYou = ({ drawData }) => {
         letterSpacing="widest"
         zIndex={1}
       >
-        That's a wrap!
+        That&apos;s a wrap!
       </MotionText>
 
       <VStack spacing={2} zIndex={1} textAlign="center">

@@ -56,7 +56,7 @@ const DummyIntro = ({ drawData }) => {
         letterSpacing="widest"
         zIndex={1}
       >
-        Let's talk about
+        Let&apos;s talk about
       </MotionText>
 
       {/* Name 1 - Green Bubble */}
