@@ -84,7 +84,7 @@ const CountPie = ({ drawData }: CountPieProps) => {
           padding={40}
           width={350}
           height={180}
-          labelRadius={({ innerRadius }) => ((innerRadius as number) ?? 70) + 40}
+          labelRadius={({ innerRadius }) => ((innerRadius as number) ?? 70) + 10}
           labels={({ datum }) => `${datum.name}\n${datum.value}`}
           padAngle={2}
           cornerRadius={4}
