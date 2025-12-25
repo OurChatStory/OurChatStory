@@ -3,6 +3,7 @@ import re
 import pickle
 from wordcloud import WordCloud
 import io
+from matplotlib.colors import LinearSegmentedColormap
 
 from app.utils.constants import WORDCLOUD_HEIGHT, WORDCLOUD_WIDTH
 
@@ -29,6 +30,22 @@ def words_weight(df):
 
 def word_cloud(df):
     chat_words = words_weight(df)
+    # Colormap uses the blob colors across screens for consistent theming.
+    blob_cmap = LinearSegmentedColormap.from_list(
+        "wordcloud_blobs",
+        [
+            "#25d366",  # Welcome / Welcome2 / GridStats / ThankCard
+            "#3b82f6",  # TotalChat
+            "#f59e0b",  # MostActive
+            "#8b5cf6",  # MonthlyGraph
+            "#ec4899",  # HourlyGraph
+            "#06b6d4",  # NoTalk
+            "#6366f1",  # WordCloud
+            "#ef4444",  # CountPie
+            "#f97316",  # EmojiChart
+            "#ffffff",  # Keep white for contrast
+        ],
+    )
     # mask_arr = np.array(Image.open("assets/masks/walogo.jpg"))
     wordcloud = WordCloud(
         font_path="assets/fonts/Poppins-Medium.ttf",
@@ -38,7 +55,8 @@ def word_cloud(df):
         height=WORDCLOUD_HEIGHT,
         stopwords=stopwords,
         min_font_size=12,
-        colormap="gist_ncar",
+        background_color="#111b21",
+        colormap=blob_cmap,
     )
     wc = None
     try:
