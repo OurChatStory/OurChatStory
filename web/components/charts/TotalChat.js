@@ -28,7 +28,7 @@ const Card1 = ({ drawData }) => {
         w="300px"
         h="300px"
         borderRadius="full"
-        bg="rgba(37, 211, 102, 0.04)"
+        bg="rgba(59, 130, 246, 0.04)"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity }}
         zIndex={0}
@@ -40,7 +40,7 @@ const Card1 = ({ drawData }) => {
         w="200px"
         h="200px"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.02)"
+        bg="rgba(59, 130, 246, 0.02)"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
@@ -71,7 +71,7 @@ const Card1 = ({ drawData }) => {
       >
         <Text
           fontSize="6xl"
-          color="#25d366" // WhatsApp Green
+          color="#3b82f6" // Blue
           fontWeight="900"
           lineHeight="1"
           letterSpacing="-0.02em"
@@ -94,13 +94,13 @@ const Card1 = ({ drawData }) => {
         bg="#202c33" // Darker card background
         p="1.5rem"
         borderRadius="lg"
-        borderLeft="4px solid #25d366"
+        borderLeft="4px solid #3b82f6"
         maxW="85%"
         zIndex={1}
       >
         <Text color="#d1d7db" fontSize="md" align="left" lineHeight="1.6">
           That puts you in the top{" "}
-          <Text as="span" color="#25d366" fontWeight="bold" fontSize="lg">
+          <Text as="span" color="#3b82f6" fontWeight="bold" fontSize="lg">
             {parseFloat(drawData.top_percent * 100).toFixed(drawData.top_percent < 0.001 ? 4 : 2)}%
           </Text>
           {" "}of texters worldwide! 🌍

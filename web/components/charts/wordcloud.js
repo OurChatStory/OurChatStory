@@ -28,7 +28,7 @@ const WordCloud = ({ drawData }) => {
         w="300px"
         h="300px"
         borderRadius="full"
-        bg="rgba(37, 211, 102, 0.04)"
+        bg="rgba(99, 102, 241, 0.04)"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity }}
         zIndex={0}
@@ -40,7 +40,7 @@ const WordCloud = ({ drawData }) => {
         w="200px"
         h="200px"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.02)"
+        bg="rgba(99, 102, 241, 0.02)"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}

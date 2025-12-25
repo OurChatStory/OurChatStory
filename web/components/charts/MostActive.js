@@ -28,7 +28,7 @@ const MostActive = ({ drawData }) => {
         w="300px"
         h="300px"
         borderRadius="full"
-        bg="rgba(37, 211, 102, 0.04)"
+        bg="rgba(245, 158, 11, 0.04)"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity }}
         zIndex={0}
@@ -40,7 +40,7 @@ const MostActive = ({ drawData }) => {
         w="200px"
         h="200px"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.02)"
+        bg="rgba(245, 158, 11, 0.02)"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
@@ -72,7 +72,7 @@ const MostActive = ({ drawData }) => {
       >
         <Text
           fontSize="5xl"
-          color="#25d366" // WhatsApp Green
+          color="#f59e0b" // Amber
           fontWeight="900"
           lineHeight="1.1"
           letterSpacing="-0.02em"
@@ -92,7 +92,7 @@ const MostActive = ({ drawData }) => {
         bg="#202c33" // Darker card background
         p="1.5rem"
         borderRadius="lg"
-        borderLeft="4px solid #25d366"
+        borderLeft="4px solid #f59e0b"
         maxW="85%"
         zIndex={1}
       >

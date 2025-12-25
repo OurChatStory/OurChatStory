@@ -30,7 +30,7 @@ const MonthlyGraph = ({ drawData, isShared }) => {
 
   return (
     <VStack
-      spacing="2vh"
+      spacing="1vh"
       align="center"
       justify="center"
       w="100%"
@@ -50,7 +50,7 @@ const MonthlyGraph = ({ drawData, isShared }) => {
         w="300px"
         h="300px"
         borderRadius="full"
-        bg="rgba(37, 211, 102, 0.04)"
+        bg="rgba(139, 92, 246, 0.04)"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity }}
         zIndex={0}
@@ -62,7 +62,7 @@ const MonthlyGraph = ({ drawData, isShared }) => {
         w="200px"
         h="200px"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.02)"
+        bg="rgba(139, 92, 246, 0.02)"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
@@ -95,7 +95,7 @@ const MonthlyGraph = ({ drawData, isShared }) => {
         <Text
           fontSize="5xl"
           fontWeight="900"
-          color="#25d366"
+          color="#8b5cf6"
           lineHeight="1.2"
         >
           {parser.months[drawData.most_active_month.month]}
@@ -112,8 +112,8 @@ const MonthlyGraph = ({ drawData, isShared }) => {
         w="100%"
         h="220px"
         zIndex={1}
-        mt="-3vh"
-        mb="-2vh"
+        mt="-4vh"
+        mb="-3vh"
       >
         <VictoryChart
           theme={chartTheme}
@@ -123,8 +123,8 @@ const MonthlyGraph = ({ drawData, isShared }) => {
         >
           <defs>
             <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#25d366" stopOpacity={0.4} />
-              <stop offset="100%" stopColor="#25d366" stopOpacity={0.0} />
+              <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.4} />
+              <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0.0} />
             </linearGradient>
           </defs>
           <VictoryAxis
@@ -152,7 +152,7 @@ const MonthlyGraph = ({ drawData, isShared }) => {
             interpolation="linear"
             style={{
               data: {
-                stroke: "#25d366",
+                stroke: "#8b5cf6",
                 strokeWidth: 4,
                 strokeLinecap: "round",
               },
@@ -174,7 +174,7 @@ const MonthlyGraph = ({ drawData, isShared }) => {
         bg="#202c33"
         p="1.5rem"
         borderRadius="lg"
-        borderLeft="4px solid #25d366"
+        borderLeft="4px solid #8b5cf6"
         maxW="85%"
       >
         <Text color="#d1d7db" fontSize="md" align="left">

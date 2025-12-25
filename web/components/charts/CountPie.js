@@ -16,19 +16,19 @@ const CountPie = ({ drawData }) => {
       label: `${member.split(" ")[0]}\n${count}`
     }));
 
-  // WhatsApp-themed color palette
+  // Red-themed color palette
   const colorScale = [
-    "#25d366", // Green
-    "#34b7f1", // Blue
-    "#00a884", // Teal
-    "#53bdeb", // Light Blue
-    "#128c7e", // Dark Teal
-    "#aebac1", // Grey
+    "#ef4444", // Red
+    "#fee2e2", // Very Light Red
+    "#f87171", // Light Red
+    "#b91c1c", // Darker Red
+    "#fca5a5", // Lighter Red
+    "#dc2626", // Dark Red
   ];
 
   return (
     <VStack
-      spacing="2vh"
+      spacing="1vh"
       align="center"
       justify="center"
       w="100%"
@@ -48,7 +48,7 @@ const CountPie = ({ drawData }) => {
         w="300px"
         h="300px"
         borderRadius="full"
-        bg="rgba(37, 211, 102, 0.04)"
+        bg="rgba(239, 68, 68, 0.04)"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity }}
         zIndex={0}
@@ -60,7 +60,7 @@ const CountPie = ({ drawData }) => {
         w="200px"
         h="200px"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.02)"
+        bg="rgba(239, 68, 68, 0.02)"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
@@ -93,7 +93,7 @@ const CountPie = ({ drawData }) => {
         <Text
           fontSize="4xl"
           fontWeight="900"
-          color="#25d366"
+          color="#ef4444"
           lineHeight="1.2"
           mt={2}
         >
@@ -111,8 +111,8 @@ const CountPie = ({ drawData }) => {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        mt="-3vh"
-        mb="-2vh"
+        mt="-5vh"
+        mb="-4vh"
       >
         <VictoryPie
           height={280}
@@ -149,7 +149,7 @@ const CountPie = ({ drawData }) => {
         bg="#202c33"
         p="1.5rem"
         borderRadius="lg"
-        borderLeft="4px solid #25d366"
+        borderLeft="4px solid #ef4444"
         maxW="85%"
       >
         <Text color="#d1d7db" fontSize="md" align="left">

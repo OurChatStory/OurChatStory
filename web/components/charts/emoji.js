@@ -10,10 +10,10 @@ const randomEmojis = ["🔥", "✨", "🎉", "❤️", "🚀", "🌈", "💎", "
 const FallingEmoji = ({ emoji, delay, duration, left }) => (
   <MotionBox
     position="absolute"
-    top="-15%"
+    top="-20%"
     left={left}
-    initial={{ y: 0, opacity: 1, rotate: 0 }}
-    animate={{ y: "120vh", opacity: 0, rotate: 360 }}
+    initial={{ y: 0, opacity: 0, rotate: 0 }}
+    animate={{ y: "120vh", opacity: [0, 1, 1, 0], rotate: 360 }}
     transition={{ duration: duration, delay: delay, ease: "linear" }}
     fontSize={["4xl", "5xl", "6xl"]}
     zIndex={10}
@@ -65,7 +65,7 @@ const Card5 = ({ drawData }) => {
         w="300px"
         h="300px"
         borderRadius="full"
-        bg="rgba(37, 211, 102, 0.04)"
+        bg="rgba(249, 115, 22, 0.04)"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity }}
         zIndex={0}
@@ -77,7 +77,7 @@ const Card5 = ({ drawData }) => {
         w="200px"
         h="200px"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.02)"
+        bg="rgba(249, 115, 22, 0.02)"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
@@ -130,7 +130,7 @@ const Card5 = ({ drawData }) => {
                     <Text fontSize="9xl" lineHeight="1">
                         {topEmojis[0]}
                     </Text>
-                    <Text color="#25d366" fontSize="xl" fontWeight="bold" mt={2}>
+                    <Text color="#f97316" fontSize="xl" fontWeight="bold" mt={2}>
                         #1 Most Used
                     </Text>
                     </MotionBox>
@@ -161,7 +161,7 @@ const Card5 = ({ drawData }) => {
                     bg="#202c33"
                     p="1.5rem"
                     borderRadius="lg"
-                    borderLeft="4px solid #25d366"
+                    borderLeft="4px solid #f97316"
                     maxW="85%"
                     mt={8}
                 >

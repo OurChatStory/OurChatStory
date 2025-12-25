@@ -34,7 +34,7 @@ const NoTalk = ({ drawData }) => {
         w="300px"
         h="300px"
         borderRadius="full"
-        bg="rgba(37, 211, 102, 0.04)"
+        bg="rgba(6, 182, 212, 0.04)"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity }}
         zIndex={0}
@@ -46,7 +46,7 @@ const NoTalk = ({ drawData }) => {
         w="200px"
         h="200px"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.02)"
+        bg="rgba(6, 182, 212, 0.02)"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
@@ -83,7 +83,7 @@ const NoTalk = ({ drawData }) => {
             <Text
               fontSize="6xl"
               fontWeight="900"
-              color="#25d366"
+              color="#06b6d4"
               lineHeight="1.2"
             >
               {gapLength} {gapLength === 1 ? "Day" : "Days"}
@@ -101,7 +101,7 @@ const NoTalk = ({ drawData }) => {
             bg="#202c33"
             p="1.5rem"
             borderRadius="lg"
-            borderLeft="4px solid #25d366"
+            borderLeft="4px solid #06b6d4"
             maxW="85%"
           >
             <Text color="#d1d7db" fontSize="md" align="left">
@@ -142,7 +142,7 @@ const NoTalk = ({ drawData }) => {
             <Text
               fontSize="6xl"
               fontWeight="900"
-              color="#25d366"
+              color="#06b6d4"
               lineHeight="1.2"
             >
               365 / 365
@@ -160,7 +160,7 @@ const NoTalk = ({ drawData }) => {
             bg="#202c33"
             p="1.5rem"
             borderRadius="lg"
-            borderLeft="4px solid #25d366"
+            borderLeft="4px solid #06b6d4"
             maxW="85%"
           >
             <Text color="#d1d7db" fontSize="md" align="left">
