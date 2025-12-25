@@ -19,7 +19,7 @@ import Uploader from "./upload";
 import axios from "axios";
 import { API_URL } from "../constants";
 import Intro from "./intro";
-import Marquee from "react-fast-marquee";
+import ReactGA from "react-ga";
 
 const spin = keyframes`
   from {transform: rotate(0deg);}
@@ -92,6 +92,7 @@ const App = () => {
         setShowLoader(true);
         setShowUploader(true);
         document.body.style.overflow = "hidden";
+        ReactGA.event({ category: "Chat Upload", action: "submit", label: "initiated" });
         axios
           .post(API_URL + "wrap", data, {
             // receive two parameter endpoint url ,form data
@@ -100,8 +101,10 @@ const App = () => {
             setData(res.data);
             setIsDemo(false);
             setShowRes(true);
+            ReactGA.event({ category: "Chat Upload", action: "submit", label: "success" });
           })
           .catch((error) => {
+            ReactGA.event({ category: "Chat Upload", action: "submit", label: "error" });
             try {
               alert(
                 typeof error.response.data === "string"

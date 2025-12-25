@@ -29,14 +29,6 @@ import { API_URL } from "../constants";
 import { IoClose } from "react-icons/io5";
 import ReactGA from "react-ga";
 
-const eventTracker = (
-  category = "wrap",
-  action = "make wrap",
-  label = "successful"
-) => {
-  ReactGA.event({ category, action, label });
-};
-
 const sample_data = require("../data/sample-response");
 
 const Upload = ({
@@ -94,6 +86,7 @@ const Upload = ({
       // console.log("dd", data);
       setIsUploading(true);
       setShowLoader(true);
+      ReactGA.event({ category: "Chat Upload", action: "submit", label: "initiated" });
       axios
         .post(API_URL + "wrap", data, {
           // receive two parameter endpoint url ,form data
@@ -102,12 +95,12 @@ const Upload = ({
           setData(res.data);
           setIsDemo(false);
           setShowRes(true);
-          eventTracker();
+          ReactGA.event({ category: "Chat Upload", action: "submit", label: "success" });
         })
         .catch((error) => {
           setIsUploading(false);
           setShowLoader(false);
-          eventTracker("wrap", "make wrap", "failed");
+          ReactGA.event({ category: "Chat Upload", action: "submit", label: "error" });
           try {
             alert(
               typeof error.response.data.detail === "string"
