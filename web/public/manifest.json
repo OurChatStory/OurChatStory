@@ -1,6 +1,6 @@
 {
   "short_name": "OurChatStory",
-  "name": "OurChatStory",
+  "name": "OurChatStory - WhatsApp Wrapped",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,25 +18,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "share_target": {
-    "action": "/pwaa",
-    "method": "POST",
-    "enctype": "multipart/form-data",
-    "params": {
-      "title": "name",
-      "text": "description",
-      "url": "link",
-      "files": [
-        {
-          "name": "file",
-          "accept": ["*/*"]
-        }
-      ]
-    }
-  }
-
+  "theme_color": "#111b21",
+  "background_color": "#111b21",
+  "description": "Discover your WhatsApp Wrapped! Analyze your chat history with beautiful visualizations."
 }

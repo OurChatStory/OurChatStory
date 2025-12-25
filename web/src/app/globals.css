@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+	--background: #111b21;
+	--foreground: #e9edef;
+	--card-bg: #202c33;
+	--subtext: #8696a0;
+	--whatsapp-green: #25d366;
+	--blue: #34b7f1;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card-bg: var(--card-bg);
+	--color-subtext: var(--subtext);
+	--color-whatsapp-green: var(--whatsapp-green);
+	--color-blue: var(--blue);
+	--font-sans: var(--font-poppins);
+	
+	/* Custom color palette */
+	--color-dark-bg: #111b21;
+	--color-dark-card: #202c33;
+	--color-dark-text: #e9edef;
+	--color-dark-subtext: #8696a0;
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-poppins), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	min-height: 100vh;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #202c33;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #8696a0;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #a0b0b8;
+}
+

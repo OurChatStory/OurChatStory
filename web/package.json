@@ -1,41 +1,44 @@
 {
-  "name": "ourchatstory",
-  "version": "2.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -H 0.0.0.0",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "export": "next export"
-  },
-  "dependencies": {
-    "@chakra-ui/react": "^2.4.1",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@fontsource/poppins": "^4.5.10",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3",
-    "axios": "^1.2.0",
-    "framer-motion": "^7.6.12",
-    "html-to-canvas": "^0.0.11",
-    "html-to-image": "^1.10.8",
-    "next": "^13.0.5",
-    "react": "^18.2.0",
-    "react-countup": "^6.4.0",
-    "react-dom": "^18.2.0",
-    "react-drag-drop-files": "^2.3.8",
-    "react-fast-marquee": "^1.3.5",
-    "react-floating-button": "^1.1.1",
-    "react-ga4": "^2.1.0",
-    "react-icons": "^4.6.0",
-    "react-insta-stories": "^2.4.2",
-    "victory": "^36.6.8",
-    "web-vitals": "^3.1.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.28.0",
-    "eslint-config-next": "^13.0.5"
-  }
+	"name": "ourchatstory",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+		"upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+		"cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts"
+	},
+	"dependencies": {
+		"@opennextjs/cloudflare": "^1.14.4",
+		"axios": "^1.13.2",
+		"framer-motion": "^12.23.26",
+		"html-to-image": "^1.11.13",
+		"next": "15.5.9",
+		"react": "19.1.4",
+		"react-countup": "^6.5.3",
+		"react-dom": "^19.1.4",
+		"react-drag-drop-files": "^3.1.0",
+		"react-fast-marquee": "^1.6.5",
+		"react-ga4": "^2.1.0",
+		"react-icons": "^5.5.0",
+		"react-insta-stories": "^2.8.0",
+		"recharts": "^3.6.0",
+		"victory": "^37.3.6"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3",
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20.19.27",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"eslint": "^9",
+		"eslint-config-next": "15.4.6",
+		"tailwindcss": "^4",
+		"typescript": "^5",
+		"wrangler": "^4.54.0"
+	}
 }
