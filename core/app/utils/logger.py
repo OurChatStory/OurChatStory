@@ -1,7 +1,7 @@
 import logging
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("uvicorn")
-
 
 def log_metadata(stats: dict):
     """Log metadata about the current request."""
