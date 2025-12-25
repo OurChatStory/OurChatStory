@@ -7,48 +7,41 @@ const MotionText = motion(Text);
 const Welcome = ({ drawData }) => {
   return (
     <VStack
-      spacing="5vh"
+      spacing="4vh"
       align="center"
       justify="center"
       w="100%"
       h="78vh"
       bgColor="#111b21" // WhatsApp Dark Background
       borderRadius="1rem"
-      p="1rem"
-      pb="10vh" // Added padding bottom to move content up
+      p="2rem"
+      pb="10vh"
       position="relative"
       overflow="hidden"
     >
-      {/* Abstract "Doodle" Background Elements - Organic Shapes */}
+      {/* Background Blobs */}
       <MotionBox
         position="absolute"
-        top="-15%"
-        right="-15%"
-        w="350px"
-        h="350px"
-        borderRadius="60% 40% 30% 70% / 60% 30% 70% 40%"
-        bg="rgba(37, 211, 102, 0.05)" // Very subtle green blob
-        animate={{
-            rotate: [0, -10, 0],
-            scale: [1, 1.1, 1],
-            borderRadius: ["60% 40% 30% 70% / 60% 30% 70% 40%", "50% 50% 50% 50% / 50% 50% 50% 50%", "60% 40% 30% 70% / 60% 30% 70% 40%"]
-        }}
-        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+        top="-10%"
+        right="-10%"
+        w="300px"
+        h="300px"
+        borderRadius="full"
+        bg="rgba(37, 211, 102, 0.04)"
+        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 10, repeat: Infinity }}
         zIndex={0}
       />
       <MotionBox
         position="absolute"
-        bottom="-10%"
-        left="-10%"
-        w="250px"
-        h="250px"
-        borderRadius="30% 70% 70% 30% / 30% 30% 70% 70%"
-        bg="rgba(255, 255, 255, 0.02)" // Subtle white blob
-        animate={{
-            rotate: [0, 10, 0],
-            scale: [1, 1.05, 1],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        bottom="-5%"
+        left="-5%"
+        w="200px"
+        h="200px"
+        borderRadius="full"
+        bg="rgba(255, 255, 255, 0.02)"
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
       />
       

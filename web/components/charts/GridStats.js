@@ -61,29 +61,41 @@ const GridStats = ({ drawData }) => {
 
   return (
     <VStack
-      spacing="3vh"
+      spacing="4vh"
       align="center"
       justify="center"
       w="100%"
       h="78vh"
       bgColor="#111b21" // WhatsApp Dark Background
       borderRadius="1rem"
-      p="1.5rem"
+      p="2rem"
       pb="10vh"
       position="relative"
       overflow="hidden"
     >
-      {/* Background Elements */}
+      {/* Background Blobs */}
       <MotionBox
         position="absolute"
         top="-10%"
-        left="-10%"
+        right="-10%"
         w="300px"
         h="300px"
         borderRadius="full"
-        bg="rgba(37, 211, 102, 0.03)"
+        bg="rgba(37, 211, 102, 0.04)"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity }}
+        zIndex={0}
+      />
+      <MotionBox
+        position="absolute"
+        bottom="-5%"
+        left="-5%"
+        w="200px"
+        h="200px"
+        borderRadius="full"
+        bg="rgba(255, 255, 255, 0.02)"
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
       />
 

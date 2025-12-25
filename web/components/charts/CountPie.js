@@ -28,14 +28,15 @@ const CountPie = ({ drawData }) => {
 
   return (
     <VStack
-      spacing={2}
+      spacing="2vh"
       align="center"
       justify="center"
       w="100%"
       h="78vh"
       bgColor="#111b21"
       borderRadius="1rem"
-      p={6}
+      p="2rem"
+      pb="10vh"
       position="relative"
       overflow="hidden"
     >
@@ -43,11 +44,11 @@ const CountPie = ({ drawData }) => {
       <MotionBox
         position="absolute"
         top="-10%"
-        left="-10%"
+        right="-10%"
         w="300px"
         h="300px"
         borderRadius="full"
-        bg="rgba(37, 211, 102, 0.05)"
+        bg="rgba(37, 211, 102, 0.04)"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity }}
         zIndex={0}
@@ -55,11 +56,11 @@ const CountPie = ({ drawData }) => {
       <MotionBox
         position="absolute"
         bottom="-5%"
-        right="-5%"
-        w="250px"
-        h="250px"
+        left="-5%"
+        w="200px"
+        h="200px"
         borderRadius="full"
-        bg="rgba(52, 183, 241, 0.05)"
+        bg="rgba(255, 255, 255, 0.02)"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
@@ -110,8 +111,8 @@ const CountPie = ({ drawData }) => {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        mt={-2}
-        mb={2}
+        mt="-3vh"
+        mb="-2vh"
       >
         <VictoryPie
           height={280}
@@ -146,10 +147,10 @@ const CountPie = ({ drawData }) => {
         transition={{ duration: 0.5, delay: 0.8 }}
         zIndex={1}
         bg="#202c33"
-        p="1rem"
+        p="1.5rem"
         borderRadius="lg"
         borderLeft="4px solid #25d366"
-        maxW="90%"
+        maxW="85%"
       >
         <Text color="#d1d7db" fontSize="md" align="left">
           {drawData.group 

@@ -98,7 +98,7 @@ const Card1 = ({ drawData }) => {
         maxW="85%"
         zIndex={1}
       >
-        <Text color="#e9edef" fontSize="md" align="center" lineHeight="1.6">
+        <Text color="#d1d7db" fontSize="md" align="left" lineHeight="1.6">
           That puts you in the top{" "}
           <Text as="span" color="#25d366" fontWeight="bold" fontSize="lg">
             {parseFloat(drawData.top_percent * 100).toFixed(drawData.top_percent < 0.001 ? 4 : 2)}%

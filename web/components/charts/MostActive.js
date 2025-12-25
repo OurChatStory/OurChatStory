@@ -20,7 +20,7 @@ const MostActive = ({ drawData }) => {
       position="relative"
       overflow="hidden"
     >
-      {/* Background Elements */}
+      {/* Background Blobs */}
       <MotionBox
         position="absolute"
         top="-10%"
@@ -40,7 +40,7 @@ const MostActive = ({ drawData }) => {
         w="200px"
         h="200px"
         borderRadius="full"
-        bg="rgba(52, 183, 241, 0.04)"
+        bg="rgba(255, 255, 255, 0.02)"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
         zIndex={0}
