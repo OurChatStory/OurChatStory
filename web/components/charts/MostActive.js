@@ -1,73 +1,107 @@
-import { Text, VStack, keyframes } from "@chakra-ui/react";
+import React from "react";
+import { Box, Text, VStack } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
-const parser = require("../../script/parser");
+const MotionBox = motion(Box);
+const MotionText = motion(Text);
 
-const ZoomAnimation = keyframes`
-    0% {
-    background-size: 100% 100%;
-  }
-  50%{
-    background-size: 150% 150%;
-  }
-  100% {
-    background-size: 100% 100%;
-  }
-`;
-
-const Card1 = ({ drawData }) => {
-  const zoomAnimation = `${ZoomAnimation} 20s ease-in infinite alternate;`;
-
+const MostActive = ({ drawData }) => {
   return (
     <VStack
-      spacing="2rem"
+      spacing="4vh"
       align="center"
       justify="center"
-      // p="1rem"
-      // w="100vw"
-      // h="100vh"
-      // backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      bgBlendMode="multiply"
-      bgImage={parser.get_random_element(["/static/dark/v2bg5.webp", "/static/dark/v2bg14.webp"], drawData.members)}
       w="100%"
       h="78vh"
-      bgColor="pink"
+      bgColor="#111b21" // WhatsApp Dark Background
       borderRadius="1rem"
-      p="1.5rem"
-      animation={zoomAnimation}
-      border="2px solid #779132"
-      style={{
-        textShadow:
-          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
-      }}
+      p="2rem"
+      pb="10vh"
+      position="relative"
+      overflow="hidden"
     >
-      <Text mb="1rem" fontSize="4xl" align="center" fontWeight={"600"}>
-        Let us tell you
-      </Text>
-      <Text fontSize="3xl" align="center" fontWeight={"600"}>
-        Most of the <br />time it&apos;s
-      </Text>
-      <Text
-        pl="1rem"
-        pr="1rem"
-        fontSize="4xl"
-        align="center"
-        fontWeight="800"
-        backgroundColor="#779132"
-        style={{
-          textShadow:
-            "none",
-        }}
+      {/* Background Blobs */}
+      <MotionBox
+        position="absolute"
+        top="-10%"
+        right="-10%"
+        w="300px"
+        h="300px"
+        borderRadius="full"
+        bg="rgba(245, 158, 11, 0.04)"
+        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        zIndex={0}
+      />
+      <MotionBox
+        position="absolute"
+        bottom="-5%"
+        left="-5%"
+        w="200px"
+        h="200px"
+        borderRadius="full"
+        bg="rgba(245, 158, 11, 0.02)"
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 8, repeat: Infinity }}
+        zIndex={0}
+      />
+
+      <MotionText
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        color="#8696a0"
+        fontSize="sm"
+        fontWeight="bold"
+        textTransform="uppercase"
+        letterSpacing="widest"
+        zIndex={1}
       >
-        {" "}
-        {drawData.who_texts_first}
-      </Text>
-      <Text mb="2rem" fontSize="4xl" align="center" fontWeight={"600"}>
-        {" "}
-        who texts first
-      </Text>
+        Conversation Starter
+      </MotionText>
+
+      <MotionBox
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.4, type: "spring", bounce: 0.5 }}
+        zIndex={1}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        textAlign="center"
+      >
+        <Text
+          fontSize="5xl"
+          color="#f59e0b" // Amber
+          fontWeight="900"
+          lineHeight="1.1"
+          letterSpacing="-0.02em"
+          mb={2}
+        >
+          {drawData.who_texts_first}
+        </Text>
+        <Text color="#e9edef" fontSize="xl" fontWeight="medium">
+          usually texts first
+        </Text>
+      </MotionBox>
+
+      <MotionBox
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5 }}
+        bg="#202c33" // Darker card background
+        p="1.5rem"
+        borderRadius="lg"
+        borderLeft="4px solid #f59e0b"
+        maxW="85%"
+        zIndex={1}
+      >
+        <Text color="#d1d7db" fontSize="md" align="left">
+          {drawData.who_texts_first} is the real MVP keeping the chat alive. ⚡
+        </Text>
+      </MotionBox>
     </VStack>
   );
 };
 
-export default Card1;
+export default MostActive;

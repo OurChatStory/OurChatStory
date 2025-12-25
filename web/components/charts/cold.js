@@ -1,186 +1,178 @@
-import { Text, VStack, Box, HStack, keyframes, Spacer } from "@chakra-ui/react";
+import React from "react";
+import { Box, Text, VStack } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 const parser = require("../../script/parser");
 
-const ZoomAnimation = keyframes`
-  0% {
-    background-position: 0 0;
-  }
-  50%{
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-`;
+const MotionBox = motion(Box);
+const MotionText = motion(Text);
 
-const Card6 = ({ drawData }) => {
-  const cal_days = [
-    0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ];
-  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
+const NoTalk = ({ drawData }) => {
+  const gapLength = drawData.longest_gap.length;
+  const startDate = parser.format_date(drawData.longest_gap.start_date);
+  const endDate = parser.format_date(drawData.longest_gap.end_date);
 
   return (
-    <Box
-      spacing="1rem"
+    <VStack
+      spacing="4vh"
       align="center"
       justify="center"
-      bgImage={parser.get_random_element(["/static/blur/v2bg15.webp", "/static/blur/two-kids.webp"], drawData.members)}
-      bgBlendMode={"multiply"}
-      bgRepeat="no-repeat"
-      bgSize="cover"
-      bgColor="purple"
-      borderRadius="1rem"
-      h="78vh"
       w="100%"
-      p="1.5rem"
-      border="2px solid pink"
-      animation={zoomAnimation}
-      style={{
-        textShadow:
-          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
-      }}
+      h="78vh"
+      bgColor="#111b21"
+      borderRadius="1rem"
+      p="2rem"
+      pb="10vh"
+      position="relative"
+      overflow="hidden"
     >
-      {/* <Box bgColor={"black"} opacity={0.5} /> */}
-      <VStack h="100%" align="left" p="1rem" justify="center" spacing="1rem">
-        {" "}
-        {drawData.longest_gap.length > 0 ? (
-          <>
-            <Text
-              fontSize="2xl"
-              align="left"
-              fontWeight={700}
-              textAlign="center"
-            >
-              You know what? You did not text each other at all between
-            </Text>
+      {/* Background Blobs */}
+      <MotionBox
+        position="absolute"
+        top="-10%"
+        right="-10%"
+        w="300px"
+        h="300px"
+        borderRadius="full"
+        bg="rgba(6, 182, 212, 0.04)"
+        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        zIndex={0}
+      />
+      <MotionBox
+        position="absolute"
+        bottom="-5%"
+        left="-5%"
+        w="200px"
+        h="200px"
+        borderRadius="full"
+        bg="rgba(6, 182, 212, 0.02)"
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 8, repeat: Infinity }}
+        zIndex={0}
+      />
 
-            {/* <Text fontSize="2xl" fontWeight="medium" align="left">
-            {parser.format_time_gap(drawData.longest_gap.start_time)}
-          </Text>
-          <nobr/>
-          <Text fontSize="xl" align="left" fontWeight="medium">
-            &
-          </Text>
-          <Text fontSize="2xl" align="left" fontWeight="medium">
-            {parser.format_time_gap(drawData.longest_gap.end_time)}
-          </Text> */}
-            <Text
-              fontSize="2xl"
-              fontWeight="medium"
-              align="left"
-              textAlign="center"
-            >
-              {parser.format_date(drawData.longest_gap.start_date)} &{" "} {parser.format_date(drawData.longest_gap.end_date)}
-            </Text>
+      {gapLength > 0 ? (
+        <>
+          <MotionText
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            color="#8696a0"
+            fontSize="sm"
+            fontWeight="bold"
+            textTransform="uppercase"
+            letterSpacing="widest"
+            zIndex={1}
+            mt={4}
+          >
+            Longest Silence
+          </MotionText>
 
-            {/* <Text fontSize="md" align="left" fontWeight={"medium"}> */}
-            <Box display="flex" flexWrap="wrap">
-              {[Array(12)].map((item, index) => {
-                return (
-                  <HStack key={item}>
-                    {[
-                      Array(30).map((item, index) => {
-                        return <p key={item}>d</p>;
-                      }),
-                    ]}
-                  </HStack>
-                );
-              })}
-            </Box>
-            {/* </Text> */}
-            <HStack>
-              <Spacer />
-              <Text
-                fontSize="5xl"
-                align="left"
-                fontWeight="bold"
-                bgColor="pink"
-                pl="1rem"
-                pr="1rem"
-                color="black"
-                textAlign="center"
-                style={{ textShadow: "none" }}
-              >
-                {drawData.longest_gap.length}
-              </Text>
-              <Spacer />
-            </HStack>
-            <Text
-              fontSize="3xl"
-              align="left"
-              fontWeight={"medium"}
-              textAlign="center"
-            >
-              {drawData.longest_gap.length == 1
-                ? "whole day"
-                : "days only when you didn't talk!"}
+          <MotionBox
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            zIndex={1}
+            textAlign="center"
+            py={8}
+          >
+            <Text fontSize="2xl" fontWeight="bold" color="#e9edef">
+              You didn't talk for
             </Text>
-            {drawData.longest_gap.length < 5 ? (
-              <Text fontWeight={"500"}>
-                Having someone to talk to everyday is a privilege and you{" "}
-                {drawData.group ? "all" : "both"} are very lucky to have each
-                other.
-              </Text>
-            ) : (
-              ""
-            )}
-          </>
-        ) : (
-          <>
             <Text
-              fontSize="3xl"
-              align="center"
-              fontWeight={300}
-              textAlign="center"
+              fontSize="6xl"
+              fontWeight="900"
+              color="#06b6d4"
+              lineHeight="1.2"
             >
-              There was <strong>not a single day</strong> in 2025 when
-              y&apos;all didn&apos;t talk to each other.
+              {gapLength} {gapLength === 1 ? "Day" : "Days"}
             </Text>
-            {drawData.group ? (
-              ""
-            ) : (
-              <>
-                <Text
-                  fontSize="3xl"
-                  align="center"
-                  fontWeight={700}
-                  textAlign="center"
-                >
-                  You&apos;re made for each other ❤️!
-                </Text>
-                <Text
-                  fontSize="sm"
-                  align="center"
-                  fontWeight={400}
-                  textAlign="center"
-                  bgColor={"pink"}
-                  style={{ textShadow: "none" }}
-                  color="black"
-                >
-                  This is really special because only 1 out of 15000 of people can say the same
-                </Text>
-              </>
-            )}
-          </>
-        )}
-      </VStack>
-    </Box>
+            <Text fontSize="lg" color="#8696a0" mt={2}>
+              {startDate} — {endDate}
+            </Text>
+          </MotionBox>
+
+          <MotionBox
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            zIndex={1}
+            bg="#202c33"
+            p="1.5rem"
+            borderRadius="lg"
+            borderLeft="4px solid #06b6d4"
+            maxW="85%"
+          >
+            <Text color="#d1d7db" fontSize="md" align="left">
+              {gapLength < 5
+                ? "Even the best chats need a breather. 😌"
+                : "Absence makes the heart grow fonder? 🤔"}
+            </Text>
+          </MotionBox>
+        </>
+      ) : (
+        <>
+          <MotionText
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            color="#8696a0"
+            fontSize="sm"
+            fontWeight="bold"
+            textTransform="uppercase"
+            letterSpacing="widest"
+            zIndex={1}
+            mt={4}
+          >
+            Consistency Score
+          </MotionText>
+
+          <MotionBox
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            zIndex={1}
+            textAlign="center"
+            py={8}
+          >
+            <Text fontSize="2xl" fontWeight="bold" color="#e9edef">
+              Days active
+            </Text>
+            <Text
+              fontSize="6xl"
+              fontWeight="900"
+              color="#06b6d4"
+              lineHeight="1.2"
+            >
+              365 / 365
+            </Text>
+            <Text fontSize="lg" color="#8696a0" mt={2}>
+              Not a single day missed!
+            </Text>
+          </MotionBox>
+
+          <MotionBox
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            zIndex={1}
+            bg="#202c33"
+            p="1.5rem"
+            borderRadius="lg"
+            borderLeft="4px solid #06b6d4"
+            maxW="85%"
+          >
+            <Text color="#d1d7db" fontSize="md" align="left">
+              {drawData.group 
+                ? "This group chat is officially legendary. 🏆" 
+                : "You two are inseparable! ❤️"}
+            </Text>
+          </MotionBox>
+        </>
+      )}
+    </VStack>
   );
 };
 
-export default Card6;
+export default NoTalk;

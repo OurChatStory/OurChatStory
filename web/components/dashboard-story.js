@@ -204,6 +204,7 @@ const Dashboard = ({ drawData, isDemo }) => {
               p="1rem"
               align="center"
               bottom="15vh"
+              opacity={0.75}
             >
               <Image
                 boxSize="3vh"

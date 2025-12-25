@@ -4,7 +4,6 @@ import {
   Center,
   Spinner,
   Text,
-  Stack,
   Heading,
   Button,
   VStack,
@@ -17,19 +16,20 @@ import {
   TabList,
   TabPanel,
   TabPanels,
-  Spacer,
-  Divider,
-  AspectRatio,
+  useToast,
+  Icon,
 } from "@chakra-ui/react";
 import { FileUploader } from "react-drag-drop-files";
-import { BiDownload } from "react-icons/bi";
-
+import { IoClose, IoCloudUpload, IoLogoAndroid, IoLogoApple } from "react-icons/io5";
+import { FaWindows } from "react-icons/fa";
 import axios from "axios";
 import { API_URL } from "../constants";
-import { IoClose } from "react-icons/io5";
 import { sendEvent } from "../lib/analytics";
+import { motion } from "framer-motion";
 
 const sample_data = require("../data/sample-response");
+
+const MotionBox = motion(Box);
 
 const Upload = ({
   setShowRes,
@@ -43,6 +43,9 @@ const Upload = ({
   setIsSuccessfulPWAInstall,
 }) => {
   const [isUploading, setIsUploading] = useState(false);
+  const toast = useToast();
+
+  // Device detection
   let isAndroid = /android/i.test(
     navigator.userAgent || navigator.vendor || window.opera
   );
@@ -55,46 +58,28 @@ const Upload = ({
       "iPhone",
       "iPod",
     ].includes(navigator.platform) ||
-    // iPad on iOS 13 detection
     (navigator.userAgent.includes("Mac") && "ontouchend" in document);
 
-  const handlePWAInstall = () => {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === "accepted") {
-        setIsSuccessfulPWAInstall(true);
-        console.log("User accepted the A2HS prompt");
-      } else {
-        setIsSuccessfulPWAInstall(false);
-        console.log("User dismissed the A2HS prompt");
-      }
-      setDeferredPrompt(null);
-    });
-  };
+  const [tabIndex, setTabIndex] = useState(isAndroid ? 0 : isiOS ? 1 : 2);
 
-  const [tabIndex, setTabIndex] = useState(isAndroid ? 0 : isiOS ? 1 : 2); // initial -> 0: Android, 1: iOS, 2: PC
   const handleFileUpload = (file) => {
-    // console.log("zz", file);
-    // console.log(file.name);
-    // console.log(file.name.substring(file.name.length - 3));
     if (
-      file.name.substring(file.name.length - 3) === "txt" ||
-      file.name.substring(file.name.length - 3) === "zip"
+      file.name.endsWith(".txt") ||
+      file.name.endsWith(".zip")
     ) {
       const data = new FormData();
       data.append("file", file);
-      // console.log("dd", data);
       setIsUploading(true);
       setShowLoader(true);
+      
       sendEvent("chat_upload_initiated", {
         category: "Chat Upload",
         action: "submit",
         label: "initiated"
       });
+
       axios
-        .post(API_URL + "wrap", data, {
-          // receive two parameter endpoint url ,form data
-        })
+        .post(API_URL + "wrap", data)
         .then((res) => {
           setData(res.data);
           setIsDemo(false);
@@ -113,380 +98,200 @@ const Upload = ({
             action: "submit",
             label: "error"
           });
-          try {
-            alert(
-              typeof error.response.data.detail === "string"
-                ? error.response.data.detail
-                : "Connection failed. Try again! If it's still not working, please contact us via Twitter @ourchatstory."
-            );
-          } catch (error) {
-            alert(
-              "Connection failed. Try again! If it's still not working, please contact us via Twitter @ourchatstory."
-            );
-          }
+          toast({
+            title: "Upload Failed",
+            description: "Connection failed. Please try again.",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
         });
     } else {
-      alert(
-        "Please upload .txt or .zip files only. If it's still not working, please contact us via Twitter @ourchatstory."
-      );
+      toast({
+        title: "Invalid File",
+        description: "Please upload a .txt or .zip file exported from WhatsApp.",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+      });
     }
   };
+
+  const fileTypes = ["TXT", "ZIP"];
+
   return (
-    <>
-      <Box
-        w="100vw"
-        h="100vh"
-        position="fixed"
-        zIndex={100}
-        bgColor="#00000080"
-        onClick={() => {
-          setShowUploader(false);
-          // Enable Scroll
-          document.body.style.overflow = "auto";
-        }}
-      />
-
-      <VStack
-        w="100vw"
-        h="100vh"
-        position="fixed"
-        zIndex={101}
-        onClick={() => {
-          setShowUploader(false);
-          // Enable Scroll
-          document.body.style.overflow = "auto";
-        }}
-      >
-        <Box
-          bgColor="dark.500"
-          m={{ base: "0.5rem", sm: "0.5rem", lg: "1rem" }}
-          borderRadius="1rem"
-          w={{ base: "90vw", sm: "90vw", lg: "50vw" }}
-          top="5"
-          pt="2rem"
-          pr={["0.3rem", "0.6rem", "1rem"]}
-          pb="0rem"
-          pl={["0.3rem", "0.6rem", "1rem"]}
-          position="fixed"
-          onClick={(e) => e.stopPropagation()}
-          zIndex={101}
+    <Box
+      position="fixed"
+      top="0"
+      left="0"
+      w="100%"
+      h="100vh"
+      bg="rgba(0,0,0,0.85)"
+      zIndex="1000"
+      backdropFilter="blur(10px)"
+      overflowY="auto"
+    >
+      <Center minH="100vh" p={4}>
+        <MotionBox
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          bg="#111b21"
+          w={{ base: "100%", md: "600px" }}
+          borderRadius="xl"
+          boxShadow="2xl"
+          border="1px solid #2a3942"
+          position="relative"
+          overflow="hidden"
         >
-          <IconButton
-            aria-label="Close"
-            icon={<IoClose size="1.5em" opacity={0.8} color="#555555" />}
-            variant="none"
-            colorScheme="transparent"
-            onClick={() => {
-              setShowUploader(false);
-              // Enable Scroll
-              document.body.style.overflow = "auto";
-            }}
-            position="absolute"
-            top="1.5vh"
-            right="1vw"
-            zIndex={102}
-          />
-          <Heading
-            // p="1rem"
-            lineHeight={1.1}
-            fontWeight={700}
-            fontSize={{ base: "3xl", sm: "4xl", lg: "4xl" }}
-            textAlign="center"
+          {/* Header */}
+          <HStack
+            p={4}
+            borderBottom="1px solid #2a3942"
+            justify="space-between"
+            bg="#202c33"
           >
-            <Text fontSize={{ base: "2xl", sm: "1xl", lg: "4xl" }}>
-              Get your
-              <Text as={"span"} color={"primary.400"}>
-                {" "}
-                #WhatsAppWrapped
-              </Text>
-            </Text>
+            <Heading size="md" color="#e9edef">
+              Upload Chat
+            </Heading>
+            <IconButton
+              icon={<IoClose />}
+              variant="ghost"
+              color="#8696a0"
+              onClick={() => {
+                setShowUploader(false);
+                document.body.style.overflow = "auto";
+              }}
+              _hover={{ bg: "rgba(255,255,255,0.1)" }}
+            />
+          </HStack>
 
-            {/* <Text as={"span"} color={"green.400"}>
-          WhatsApp!
-        </Text> */}
-          </Heading>
-
-          <Stack spacing={1} m={["1rem", "1rem"]}>
-            <Tabs
-              index={tabIndex}
-              onChange={(index) => setTabIndex(index)}
-              variant="solid-rounded"
-              colorScheme="primary"
-            >
-              <Divider />
-
-              <Center>
-                <TabList>
-                  <Tab>Android</Tab>
-                  <Tab>iPhone</Tab>
-                  <Tab>Desktop</Tab>
-                </TabList>
-              </Center>
-              <Divider />
-
-              {/* <Heading
-              pt={"2rem"}
-              fontSize={{ base: "1xl", sm: "xl", lg: "2xl" }}
-              fontWeight={600}
-              textAlign="center"
-              width={{ base: "100%", sm: "100%", lg: "100%" }}
-            >
-              Instructions
-            </Heading> */}
-              <TabPanels>
-                <TabPanel>
-                  <div
-                    // style={
-                    //   window.innerWidth < 600
-                    //     ? { height: "350px", overflowY: "auto" }
-                    //     : {}
-                    // }
-                    style={{ height: "350px", overflowY: "auto" }}
-                  >
-                    <Text fontSize={["x1", "2xl"]}>
-                      <OrderedList
-                        spacing={3}
-                        fontSize={["md", "md"]}
-                        fontWeight={500}
-                        mr="16px"
-                      >
-                        <Box w="100%" >
-                          <AspectRatio ratio={1.8}>
-                            <iframe
-                              title="Instructions"
-                              src="https://www.youtube.com/embed/6bnrIGoYuE8?autoplay=1"
-                              allowFullScreen
-                            />
-                          </AspectRatio>
-                        </Box>
-                        {/* <ListItem>
-                        <strong>Android</strong> users can install the WebApp
-                        and share chat directly to the app.
-                      </ListItem> */}
-
-                        {deferredPrompt || isSuccessfulPWAInstall ? (
-                          <>
-                            <ListItem>
-                              <strong>Install the WebApp</strong> by clicking
-                              below.
-                            </ListItem>
-                            <Button
-                              onClick={handlePWAInstall}
-                              colorScheme="primary"
-                              variant="outline"
-                              size="sm"
-                              w="100%"
-                              disabled={isSuccessfulPWAInstall}
-                            >
-                              {isSuccessfulPWAInstall
-                                ? "Installed"
-                                : "Install the WebApp"}
-                            </Button>
-                          </>
-                        ) : (
-                          <ListItem>
-                            <strong>To install the WebApp</strong>: Click on the
-                            three dots of Chrome browser. You will find the
-                            &quot;Install App&quot; option.
-                          </ListItem>
-                        )}
-                        <ListItem>
-                          Then open the chat whose wrap you want to generate.
-                        </ListItem>
-                        <ListItem>
-                          Click on the three dots on the top right corner.
-                        </ListItem>
-                        <ListItem>
-                          Click on &quot;More&quot; &gt; &quot;Export chat&quot;
-                          &gt; &quot;Without media&quot;.
-                        </ListItem>
-                        <ListItem>Share it to OurChatStory app.</ListItem>
-                      </OrderedList>
-                    </Text>
-                  </div>
-                </TabPanel>
-                <TabPanel>
-                  <Text fontSize={["x1", "2xl"]}>
-                    <OrderedList
-                      spacing={3}
-                      pt="1rem"
-                      fontSize={["md", "md"]}
-                      fontWeight={500}
-                    >
-                      <ListItem>
-                        On the chat you would like to export. Tap on the name of
-                        the chat.
-                      </ListItem>
-                      <ListItem>
-                        In chat info, scroll all the way to the bottom and Tap
-                        on Export Chat. Choose Without Media.
-                      </ListItem>
-                      <ListItem>
-                        Tap on Save to Files to save it on your iPhone.
-                      </ListItem>
-                      <ListItem>
-                        Finally select <strong>On my iPhone</strong> and save to
-                        save it locally. At last you can select your exported
-                        .zip to be analyzed.{" "}
-                      </ListItem>
-                    </OrderedList>
-                  </Text>
-                </TabPanel>
-                <TabPanel>
-                  <Text fontSize={["x1", "2xl"]}>
-                    <OrderedList
-                      spacing={3}
-                      pt="1rem"
-                      fontSize={["md", "md"]}
-                      fontWeight={500}
-                    >
-                      <ListItem>
-                        Open the chat or group whose wrap you want to generate.
-                      </ListItem>
-                      <ListItem>
-                        Click on the three dots on the top right corner.
-                      </ListItem>
-                      <ListItem>
-                        Click on &quot;More&quot; &gt; &quot;Export chat&quot;
-                        &gt; &quot;Without media&quot;.
-                      </ListItem>
-                      <ListItem>
-                        Click on &quot;Email yourself&quot; &gt;
-                        &quot;Send&quot;.
-                      </ListItem>
-                      <ListItem>
-                        Download the file from your email and upload it here.
-                      </ListItem>
-                    </OrderedList>
-                  </Text>
-                  <Box mt="1rem">
-                    <FileUploader
-                      multiple={false}
-                      handleChange={handleFileUpload}
-                      name="file"
-                      types={["TXT", "ZIP"]}
-                      label="Upload or drop your chat here"
-                      disabled={isUploading}
-                      // max size of file in mb
-                      maxSize={200}
-                      // hoverTitle="Upload your chat file"
-                    >
-                      <HStack
-                        w="100%"
-                        h="100%"
-                        justifyContent="center"
-                        align="center"
-                        border="1px dashed #cef23f"
-                        pr="1rem"
-                        pl="1rem"
-                        pt="0.5rem"
-                        pb="0.5rem"
-                        cursor={isUploading ? "not-allowed" : "pointer"}
-                        borderRadius="0.5rem"
-                        transition={"0.4s"}
-                        _hover={{
-                          bgColor: "#cef23f10",
-                        }}
-                      >
-                        <IconButton
-                          aria-label="Upload"
-                          icon={<BiDownload size="1.5em" />}
-                          variant="none"
-                          colorScheme="transparent"
-                          color={"#cef23f"}
-                          isDisabled={isUploading}
-                          isActive={!isUploading}
-                        />
-
-                        <Text fontSize="md" fontWeight="300" color="#cef23f">
-                          <u>{isUploading ? "" : "upload"}</u>
-                          {isUploading
-                            ? "uploading..."
-                            : " or drop your chat here"}
-                        </Text>
-                        <Spacer />
-                        <Text
-                          fontSize="sm"
-                          color="#cef23f"
-                          opacity={0.8}
-                          fontWeight="500"
-                          textAlign="center"
-                        >
-                          TXT, ZIP
-                        </Text>
-                      </HStack>
-                    </FileUploader>
-                  </Box>
-                </TabPanel>
-              </TabPanels>
-            </Tabs>
-
-            <Center ml="2rem" mr="2rem" mt="1rem" mb="2rem">
-              <VStack
-                mt={["0.5rem", "1rem", "2rem"]}
-                mb="2rem"
-                spacing="0.5rem"
-                align="center"
-              >
-                {isUploading || showLoader ? (
-                  <>
-                    <Spinner />
-                    <Text textAlign="center">
-                      Brewing your story...
-                      <br />
-                      Usually takes less than 10 seconds.
-                    </Text>
-                  </>
-                ) : (
-                  <>
-                    <Button
-                      // variant="outline"
-                      colorScheme="primary"
-                      size="lg"
-                      onClick={() => {
-                        document.getElementById("hid").click();
-                      }}
-                    >
-                      {/* <label for="hid" cursor="pointer">
-                  </label> */}
-                      Upload
-                      <input
-                        id="hid"
-                        type="file"
-                        accept=".txt, .zip"
-                        name="file"
-                        title=""
-                        hidden
-                        className="custom-file-input"
-                        size="100"
-                        onChange={(event) => {
-                          const file = event.target.files[0];
-                          handleFileUpload(file);
-                        }}
-                      />
-                    </Button>
-                    <Button
-                      variant="link"
-                      // size="sm"
-                      colorScheme="primary"
-                      onClick={() => {
-                        // console.log(sample_data);
-                        setData(sample_data.sample);
-                        setIsDemo(true);
-                        setShowRes(true);
-                      }}
-                    >
-                      See a demo
-                    </Button>
-                  </>
-                )}
+          {/* Content */}
+          <Box p={6}>
+            {showLoader ? (
+              <VStack spacing={6} py={10}>
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.700"
+                  color="#25d366"
+                  size="xl"
+                />
+                <Text color="#e9edef" fontSize="lg" fontWeight="bold">
+                  Analyzing your chat...
+                </Text>
+                <Text color="#8696a0" textAlign="center">
+                  This usually takes a few seconds. <br />
+                  We are crunching the numbers locally!
+                </Text>
               </VStack>
-            </Center>
-          </Stack>
-        </Box>
-      </VStack>
-    </>
+            ) : (
+              <VStack spacing={6} align="stretch">
+                <Tabs
+                  variant="soft-rounded"
+                  colorScheme="green"
+                  index={tabIndex}
+                  onChange={setTabIndex}
+                  isFitted
+                >
+                  <TabList bg="#202c33" p={1} borderRadius="full">
+                    <Tab
+                      color="#8696a0"
+                      _selected={{ color: "#111b21", bg: "#25d366" }}
+                    >
+                      <Icon as={IoLogoAndroid} mr={2} /> Android
+                    </Tab>
+                    <Tab
+                      color="#8696a0"
+                      _selected={{ color: "#111b21", bg: "#25d366" }}
+                    >
+                      <Icon as={IoLogoApple} mr={2} /> iOS
+                    </Tab>
+                  </TabList>
+
+                  <TabPanels mt={4}>
+                    <TabPanel p={0}>
+                      <InstructionList
+                        steps={[
+                          "Open a chat in WhatsApp",
+                          "Tap the three dots (⋮) > More > Export Chat",
+                          "Choose 'Without Media'",
+                          "Upload the .txt or .zip file here",
+                        ]}
+                      />
+                    </TabPanel>
+                    <TabPanel p={0}>
+                      <InstructionList
+                        steps={[
+                          "Open a chat in WhatsApp",
+                          "Tap the contact name at the top",
+                          "Scroll down and tap 'Export Chat'",
+                          "Choose 'Without Media'",
+                          "Save to Files and upload here",
+                        ]}
+                      />
+                    </TabPanel>
+                  </TabPanels>
+                </Tabs>
+
+                <Box
+                  border="2px dashed #2a3942"
+                  borderRadius="xl"
+                  p={8}
+                  textAlign="center"
+                  bg="rgba(32, 44, 51, 0.5)"
+                  transition="all 0.2s"
+                  _hover={{ borderColor: "#25d366", bg: "rgba(37, 211, 102, 0.05)" }}
+                >
+                  <FileUploader
+                    handleChange={handleFileUpload}
+                    name="file"
+                    types={fileTypes}
+                    classes="drop_zone"
+                  >
+                    <VStack spacing={4} cursor="pointer">
+                      <Icon as={IoCloudUpload} w={12} h={12} color="#25d366" />
+                      <VStack spacing={1}>
+                        <Text color="#e9edef" fontWeight="bold" fontSize="lg">
+                          Drag & Drop or Click to Upload
+                        </Text>
+                        <Text color="#8696a0" fontSize="sm">
+                          Supports .txt and .zip files
+                        </Text>
+                      </VStack>
+                    </VStack>
+                  </FileUploader>
+                </Box>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  color="#8696a0"
+                  onClick={() => {
+                    setIsDemo(true);
+                    setData(sample_data.sample);
+                    setShowRes(true);
+                    setShowUploader(false);
+                  }}
+                >
+                  Try with demo data instead
+                </Button>
+              </VStack>
+            )}
+          </Box>
+        </MotionBox>
+      </Center>
+    </Box>
   );
 };
+
+const InstructionList = ({ steps }) => (
+  <OrderedList spacing={3} color="#d1d7db" ml={5}>
+    {steps.map((step, index) => (
+      <ListItem key={index}>
+        <Text fontSize="sm">{step}</Text>
+      </ListItem>
+    ))}
+  </OrderedList>
+);
 
 export default Upload;
