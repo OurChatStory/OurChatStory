@@ -55,6 +55,8 @@ class WhatsAppChat:
 
         chats_df.columns = ["time", "sender", "message"]
 
+        chats_df["sender"] = chats_df["sender"].str.lstrip("~")
+
         dayfirst = check_dayfirst(chats_df["time"])
         chats_df["time"] = chats_df["time"].apply(parse_datetime, args=(dayfirst,))
 
