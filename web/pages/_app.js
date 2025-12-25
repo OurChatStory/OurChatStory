@@ -1,6 +1,27 @@
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { initAnalytics, sendPageview } from "../lib/analytics";
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Initialize Google Analytics
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
+    // Track page views on route change
+    const handleRouteChange = (url) => {
+      sendPageview(url);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   useEffect(() => {
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {

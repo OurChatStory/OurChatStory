@@ -9,7 +9,6 @@ export default class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
 
-          <title>WhatsApp Wrapped 2025 - Chat Insights and Analysis</title>
           <meta
             name="description"
             content="Get Spotify Wrapped style insights of your WhatsApp chats with your friends like who texts you first, who texts more, when y'all text the most and more!"
@@ -68,21 +67,6 @@ export default class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
             rel="stylesheet"
-          />
-
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-8GG4ESYN0D"
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-8GG4ESYN0D');`,
-            }}
           />
         </Head>
         <body style={{ margin: "0" }}>

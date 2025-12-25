@@ -27,7 +27,7 @@ import { BiDownload } from "react-icons/bi";
 import axios from "axios";
 import { API_URL } from "../constants";
 import { IoClose } from "react-icons/io5";
-import ReactGA from "react-ga";
+import { sendEvent } from "../lib/analytics";
 
 const sample_data = require("../data/sample-response");
 
@@ -86,7 +86,11 @@ const Upload = ({
       // console.log("dd", data);
       setIsUploading(true);
       setShowLoader(true);
-      ReactGA.event({ category: "Chat Upload", action: "submit", label: "initiated" });
+      sendEvent("chat_upload_initiated", {
+        category: "Chat Upload",
+        action: "submit",
+        label: "initiated"
+      });
       axios
         .post(API_URL + "wrap", data, {
           // receive two parameter endpoint url ,form data
@@ -95,12 +99,20 @@ const Upload = ({
           setData(res.data);
           setIsDemo(false);
           setShowRes(true);
-          ReactGA.event({ category: "Chat Upload", action: "submit", label: "success" });
+          sendEvent("chat_upload_success", {
+            category: "Chat Upload",
+            action: "submit",
+            label: "success"
+          });
         })
         .catch((error) => {
           setIsUploading(false);
           setShowLoader(false);
-          ReactGA.event({ category: "Chat Upload", action: "submit", label: "error" });
+          sendEvent("chat_upload_error", {
+            category: "Chat Upload",
+            action: "submit",
+            label: "error"
+          });
           try {
             alert(
               typeof error.response.data.detail === "string"
