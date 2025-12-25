@@ -1,12 +1,15 @@
 from app.services.chats import WhatsAppChat
+import logging
+
 from app.utils.constants import (
-    LOG,
     MAX_EMOJIS,
     MIN_CHATS_REQUIRED,
     MIN_MEMBERS_REQUIRED,
     YEAR,
 )
 from app.utils.logger import log_metadata
+
+logger = logging.getLogger("uvicorn")
 
 
 def get_wrap(chats: str) -> dict:
@@ -79,7 +82,6 @@ def get_wrap(chats: str) -> dict:
         "wordcloud": wordcloud,
     }
 
-    if LOG == 1:
-        log_metadata(stats)
+    log_metadata(stats)
 
     return stats
