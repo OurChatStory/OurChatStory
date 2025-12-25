@@ -1,135 +1,142 @@
-import { Text, VStack, Box, Spacer, keyframes } from "@chakra-ui/react";
-import Marquee from "react-fast-marquee";
+import { Text, VStack, Box } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
-const ZoomAnimation = keyframes`
-  0% {
-    background-position: 0 0;
-  }
-  50%{
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-`;
+const MotionBox = motion(Box);
+const MotionText = motion(Text);
 
 const DummyIntro = ({ drawData }) => {
-  const zoomAnimation = `${ZoomAnimation} 40s ease-in infinite alternate;`;
-
   return (
-    <>
-      {/* <div id="overlay"></div> */}
-      <VStack
-        align="center"
-        justify="center"
-        spacing="1rem"
-        bgImage="static/compress/v2bg0.webp"
-        bgBlendMode={"multiply"}
-        bgRepeat="no-repeat"
-        bgSize="cover"
-        w="100%"
-        h="78vh"
-        bgColor="#6f0cbb"
-        borderRadius="1rem"
-        pt="1rem"
-        pb="1rem"
-        // borderColor="#fcea2b"
-        // errorBorderColor="red.300"
-        border="2px solid #fcea2b"
-        animation={zoomAnimation}
-        style={{
-          textShadow:
-            "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
-        }}
+    <VStack
+      spacing="3vh"
+      align="center"
+      justify="center"
+      w="100%"
+      h="78vh"
+      bgColor="#111b21" // WhatsApp Dark Background
+      borderRadius="1rem"
+      p="1rem"
+      pb="10vh"
+      position="relative"
+      overflow="hidden"
+    >
+      {/* Background Elements */}
+      <MotionBox
+        position="absolute"
+        top="10%"
+        left="-5%"
+        w="200px"
+        h="200px"
+        borderRadius="full"
+        bg="rgba(37, 211, 102, 0.03)"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
+        zIndex={0}
+      />
+      <MotionBox
+        position="absolute"
+        bottom="20%"
+        right="-5%"
+        w="150px"
+        h="150px"
+        borderRadius="full"
+        bg="rgba(255, 255, 255, 0.02)"
+        animate={{ scale: [1, 1.1, 1], x: [0, -10, 0] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        zIndex={0}
+      />
+
+      <MotionText
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        color="#8696a0"
+        fontSize="sm"
+        fontWeight="bold"
+        textTransform="uppercase"
+        letterSpacing="widest"
+        zIndex={1}
       >
-        {/* <Marquee
-        gradient={true}
-        speed={40}
-        gradientColor={[155, 31, 232]}
-        gradientWidth={30}
-        pauseOnHover={true}
+        Let's talk about
+      </MotionText>
+
+      {/* Name 1 - Green Bubble */}
+      <MotionBox
+        initial={{ x: -50, opacity: 0, rotate: -5 }}
+        animate={{ x: 0, opacity: 1, rotate: -2 }}
+        transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
+        bg="#25d366"
+        p="1.5rem"
+        borderRadius="20px 4px 20px 20px" // Chat bubble shape
+        boxShadow="4px 4px 0px rgba(0,0,0,0.2)"
+        maxW="85%"
+        zIndex={1}
       >
-        {[...Array(10)].map((i) => (
-          <Box w="1rem" h="1rem" borderRadius="50%" bgColor="yellow"></Box>
-        ))}
-      </Marquee>
-      <Spacer/> */}
-        <Text
-          fontSize="4xl"
-          align="left"
-          color="white"
-          w={"100%"}
-          fontWeight="600"
-          textAlign="center"
-        >
-          Let&apos;s talk about
-        </Text>
-        <Text
-          fontSize="4xl"
-          align="left"
-          // w={"100%"}
-          pl="1rem"
-          pr="1rem"
-          fontWeight="800"
-          bgColor="#fcea2b"
-          textAlign="center"
-          color="#210934"
-          style={{
-            textShadow: "none",
-          }}
+        <Text 
+            color="#111b21" 
+            fontSize="3xl" 
+            fontWeight="900" 
+            align="center" 
+            lineHeight="1.1"
+            wordBreak="break-word"
         >
           {drawData.members[0]}
         </Text>
-        <Text
-          fontSize="4xl"
-          align="left"
-          w={"100%"}
-          fontWeight="800"
-          color={"white"}
-          textAlign="center"
-        >
-          &
-        </Text>
-        <Text
-          fontSize="4xl"
-          align="left"
-          // w={"100%"}
-          fontWeight="800"
-          textAlign="center"
-          bgColor="#fcea2b"
-          color="#210934"
-          pl="1rem"
-          pr="1rem"
-          style={{
-            textShadow: "none",
-          }}
+      </MotionBox>
+
+      <MotionText
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.7, type: "spring" }}
+        color="#8696a0" // Muted color for the ampersand
+        fontSize="2xl"
+        fontWeight="bold"
+        zIndex={1}
+      >
+        &
+      </MotionText>
+
+      {/* Name 2 - White Bubble */}
+      <MotionBox
+        initial={{ x: 50, opacity: 0, rotate: 5 }}
+        animate={{ x: 0, opacity: 1, rotate: 2 }}
+        transition={{ delay: 0.9, type: "spring", stiffness: 100 }}
+        bg="#e9edef"
+        p="1.5rem"
+        borderRadius="4px 20px 20px 20px" // Chat bubble shape mirrored
+        boxShadow="4px 4px 0px rgba(0,0,0,0.2)"
+        maxW="85%"
+        zIndex={1}
+      >
+        <Text 
+            color="#111b21" 
+            fontSize="3xl" 
+            fontWeight="900" 
+            align="center" 
+            lineHeight="1.1"
+            wordBreak="break-word"
         >
           {drawData.members[1]}
         </Text>
-        <Text
-          fontSize="4xl"
-          align="left"
-          color="white"
-          w={"100%"}
-          fontWeight="600"
-          textAlign="center"
-        >
-          for example{" "}
-        </Text>{" "}
-      </VStack>
-      {/* <style jsx>{`
-        #overlay {
-          position: absolute;
-          width: 100%;
-          height: 78vh;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgba(0, 0, 0, 0.5);
-          z-index: 0;
-        }
-      `}</style> */}
-    </>
+      </MotionBox>
+
+      <MotionBox
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2 }}
+        mt={6}
+        px={4}
+        py={1}
+        border="1px solid #2a3942"
+        borderRadius="full"
+        bg="rgba(17, 27, 33, 0.5)"
+        zIndex={1}
+      >
+        <Text color="#8696a0" fontSize="xs" letterSpacing="wide">
+          2025 EDITION
+        </Text>
+      </MotionBox>
+
+    </VStack>
   );
 };
 
