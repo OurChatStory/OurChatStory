@@ -3,375 +3,257 @@ import {
   VStack,
   HStack,
   Box,
-  Spacer,
   Button,
   Link,
   IconButton,
   Image,
 } from "@chakra-ui/react";
 import React from "react";
-import Marquee from "react-fast-marquee";
-import { FaInstagram, FaTwitter, FaRegCopy } from "react-icons/fa";
-import CountUp from "react-countup";
-import { useEffect, useState } from "react";
+import { FaInstagram, FaTwitter } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const MotionBox = motion(Box);
+const MotionText = motion(Text);
+const MotionButton = motion(Button);
 
 const DummyCTA = ({ drawData, setShowUploader }) => {
-  const UPI_ID = "ourchatstory@ybl";
-  const [copiedTextTrue, setCoppiedTextTrue] = useState(false);
-
-  useEffect(() => {
-    if (copiedTextTrue) {
-      setTimeout(() => {
-        document.getElementById("copy").setAttribute("tooltip", "Copy");
-        setCoppiedTextTrue(false);
-      }, 1000);
-    }
-  }, [copiedTextTrue]);
   return (
     <VStack
+      spacing="3vh"
       align="center"
-      // justify="center"
-      spacing="2rem"
-      bgBlendMode={"multiply"}
-      bgRepeat="no-repeat"
-      bgSize="cover"
-      // backgroundRepeat="no-repeat"
-      // backgroundSize="120%"
-      // p="1rem"
+      justify="center"
       w="100%"
       h="78vh"
-      bgColor="#6f0cbb00"
+      bgColor="transparent"
       borderRadius="1rem"
-      mt="2rem"
-      // pb="1rem"
       p="1rem"
-      // borderColor="#fcea2b"
-      // errorBorderColor="red.300"
-      border="0px solid #fcea2b">
-      <Spacer />
-      <Text
-        fontSize="3xl"
-        align="left"
-        color="white"
-        w={"100%"}
-        fontWeight="600"
-        textAlign="center">
-        Now to the best part!
-      </Text>
-      <Text
-        fontSize="2xl"
-        align="left"
-        color="white"
-        w={"100%"}
-        fontWeight="500"
-        textAlign="center"
-        pl={"1rem"}
-        pr={"1rem"}>
-        You can know your WhatsApp Chat Story with your friends!
-      </Text>
-      {/* <Text color="#F5F5F5" fontSize="2xl" align="center">
-        These many people have already tried out their #WhatsAppWrapped
-      </Text> */}
-      {/* <Box
-        border="2px solid #ffffff80"
-        p="4px 1rem"
-        borderRadius={"4px"}
-        // bgColor="#ffa500"
+      pb="10vh"
+      position="relative"
+      overflow="hidden"
+    >
+      {/* Background Elements */}
+      <MotionBox
+        position="absolute"
+        top="10%"
+        left="-5%"
+        w="200px"
+        h="200px"
+        borderRadius="full"
+        bg="rgba(37, 211, 102, 0.03)"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity }}
+        zIndex={0}
+      />
+      <MotionBox
+        position="absolute"
+        bottom="20%"
+        right="-5%"
+        w="150px"
+        h="150px"
+        borderRadius="full"
+        bg="rgba(255, 255, 255, 0.02)"
+        animate={{ scale: [1, 1.1, 1], x: [0, -10, 0] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        zIndex={0}
+      />
+
+      <MotionText
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        color="#8696a0"
+        fontSize="sm"
+        fontWeight="bold"
+        textTransform="uppercase"
+        letterSpacing="widest"
+        zIndex={1}
       >
-        <Text color="#F5F5F5" fontSize="3xl" align="center" as="b">
-          <CountUp
-            // className="account-balance"
-            start={1234}
-            end={1240}
-            duration={2.75}
-            useEasing={true}
-            useGrouping={true}
-            separator=" "
-            decimals={4}
-            decimal=","
-            // prefix="EUR "
-            // suffix=" left"
-            // onComplete={onComplete}
-            // onStart={onStart}
-          />
+        Your turn!
+      </MotionText>
+
+      <MotionBox
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        maxW="85%"
+        zIndex={1}
+      >
+        <Text
+          fontSize={{ base: "2xl", sm: "3xl" }}
+          color="white"
+          fontWeight="900"
+          textAlign="center"
+          lineHeight="1.2"
+        >
+          Create Your Own
         </Text>
-      </Box> */}
-      {/* <Spacer /> */}
-      <Button
-        colorScheme="primary"
-        p={{
-          base: ["2rem", "1.5rem"],
-          sm: ["2rem", "1.5rem"],
-          lg: ["2rem", "1.5rem"],
-        }}
-        borderRadius={50}
-        onClick={() => {
-          setShowUploader(true);
-          // Disable scroll
-          document.body.style.overflow = "hidden";
-        }}>
-        {/* <label for="hid" cursor="pointer">
-                      </label> */}
-        <Text fontSize={{ base: "sm", sm: "sm", lg: "md" }} color="dark">
-          Click to make your WhatsApp Wrapped
+      </MotionBox>
+
+      <MotionBox
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
+        maxW="85%"
+        zIndex={1}
+      >
+        <Text
+          fontSize={{ base: "md", sm: "lg" }}
+          color="#e9edef"
+          fontWeight="400"
+          textAlign="center"
+          lineHeight="1.5"
+        >
+          Discover your unique chat story and see your relationship unfold through data
         </Text>
-        {/* <input
-                        id="hid"
-                        type="file"
-                        name="file"
-                        title=""
-                        hidden
-                        className="custom-file-input"
-                        size="100"
-                        onChange={uploadFile}
-                    /> */}
-      </Button>
-      {/* <Spacer /> */}
-      <HStack>
-        {/* <Box>
-          <a
+      </MotionBox>
+
+      <MotionBox
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, type: "spring", stiffness: 100 }}
+        mt={6}
+        w="85%"
+        maxW="350px"
+        zIndex={1}
+      >
+        <Button
+          as={motion.button}
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => {
+            setShowUploader(true);
+            document.body.style.overflow = "hidden";
+          }}
+          w="100%"
+          bg="#25d366"
+          color="#111b21"
+          size="lg"
+          h="auto"
+          py={4}
+          px={6}
+          fontSize={{ base: "md", sm: "lg" }}
+          fontWeight="700"
+          borderRadius="12px"
+          boxShadow="0 2px 8px rgba(0,0,0,0.15)"
+          _hover={{
+            bg: "#20bd5a",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+          }}
+          _active={{
+            bg: "#1fa952",
+          }}
+          transition="all 0.2s ease"
+        >
+          Make yours now
+        </Button>
+      </MotionBox>
+
+      <MotionBox
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.0 }}
+        mt={4}
+        zIndex={1}
+      >
+        <HStack spacing={4}>
+          <IconButton
+            as={motion.a}
+            whileHover={{ scale: 1.1, y: -2 }}
+            whileTap={{ scale: 0.95 }}
             href="https://twitter.com/ourchatstory"
             target="_blank"
             rel="noreferrer"
-          >
-            <FaTwitter />
-          </a>
-        </Box>
-        <Box>
-          <a
+            aria-label="Twitter"
+            icon={<FaTwitter size="1.5em" color="#1DA1F2" />}
+            variant="none"
+            bg="rgba(255, 255, 255, 0.1)"
+            borderRadius="full"
+            p={3}
+            _hover={{ bg: "rgba(255, 255, 255, 0.15)" }}
+          />
+          <IconButton
+            as={motion.a}
+            whileHover={{ scale: 1.1, y: -2 }}
+            whileTap={{ scale: 0.95 }}
             href="https://www.instagram.com/ourchatstory.co/"
             target="_blank"
             rel="noreferrer"
-          >
-            <FaInstagram />
-          </a>
-        </Box> */}
-        <IconButton
-          as="a"
-          href="https://twitter.com/ourchatstory"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Close"
-          icon={<FaTwitter size="1.5em" opacity={0.8} color="white" />}
-          variant="none"
-          colorScheme="transparent"
-        />
-        <IconButton
-          as="a"
-          href="https://www.instagram.com/ourchatstory.co/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Close"
-          icon={<FaInstagram size="1.5em" opacity={0.8} color="white" />}
-          variant="none"
-          colorScheme="transparent"
-        />
-        {/* <Button color={"white"} leftIcon={<FaFacebook />}></Button>
-        <Button colorScheme="twitter" leftIcon={<FaTwitter />}></Button> */}
-      </HStack>
-      {/* <Link href="/privacy">
-        <Text fontSize={"1x1"}>Privacy</Text>
-      </Link> */}
-      {/* <Text color="#F5F5F5" fontSize="s" align="center" pb={1}>
-        Sponsor this project using UPI:
-      </Text>
-      <Box style={{ margin: "0px" }}>
-        <div
-          className="shareLink"
-          onClick={() => {
-            // e.preventDefault();
-            navigator.clipboard.writeText(UPI_ID);
-            document.getElementById("copy").setAttribute("tooltip", "Copied!");
-            setCoppiedTextTrue(true);
-            // alert("UPI copied to clipboard");
-          }}>
-          <div className="permalink">
-            <input
-              className="textLink"
-              id="text"
-              type="text"
-              name="shortlink"
-              value={UPI_ID}
-              readonly=""
-            />
-            <span className="copyLink" id="copy" tooltip="Copy to clipboard">
-              <FaRegCopy />
-            </span>
-          </div>
-        </div>
-      </Box> */}
-      <Box minHeight={6} style={{ margin: "0px" }}>
-        {copiedTextTrue && (
-          <Text
-            color="#F5F5F5"
-            fontSize="xs"
-            align="center"
-            style={{ margin: "0px" }}>
-            Copied!
-          </Text>
-        )}
-      </Box>
-      {/* <Text style={{margin: "0px"}}>or</Text> */}
-      <a
+            aria-label="Instagram"
+            icon={<FaInstagram size="1.5em" color="#E4405F" />}
+            variant="none"
+            bg="rgba(255, 255, 255, 0.1)"
+            borderRadius="full"
+            p={3}
+            _hover={{ bg: "rgba(255, 255, 255, 0.15)" }}
+          />
+        </HStack>
+      </MotionBox>
+
+      <MotionBox
+        as="a"
         href="https://www.buymeacoffee.com/whatsappwrapped"
         target="_blank"
         rel="noreferrer"
-        style={{ zIndex: "99" }}>
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2 }}
+        whileHover={{ scale: 1.05, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+        mt={4}
+        zIndex={1}
+      >
         <Image
           h={10}
           src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
           alt="Buy Me A Coffee"
         />
-      </a>
-      {/* <Spacer /> */}
-      {/* scroll to top to #marquee */}
-      {/* <Text
-        fontSize="2xl"
-        align="left"
-        color="white"
-        w={"100%"}
-        fontWeight="500"
-        textAlign="center"
-        pl={"1rem"}
-        pr={"1rem"}
-        as="a"
-        cursor={"pointer"}
-        onClick={() => {
-          console.log("scrolling to top");
-          document.getPageTop().scrollIntoView();
-          // window.scrollTo(0, 0)
-        }}
-      >
-        See what others have made
-      </Text> */}
-      {/* <Spacer /> */}
-      {/* <Spacer /> */}
-      <Text
-        fontSize={{ base: "smaller", sm: "sm", lg: "smaller" }}
-        color="grey"
-        pb="2rem">
-        Read our{" "}
-        <Link style={{ textDecoration: "underline" }} href="/privacy">
-          privacy policy
-        </Link>{" "}
-        or check out our{" "}
-        <Link style={{ textDecoration: "underline" }} href="/blogs">
-          blogs.
-        </Link>
-        <br />
-        <strong style={{ textTransform: "uppercase" }}>
-          no one reads or stores your chats
-        </strong>
-        <br />
-        You can be confident by checking our{" "}
-        <Link
-          style={{ textDecoration: "underline" }}
-          href="https://github.com/OurChatStory/OurChatStory">
-          code.
-        </Link>
-      </Text>
-      {/* <Spacer/>
-      <Box pb="2rem">
-        <Text color="#F5F5F5" fontSize="sm" align="center">
-          Made with ❤️ by
-        </Text>
-        <Text color="#F5F5F5" fontSize="sm" align="center">
-          <Link
-            textDecoration="underline"
-            cursor="pointer"
-            zIndex={10000}
-            href="https://twitter.com/anshulagx"
-            target="_blank"
-          >
-            @anshulagx
-          </Link>{" "}
-          &{" "}
-          <Link
-            zIndex={10000}
-            textDecoration="underline"
-            href="https://twitter.com/iamyajat"
-            target="_blank"
-          >
-            @iamyajat
-          </Link>
-        </Text>
-      </Box> */}
-      <style jsx>{`
-        .shareLink {
-          z-index: 10000;
-          display: flex;
-        }
+      </MotionBox>
 
-        .shareLink {
-          .permalink {
-            cursor: pointer;
-            z-index: 20;
-            position: relative;
-            border-radius: 30px;
-            .textLink {
-              opacity: 0.5;
-              text-align: center;
-              padding: 12px 40px 12px 10px;
-              height: 36px;
-              width: 400px;
-              font-size: 12px;
-              letter-spacing: 0.3px;
-              color: #494949;
-              border-radius: 25px;
-              border: 1px solid #f2f2f2;
-              background-color: #f2f2f2;
-              outline: 0;
-              appearance: none;
-              transition: all 0.3s ease;
-              // @media (max-width: 767px) {
-              //   width: 100%;
-              // }
-              width: 100%;
-              &:focus {
-                border-color: #d8d8d8;
-              }
-              &::selection {
-                color: #fff;
-                background-color: #ff0a4b;
-              }
-            }
-            .copyLink {
-              position: absolute;
-              top: 50%;
-              right: 15px;
-              cursor: pointer;
-              transform: translateY(-50%);
-              &:hover {
-                &:after {
-                  opacity: 1;
-                  transform: translateY(0) translateX(-50%);
-                }
-              }
-              &:after {
-                content: attr(tooltip);
-                width: 140px;
-                bottom: -40px;
-                left: 50%;
-                padding: 5px;
-                border-radius: 4px;
-                font-size: 0.8rem;
-                opacity: 0;
-                pointer-events: none;
-                // position: absolute;
-                background-color: #000000;
-                color: #ffffff;
-                transform: translateY(-10px) translateX(-50%);
-                transition: all 300ms ease;
-                text-align: center;
-              }
-              i {
-                font-size: 20px;
-                color: #ff0a4b;
-              }
-            }
-          }
-        }
-      `}</style>
+      <MotionBox
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4 }}
+        mt={6}
+        px={6}
+        py={3}
+        maxW="90%"
+        zIndex={1}
+      >
+        <Text
+          fontSize="xs"
+          color="#8696a0"
+          textAlign="center"
+          lineHeight="1.6"
+        >
+          <Text as="span" fontWeight="bold" color="#e9edef" textTransform="uppercase" fontSize="2xs">
+            100% Private • No data stored
+          </Text>
+          <br />
+          <Text as="span" fontSize="2xs">
+          Check our{" "}
+          <Link
+            style={{ textDecoration: "underline", color: "#25d366" }}
+            href="/privacy"
+          >
+            privacy
+          </Link>
+          {" "}•{" "}
+          <Link
+            style={{ textDecoration: "underline", color: "#25d366" }}
+            href="/blogs"
+          >
+            blogs
+          </Link>
+          {" "}•{" "}
+          <Link
+            style={{ textDecoration: "underline", color: "#25d366" }}
+            href="https://github.com/OurChatStory/OurChatStory"
+          >
+            code
+          </Link>
+          </Text>
+        </Text>
+      </MotionBox>
     </VStack>
   );
 };

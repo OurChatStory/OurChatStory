@@ -1,294 +1,124 @@
 import { useState, useEffect } from "react";
 import {
-  Heading,
   Box,
-  Stack,
-  Spinner,
-  Center,
-  Image as CImage,
-  Text,
-  Link,
   Button,
   HStack,
   Spacer,
-  VStack,
-  keyframes,
+  Text,
+  Image,
+  useColorMode,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import Dashboard from "./dashboard-story";
 import Uploader from "./upload";
-import axios from "axios";
-import { API_URL } from "../constants";
 import Intro from "./intro";
-import { sendEvent } from "../lib/analytics";
 
-const spin = keyframes`
-  from {transform: rotate(0deg);}
-  to {transform: rotate(360deg)}
-`;
+const MotionBox = motion(Box);
 
-// random up down animation
-const random = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-
-const randomUpDownAnimation = keyframes`
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(${random(10, 50)}px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-`;
+const BackgroundBlobs = () => (
+  <Box position="fixed" top="0" left="0" w="100%" h="100%" zIndex="-1" overflow="hidden">
+    <MotionBox
+      position="absolute"
+      top="-10%"
+      left="-10%"
+      w="500px"
+      h="500px"
+      borderRadius="full"
+      bg="rgba(37, 211, 102, 0.05)"
+      filter="blur(80px)"
+      animate={{
+        scale: [1, 1.2, 1],
+        x: [0, 50, 0],
+        y: [0, 30, 0],
+      }}
+      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+    />
+    <MotionBox
+      position="absolute"
+      bottom="-10%"
+      right="-10%"
+      w="600px"
+      h="600px"
+      borderRadius="full"
+      bg="rgba(52, 183, 241, 0.05)"
+      filter="blur(80px)"
+      animate={{
+        scale: [1, 1.1, 1],
+        x: [0, -50, 0],
+        y: [0, -30, 0],
+      }}
+      transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+    />
+    <MotionBox
+      position="absolute"
+      top="40%"
+      left="40%"
+      w="300px"
+      h="300px"
+      borderRadius="full"
+      bg="rgba(255, 255, 255, 0.02)"
+      filter="blur(60px)"
+      animate={{
+        opacity: [0.3, 0.6, 0.3],
+      }}
+      transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+    />
+  </Box>
+);
 
 const App = () => {
-  const spinAnimation = `${randomUpDownAnimation} infinite 10s linear`;
-
-  const [isUploading, setIsUploading] = useState(false);
   const [showUploader, setShowUploader] = useState(false);
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-
-  useEffect(() => {
-    // const imagesPreload = [
-    //   "static/bg2.png",
-    //   "static/bg3.png",
-    //   "static/bg4.png",
-    //   "static/bg5.png",
-    //   "static/bg6.png",
-    //   "static/bg7.png",
-    //   "static/bg8.png",
-    //   "static/bg9.png",
-    //   "static/bg11.png",
-    //   "static/bg99.png",
-    // ];
-    // imagesPreload.forEach((image) => {
-    //   const newImage = new Image();
-    //   newImage.src = image;
-    //   window[image] = newImage;
-    // });
-
-    window.addEventListener("beforeinstallprompt", (e) => {
-      // Prevent the mini-infobar from appearing on mobile
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      setDeferredPrompt(e);
-      // Optionally, send analytics event that PWA install promo was shown.
-      // console.log(`'beforeinstallprompt' event was fired.`);
-    });
-
-    // check if the website is opened in standalone mode / PWA
-    if (window.matchMedia("(display-mode: standalone)").matches) {
-      setIsSuccessfulPWAInstall(true);
-    }
-
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.onmessage = (event) => {
-        // console.log("received: onmessage", event);
-        var imageBlob = event.data.file;
-        const data = new FormData();
-        data.append("file", imageBlob);
-        setShowLoader(true);
-        setShowUploader(true);
-        document.body.style.overflow = "hidden";
-        sendEvent("chat_upload_initiated", {
-          category: "Chat Upload",
-          action: "submit",
-          label: "initiated"
-        });
-        axios
-          .post(API_URL + "wrap", data, {
-            // receive two parameter endpoint url ,form data
-          })
-          .then((res) => {
-            setData(res.data);
-            setIsDemo(false);
-            setShowRes(true);
-            sendEvent("chat_upload_success", {
-              category: "Chat Upload",
-              action: "submit",
-              label: "success"
-            });
-          })
-          .catch((error) => {
-            sendEvent("chat_upload_error", {
-              category: "Chat Upload",
-              action: "submit",
-              label: "error"
-            });
-            try {
-              alert(
-                typeof error.response.data === "string"
-                  ? error.response.data
-                  : "Connection failed. Try again! If it's still not working, please contact us via Twitter @ourchatstory."
-              );
-            } catch (error) {
-              alert(
-                "Connection failed. Try again! If it's still not working, please contact us via Twitter @ourchatstory."
-              );
-            }
-          });
-      };
-    } else {
-      // console.log("service worker not supported 3");
-    }
-  });
-
   const [showRes, setShowRes] = useState(false);
   const [data, setData] = useState({});
   const [showLoader, setShowLoader] = useState(false);
   const [isDemo, setIsDemo] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [isSuccessfulPWAInstall, setIsSuccessfulPWAInstall] = useState(false);
 
-  return showRes ? (
-    <Dashboard drawData={data} isDemo={isDemo} />
-  ) : (
-    <Box
-      w="100%"
-      bgColor="#000"
-      overflow="hidden"
-      h="100vh"
-      position="relative"
-    >
-      {showUploader || showLoader ? (
-        <Uploader
-          setIsDemo={setIsDemo}
-          setShowRes={setShowRes}
-          setData={setData}
-          setShowUploader={setShowUploader}
-          showLoader={showLoader}
-          setShowLoader={setShowLoader}
-          deferredPrompt={deferredPrompt}
-          isSuccessfulPWAInstall={isSuccessfulPWAInstall}
-          setIsSuccessfulPWAInstall={setIsSuccessfulPWAInstall}
-        />
-      ) : (
-        " "
-      )}
+  const { setColorMode } = useColorMode();
 
-      <HStack
-        p="1rem 1.5rem 0.6rem 1.5rem"
-        align="center"
-        bgColor={"#000"}
-        w="100%"
-        // position="fixed"
-        direction={["column", "row"]}
-        zIndex="50"
-        h="10vh"
-      >
-        <CImage
-          boxSize="45px"
-          src="static/compress/logo2.webp"
-          alt="OurChatStory"
-          style={{ imageRendering: "crisp-edges" }}
-        />
-        {process.env.NEXT_PUBLIC_ENV === "staging" ? (
-          <>
-            {/* <Spacer w={"100%"} /> */}
-            <Text textColor={"white"}> Staging </Text>
-          </>
-        ) : (
-          ""
-        )}
-        <Spacer w={"100%"} />
-        <Button
-          colorScheme="primary"
-          p={{
-            base: ["2rem", "1.5rem"],
-            sm: ["2rem", "1.5rem"],
-            lg: ["2rem", "1.5rem"],
-          }}
-          borderRadius={50}
-          onClick={() => {
-            setShowUploader(true);
-            // Disable scroll
-            document.body.style.overflow = "hidden";
-          }}
-        >
-          {/* <label for="hid" cursor="pointer">
-                      </label> */}
-          <Text fontSize={{ base: "sm", sm: "sm", lg: "md" }} color="dark">
-            Make your wrap
-          </Text>
-          {/* <input
-                        id="hid"
-                        type="file"
-                        name="file"
-                        title=""
-                        hidden
-                        className="custom-file-input"
-                        size="100"
-                        onChange={uploadFile}
-                    /> */}
-        </Button>
-      </HStack>
-      <Box>
-        <Box>
+  useEffect(() => {
+    setColorMode("dark"); // Force dark mode
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    });
+
+    if (window.matchMedia("(display-mode: standalone)").matches) {
+      setIsSuccessfulPWAInstall(true);
+    }
+  }, [setColorMode]);
+
+  return (
+    <Box minH="100vh" bg="#111b21" color="#e9edef" position="relative">
+      {showRes ? (
+        <Dashboard drawData={data} isDemo={isDemo} />
+      ) : (
+        <>
+          <BackgroundBlobs />
+          
+          {/* Main Content */}
           <Intro setShowUploader={setShowUploader} />
 
-          <Box>
-            <CImage
-              src="static/original/pink.svg"
-              position="fixed"
-              top="22vh"
-              left="8vw"
-              width="16rem"
-              height="10rem"
-              display={{ base: "none", sm: "none", md: "none", lg: "block" }}
-              opacity={0.6}
-              // zIndex={0}
-              animation={spinAnimation}
+          {/* Uploader Overlay */}
+          {(showUploader || showLoader) && (
+            <Uploader
+              setIsDemo={setIsDemo}
+              setShowRes={setShowRes}
+              setData={setData}
+              setShowUploader={setShowUploader}
+              showLoader={showLoader}
+              setShowLoader={setShowLoader}
+              deferredPrompt={deferredPrompt}
+              isSuccessfulPWAInstall={isSuccessfulPWAInstall}
+              setIsSuccessfulPWAInstall={setIsSuccessfulPWAInstall}
             />
-
-            <CImage
-              src="static/original/yellow.svg"
-              position="absolute"
-              top="65vh"
-              left="8vw"
-              width="16rem"
-              height="10rem"
-              display={{ base: "none", sm: "none", md: "none", lg: "block" }}
-              opacity={0.6}
-              zIndex={0}
-              animation={spinAnimation}
-            />
-
-            <CImage
-              src="static/original/green.svg"
-              position="absolute"
-              top="44vh"
-              right="8vw"
-              width="16rem"
-              height="10rem"
-              display={{ base: "none", sm: "none", md: "none", lg: "block" }}
-              opacity={0.6}
-              zIndex={0}
-              animation={spinAnimation}
-            />
-          </Box>
-        </Box>
-
-        {/* <Box>
-          {showLoader ? (
-            <Box h="80vh">
-              <Center mt="2rem">
-                <Text>
-                  {" "}
-                  Brewing your story...
-                  <br />
-                  Usually takes less than 20 seconds.
-                  <br />
-                </Text>
-                <Spinner size="xl" />
-              </Center>
-            </Box>
-          ) : (
-            " "
           )}
-        </Box> */}
-      </Box>
+        </>
+      )}
     </Box>
   );
 };
+
 export default App;

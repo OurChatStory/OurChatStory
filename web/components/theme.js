@@ -1,11 +1,11 @@
-import { extendTheme, withDefaultColorScheme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
 const styles = {
   global: (props) => ({
     body: {
-      color: mode("gray.800", "whiteAlpha.900")(props),
-      bg: mode("black", "black")(props),
+      color: mode("#e9edef", "#e9edef")(props),
+      bg: mode("#111b21", "#111b21")(props),
     },
   }),
 };
@@ -15,59 +15,60 @@ const config = {
   useSystemColorMode: false,
 };
 
-const schemeTheme = extendTheme(
-  withDefaultColorScheme({
-    colorScheme: "primary",
-  }),
-  withDefaultColorScheme({
-    colorScheme: "dark",
-    components: ["Button"],
-  })
-);
-
 const theme = extendTheme({
-  ...schemeTheme,
+  config,
+  styles,
   colors: {
-    primary: {
-      100: "#daf570",
-      200: "#cef23f",
-      300: "#c3ef0e",
-      400: "#c2ee11",
-      500: "#9bbf0d",
-      600: "#6f8e0a",
-      700: "#748f0a",
-      800: "#3a4805",
-      900: "#3a4805",
-    },
-    secondary: {
-      100: "#f7f7f7",
-      200: "#f05028",
-      300: "#d7370f",
-      400: "#d7370f",
-      500: "#d7370f",
-      600: "#5f1807",
-      700: "#5f1807",
-      800: "#5f1807",
-      900: "#000000",
+    whatsapp: {
+      50: "#e3f9e5",
+      100: "#baf0c0",
+      200: "#8ee699",
+      300: "#60dc70",
+      400: "#38d349",
+      500: "#25d366", // Main WhatsApp Green
+      600: "#1da851",
+      700: "#15783a",
+      800: "#0d4923",
+      900: "#041b0b",
     },
     dark: {
-      100: "#262626",
-      200: "#262626",
-      300: "#262626",
-      400: "#262626",
-      500: "#262626",
-      600: "#262626",
-      700: "#262626",
-      800: "#262626",
-      900: "#262626",
+      bg: "#111b21",
+      card: "#202c33",
+      text: "#e9edef",
+      subtext: "#8696a0",
+    },
+    blue: {
+      500: "#34b7f1",
     },
   },
   fonts: {
-    heading: "Poppins",
-    body: "Poppins",
+    heading: "Helvetica Neue, Helvetica, Arial, sans-serif",
+    body: "Helvetica Neue, Helvetica, Arial, sans-serif",
   },
-  styles,
-  config,
+  components: {
+    Button: {
+      baseStyle: {
+        fontWeight: "bold",
+        borderRadius: "full",
+      },
+      variants: {
+        solid: {
+          bg: "whatsapp.500",
+          color: "white",
+          _hover: {
+            bg: "whatsapp.600",
+          },
+        },
+        outline: {
+          borderColor: "whatsapp.500",
+          color: "whatsapp.500",
+          _hover: {
+            bg: "rgba(37, 211, 102, 0.1)",
+          },
+        },
+      },
+    },
+  },
 });
 
 export default theme;
