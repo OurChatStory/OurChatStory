@@ -73,7 +73,7 @@ const CountPie = ({ drawData }: CountPieProps) => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="z-10 w-full h-[250px] flex items-center justify-center -mt-[5vh] -mb-[4vh]"
+        className="z-10 w-full h-[250px] flex items-center justify-center -mt-[4vh] -mb-[2vh]"
       >
         <VictoryPie
           data={pieData}
