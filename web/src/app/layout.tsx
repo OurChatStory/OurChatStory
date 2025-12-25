@@ -25,11 +25,20 @@ export const metadata: Metadata = {
 		title: "WhatsApp Wrapped 2025 - Chat Insights and Analysis",
 		description: "Discover your WhatsApp Wrapped! Analyze your chat history with beautiful visualizations.",
 		type: "website",
+		images: [
+			{
+				url: "https://ourchatstory.co/banner_sdd.png",
+				width: 1200,
+				height: 630,
+				alt: "OurChatStory WhatsApp Wrapped banner",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "WhatsApp Wrapped 2025 - Chat Insights and Analysis",
 		description: "Discover your WhatsApp Wrapped! Analyze your chat history with beautiful visualizations.",
+		images: ["https://ourchatstory.co/banner_sdd.png"],
 	},
 };
 
@@ -43,6 +52,7 @@ export default function RootLayout({
 			<head>
 				<link rel="manifest" href="/manifest.json" />
 				<meta name="theme-color" content="#111b21" />
+				<meta property="og:image" content="https://ourchatstory.co/banner_sdd.png" />
 			</head>
 			<body className={`${poppins.variable} antialiased`}>
 				<Providers>{children}</Providers>
