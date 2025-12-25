@@ -10,7 +10,6 @@ import Image from "next/image";
 // Import all chart components
 import MonthlyGraph from "./charts/MonthlyGraph";
 import Welcome2 from "./charts/Welcome2";
-import GWelcome2 from "./charts/GWelcome2";
 import TotalChat from "./charts/TotalChat";
 import WordCloud from "./charts/WordCloud";
 import CountPie from "./charts/CountPie";

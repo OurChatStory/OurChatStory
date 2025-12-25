@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { LineChart, Line, XAxis, AreaChart, Area, ResponsiveContainer } from "recharts";
+import { AreaChart, Area, XAxis, ResponsiveContainer } from "recharts";
 import { ChatData } from "@/types/chat";
 import { months, monthlyCountData } from "@/utils/parser";
 
@@ -12,7 +12,7 @@ interface MonthlyGraphProps {
   isShared?: boolean;
 }
 
-const MonthlyGraph = ({ drawData, isShared }: MonthlyGraphProps) => {
+const MonthlyGraph = ({ drawData }: MonthlyGraphProps) => {
   const chartData = monthlyCountData(drawData.monthly_chats_count);
 
   return (

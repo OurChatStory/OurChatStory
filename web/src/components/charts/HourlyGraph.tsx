@@ -12,7 +12,7 @@ interface HourlyGraphProps {
   isShared?: boolean;
 }
 
-const HourlyGraph = ({ drawData, isShared }: HourlyGraphProps) => {
+const HourlyGraph = ({ drawData }: HourlyGraphProps) => {
   const activeTimeStr = activeTime(drawData.most_active_hour?.hour || 0);
   let activeType = activeTimeType(drawData.most_active_hour?.hour || 0);
   const hourlyData = hourlyCountData(drawData.hourly_count || []);

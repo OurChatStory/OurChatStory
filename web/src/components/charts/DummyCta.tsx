@@ -13,7 +13,7 @@ interface DummyCtaProps {
   setShowUploader: (show: boolean) => void;
 }
 
-const DummyCta = ({ drawData, setShowUploader }: DummyCtaProps) => {
+const DummyCta = ({ setShowUploader }: DummyCtaProps) => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-[78vh] bg-transparent rounded-2xl p-4 pb-[10vh] relative overflow-hidden space-y-[3vh]">
       {/* Background Elements */}

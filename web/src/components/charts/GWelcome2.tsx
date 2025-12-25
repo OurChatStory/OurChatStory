@@ -4,7 +4,7 @@ interface GWelcome2Props {
   drawData: ChatData;
 }
 
-const GWelcome2 = ({ drawData }: GWelcome2Props) => {
+const GWelcome2 = () => {
   return (
     <div 
       className="flex items-center justify-center gap-4 w-screen h-screen bg-cover bg-no-repeat p-4" 

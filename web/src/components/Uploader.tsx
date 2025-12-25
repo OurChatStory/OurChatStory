@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FileUploader } from "react-drag-drop-files";
 import { IoClose, IoCloudUpload, IoLogoAndroid, IoLogoApple } from "react-icons/io5";
@@ -8,17 +8,19 @@ import axios from "axios";
 import { API_URL } from "@/lib/constants";
 import { sendEvent } from "@/lib/analytics";
 import { sample } from "@/data/sampleResponse";
+import { ChatData } from "@/types/chat";
 
 interface UploaderProps {
   setShowResults: (show: boolean) => void;
-  setData: (data: any) => void;
+  setData: (data: ChatData) => void;
   setIsDemo: (isDemo: boolean) => void;
   setShowUploader: (show: boolean) => void;
   showLoader: boolean;
   setShowLoader: (show: boolean) => void;
-  deferredPrompt: any;
+  deferredPrompt: Event | null;
   isSuccessfulPWAInstall: boolean;
   setIsSuccessfulPWAInstall: (success: boolean) => void;
+  sharedFile?: File | null;
 }
 
 const InstructionList = ({ steps }: { steps: string[] }) => (
@@ -38,17 +40,13 @@ const Uploader: React.FC<UploaderProps> = ({
   setShowUploader,
   showLoader,
   setShowLoader,
-  deferredPrompt,
-  isSuccessfulPWAInstall,
-  setIsSuccessfulPWAInstall,
+  sharedFile,
 }) => {
   const [isUploading, setIsUploading] = useState(false);
-  const [tabIndex, setTabIndex] = useState(0);
   const [error, setError] = useState<string | null>(null);
 
-  // Device detection
-  const isAndroid = typeof navigator !== "undefined" && /android/i.test(navigator.userAgent);
-  const isiOS =
+  // Auto-select tab based on device
+  const [tabIndex, setTabIndex] = useState(
     typeof navigator !== "undefined" &&
     ([
       "iPad Simulator",
@@ -58,7 +56,10 @@ const Uploader: React.FC<UploaderProps> = ({
       "iPhone",
       "iPod",
     ].includes(navigator.platform) ||
-      (navigator.userAgent.includes("Mac") && "ontouchend" in document));
+      (navigator.userAgent.includes("Mac") && "ontouchend" in document))
+      ? 1
+      : 0
+  );
 
   const handleFileUpload = (file: File | File[]) => {
     const uploadFile = Array.isArray(file) ? file[0] : file;
@@ -88,7 +89,7 @@ const Uploader: React.FC<UploaderProps> = ({
             label: "success",
           });
         })
-        .catch((error) => {
+        .catch(() => {
           setIsUploading(false);
           setShowLoader(false);
           setError("Connection failed. Please try again.");
@@ -102,6 +103,13 @@ const Uploader: React.FC<UploaderProps> = ({
       setError("Please upload a .txt or .zip file exported from WhatsApp.");
     }
   };
+
+  // If a file is provided via Web Share Target, process it automatically
+  useEffect(() => {
+    if (sharedFile) {
+      handleFileUpload(sharedFile);
+    }
+  }, [sharedFile]);
 
   const fileTypes = ["TXT", "ZIP"];
 

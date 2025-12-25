@@ -4,7 +4,7 @@ interface AroraProps {
   drawData: ChatData;
 }
 
-const getArora = (data: ChatData) => {
+const getArora = () => {
   let arora = "";
 
   const days_gap = 1;
@@ -21,7 +21,7 @@ const getArora = (data: ChatData) => {
 };
 
 const Arora = ({ drawData }: AroraProps) => {
-  const aroraText = getArora(drawData);
+  const aroraText = getArora();
 
   return (
     <div

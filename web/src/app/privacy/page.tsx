@@ -27,7 +27,7 @@ export default function PrivacyPage() {
           can trust that your data is handled in accordance with our strict privacy policy.
         </p>
 
-        <h2 className="text-xl font-semibold my-5">WE DON'T OWN A DATABASE</h2>
+        <h2 className="text-xl font-semibold my-5">WE DON&apos;T OWN A DATABASE</h2>
         <p className="my-2.5">
           OurChatStory servers does not connect to a database and hence we have a
           ZERO-DATA-STORAGE-POLICY. When you use our tool, our server get your WhatsApp messages in

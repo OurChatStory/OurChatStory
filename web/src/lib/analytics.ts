@@ -16,7 +16,7 @@ export const sendPageview = (path: string) => {
 };
 
 // Send a custom event
-export const sendEvent = (eventName: string, eventParams: Record<string, any> = {}) => {
+export const sendEvent = (eventName: string, eventParams: Record<string, unknown> = {}) => {
   if (typeof window !== "undefined") {
     ReactGA.event(eventName, eventParams);
   }
@@ -24,7 +24,7 @@ export const sendEvent = (eventName: string, eventParams: Record<string, any> = 
 
 // Custom hook for analytics
 export const useAnalytics = () => {
-  const track = (name: string, params: Record<string, any> = {}) => {
+  const track = (name: string, params: Record<string, unknown> = {}) => {
     sendEvent(name, params);
   };
 

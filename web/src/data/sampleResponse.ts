@@ -1,15 +1,17 @@
-export const sample: any = {
+import { ChatData } from "@/types/chat";
+
+export const sample: ChatData = {
   group: false,
-  members: ["Divya", "James"],
+  members: ["Shayne", "Courtney"],
   total_no_of_chats: 443,
   total_days_talked: 28,
   most_active_date: "2025-01-31",
   no_of_messages_per_member: [
-    { member: "James", count: 253 },
-    { member: "Divya", count: 190 },
+    { member: "Courtney", count: 253 },
+    { member: "Shayne", count: 190 },
   ],
-  most_active_member: { member: "James", count: 253 },
-  who_texts_first: "Divya",
+  most_active_member: { member: "Courtney", count: 253 },
+  who_texts_first: "Shayne",
   monthly_chats_count: [
     { month: "Jan", count: 140 },
     { month: "Feb", count: 0 },

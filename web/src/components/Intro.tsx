@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaLock, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaTwitter, FaInstagram } from "react-icons/fa";
 import { sample } from "@/data/sampleResponse";
 
 // Import chart components
@@ -122,10 +122,10 @@ const Intro: React.FC<IntroProps> = ({ setShowUploader }) => {
                 transition={{ delay: 0.6, duration: 0.5 }}
               >
                 <button
-                  className="px-8 md:px-10 py-6 md:py-8 text-lg md:text-xl font-bold bg-[#25d366] text-[#111b21] rounded-full hover:scale-105 active:scale-95 transition-transform hover:shadow-[0_0_20px_rgba(37,211,102,0.4)]"
+                  className="px-6 md:px-8 py-4 md:py-6 text-lg md:text-xl font-bold bg-[#25d366] text-[#111b21] rounded-full hover:scale-105 active:scale-95 transition-transform hover:shadow-[0_0_20px_rgba(37,211,102,0.4)]"
                   onClick={() => {
-                    setShowUploader(true);
-                    document.body.style.overflow = "hidden";
+                  setShowUploader(true);
+                  document.body.style.overflow = "hidden";
                   }}
                 >
                   Make your wrap

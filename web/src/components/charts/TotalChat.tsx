@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
+import { ChatData } from "@/types/chat";
 
 interface ChartProps {
-  drawData: any;
+  drawData: ChatData;
 }
 
 const TotalChat: React.FC<ChartProps> = ({ drawData }) => {

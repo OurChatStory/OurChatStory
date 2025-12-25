@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ChatData } from "@/types/chat";
-import Image from "next/image";
 
 const MotionDiv = motion.div;
 const MotionP = motion.p;

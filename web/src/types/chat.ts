@@ -17,20 +17,26 @@ export interface ChatData {
     month: string;
     count: number;
   }>;
-  hourly_chats_count: Array<{
+  hourly_chats_count?: Array<{
     hour: number;
     count: number;
   }>;
-  most_used_emoji: Array<{
+  most_used_emoji?: Array<{
     emoji: string;
     count: number;
   }>;
-  wordcloud: Array<{
-    text: string;
-    value: number;
+  wordcloud?: string;
+  longest_conversation_date?: string;
+  longest_conversation_count?: number;
+  cold_days?: number;
+  most_active_hour?: {
+    hour: number;
+    count: number;
+  };
+  hourly_count?: Array<{
+    hour: number;
+    count: number;
   }>;
-  longest_conversation_date: string;
-  longest_conversation_count: number;
-  cold_days: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Dashboard from "./Dashboard";
 import Uploader from "./Uploader";
 import Intro from "./Intro";
+import { ChatData } from "@/types/chat";
 
 const BackgroundBlobs = () => (
   <div className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
@@ -39,16 +40,15 @@ const BackgroundBlobs = () => (
   </div>
 );
 
-interface AppProps {}
-
 const App = () => {
   const [showUploader, setShowUploader] = useState(false);
   const [showResults, setShowResults] = useState(false);
-  const [data, setData] = useState<any>({});
+  const [data, setData] = useState<ChatData>({} as ChatData);
   const [showLoader, setShowLoader] = useState(false);
   const [isDemo, setIsDemo] = useState(false);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
   const [isSuccessfulPWAInstall, setIsSuccessfulPWAInstall] = useState(false);
+  const [sharedFile, setSharedFile] = useState<File | null>(null);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
@@ -65,6 +65,21 @@ const App = () => {
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     };
+  }, []);
+
+  // Listen for messages from the Service Worker (Web Share Target)
+  useEffect(() => {
+    if (navigator.serviceWorker) {
+      const handler = (event: MessageEvent) => {
+        const { action, file } = (event.data || {}) as { action?: string; file?: File };
+        if (action === "load-image" && file) {
+          setSharedFile(file);
+          setShowUploader(true);
+        }
+      };
+      navigator.serviceWorker.addEventListener("message", handler);
+      return () => navigator.serviceWorker.removeEventListener("message", handler);
+    }
   }, []);
 
   return (
@@ -90,6 +105,7 @@ const App = () => {
               deferredPrompt={deferredPrompt}
               isSuccessfulPWAInstall={isSuccessfulPWAInstall}
               setIsSuccessfulPWAInstall={setIsSuccessfulPWAInstall}
+              sharedFile={sharedFile}
             />
           )}
         </>
