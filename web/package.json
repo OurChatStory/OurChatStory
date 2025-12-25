@@ -6,14 +6,9 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint",
-		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-		"upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
-		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-		"cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts"
+		"lint": "next lint"
 	},
 	"dependencies": {
-		"@opennextjs/cloudflare": "^1.14.4",
 		"axios": "^1.13.2",
 		"framer-motion": "^12.23.26",
 		"html-to-image": "^1.11.13",
@@ -39,6 +34,5 @@
 		"eslint-config-next": "15.4.6",
 		"tailwindcss": "^4",
 		"typescript": "^5",
-		"wrangler": "^4.54.0"
 	}
 }
