@@ -27,6 +27,8 @@ import { API_URL } from "../constants";
 import { sendEvent } from "../lib/analytics";
 import { motion } from "framer-motion";
 
+const sample_data = require("../data/sample-response");
+
 const MotionBox = motion(Box);
 
 const Upload = ({
@@ -266,6 +268,7 @@ const Upload = ({
                   color="#8696a0"
                   onClick={() => {
                     setIsDemo(true);
+                    setData(sample_data.sample);
                     setShowRes(true);
                     setShowUploader(false);
                   }}

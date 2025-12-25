@@ -103,14 +103,14 @@ const Welcome = ({ drawData }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
         color="#e9edef" // WhatsApp Light Text
-        fontSize="lg"
+        fontSize="xl"
         align="center"
         fontWeight="normal"
-        px={8}
+        pb={12}
+        pt={8}
         zIndex={1}
         lineHeight="1.6"
         maxW="85%"
-        fontFamily="monospace" // Monospace for a "data" feel
       >
         The story of <Text as="span" color="#25d366" fontWeight="bold">{drawData.group ? "this group" : "your bond"}</Text>, told through every text and emoji.
       </MotionText>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, VStack, HStack, Link, Button } from "@chakra-ui/react";
+import { Box, Text, VStack, HStack, Link, Button, Stack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FaTwitter, FaCoffee } from "react-icons/fa";
 
@@ -120,9 +120,13 @@ const ThankYou = ({ drawData }) => {
 
       <VStack spacing={4} zIndex={1} mt={4}>
         <Text color="#8696a0" fontSize="sm">
-          Made with ❤️ by
+          Made with 💚 by
         </Text>
-        <HStack spacing={4}>
+        <Stack 
+          direction={{ base: "column", md: "row" }} 
+          spacing={4}
+          align="center"
+        >
           <Link href="https://twitter.com/anshulagx" target="_blank">
             <MotionButton
               size="sm"
@@ -145,7 +149,7 @@ const ThankYou = ({ drawData }) => {
               @iamyajat
             </MotionButton>
           </Link>
-        </HStack>
+        </Stack>
       </VStack>
     </VStack>
   );
