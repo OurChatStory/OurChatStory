@@ -9,7 +9,6 @@ const nextConfig: NextConfig = {
 				hostname: "cdn.buymeacoffee.com",
 			},
 		],
-		unoptimized: true, // For static export compatibility
 	},
 };
 
