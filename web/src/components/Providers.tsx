@@ -12,6 +12,36 @@ export function Providers({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    const reloadOnStaleChunk = (event: ErrorEvent | PromiseRejectionEvent) => {
+      const rawMessage = event instanceof ErrorEvent ? event.message : event.reason;
+      const message = typeof rawMessage === "string" ? rawMessage : rawMessage?.message;
+
+      if (!message) {
+        return;
+      }
+
+      const isChunkError = /Loading chunk \d+ failed|ChunkLoadError|CSS_CHUNK_LOAD_FAILED/i.test(message);
+      if (!isChunkError) {
+        return;
+      }
+
+      // Avoid reload loops by only forcing a refresh once per session
+      if (!sessionStorage.getItem("ocs-chunk-reloaded")) {
+        sessionStorage.setItem("ocs-chunk-reloaded", "1");
+        window.location.reload();
+      }
+    };
+
+    window.addEventListener("error", reloadOnStaleChunk);
+    window.addEventListener("unhandledrejection", reloadOnStaleChunk);
+
+    return () => {
+      window.removeEventListener("error", reloadOnStaleChunk);
+      window.removeEventListener("unhandledrejection", reloadOnStaleChunk);
+    };
+  }, []);
+
+  useEffect(() => {
     if (pathname) {
       sendPageview(pathname);
     }
