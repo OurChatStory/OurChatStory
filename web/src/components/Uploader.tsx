@@ -10,6 +10,11 @@ import { sendEvent } from "@/lib/analytics";
 import { sample } from "@/data/sampleResponse";
 import { ChatData } from "@/types/chat";
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
+
 interface UploaderProps {
   setShowResults: (show: boolean) => void;
   setData: (data: ChatData) => void;
@@ -205,8 +210,8 @@ const Uploader: React.FC<UploaderProps> = ({
                               className="mt-4 w-full py-2 px-4 bg-[#25d366] text-[#111b21] font-semibold rounded-lg hover:bg-[#20ba5a] transition-colors"
                               onClick={async () => {
                                 if (deferredPrompt) {
-                                  (deferredPrompt as any).prompt();
-                                  const { outcome } = await (deferredPrompt as any).userChoice;
+                                  (deferredPrompt as BeforeInstallPromptEvent).prompt();
+                                  const { outcome } = await (deferredPrompt as BeforeInstallPromptEvent).userChoice;
                                   if (outcome === 'accepted') {
                                     setIsSuccessfulPWAInstall(true);
                                   }

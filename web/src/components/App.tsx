@@ -38,7 +38,7 @@ const App = () => {
   useEffect(() => {
     if (navigator.serviceWorker) {
       const handler = (event: MessageEvent) => {
-        const { action, file } = (event.data || {}) as { action?: string; file?: any };
+        const { action, file } = (event.data || {}) as { action?: string; file?: { data: ArrayBuffer; type: string; name: string } };
         if (action === "load-image" && file) {
           // Reconstruct File object from the data sent by service worker
           const fileBlob = new Blob([new Uint8Array(file.data)], { type: file.type });
