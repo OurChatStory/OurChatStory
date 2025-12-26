@@ -41,11 +41,13 @@ const WordCloud = ({ drawData }: WordCloudProps) => {
         transition={{ duration: 0.8, delay: 0.5 }}
         className="z-10 flex items-center justify-center w-full p-0"
       >
-        <img
-          src={`data:image/png;base64, ${drawData.wordcloud}`}
-          alt="Word Cloud"
-          className="max-h-full object-contain"
-        />
+        <div className="bg-[#111b21] rounded-2xl p-4">
+          <img
+            src={`data:image/png;base64, ${drawData.wordcloud}`}
+            alt="Word Cloud"
+            className="max-h-full object-contain"
+          />
+        </div>
       </MotionDiv>
     </div>
   );
