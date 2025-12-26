@@ -49,11 +49,6 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<head>
-				<link rel="manifest" href="/manifest.json" />
-				<meta name="theme-color" content="#111b21" />
-				<meta property="og:image" content="https://ourchatstory.co/banner_sdd.png" />
-			</head>
 			<body className={`${poppins.variable} antialiased`}>
 				<Providers>{children}</Providers>
 			</body>
