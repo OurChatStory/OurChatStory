@@ -89,10 +89,12 @@ const Uploader: React.FC<UploaderProps> = ({
             label: "success",
           });
         })
-        .catch(() => {
+        .catch((err) => {
+          const detail = err?.response?.data?.detail;
+
           setIsUploading(false);
           setShowLoader(false);
-          setError("Connection failed. Please try again.");
+          setError(typeof detail === "string" && detail.trim() ? detail : "Connection failed. Please try again.");
           sendEvent("chat_upload_error", {
             category: "Chat Upload",
             action: "submit",
