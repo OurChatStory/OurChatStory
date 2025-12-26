@@ -41,6 +41,9 @@ const Uploader: React.FC<UploaderProps> = ({
   showLoader,
   setShowLoader,
   sharedFile,
+  deferredPrompt,
+  isSuccessfulPWAInstall,
+  setIsSuccessfulPWAInstall,
 }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -121,7 +124,7 @@ const Uploader: React.FC<UploaderProps> = ({
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-[#111b21] w-full md:w-[600px] rounded-xl shadow-2xl border border-[#2a3942] relative overflow-hidden"
+          className="bg-[#111b21] w-full md:w-[600px] rounded-xl shadow-2xl border border-[#2a3942] relative overflow-hidden max-h-[90vh] flex flex-col"
         >
           {/* Header */}
           <div className="p-4 border-b border-[#2a3942] flex justify-between items-center bg-[#202c33]">
@@ -138,7 +141,7 @@ const Uploader: React.FC<UploaderProps> = ({
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="p-6 overflow-y-auto overflow-x-hidden flex-1">
             {showLoader ? (
               <div className="flex flex-col items-center gap-6 py-10">
                 <div className="w-16 h-16 border-4 border-gray-700 border-t-[#25d366] rounded-full animate-spin" />
@@ -177,14 +180,45 @@ const Uploader: React.FC<UploaderProps> = ({
                 {/* Instructions */}
                 <div className="mt-4">
                   {tabIndex === 0 ? (
-                    <InstructionList
-                      steps={[
-                        "Open a chat in WhatsApp",
-                        "Tap the three dots (⋮) > More > Export Chat",
-                        "Choose 'Without Media'",
-                        "Upload the .txt or .zip file here",
-                      ]}
-                    />
+                    <>
+                      {isSuccessfulPWAInstall ? (
+                        <InstructionList
+                          steps={[
+                            "Open a chat in WhatsApp",
+                            "Tap the three dots (⋮) > More > Export Chat",
+                            "Choose 'Without Media'",
+                            "Share the file with OurChatStory app",
+                          ]}
+                        />
+                      ) : (
+                        <>
+                          <InstructionList
+                            steps={[
+                              "Open a chat in WhatsApp",
+                              "Tap the three dots (⋮) > More > Export Chat",
+                              "Choose 'Without Media'",
+                              "Upload the .txt or .zip file here",
+                            ]}
+                          />
+                          {deferredPrompt && (
+                            <button
+                              className="mt-4 w-full py-2 px-4 bg-[#25d366] text-[#111b21] font-semibold rounded-lg hover:bg-[#20ba5a] transition-colors"
+                              onClick={async () => {
+                                if (deferredPrompt) {
+                                  (deferredPrompt as any).prompt();
+                                  const { outcome } = await (deferredPrompt as any).userChoice;
+                                  if (outcome === 'accepted') {
+                                    setIsSuccessfulPWAInstall(true);
+                                  }
+                                }
+                              }}
+                            >
+                              Install App
+                            </button>
+                          )}
+                        </>
+                      )}
+                    </>
                   ) : (
                     <InstructionList
                       steps={[
