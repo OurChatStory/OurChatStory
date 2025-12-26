@@ -1,9 +1,27 @@
 import logging
+import os
+from typing import Any, Dict
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("uvicorn")
+_DEFAULT_LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+_LOG_FORMAT = "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
 
-def log_metadata(stats: dict):
+
+def get_logger(name: str = "app") -> logging.Logger:
+    """Return a configured logger with a consistent format and level."""
+    logger = logging.getLogger(name)
+    if not logger.handlers:
+        handler = logging.StreamHandler()
+        handler.setFormatter(logging.Formatter(_LOG_FORMAT))
+        logger.addHandler(handler)
+    logger.setLevel(_DEFAULT_LOG_LEVEL)
+    logger.propagate = False
+    return logger
+
+
+logger = get_logger("uvicorn")
+
+
+def log_metadata(stats: Dict[str, Any]) -> None:
     """Log metadata about the current request."""
     logger.info("=" * 50)
     logger.info(f"Chats of {', '.join(stats['members'])}")
