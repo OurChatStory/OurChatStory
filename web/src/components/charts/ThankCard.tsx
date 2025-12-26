@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChatData } from "@/types/chat";
-import { FaTwitter, FaCoffee } from "react-icons/fa";
+import { FaTwitter, FaCoffee, FaInstagram } from "react-icons/fa";
 
 const MotionDiv = motion.div;
 const MotionP = motion.p;
@@ -61,7 +61,7 @@ const ThankCard = ({ drawData }: ThankCardProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.5 }}
-        className="z-10 bg-[#202c33] p-6 rounded-lg max-w-[85%] text-center"
+        className="z-[10002] bg-[#202c33] p-6 rounded-lg max-w-[85%] text-center relative"
       >
         <p className="text-[#d1d7db] text-md mb-4">
           Enjoyed your wrapped? Help us keep the servers running! ☕
@@ -82,27 +82,27 @@ const ThankCard = ({ drawData }: ThankCardProps) => {
         </Link>
       </MotionDiv>
 
-      <div className="flex flex-col items-center gap-4 z-10">
-        <p className="text-[#8696a0] text-sm">Made with 💚 by</p>
-        <div className="flex flex-col md:flex-row gap-4 items-center">
-          <Link href="https://twitter.com/anshulagx" target="_blank">
-            <MotionButton
-              whileHover={{ scale: 1.1 }}
-              className="text-sm px-4 py-2 border border-blue-400 text-blue-400 rounded-md flex items-center gap-2 hover:bg-blue-400/10 transition-colors"
-            >
-              <FaTwitter />
-              @anshulagx
-            </MotionButton>
-          </Link>
-          <Link href="https://twitter.com/iamyajat" target="_blank">
-            <MotionButton
-              whileHover={{ scale: 1.1 }}
-              className="text-sm px-4 py-2 border border-blue-400 text-blue-400 rounded-md flex items-center gap-2 hover:bg-blue-400/10 transition-colors"
-            >
-              <FaTwitter />
-              @iamyajat
-            </MotionButton>
-          </Link>
+      <div className="flex flex-col items-center gap-2 z-[10002] relative">
+        <p className="text-[#8696a0] text-sm">Follow us for updates</p>
+        <div className="flex gap-3">
+          <a
+            href="https://twitter.com/ourchatstory"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-[#1DA1F2] hover:bg-[rgba(29,161,242,0.1)] rounded-full transition-colors"
+            aria-label="Twitter"
+          >
+            <FaTwitter size="1.2em" />
+          </a>
+          <a
+            href="https://www.instagram.com/ourchatstory.co/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-[#E1306C] hover:bg-[rgba(225,48,108,0.1)] rounded-full transition-colors"
+            aria-label="Instagram"
+          >
+            <FaInstagram size="1.2em" />
+          </a>
         </div>
       </div>
     </div>
