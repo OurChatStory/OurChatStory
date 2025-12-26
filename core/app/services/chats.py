@@ -209,12 +209,13 @@ class WhatsAppChat:
         return word_cloud_to_base64(self.df)
     
     def get_call_stats(self):
-        call_pattern = re.compile(r"(Video call|Voice call), (\d+ (min|hr))")
-        calls = self.df[self.df["message"].str.contains(call_pattern)]
+        call_pattern = r"(?:Video call|Voice call), (?:\d+ (?:min|hr))"
+        calls = self.df[self.df["message"].str.contains(call_pattern, regex=True, na=False)]
         if calls.empty:
             month_wise_minutes = [{"month": month, "duration": 0} for month in months]
             return {"total_minutes": 0, "month_wise_minutes": month_wise_minutes, "most_minutes_month": {"month": None, "minutes": 0}}
-        call_info = calls["message"].str.extract(call_pattern)
+        call_pattern_extract = r"(Video call|Voice call), (\d+ (min|hr))"
+        call_info = calls["message"].str.extract(call_pattern_extract)
         call_info.columns = ["call_type", "duration", "unit"]
         call_info["duration"] = call_info.apply(
             lambda row: int(row["duration"].split()[0]) * (60 if row["unit"] == "hr" else 1), axis=1
