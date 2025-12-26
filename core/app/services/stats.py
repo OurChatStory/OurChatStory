@@ -19,18 +19,26 @@ def get_wrap(chats: str) -> dict:
 
         chat_members = wc.get_chat_members()
         if len(chat_members) < MIN_MEMBERS_REQUIRED:
-            raise Exception(
+            raise ValueError(
                 "Not enough members ("
                 + str(len(chat_members))
                 + ") to analyze from "
                 + str(YEAR)
+                + ". At least "
+                + str(MIN_MEMBERS_REQUIRED)
+                + " member chats are required."
             )
 
         is_group = len(chat_members) > 2
 
         total_chats = wc.get_no_of_messages()
         if total_chats < MIN_CHATS_REQUIRED:
-            raise Exception("Not enough chats to analyze from " + str(YEAR))
+            raise ValueError(
+                "Not enough chats to analyze from "
+                + str(YEAR)
+                + ". Minimum required chats: "
+                + str(MIN_CHATS_REQUIRED)
+            )
 
         logger.info(
             "Loaded %s messages from %s participants", total_chats, len(chat_members)
