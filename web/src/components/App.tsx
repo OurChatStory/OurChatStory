@@ -38,9 +38,12 @@ const App = () => {
   useEffect(() => {
     if (navigator.serviceWorker) {
       const handler = (event: MessageEvent) => {
-        const { action, file } = (event.data || {}) as { action?: string; file?: File };
+        const { action, file } = (event.data || {}) as { action?: string; file?: any };
         if (action === "load-image" && file) {
-          setSharedFile(file);
+          // Reconstruct File object from the data sent by service worker
+          const fileBlob = new Blob([new Uint8Array(file.data)], { type: file.type });
+          const reconstructedFile = new File([fileBlob], file.name, { type: file.type });
+          setSharedFile(reconstructedFile);
           setShowUploader(true);
         }
       };

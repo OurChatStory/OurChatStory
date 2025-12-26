@@ -27,11 +27,47 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch event - serve from cache when offline
+// Fetch event - handle share target and serve from cache when offline
 self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
+  // Handle Web Share Target API POST requests
+  if (event.request.method === "POST" && event.request.url.includes("/share")) {
+    event.respondWith(
+      event.request.formData().then((formData) => {
+        const file = formData.get("file");
+        
+        if (file) {
+          // Store the file in IndexedDB or sessionStorage temporarily
+          const reader = new FileReader();
+          reader.onload = () => {
+            // Notify all clients about the shared file
+            self.clients.matchAll().then((clients) => {
+              clients.forEach((client) => {
+                client.postMessage({
+                  action: "load-image",
+                  file: {
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    data: reader.result,
+                  },
+                });
+              });
+            });
+          };
+          reader.readAsArrayBuffer(file);
+        }
+        
+        // Return a response to the share request
+        return new Response("Share received", { status: 200 });
+      })
+    );
+  } else {
+    // Default cache-first strategy for other requests
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return response || fetch(event.request);
+      })
+    );
+  }
 });
+
