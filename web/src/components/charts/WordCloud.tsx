@@ -7,11 +7,16 @@ const MotionP = motion.p;
 
 interface WordCloudProps {
   drawData: ChatData;
+  forPDF?: boolean;
 }
 
-const WordCloud = ({ drawData }: WordCloudProps) => {
+const WordCloud = ({ drawData, forPDF = false }: WordCloudProps) => {
   return (
-    <div className="flex flex-col items-center justify-center gap-[4vh] w-full h-[78vh] bg-[#111b21] rounded-2xl p-8 pb-[10vh] relative overflow-hidden">
+    <div className={`flex flex-col items-center justify-center w-full bg-[#111b21] rounded-2xl p-8 relative ${
+      forPDF 
+        ? "gap-[24px] h-full pb-[40px]" 
+        : "gap-[4vh] h-[78vh] pb-[10vh] overflow-hidden"
+    }`}>
       {/* Background Blobs */}
       <MotionDiv
         className="absolute -top-[10%] -right-[10%] w-[300px] h-[300px] rounded-full opacity-[0.02]"
@@ -27,7 +32,7 @@ const WordCloud = ({ drawData }: WordCloudProps) => {
       />
 
       <MotionP
-        initial={{ opacity: 0, y: 20 }}
+        initial={forPDF ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="text-[#8696a0] text-sm font-bold uppercase tracking-widest z-10"
@@ -36,16 +41,18 @@ const WordCloud = ({ drawData }: WordCloudProps) => {
       </MotionP>
 
       <MotionDiv
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={forPDF ? false : { opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className="z-10 flex items-center justify-center w-full p-0"
       >
         <div className="bg-[#111b21] rounded-2xl p-4">
+          {/* Using crossOrigin and referrerPolicy to help with CORS in production */}
           <img
-            src={`data:image/png;base64, ${drawData.wordcloud}`}
+            src={`data:image/png;base64,${drawData.wordcloud}`}
             alt="Word Cloud"
             className="max-h-full object-contain"
+            crossOrigin="anonymous"
           />
         </div>
       </MotionDiv>
