@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef, useMemo } from "react";
 import { HiShare } from "react-icons/hi";
 import { IoClose, IoCaretForward, IoCaretBack } from "react-icons/io5";
 import Stories from "react-insta-stories";
 import * as htmlToImage from "html-to-image";
 import Image from "next/image";
+import jsPDF from "jspdf";
 
 // Import all chart components
 import MonthlyGraph from "./charts/MonthlyGraph";
@@ -21,6 +22,7 @@ import ThankCard from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
 import GridStats from "./charts/GridStats";
 import { ChatData } from "@/types/chat";
+import { sendEvent } from "@/lib/analytics";
 
 interface DashboardProps {
   chatData: ChatData;
@@ -30,6 +32,9 @@ interface DashboardProps {
 const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
   const [isShared, setIsShared] = useState(false);
   const [storyIndex, setStoryIndex] = useState(0);
+  const [showPDFRenderer, setShowPDFRenderer] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const pdfContainerRef = useRef<HTMLDivElement>(null);
 
   const handleShare = useCallback(() => {
     setIsShared(true);
@@ -59,7 +64,94 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
       });
   }, []);
 
-  const pStories = [
+  const handleDownloadPDF = useCallback(async () => {
+    setIsDownloading(true);
+    setShowPDFRenderer(true);
+
+    // Wait for the hidden slides to render (longer delay to ensure animations complete)
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    if (!pdfContainerRef.current) {
+      setShowPDFRenderer(false);
+      setIsDownloading(false);
+      return;
+    }
+
+    const slides = pdfContainerRef.current.querySelectorAll("[data-pdf-slide]");
+    const totalSlides = slides.length;
+
+    if (totalSlides === 0) {
+      setShowPDFRenderer(false);
+      setIsDownloading(false);
+      return;
+    }
+
+    // Create PDF with phone-like dimensions (iPhone 14 Pro aspect ratio)
+    const slideWidth = 390;
+    const slideHeight = 844;
+    
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "px",
+      format: [slideWidth, slideHeight],
+    });
+
+    for (let i = 0; i < totalSlides; i++) {
+      const slide = slides[i] as HTMLElement;
+
+      try {
+        const dataUrl = await htmlToImage.toPng(slide, {
+          quality: 1,
+          pixelRatio: 2,
+          backgroundColor: "#111b21",
+          width: slideWidth,
+          height: slideHeight,
+        });
+
+        if (i > 0) {
+          pdf.addPage();
+        }
+
+        pdf.addImage(dataUrl, "PNG", 0, 0, slideWidth, slideHeight);
+
+        // Add clickable link for watermark on every page (bottom center)
+        // Watermark is at bottom: 20px from bottom, centered
+        pdf.link(80, slideHeight - 50, 230, 40, { url: "https://ourchatstory.co" });
+
+        // Add clickable links for the last slide (ThankCard)
+        const isLastSlide = i === totalSlides - 1;
+        if (isLastSlide) {
+          // "Buy us a coffee" button
+          pdf.link(20, 420, 350, 100, { url: "https://www.buymeacoffee.com/whatsappwrapped" });
+          
+          // Social icons - middle position
+          pdf.link(140, 580, 50, 50, { url: "https://twitter.com/ourchatstory" });
+          pdf.link(200, 580, 50, 50, { url: "https://www.instagram.com/ourchatstory.co/" });
+          
+          // OurChatStory title
+          pdf.link(50, 175, 290, 100, { url: "https://ourchatstory.co" });
+        }
+      } catch (error) {
+        console.error(`Error capturing slide ${i + 1}:`, error);
+      }
+    }
+
+    const memberNames = chatData.members.slice(0, 2).join("-").replace(/[^a-zA-Z0-9-]/g, "");
+    const filename = `whatsapp-wrapped-${memberNames}-2025.pdf`;
+
+    pdf.save(filename);
+    setShowPDFRenderer(false);
+    setIsDownloading(false);
+
+    // Track PDF download event
+    sendEvent("pdf_download", {
+      members_count: chatData.members.length,
+      is_group: chatData.group,
+      total_chats: chatData.total_no_of_chats,
+    });
+  }, [chatData.members, chatData.group, chatData.total_no_of_chats]);
+
+  const pStories = useMemo(() => [
     {
       content: () => <Welcome drawData={chatData} />,
     },
@@ -93,12 +185,9 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
     {
       content: () => <EmojiChart drawData={chatData} />,
     },
-    {
-      content: () => <ThankCard drawData={chatData} />,
-    },
-  ];
+  ], [chatData, isShared]);
 
-  const gStories = [
+  const gStories = useMemo(() => [
     {
       content: () => <Welcome drawData={chatData} />,
     },
@@ -129,12 +218,23 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
     {
       content: () => <EmojiChart drawData={chatData} />,
     },
-    {
-      content: () => <ThankCard drawData={chatData} />,
-    },
-  ];
+  ], [chatData, isShared]);
 
-  const stories = chatData.group ? gStories : pStories;
+  // ThankCard story with isDownloading - kept separate to allow loading state updates
+  const thankCardStory = useMemo(() => ({
+    content: () => (
+      <ThankCard
+        drawData={chatData}
+        onDownloadPDF={handleDownloadPDF}
+        isDownloading={isDownloading}
+      />
+    ),
+  }), [chatData, handleDownloadPDF, isDownloading]);
+
+  const stories = useMemo(() => {
+    const baseStories = chatData.group ? gStories : pStories;
+    return [...baseStories, thankCardStory];
+  }, [chatData.group, gStories, pStories, thankCardStory]);
 
   return (
     <div>
@@ -261,6 +361,106 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
           </button>
         ) : null}
       </div>
+
+      {/* Hidden container for PDF generation - uses iframe-like approach for proper vh calculation */}
+      {showPDFRenderer && (
+        <div
+          ref={pdfContainerRef}
+          style={{
+            position: "fixed",
+            left: "-9999px",
+            top: 0,
+            pointerEvents: "none",
+          }}
+          aria-hidden="true"
+        >
+          {/* Render all slides for PDF capture */}
+          {(chatData.group ? [
+            <Welcome key="welcome" drawData={chatData} />,
+            <TotalChat key="totalchat" drawData={chatData} />,
+            <GridStats key="gridstats" drawData={chatData} />,
+            <MostActive key="mostactive" drawData={chatData} />,
+            <MonthlyGraph key="monthly" drawData={chatData} isShared={true} forPDF={true} />,
+            <HourlyGraph key="hourly" drawData={chatData} isShared={true} forPDF={true} />,
+            <NoTalk key="notalk" drawData={chatData} />,
+            <WordCloud key="wordcloud" drawData={chatData} />,
+            <CountPie key="countpie" drawData={chatData} />,
+            <EmojiChart key="emoji" drawData={chatData} />,
+            <ThankCard key="thanks" drawData={chatData} forPDF={true} />,
+          ] : [
+            <Welcome key="welcome" drawData={chatData} />,
+            <Welcome2 key="welcome2" drawData={chatData} forPDF={true} />,
+            <TotalChat key="totalchat" drawData={chatData} />,
+            <GridStats key="gridstats" drawData={chatData} />,
+            <MostActive key="mostactive" drawData={chatData} />,
+            <MonthlyGraph key="monthly" drawData={chatData} isShared={true} forPDF={true} />,
+            <HourlyGraph key="hourly" drawData={chatData} isShared={true} forPDF={true} />,
+            <NoTalk key="notalk" drawData={chatData} />,
+            <WordCloud key="wordcloud" drawData={chatData} />,
+            <CountPie key="countpie" drawData={chatData} />,
+            <EmojiChart key="emoji" drawData={chatData} />,
+            <ThankCard key="thanks" drawData={chatData} forPDF={true} />,
+          ]).map((slide, index, array) => (
+            <div
+              key={index}
+              data-pdf-slide
+              style={{
+                width: "390px",
+                height: "844px", // iPhone 14 Pro dimensions for proper aspect ratio
+                overflow: "hidden",
+                position: "relative",
+                backgroundColor: "#111b21",
+              }}
+            >
+              {/* Inner wrapper to simulate viewport for vh units */}
+              <div
+                style={{
+                  width: "390px",
+                  height: "844px",
+                  position: "relative",
+                }}
+              >
+                {slide}
+              </div>
+              {/* Watermark */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "20px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "8px 16px",
+                  opacity: 0.9,
+                }}
+              >
+                <Image
+                  width={20}
+                  height={20}
+                  src="/static/compress/logo2.webp"
+                  alt="OurChatStory"
+                  style={{ width: "20px", height: "20px" }}
+                />
+                <p
+                  style={{
+                    color: "white",
+                    fontSize: "12px",
+                    margin: 0,
+                    textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+                  }}
+                >
+                  Made using{" "}
+                  <span style={{ textDecoration: "underline", color: "#25d366" }}>
+                    OurChatStory.co
+                  </span>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

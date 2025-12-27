@@ -10,13 +10,18 @@ const MotionP = motion.p;
 interface MonthlyGraphProps {
   drawData: ChatData;
   isShared?: boolean;
+  forPDF?: boolean;
 }
 
-const MonthlyGraph = ({ drawData }: MonthlyGraphProps) => {
+const MonthlyGraph = ({ drawData, forPDF = false }: MonthlyGraphProps) => {
   const chartData = monthlyCountData(drawData.monthly_chats_count);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-[2vh] w-full h-[78vh] bg-[#111b21] rounded-2xl p-8 pb-[10vh] relative overflow-hidden">
+    <div className={`flex flex-col items-center justify-center w-full bg-[#111b21] rounded-2xl p-8 relative ${
+      forPDF 
+        ? "gap-[16px] h-full pb-[40px]" 
+        : "gap-[2vh] h-[78vh] pb-[10vh] overflow-hidden"
+    }`}>
       {/* Background Blobs */}
       <MotionDiv
         className="absolute -top-[10%] -right-[10%] w-[300px] h-[300px] rounded-full opacity-[0.02]"
@@ -32,7 +37,7 @@ const MonthlyGraph = ({ drawData }: MonthlyGraphProps) => {
       />
 
       <MotionP
-        initial={{ opacity: 0, y: 20 }}
+        initial={forPDF ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="text-[#8696a0] text-sm font-bold uppercase tracking-widest z-10"
@@ -41,7 +46,7 @@ const MonthlyGraph = ({ drawData }: MonthlyGraphProps) => {
       </MotionP>
 
       <MotionDiv
-        initial={{ opacity: 0, y: 20 }}
+        initial={forPDF ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
         className="z-10 text-center"
@@ -56,18 +61,21 @@ const MonthlyGraph = ({ drawData }: MonthlyGraphProps) => {
       </MotionDiv>
 
       <MotionDiv
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={forPDF ? false : { opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="w-full h-[200px] z-10"
+        className={forPDF ? "z-10" : "w-full h-[200px] z-10"}
+        style={forPDF ? { width: 340, height: 180 } : undefined}
       >
-        <ResponsiveContainer width="100%" height="100%">
+        {forPDF ? (
           <AreaChart
             data={chartData}
-            margin={{ top: 10, right: 20, left: 20, bottom: 40 }}
+            width={340}
+            height={180}
+            margin={{ top: 10, right: 10, left: 10, bottom: 30 }}
           >
             <defs>
-              <linearGradient id="gradient1" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="gradient1-pdf" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.4} />
                 <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0.0} />
               </linearGradient>
@@ -75,7 +83,7 @@ const MonthlyGraph = ({ drawData }: MonthlyGraphProps) => {
             <XAxis
               dataKey="x"
               stroke="#8696a0"
-              tick={{ fill: "#8696a0", fontSize: 10 }}
+              tick={{ fill: "#8696a0", fontSize: 9 }}
               axisLine={false}
               tickLine={false}
               interval={0}
@@ -84,17 +92,48 @@ const MonthlyGraph = ({ drawData }: MonthlyGraphProps) => {
               type="linear"
               dataKey="y"
               stroke="#8b5cf6"
-              strokeWidth={4}
-              fill="url(#gradient1)"
+              strokeWidth={3}
+              fill="url(#gradient1-pdf)"
               strokeLinecap="round"
-              animationDuration={2000}
+              isAnimationActive={false}
             />
           </AreaChart>
-        </ResponsiveContainer>
+        ) : (
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              data={chartData}
+              margin={{ top: 10, right: 20, left: 20, bottom: 40 }}
+            >
+              <defs>
+                <linearGradient id="gradient1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.4} />
+                  <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0.0} />
+                </linearGradient>
+              </defs>
+              <XAxis
+                dataKey="x"
+                stroke="#8696a0"
+                tick={{ fill: "#8696a0", fontSize: 10 }}
+                axisLine={false}
+                tickLine={false}
+                interval={0}
+              />
+              <Area
+                type="linear"
+                dataKey="y"
+                stroke="#8b5cf6"
+                strokeWidth={4}
+                fill="url(#gradient1)"
+                strokeLinecap="round"
+                animationDuration={2000}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        )}
       </MotionDiv>
 
       <MotionDiv
-        initial={{ opacity: 0, y: 20 }}
+        initial={forPDF ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 1.5 }}
         className="z-10 bg-[#202c33] p-6 rounded-lg border-l-4 border-[#8b5cf6] max-w-[85%]"

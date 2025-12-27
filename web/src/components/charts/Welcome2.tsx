@@ -5,11 +5,18 @@ import { ChatData } from "@/types/chat";
 
 interface ChartProps {
   drawData: ChatData;
+  forPDF?: boolean;
 }
 
-const Welcome2: React.FC<ChartProps> = ({ drawData }) => {
+const Welcome2: React.FC<ChartProps> = ({ drawData, forPDF = false }) => {
   return (
-    <div className="flex flex-col items-center justify-center gap-[4vh] w-full h-[78vh] bg-[#111b21] rounded-2xl p-8 pb-[10vh] relative overflow-hidden">
+    <div 
+      className={`flex flex-col items-center justify-center w-full bg-[#111b21] rounded-2xl p-8 relative ${
+        forPDF 
+          ? "gap-[30px] h-full pb-[60px]" 
+          : "gap-[4vh] h-[78vh] pb-[10vh] overflow-hidden"
+      }`}
+    >
       {/* Background Blobs */}
       <motion.div
         className="absolute -top-[10%] -right-[10%] w-[300px] h-[300px] rounded-full opacity-[0.02]"
@@ -25,7 +32,7 @@ const Welcome2: React.FC<ChartProps> = ({ drawData }) => {
       />
 
       <motion.p
-        initial={{ opacity: 0, y: -20 }}
+        initial={forPDF ? false : { opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-[#8696a0] text-sm font-bold uppercase tracking-widest z-10"
@@ -35,7 +42,7 @@ const Welcome2: React.FC<ChartProps> = ({ drawData }) => {
 
       {/* Name 1 - Green Bubble */}
       <motion.div
-        initial={{ x: -50, opacity: 0, rotate: -5 }}
+        initial={forPDF ? false : { x: -50, opacity: 0, rotate: -5 }}
         animate={{ x: 0, opacity: 1, rotate: -2 }}
         transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
         className="bg-[#25d366] p-6 rounded-[20px_4px_20px_20px] shadow-[4px_4px_0px_rgba(0,0,0,0.2)] max-w-[85%] z-10"
@@ -46,7 +53,7 @@ const Welcome2: React.FC<ChartProps> = ({ drawData }) => {
       </motion.div>
 
       <motion.p
-        initial={{ scale: 0, opacity: 0 }}
+        initial={forPDF ? false : { scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.7, type: "spring" }}
         className="text-[#8696a0] text-2xl font-bold z-10"
@@ -56,7 +63,7 @@ const Welcome2: React.FC<ChartProps> = ({ drawData }) => {
 
       {/* Name 2 - White Bubble */}
       <motion.div
-        initial={{ x: 50, opacity: 0, rotate: 5 }}
+        initial={forPDF ? false : { x: 50, opacity: 0, rotate: 5 }}
         animate={{ x: 0, opacity: 1, rotate: 2 }}
         transition={{ delay: 0.9, type: "spring", stiffness: 100 }}
         className="bg-[#e9edef] p-6 rounded-[4px_20px_20px_20px] shadow-[4px_4px_0px_rgba(0,0,0,0.2)] max-w-[85%] z-10"
@@ -67,7 +74,7 @@ const Welcome2: React.FC<ChartProps> = ({ drawData }) => {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={forPDF ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
         className="mt-6 px-4 py-1 border border-[#2a3942] rounded-full bg-[rgba(17,27,33,0.5)] z-10"

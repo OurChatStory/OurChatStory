@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChatData } from "@/types/chat";
 import { FaTwitter, FaCoffee, FaInstagram } from "react-icons/fa";
+import { HiDownload } from "react-icons/hi";
 
 const MotionDiv = motion.div;
 const MotionP = motion.p;
@@ -10,11 +11,23 @@ const MotionButton = motion.button;
 
 interface ThankCardProps {
   drawData: ChatData;
+  onDownloadPDF?: () => void;
+  forPDF?: boolean;
+  isDownloading?: boolean;
 }
 
-const ThankCard = ({ drawData }: ThankCardProps) => {
+const ThankCard = ({ 
+  drawData, 
+  onDownloadPDF,
+  forPDF = false,
+  isDownloading = false,
+}: ThankCardProps) => {
   return (
-    <div className="flex flex-col items-center justify-center gap-[4vh] w-full h-[78vh] bg-[#111b21] rounded-2xl p-8 pb-[10vh] relative overflow-hidden">
+    <div className={`flex flex-col items-center justify-center w-full bg-[#111b21] rounded-2xl p-8 relative ${
+      forPDF 
+        ? "gap-[24px] h-full pb-[40px]" 
+        : "gap-[4vh] h-[78vh] pb-[10vh] overflow-hidden"
+    }`}>
       {/* Background Blobs */}
       <MotionDiv
         className="absolute -top-[10%] -right-[10%] w-[300px] h-[300px] rounded-full opacity-[0.02]"
@@ -30,7 +43,7 @@ const ThankCard = ({ drawData }: ThankCardProps) => {
       />
 
       <MotionP
-        initial={{ opacity: 0, y: 20 }}
+        initial={forPDF ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="text-[#8696a0] text-sm font-bold uppercase tracking-widest z-10"
@@ -40,7 +53,7 @@ const ThankCard = ({ drawData }: ThankCardProps) => {
 
       <div className="flex flex-col items-center gap-2 z-10 text-center">
         <MotionP
-          initial={{ scale: 0.5, opacity: 0 }}
+          initial={forPDF ? false : { scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
           className="text-[#e9edef] text-4xl font-bold"
@@ -48,7 +61,7 @@ const ThankCard = ({ drawData }: ThankCardProps) => {
           OurChatStory
         </MotionP>
         <MotionP
-          initial={{ opacity: 0 }}
+          initial={forPDF ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
           className="text-[#25d366] text-lg"
@@ -58,7 +71,7 @@ const ThankCard = ({ drawData }: ThankCardProps) => {
       </div>
 
       <MotionDiv
-        initial={{ opacity: 0, y: 20 }}
+        initial={forPDF ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.5 }}
         className="z-[10002] bg-[#202c33] p-6 rounded-lg max-w-[85%] text-center relative"
@@ -81,6 +94,39 @@ const ThankCard = ({ drawData }: ThankCardProps) => {
           </MotionButton>
         </Link>
       </MotionDiv>
+
+      {onDownloadPDF && (
+        <MotionDiv
+          initial={forPDF ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="z-[10002] w-[85%] relative"
+        >
+          <MotionButton
+            whileHover={isDownloading ? {} : { scale: 1.05 }}
+            whileTap={isDownloading ? {} : { scale: 0.95 }}
+            onClick={isDownloading ? undefined : onDownloadPDF}
+            disabled={isDownloading}
+            className={`w-full py-3 px-6 rounded-lg flex items-center justify-center gap-2 font-semibold text-lg transition-all ${
+              isDownloading 
+                ? "bg-[#1a4a3a] text-[#8696a0] cursor-wait" 
+                : "bg-[#25d366] text-white hover:bg-[#1ebe5d] cursor-pointer"
+            }`}
+          >
+            {isDownloading ? (
+              <>
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                Generating PDF...
+              </>
+            ) : (
+              <>
+                <HiDownload size="1.2em" />
+                Download Your Wrapped
+              </>
+            )}
+          </MotionButton>
+        </MotionDiv>
+      )}
 
       <div className="flex flex-col items-center gap-2 z-[10002] relative">
         <p className="text-[#8696a0] text-sm">Follow us for updates</p>

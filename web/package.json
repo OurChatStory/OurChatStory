@@ -12,6 +12,7 @@
 		"axios": "^1.13.2",
 		"framer-motion": "^12.23.26",
 		"html-to-image": "^1.11.13",
+		"jspdf": "^3.0.4",
 		"next": "15.5.9",
 		"react": "19.1.4",
 		"react-countup": "^6.5.3",
