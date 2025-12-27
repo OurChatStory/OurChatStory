@@ -68,7 +68,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
     setIsDownloading(true);
     setShowPDFRenderer(true);
 
-    // Wait for the hidden slides to render (longer delay to ensure animations complete)
+    // Wait for the hidden slides to render
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     if (!pdfContainerRef.current) {
@@ -96,43 +96,72 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
       format: [slideWidth, slideHeight],
     });
 
+    // WordCloud slide index (0-based): group=7, personal=8
+    const wordcloudIndex = chatData.group ? 7 : 8;
+
     for (let i = 0; i < totalSlides; i++) {
       const slide = slides[i] as HTMLElement;
 
-      try {
-        const dataUrl = await htmlToImage.toPng(slide, {
-          quality: 1,
-          pixelRatio: 2,
-          backgroundColor: "#111b21",
-          width: slideWidth,
-          height: slideHeight,
-        });
+      if (i > 0) {
+        pdf.addPage();
+      }
 
-        if (i > 0) {
-          pdf.addPage();
+      // For WordCloud slide, add the base64 image directly (nuclear option)
+      if (i === wordcloudIndex && chatData.wordcloud) {
+        // Draw background
+        pdf.setFillColor(17, 27, 33); // #111b21
+        pdf.rect(0, 0, slideWidth, slideHeight, "F");
+        
+        // Add "Word Cloud" title
+        pdf.setTextColor(134, 150, 160); // #8696a0
+        pdf.setFontSize(12);
+        pdf.text("WORD CLOUD", slideWidth / 2, 80, { align: "center" });
+        
+        // Add the wordcloud image directly from base64
+        try {
+          const imgData = `data:image/png;base64,${chatData.wordcloud}`;
+          // WordCloud is 480x640 (3:4 portrait ratio)
+          // Scale to fit nicely in the slide while maintaining aspect ratio
+          const imgWidth = 280;
+          const imgHeight = 373; // 280 * (640/480) = 373
+          const imgX = (slideWidth - imgWidth) / 2;
+          const imgY = (slideHeight - imgHeight) / 2;
+          pdf.addImage(imgData, "PNG", imgX, imgY, imgWidth, imgHeight);
+        } catch (err) {
+          console.error("Failed to add wordcloud to PDF:", err);
         }
+      } else {
+        // For all other slides, use html-to-image
+        try {
+          const dataUrl = await htmlToImage.toPng(slide, {
+            quality: 1,
+            pixelRatio: 2,
+            backgroundColor: "#111b21",
+            width: slideWidth,
+            height: slideHeight,
+          });
 
-        pdf.addImage(dataUrl, "PNG", 0, 0, slideWidth, slideHeight);
-
-        // Add clickable link for watermark on every page (bottom center)
-        // Watermark is at bottom: 20px from bottom, centered
-        pdf.link(80, slideHeight - 50, 230, 40, { url: "https://ourchatstory.co" });
-
-        // Add clickable links for the last slide (ThankCard)
-        const isLastSlide = i === totalSlides - 1;
-        if (isLastSlide) {
-          // "Buy us a coffee" button
-          pdf.link(20, 420, 350, 100, { url: "https://www.buymeacoffee.com/whatsappwrapped" });
-          
-          // Social icons - middle position
-          pdf.link(140, 580, 50, 50, { url: "https://twitter.com/ourchatstory" });
-          pdf.link(200, 580, 50, 50, { url: "https://www.instagram.com/ourchatstory.co/" });
-          
-          // OurChatStory title
-          pdf.link(50, 175, 290, 100, { url: "https://ourchatstory.co" });
+          pdf.addImage(dataUrl, "PNG", 0, 0, slideWidth, slideHeight);
+        } catch (error) {
+          console.error(`Error capturing slide ${i + 1}:`, error);
         }
-      } catch (error) {
-        console.error(`Error capturing slide ${i + 1}:`, error);
+      }
+
+      // Add clickable link for watermark on every page (bottom center)
+      pdf.link(80, slideHeight - 50, 230, 40, { url: "https://ourchatstory.co" });
+
+      // Add clickable links for the last slide (ThankCard)
+      const isLastSlide = i === totalSlides - 1;
+      if (isLastSlide) {
+        // "Buy us a coffee" button
+        pdf.link(20, 420, 350, 100, { url: "https://www.buymeacoffee.com/whatsappwrapped" });
+        
+        // Social icons - middle position
+        pdf.link(140, 580, 50, 50, { url: "https://twitter.com/ourchatstory" });
+        pdf.link(200, 580, 50, 50, { url: "https://www.instagram.com/ourchatstory.co/" });
+        
+        // OurChatStory title
+        pdf.link(50, 175, 290, 100, { url: "https://ourchatstory.co" });
       }
     }
 
@@ -383,7 +412,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
             <MonthlyGraph key="monthly" drawData={chatData} isShared={true} forPDF={true} />,
             <HourlyGraph key="hourly" drawData={chatData} isShared={true} forPDF={true} />,
             <NoTalk key="notalk" drawData={chatData} />,
-            <WordCloud key="wordcloud" drawData={chatData} forPDF={true} />,
+            <WordCloud key="wordcloud" drawData={chatData} />,
             <CountPie key="countpie" drawData={chatData} />,
             <EmojiChart key="emoji" drawData={chatData} />,
             <ThankCard key="thanks" drawData={chatData} forPDF={true} />,
@@ -396,7 +425,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
             <MonthlyGraph key="monthly" drawData={chatData} isShared={true} forPDF={true} />,
             <HourlyGraph key="hourly" drawData={chatData} isShared={true} forPDF={true} />,
             <NoTalk key="notalk" drawData={chatData} />,
-            <WordCloud key="wordcloud" drawData={chatData} forPDF={true} />,
+            <WordCloud key="wordcloud" drawData={chatData} />,
             <CountPie key="countpie" drawData={chatData} />,
             <EmojiChart key="emoji" drawData={chatData} />,
             <ThankCard key="thanks" drawData={chatData} forPDF={true} />,
