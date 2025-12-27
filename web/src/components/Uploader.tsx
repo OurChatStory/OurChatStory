@@ -152,7 +152,7 @@ const Uploader: React.FC<UploaderProps> = ({
                 <div className="w-16 h-16 border-4 border-gray-700 border-t-[#25d366] rounded-full animate-spin" />
                 <p className="text-[#e9edef] text-lg font-bold">Analyzing your chat...</p>
                 <p className="text-[#8696a0] text-center">
-                  Hang tight! We're weaving your chat into a beautiful story. <br />
+                  Hang tight! We&apos;re weaving your chat into a beautiful story. <br />
                   This usually takes just a few seconds...
                 </p>
               </div>
