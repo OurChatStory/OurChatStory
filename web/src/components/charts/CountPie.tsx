@@ -116,7 +116,7 @@ const CountPie = ({ drawData }: CountPieProps) => {
         <p className="text-[#d1d7db] text-md text-left">
           {drawData.group
             ? `${mostActive} is carrying this group chat! 🏋️`
-            : "It&apos;s a close call... or is it? 👀"}
+            : "It's a close call... or is it? 👀"}
         </p>
       </MotionDiv>
     </div>

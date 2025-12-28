@@ -154,7 +154,7 @@ const HourlyGraph = ({ drawData, forPDF = false }: HourlyGraphProps) => {
           {activeType.includes("Owl")
             ? "Late night conversations are the best conversations. 🌙"
             : activeType.includes("Bird")
-            ? "Up and at &apos;em! You start the day with a bang. ☀️"
+            ? "Up and at 'em! You start the day with a bang. ☀️"
             : "Keeping the chat alive throughout the day! 💬"}
         </p>
       </MotionDiv>
