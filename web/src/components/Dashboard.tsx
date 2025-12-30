@@ -377,9 +377,9 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
         ) : typeof window !== "undefined" && typeof navigator.canShare !== "undefined" ? (
           <button
             className="w-full h-[5vh] sticky bottom-0 z-[10003] rounded-none bg-white hover:bg-white active:bg-white text-black font-bold flex items-center justify-center gap-2"
-            onClick={handleShare}
+            onClick={handleSharePDF}
           >
-            {isShared ? (
+            {isSharing ? (
               <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
             ) : (
               <HiShare />

@@ -26,7 +26,7 @@ const ThankCard = ({
     <div className={`flex flex-col items-center justify-center w-full bg-[#111b21] rounded-2xl p-8 relative ${
       forPDF 
         ? "gap-[24px] h-full pb-[40px]" 
-        : "gap-[4vh] h-[78vh] pb-[10vh] overflow-hidden"
+        : "gap-[2vh] h-[78vh] pb-[10vh] overflow-hidden"
     }`}>
       {/* Background Blobs */}
       <MotionDiv
@@ -121,7 +121,7 @@ const ThankCard = ({
             ) : (
               <>
                 <HiShare size="1.2em" />
-                Share Your Wrapped
+                Share
               </>
             )}
           </MotionButton>
