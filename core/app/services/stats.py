@@ -72,6 +72,9 @@ def get_wrap(chats: str) -> dict:
 
         call_stats = wc.get_call_stats()
 
+        friendship_score = wc.get_friendship_score()
+        friendship_type = wc.get_friendship_type()
+
         stats = {
             "group": is_group,
             "members": chat_members,
@@ -93,6 +96,8 @@ def get_wrap(chats: str) -> dict:
             "longest_gap": longest_gap,
             "longest_session": longest_session,
             "call_stats": call_stats,
+            "friendship_score": friendship_score,
+            "friendship_type": friendship_type,
             "wordcloud": wordcloud,
         }
 
