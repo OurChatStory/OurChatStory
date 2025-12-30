@@ -110,7 +110,7 @@ const ThankCard = ({
             className={`w-full py-3 px-6 rounded-lg flex items-center justify-center gap-2 font-semibold text-lg transition-all ${
               isSharing 
                 ? "bg-[#1a4a3a] text-[#8696a0] cursor-wait" 
-                : "bg-[#25d366] text-white hover:bg-[#1ebe5d] cursor-pointer"
+                : "bg-[#25d366] text-[#111b21] hover:bg-[#1ebe5d] cursor-pointer"
             }`}
           >
             {isSharing ? (
