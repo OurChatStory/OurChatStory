@@ -37,6 +37,8 @@ export interface ChatData {
     hour: number;
     count: number;
   }>;
+  friendship_score?: number;
+  friendship_type?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }

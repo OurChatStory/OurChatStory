@@ -65,6 +65,8 @@ export const sample: ChatData = {
     hour: 14,
     count: 162,
   },
+  friendship_score: 79,
+  friendship_type: "Romantic Partners",
   top_emojis: ["✨", "❤️", "😭", "😂", "😩"],
   top_percent: 0.9637858624290023,
   longest_gap: {

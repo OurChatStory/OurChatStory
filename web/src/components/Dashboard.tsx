@@ -21,6 +21,7 @@ import MostActive from "./charts/MostActive";
 import ThankCard from "./charts/ThankCard";
 import Welcome from "./charts/Welcome";
 import GridStats from "./charts/GridStats";
+import FriendshipStats from "./charts/FriendshipStats";
 import { ChatData } from "@/types/chat";
 import { sendEvent } from "@/lib/analytics";
 
@@ -211,6 +212,9 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
     },
     {
       content: () => <EmojiChart drawData={chatData} />,
+    },
+    {
+      content: () => <FriendshipStats drawData={chatData} />,
     },
   ], [chatData, isShared]);
 
@@ -426,6 +430,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
             <WordCloud key="wordcloud" drawData={chatData} />,
             <CountPie key="countpie" drawData={chatData} />,
             <EmojiChart key="emoji" drawData={chatData} />,
+            <FriendshipStats key="friendship" drawData={chatData} forPDF={true} />,
             <ThankCard key="thanks" drawData={chatData} forPDF={true} />,
           ]).map((slide, index, array) => (
             <div
