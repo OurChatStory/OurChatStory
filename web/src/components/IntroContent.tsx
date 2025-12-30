@@ -5,12 +5,41 @@ import { motion } from "framer-motion";
 import { FaTwitter, FaInstagram } from "react-icons/fa";
 import { IntroButton } from "./IntroButton";
 import { DemoDeck } from "./DemoDeck";
+import SupportersModal from "./SupportersModal";
+import { BMC_TOKEN } from "@/lib/constants";
 
 interface IntroContentProps {
   setShowUploader: (show: boolean) => void;
 }
 
 export const IntroContent: React.FC<IntroContentProps> = ({ setShowUploader }) => {
+  const [showSupporters, setShowSupporters] = React.useState(false);
+  const [supporters, setSupporters] = React.useState<{ supporter_name: string; support_coffees: number; support_note?: string }[]>([]);
+  const [loading, setLoading] = React.useState(false);
+
+  const fetchSupporters = async () => {
+    if (supporters.length > 0) {
+      setShowSupporters(true);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://api.buymeacoffee.com/api/v1/supporters?access_token=${BMC_TOKEN}`
+      );
+      const data = await response.json();
+      
+      if (data.success && data.data) {
+        setSupporters(data.data);
+      }
+    } catch (error) {
+      console.error("Error fetching supporters:", error);
+    } finally {
+      setLoading(false);
+      setShowSupporters(true);
+    }
+  };
   return (
     <div className="w-full overflow-hidden min-h-screen flex flex-col">
       <div className="flex-1 flex items-center py-16 lg:py-0">
@@ -88,26 +117,35 @@ export const IntroContent: React.FC<IntroContentProps> = ({ setShowUploader }) =
       {/* Footer */}
       <div className="max-w-7xl mx-auto w-full py-6 md:py-8 px-6 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
-          <div className="flex flex-col items-center md:items-start gap-1">
-            <p className="text-xs text-[#8696a0]">100% Private • No data stored</p>
-            <div className="flex items-center gap-2 text-xs text-[#8696a0]">
-              <Link href="/privacy" className="hover:text-[#25d366]">
-                Privacy
-              </Link>
-              <span>•</span>
-              <Link href="/blogs" className="hover:text-[#25d366]">
-                Blogs
-              </Link>
-              <span>•</span>
-              <a
-                href="https://github.com/OurChatStory/OurChatStory"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#25d366]"
-              >
-                Code
-              </a>
+          <div className="flex flex-col items-center md:items-start gap-3">
+            <div className="flex flex-col items-center md:items-start gap-1">
+              <p className="text-xs text-[#8696a0]">100% Private • No data stored</p>
+              <div className="flex items-center gap-2 text-xs text-[#8696a0]">
+                <Link href="/privacy" className="hover:text-[#25d366]">
+                  Privacy
+                </Link>
+                <span>•</span>
+                <Link href="/blogs" className="hover:text-[#25d366]">
+                  Blogs
+                </Link>
+                <span>•</span>
+                <a
+                  href="https://github.com/OurChatStory/OurChatStory"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#25d366]"
+                >
+                  Code
+                </a>
+              </div>
             </div>
+            <button
+              onClick={fetchSupporters}
+              disabled={loading}
+              className="text-xs text-[#8696a0] hover:text-[#25d366] transition-colors hover:underline disabled:opacity-50"
+            >
+              {loading ? "Loading..." : "Meet our supporters"}
+            </button>
           </div>
 
           <div className="flex items-center gap-4">
@@ -148,6 +186,13 @@ export const IntroContent: React.FC<IntroContentProps> = ({ setShowUploader }) =
           </div>
         </div>
       </div>
+
+      <SupportersModal
+        isOpen={showSupporters}
+        onClose={() => setShowSupporters(false)}
+        supporters={supporters}
+        loading={loading}
+      />
     </div>
   );
 };
