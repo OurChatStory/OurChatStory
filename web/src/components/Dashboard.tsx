@@ -33,7 +33,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
   const [isShared, setIsShared] = useState(false);
   const [storyIndex, setStoryIndex] = useState(0);
   const [showPDFRenderer, setShowPDFRenderer] = useState(false);
-  const [isDownloading, setIsDownloading] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
   const pdfContainerRef = useRef<HTMLDivElement>(null);
 
   const handleShare = useCallback(() => {
@@ -64,16 +64,16 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
       });
   }, []);
 
-  const handleDownloadPDF = useCallback(async () => {
-    setIsDownloading(true);
+  const handleSharePDF = useCallback(async () => {
+    setIsSharing(true);
     setShowPDFRenderer(true);
 
     // Wait for the hidden slides to render
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2500));
 
     if (!pdfContainerRef.current) {
       setShowPDFRenderer(false);
-      setIsDownloading(false);
+      setIsSharing(false);
       return;
     }
 
@@ -82,22 +82,19 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
 
     if (totalSlides === 0) {
       setShowPDFRenderer(false);
-      setIsDownloading(false);
+      setIsSharing(false);
       return;
     }
 
-    // Create PDF with phone-like dimensions (iPhone 14 Pro aspect ratio)
+    // Create PDF with phone-like dimensions matching slide height (78vh of typical viewport)
     const slideWidth = 390;
-    const slideHeight = 844;
+    const slideHeight = 650; // 78% of 844px viewport to match h-[78vh]
     
     const pdf = new jsPDF({
       orientation: "portrait",
       unit: "px",
       format: [slideWidth, slideHeight],
     });
-
-    // WordCloud slide index (0-based): group=7, personal=8
-    const wordcloudIndex = chatData.group ? 7 : 8;
 
     for (let i = 0; i < totalSlides; i++) {
       const slide = slides[i] as HTMLElement;
@@ -106,45 +103,24 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
         pdf.addPage();
       }
 
-      // For WordCloud slide, add the base64 image directly (nuclear option)
-      if (i === wordcloudIndex && chatData.wordcloud) {
-        // Draw background
-        pdf.setFillColor(17, 27, 33); // #111b21
-        pdf.rect(0, 0, slideWidth, slideHeight, "F");
-        
-        // Add "Word Cloud" title
-        pdf.setTextColor(134, 150, 160); // #8696a0
-        pdf.setFontSize(12);
-        pdf.text("WORD CLOUD", slideWidth / 2, 80, { align: "center" });
-        
-        // Add the wordcloud image directly from base64
-        try {
-          const imgData = `data:image/png;base64,${chatData.wordcloud}`;
-          // WordCloud is 480x640 (3:4 portrait ratio)
-          // Scale to fit nicely in the slide while maintaining aspect ratio
-          const imgWidth = 280;
-          const imgHeight = 373; // 280 * (640/480) = 373
-          const imgX = (slideWidth - imgWidth) / 2;
-          const imgY = (slideHeight - imgHeight) / 2;
-          pdf.addImage(imgData, "PNG", imgX, imgY, imgWidth, imgHeight);
-        } catch (err) {
-          console.error("Failed to add wordcloud to PDF:", err);
-        }
-      } else {
-        // For all other slides, use html-to-image
-        try {
-          const dataUrl = await htmlToImage.toPng(slide, {
-            quality: 1,
-            pixelRatio: 2,
-            backgroundColor: "#111b21",
-            width: slideWidth,
-            height: slideHeight,
-          });
+      // Use html-to-image for all slides
+      try {
+        const dataUrl = await htmlToImage.toPng(slide, {
+          quality: 1,
+          pixelRatio: 2,
+          backgroundColor: "#111b21",
+          width: slideWidth,
+          height: slideHeight,
+          skipAutoScale: true,
+          filter: (node) => {
+            // Include all nodes
+            return true;
+          },
+        });
 
-          pdf.addImage(dataUrl, "PNG", 0, 0, slideWidth, slideHeight);
-        } catch (error) {
-          console.error(`Error capturing slide ${i + 1}:`, error);
-        }
+        pdf.addImage(dataUrl, "PNG", 0, 0, slideWidth, slideHeight);
+      } catch (error) {
+        console.error(`Error capturing slide ${i + 1}:`, error);
       }
 
       // Add clickable link for watermark on every page (bottom center)
@@ -168,12 +144,34 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
     const memberNames = chatData.members.slice(0, 2).join("-").replace(/[^a-zA-Z0-9-]/g, "");
     const filename = `whatsapp-wrapped-${memberNames}-2025.pdf`;
 
-    pdf.save(filename);
-    setShowPDFRenderer(false);
-    setIsDownloading(false);
+    // Get PDF as blob and use Web Share API
+    const pdfBlob = pdf.output("blob");
+    const pdfFile = new File([pdfBlob], filename, { type: "application/pdf" });
 
-    // Track PDF download event
-    sendEvent("pdf_download", {
+    try {
+      if (navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+        await navigator.share({
+          title: "WhatsApp Wrapped",
+          text: "Check out my WhatsApp Wrapped from OurChatStory!",
+          files: [pdfFile],
+        });
+        console.log("Share was successful.");
+      } else {
+        // Fallback to download if sharing is not supported
+        console.log("Web Share API not supported, falling back to download");
+        pdf.save(filename);
+      }
+    } catch (error) {
+      console.error("Error sharing PDF:", error);
+      // Fallback to download on error
+      pdf.save(filename);
+    }
+
+    setShowPDFRenderer(false);
+    setIsSharing(false);
+
+    // Track PDF share event
+    sendEvent("pdf_share", {
       members_count: chatData.members.length,
       is_group: chatData.group,
       total_chats: chatData.total_no_of_chats,
@@ -249,16 +247,16 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
     },
   ], [chatData, isShared]);
 
-  // ThankCard story with isDownloading - kept separate to allow loading state updates
+  // ThankCard story with isSharing - kept separate to allow loading state updates
   const thankCardStory = useMemo(() => ({
     content: () => (
       <ThankCard
         drawData={chatData}
-        onDownloadPDF={handleDownloadPDF}
-        isDownloading={isDownloading}
+        onSharePDF={handleSharePDF}
+        isSharing={isSharing}
       />
     ),
-  }), [chatData, handleDownloadPDF, isDownloading]);
+  }), [chatData, handleSharePDF, isSharing]);
 
   const stories = useMemo(() => {
     const baseStories = chatData.group ? gStories : pStories;
@@ -435,7 +433,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
               data-pdf-slide
               style={{
                 width: "390px",
-                height: "844px", // iPhone 14 Pro dimensions for proper aspect ratio
+                height: "650px", // Match h-[78vh] from slide components (78% of 844px)
                 overflow: "hidden",
                 position: "relative",
                 backgroundColor: "#111b21",
@@ -445,7 +443,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
               <div
                 style={{
                   width: "390px",
-                  height: "844px",
+                  height: "650px", // Match h-[78vh] from slide components
                   position: "relative",
                 }}
               >
@@ -463,6 +461,8 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
                   gap: "8px",
                   padding: "8px 16px",
                   opacity: 0.9,
+                  whiteSpace: "nowrap",
+                  minWidth: "250px",
                 }}
               >
                 <Image
@@ -470,7 +470,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
                   height={20}
                   src="/static/compress/logo2.webp"
                   alt="OurChatStory"
-                  style={{ width: "20px", height: "20px" }}
+                  style={{ width: "20px", height: "20px", flexShrink: 0 }}
                 />
                 <p
                   style={{
@@ -478,6 +478,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
                     fontSize: "12px",
                     margin: 0,
                     textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   Made using{" "}

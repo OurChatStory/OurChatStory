@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChatData } from "@/types/chat";
 import { FaTwitter, FaCoffee, FaInstagram } from "react-icons/fa";
-import { HiDownload } from "react-icons/hi";
+import { HiShare } from "react-icons/hi";
 
 const MotionDiv = motion.div;
 const MotionP = motion.p;
@@ -11,16 +11,16 @@ const MotionButton = motion.button;
 
 interface ThankCardProps {
   drawData: ChatData;
-  onDownloadPDF?: () => void;
+  onSharePDF?: () => void;
   forPDF?: boolean;
-  isDownloading?: boolean;
+  isSharing?: boolean;
 }
 
 const ThankCard = ({ 
   drawData, 
-  onDownloadPDF,
+  onSharePDF,
   forPDF = false,
-  isDownloading = false,
+  isSharing = false,
 }: ThankCardProps) => {
   return (
     <div className={`flex flex-col items-center justify-center w-full bg-[#111b21] rounded-2xl p-8 relative ${
@@ -95,7 +95,7 @@ const ThankCard = ({
         </Link>
       </MotionDiv>
 
-      {onDownloadPDF && (
+      {onSharePDF && (
         <MotionDiv
           initial={forPDF ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -103,25 +103,25 @@ const ThankCard = ({
           className="z-[10002] w-[85%] relative"
         >
           <MotionButton
-            whileHover={isDownloading ? {} : { scale: 1.05 }}
-            whileTap={isDownloading ? {} : { scale: 0.95 }}
-            onClick={isDownloading ? undefined : onDownloadPDF}
-            disabled={isDownloading}
+            whileHover={isSharing ? {} : { scale: 1.05 }}
+            whileTap={isSharing ? {} : { scale: 0.95 }}
+            onClick={isSharing ? undefined : onSharePDF}
+            disabled={isSharing}
             className={`w-full py-3 px-6 rounded-lg flex items-center justify-center gap-2 font-semibold text-lg transition-all ${
-              isDownloading 
+              isSharing 
                 ? "bg-[#1a4a3a] text-[#8696a0] cursor-wait" 
                 : "bg-[#25d366] text-white hover:bg-[#1ebe5d] cursor-pointer"
             }`}
           >
-            {isDownloading ? (
+            {isSharing ? (
               <>
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                Generating PDF...
+                Preparing to share...
               </>
             ) : (
               <>
-                <HiDownload size="1.2em" />
-                Download Your Wrapped
+                <HiShare size="1.2em" />
+                Share Your Wrapped
               </>
             )}
           </MotionButton>
