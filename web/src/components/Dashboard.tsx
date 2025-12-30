@@ -70,13 +70,35 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
     setShowPDFRenderer(true);
 
     // Wait for the hidden slides to render
-    await new Promise((resolve) => setTimeout(resolve, 2500));
+    await new Promise((resolve) => setTimeout(resolve, 1800));
 
     if (!pdfContainerRef.current) {
       setShowPDFRenderer(false);
       setIsSharing(false);
       return;
     }
+
+    // Ensure all images (including the wordcloud base64) are loaded; time out quickly if not
+    const images = Array.from(pdfContainerRef.current.querySelectorAll("img"));
+    await Promise.all(
+      images.map((img) => {
+        if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+        return new Promise((resolve) => {
+          const timer = setTimeout(resolve, 1200);
+          img.onload = () => {
+            clearTimeout(timer);
+            resolve(null);
+          };
+          img.onerror = () => {
+            clearTimeout(timer);
+            resolve(null);
+          };
+        });
+      })
+    );
+
+    // Small buffer after images report loaded
+    await new Promise((resolve) => setTimeout(resolve, 300));
 
     const slides = pdfContainerRef.current.querySelectorAll("[data-pdf-slide]");
     const totalSlides = slides.length;
@@ -89,13 +111,16 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
 
     // Create PDF with phone-like dimensions matching slide height (78vh of typical viewport)
     const slideWidth = 390;
-    const slideHeight = 650; // 78% of 844px viewport to match h-[78vh]
+    const slideHeight = 658; // 78% of 844px viewport to match h-[78vh]
     
     const pdf = new jsPDF({
       orientation: "portrait",
       unit: "px",
       format: [slideWidth, slideHeight],
     });
+
+    // WordCloud slide index (0-based): group=7, personal=8
+    const wordcloudIndex = chatData.group ? 7 : 8;
 
     for (let i = 0; i < totalSlides; i++) {
       const slide = slides[i] as HTMLElement;
@@ -113,13 +138,24 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
           width: slideWidth,
           height: slideHeight,
           skipAutoScale: true,
-          filter: (node) => {
-            // Include all nodes
-            return true;
-          },
+          cacheBust: true,
         });
 
         pdf.addImage(dataUrl, "PNG", 0, 0, slideWidth, slideHeight);
+
+        // Force-draw the wordcloud image on its slide to avoid missing renders
+        if (i === wordcloudIndex && chatData.wordcloud) {
+          try {
+            const imgData = `data:image/png;base64,${chatData.wordcloud}`;
+            const imgWidth = 280;
+            const imgHeight = 373; // 280 * (640/480)
+            const imgX = (slideWidth - imgWidth) / 2;
+            const imgY = (slideHeight - imgHeight) / 2;
+            pdf.addImage(imgData, "PNG", imgX, imgY, imgWidth, imgHeight);
+          } catch (err) {
+            console.error("Failed to add wordcloud overlay:", err);
+          }
+        }
       } catch (error) {
         console.error(`Error capturing slide ${i + 1}:`, error);
       }
