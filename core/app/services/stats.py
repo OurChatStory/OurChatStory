@@ -72,8 +72,8 @@ def get_wrap(chats: str) -> dict:
 
         call_stats = wc.get_call_stats()
 
-        friendship_score = wc.get_friendship_score()
-        friendship_type = wc.get_friendship_type()
+        friendship_score = wc.get_friendship_score() if not is_group else None
+        friendship_type = wc.get_friendship_type() if not is_group else None
 
         stats = {
             "group": is_group,
