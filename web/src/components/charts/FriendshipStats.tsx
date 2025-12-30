@@ -136,8 +136,8 @@ const FriendshipStats: React.FC<ChartProps> = ({ drawData, forPDF = false }) => 
     <div 
       className={`flex flex-col items-center justify-center w-full bg-[#111b21] rounded-2xl p-8 relative ${
         forPDF 
-          ? "gap-[20px] h-full pb-[60px]" 
-          : "gap-[3vh] h-[78vh] pb-[10vh] overflow-hidden"
+          ? "gap-[15px] h-full pb-[60px]" 
+          : "gap-[2vh] h-[78vh] pb-[10vh] overflow-hidden"
       }`}
     >
       {/* Background Blobs */}
@@ -146,9 +146,13 @@ const FriendshipStats: React.FC<ChartProps> = ({ drawData, forPDF = false }) => 
         animate={{ 
           backgroundColor: currentTheme.color,
           scale: [1, 1.1, 1], 
-          opacity: [0.1, 0.3, 0.1] 
+          opacity: [0.3, 0.5, 0.3] 
         }}
-        transition={{ duration: 4, repeat: Infinity }}
+        transition={{
+          backgroundColor: { duration: 1 },
+          scale: { duration: 10, repeat: Infinity, ease: "linear" },
+          opacity: { duration: 10, repeat: Infinity, ease: "linear" }
+        }}
       />
       <motion.div
         className="absolute -bottom-[5%] -left-[5%] w-[200px] h-[200px] rounded-full opacity-[0.02]"
@@ -156,7 +160,10 @@ const FriendshipStats: React.FC<ChartProps> = ({ drawData, forPDF = false }) => 
           backgroundColor: isRevealed ? "#ffffff" : currentTheme.color,
           y: [0, -20, 0] 
         }}
-        transition={{ duration: 5, repeat: Infinity }}
+        transition={{
+          backgroundColor: { duration: 1 },
+          y: { duration: 8, repeat: Infinity, ease: "linear" }
+        }}
       />
 
       {/* Header */}
