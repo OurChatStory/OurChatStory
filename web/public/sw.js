@@ -29,6 +29,8 @@ self.addEventListener("activate", (event) => {
 
 // Fetch event - handle share target and serve from cache when offline
 self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
+  
   // Handle Web Share Target API POST requests
   if (event.request.method === "POST" && event.request.url.includes("/share")) {
     event.respondWith(
@@ -61,8 +63,16 @@ self.addEventListener("fetch", (event) => {
         return new Response("Share received", { status: 200 });
       })
     );
+  } else if (url.pathname.startsWith("/_next/")) {
+    // Network-first strategy for Next.js chunks - always try fresh from server
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        // Only serve from cache if network fails
+        return caches.match(event.request);
+      })
+    );
   } else {
-    // Default cache-first strategy for other requests
+    // Cache-first strategy for static assets
     event.respondWith(
       caches.match(event.request).then((response) => {
         return response || fetch(event.request);
