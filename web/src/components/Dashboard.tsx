@@ -111,7 +111,7 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
 
     // Create PDF with phone-like dimensions matching slide height (78vh of typical viewport)
     const slideWidth = 390;
-    const slideHeight = 658; // 78% of 844px viewport to match h-[78vh]
+    const slideHeight = 650;
     
     const pdf = new jsPDF({
       orientation: "portrait",
@@ -199,9 +199,14 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
         pdf.save(filename);
       }
     } catch (error) {
-      console.error("Error sharing PDF:", error);
-      // Fallback to download on error
-      pdf.save(filename);
+      // Treat user dismissal (NotAllowedError/AbortError) as a no-op; otherwise fall back to download
+      const name = (error as Error)?.name;
+      if (name === "NotAllowedError" || name === "AbortError") {
+        console.log("Share cancelled by user.");
+      } else {
+        console.error("Error sharing PDF:", error);
+        pdf.save(filename);
+      }
     }
 
     setShowPDFRenderer(false);
