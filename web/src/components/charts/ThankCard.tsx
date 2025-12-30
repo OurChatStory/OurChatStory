@@ -79,20 +79,20 @@ const ThankCard = ({
         <p className="text-[#d1d7db] text-md mb-4">
           Enjoyed your wrapped? Help us keep the servers running! ☕
         </p>
-        <Link
+        <a
           href="https://www.buymeacoffee.com/whatsappwrapped"
           target="_blank"
-          className="block no-underline"
+          rel="noopener noreferrer"
+          className="inline-block hover:opacity-90 hover:-translate-y-0.5 transition-all"
         >
-          <MotionButton
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[#FFDD00] text-black text-lg font-semibold w-full py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:bg-[#FFEA00] transition-colors"
-          >
-            <FaCoffee />
-            Buy us a coffee
-          </MotionButton>
-        </Link>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+            alt="Buy Me A Coffee"
+            width={160}
+            height={40}
+          />
+        </a>
       </MotionDiv>
 
       {onSharePDF && (
