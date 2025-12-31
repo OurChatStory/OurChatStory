@@ -8,6 +8,7 @@ interface Supporter {
   supporter_name: string;
   support_coffees: number;
   support_note?: string;
+  support_amount: number;
 }
 
 interface SupportersModalProps {
@@ -23,14 +24,14 @@ const SupportersModal: React.FC<SupportersModalProps> = ({
   supporters,
   loading,
 }) => {
-  const totalValue = supporters.reduce((sum, s) => sum + s.support_coffees * 5, 0);
+  const totalValue = supporters.reduce((sum, s) => sum + s.support_amount, 0);
   const totalSupporters = supporters.length;
 
   return (
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/85 backdrop-blur-[10px] flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/85 backdrop-blur-[10px] flex items-center justify-center z-[20000] p-4"
           onClick={onClose}
         >
           <motion.div
@@ -95,7 +96,7 @@ const SupportersModal: React.FC<SupportersModalProps> = ({
                             ☕ × {supporter.support_coffees}
                           </div>
                           <div className="text-[#8696a0] text-xs">
-                            ${supporter.support_coffees * 5}
+                            ${supporter.support_amount}
                           </div>
                         </div>
                       </div>

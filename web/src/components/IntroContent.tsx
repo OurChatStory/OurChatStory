@@ -14,7 +14,7 @@ interface IntroContentProps {
 
 export const IntroContent: React.FC<IntroContentProps> = ({ setShowUploader }) => {
   const [showSupporters, setShowSupporters] = React.useState(false);
-  const [supporters, setSupporters] = React.useState<{ supporter_name: string; support_coffees: number; support_note?: string }[]>([]);
+  const [supporters, setSupporters] = React.useState<{ supporter_name: string; support_coffees: number; support_note?: string; support_amount: number }[]>([]);
   const [loading, setLoading] = React.useState(false);
 
   const fetchSupporters = async () => {
@@ -25,13 +25,36 @@ export const IntroContent: React.FC<IntroContentProps> = ({ setShowUploader }) =
 
     setLoading(true);
     try {
-      const response = await fetch(
-        `https://api.buymeacoffee.com/api/v1/supporters?access_token=${BMC_TOKEN}`
-      );
-      const data = await response.json();
+      const headers = {
+        Authorization: `Bearer ${BMC_TOKEN}`,
+      };
+
+      const [supportersRes, subscriptionsRes] = await Promise.all([
+        fetch("https://developers.buymeacoffee.com/api/v1/supporters", { headers }),
+        fetch("https://developers.buymeacoffee.com/api/v1/subscriptions?status=active", { headers })
+      ]);
+
+      const supportersData = await supportersRes.json();
+      const subscriptionsData = await subscriptionsRes.json();
       
-      if (data.success && data.data) {
-        setSupporters(data.data);
+      const mappedSupporters = (supportersData.data || []).map((s: any) => ({
+        supporter_name: s.supporter_name || s.payer_name || "Anonymous",
+        support_coffees: s.support_coffees,
+        support_note: s.support_note,
+        support_amount: (parseFloat(s.support_coffee_price) || 5) * s.support_coffees
+      }));
+
+      const mappedSubscriptions = (subscriptionsData.data || []).map((s: any) => ({
+        supporter_name: s.payer_name || "Anonymous",
+        support_coffees: s.subscription_coffee_num,
+        support_note: s.subscription_message,
+        support_amount: (parseFloat(s.subscription_coffee_price) || 5) * s.subscription_coffee_num
+      }));
+
+      const allSupporters = [...mappedSupporters, ...mappedSubscriptions];
+
+      if (allSupporters.length > 0) {
+        setSupporters(allSupporters);
       }
     } catch (error) {
       console.error("Error fetching supporters:", error);

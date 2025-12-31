@@ -199,14 +199,8 @@ const Dashboard: React.FC<DashboardProps> = ({ chatData, isDemo }) => {
         pdf.save(filename);
       }
     } catch (error) {
-      // Treat user dismissal (NotAllowedError/AbortError) as a no-op; otherwise fall back to download
-      const name = (error as Error)?.name;
-      if (name === "NotAllowedError" || name === "AbortError") {
-        console.log("Share cancelled by user.");
-      } else {
-        console.error("Error sharing PDF:", error);
-        pdf.save(filename);
-      }
+      console.error("Error sharing PDF:", error);
+      pdf.save(filename);
     }
 
     setShowPDFRenderer(false);

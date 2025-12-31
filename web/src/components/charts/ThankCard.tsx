@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ChatData } from "@/types/chat";
 import { FaTwitter, FaCoffee, FaInstagram } from "react-icons/fa";
 import { HiShare } from "react-icons/hi";
+import SupportersModal from "../SupportersModal";
+import { BMC_TOKEN } from "@/lib/constants";
 
 const MotionDiv = motion.div;
 const MotionP = motion.p;
@@ -22,6 +24,57 @@ const ThankCard = ({
   forPDF = false,
   isSharing = false,
 }: ThankCardProps) => {
+  const [showSupporters, setShowSupporters] = React.useState(false);
+  const [supporters, setSupporters] = React.useState<{ supporter_name: string; support_coffees: number; support_note?: string; support_amount: number }[]>([]);
+  const [loading, setLoading] = React.useState(false);
+
+  const fetchSupporters = async () => {
+    if (supporters.length > 0) {
+      setShowSupporters(true);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const headers = {
+        Authorization: `Bearer ${BMC_TOKEN}`,
+      };
+
+      const [supportersRes, subscriptionsRes] = await Promise.all([
+        fetch("https://developers.buymeacoffee.com/api/v1/supporters", { headers }),
+        fetch("https://developers.buymeacoffee.com/api/v1/subscriptions?status=active", { headers })
+      ]);
+
+      const supportersData = await supportersRes.json();
+      const subscriptionsData = await subscriptionsRes.json();
+      
+      const mappedSupporters = (supportersData.data || []).map((s: any) => ({
+        supporter_name: s.supporter_name || s.payer_name || "Anonymous",
+        support_coffees: s.support_coffees,
+        support_note: s.support_note,
+        support_amount: (parseFloat(s.support_coffee_price) || 5) * s.support_coffees
+      }));
+
+      const mappedSubscriptions = (subscriptionsData.data || []).map((s: any) => ({
+        supporter_name: s.payer_name || "Anonymous",
+        support_coffees: s.subscription_coffee_num,
+        support_note: s.subscription_message,
+        support_amount: (parseFloat(s.subscription_coffee_price) || 5) * s.subscription_coffee_num
+      }));
+
+      const allSupporters = [...mappedSupporters, ...mappedSubscriptions];
+
+      if (allSupporters.length > 0) {
+        setSupporters(allSupporters);
+      }
+    } catch (error) {
+      console.error("Error fetching supporters:", error);
+    } finally {
+      setLoading(false);
+      setShowSupporters(true);
+    }
+  };
+
   return (
     <div className={`flex flex-col items-center justify-center w-full bg-[#111b21] rounded-2xl p-8 relative ${
       forPDF 
@@ -93,6 +146,17 @@ const ThankCard = ({
             height={40}
           />
         </a>
+        {!forPDF && (
+          <div className="mt -mb-2">
+            <button
+              onClick={fetchSupporters}
+              disabled={loading}
+              className="text-xs text-[#8696a0] hover:text-[#25d366] transition-colors hover:underline disabled:opacity-50"
+            >
+              {loading ? "Loading..." : "Meet our supporters"}
+            </button>
+          </div>
+        )}
       </MotionDiv>
 
       {onSharePDF && (
@@ -109,14 +173,14 @@ const ThankCard = ({
             disabled={isSharing}
             className={`w-full py-3 px-6 rounded-lg flex items-center justify-center gap-2 font-semibold text-lg transition-all ${
               isSharing 
-                ? "bg-[#1a4a3a] text-[#8696a0] cursor-wait" 
+                ? "bg-[#25d366] text-[#111b21] opacity-80 cursor-wait" 
                 : "bg-[#25d366] text-[#111b21] hover:bg-[#1ebe5d] cursor-pointer"
             }`}
           >
             {isSharing ? (
               <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                Preparing to share...
+                <div className="w-5 h-5 border-2 border-[#111b21] border-t-transparent rounded-full animate-spin" />
+                Preparing...
               </>
             ) : (
               <>
@@ -151,6 +215,13 @@ const ThankCard = ({
           </a>
         </div>
       </div>
+
+      <SupportersModal
+        isOpen={showSupporters}
+        onClose={() => setShowSupporters(false)}
+        supporters={supporters}
+        loading={loading}
+      />
     </div>
   );
 };
