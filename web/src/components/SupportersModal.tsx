@@ -3,13 +3,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
-
-interface Supporter {
-  supporter_name: string;
-  support_coffees: number;
-  support_note?: string;
-  support_amount: number;
-}
+import { Supporter } from "@/types/supporters";
 
 interface SupportersModalProps {
   isOpen: boolean;

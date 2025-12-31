@@ -7,6 +7,7 @@ import { IntroButton } from "./IntroButton";
 import { DemoDeck } from "./DemoDeck";
 import SupportersModal from "./SupportersModal";
 import { BMC_TOKEN } from "@/lib/constants";
+import { BMCSupporterData, BMCSubscriptionData, Supporter } from "@/types/supporters";
 
 interface IntroContentProps {
   setShowUploader: (show: boolean) => void;
@@ -14,7 +15,7 @@ interface IntroContentProps {
 
 export const IntroContent: React.FC<IntroContentProps> = ({ setShowUploader }) => {
   const [showSupporters, setShowSupporters] = React.useState(false);
-  const [supporters, setSupporters] = React.useState<{ supporter_name: string; support_coffees: number; support_note?: string; support_amount: number }[]>([]);
+  const [supporters, setSupporters] = React.useState<Supporter[]>([]);
   const [loading, setLoading] = React.useState(false);
 
   const fetchSupporters = async () => {
@@ -37,14 +38,14 @@ export const IntroContent: React.FC<IntroContentProps> = ({ setShowUploader }) =
       const supportersData = await supportersRes.json();
       const subscriptionsData = await subscriptionsRes.json();
       
-      const mappedSupporters = (supportersData.data || []).map((s: any) => ({
+      const mappedSupporters = (supportersData.data || []).map((s: BMCSupporterData) => ({
         supporter_name: s.supporter_name || s.payer_name || "Anonymous",
         support_coffees: s.support_coffees,
         support_note: s.support_note,
         support_amount: (parseFloat(s.support_coffee_price) || 5) * s.support_coffees
       }));
 
-      const mappedSubscriptions = (subscriptionsData.data || []).map((s: any) => ({
+      const mappedSubscriptions = (subscriptionsData.data || []).map((s: BMCSubscriptionData) => ({
         supporter_name: s.payer_name || "Anonymous",
         support_coffees: s.subscription_coffee_num,
         support_note: s.subscription_message,
