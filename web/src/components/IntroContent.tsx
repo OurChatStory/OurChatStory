@@ -42,14 +42,14 @@ export const IntroContent: React.FC<IntroContentProps> = ({ setShowUploader }) =
         supporter_name: s.supporter_name || s.payer_name || "Anonymous",
         support_coffees: s.support_coffees,
         support_note: s.support_note,
-        support_amount: (parseFloat(s.support_coffee_price) || 5) * s.support_coffees
+        support_amount: (parseFloat(s.support_coffee_price || '5') || 5) * s.support_coffees
       }));
 
       const mappedSubscriptions = (subscriptionsData.data || []).map((s: BMCSubscriptionData) => ({
         supporter_name: s.payer_name || "Anonymous",
         support_coffees: s.subscription_coffee_num,
         support_note: s.subscription_message,
-        support_amount: (parseFloat(s.subscription_coffee_price) || 5) * s.subscription_coffee_num
+        support_amount: (parseFloat(s.subscription_coffee_price || '5') || 5) * s.subscription_coffee_num
       }));
 
       const allSupporters = [...mappedSupporters, ...mappedSubscriptions];
